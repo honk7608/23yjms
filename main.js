@@ -23,7 +23,7 @@ app.use(cookieParser())
      */
 let EndWithRespond = function (res, htmlRoute=null, replacement) {
     var fs = require('fs')
-    var baseData = String(fs.readFileSync('./PageData/Base.html', 'utf-8'))
+    var baseData = String(fs.readFileSync('./PageData/base.html', 'utf-8'))
     var respondData = String(fs.readFileSync(htmlRoute, 'utf-8'))
 
     if (replacement) {
@@ -61,7 +61,6 @@ app.get('/', async function (req, res) {
         await timetable.init({ cache: 1000 * 60 * 60 })
         await timetable.setSchool(49930)
         result = await timetable.getTimetable()
-        console.log(result[3][11][0]);
     }
 
     getTimetable()
