@@ -69,7 +69,7 @@ header .menu > li .submenu::before {
     height: calc(var(--length) * 1.6vw);
 
     position: absolute;
-    left: 1.5vw;
+    left: 2.5vw;
 
     background-color: var(--menucrl);
 }
