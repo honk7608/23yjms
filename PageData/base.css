@@ -17,20 +17,16 @@ header {
     width: max-content;
     height: 100vh;
 
-    background-color: #202030;
+    background-color: #202020;
 }
 
 header .logo {
-    width: 100%;
-    color: white;
-    text-align: center;
-    font-size: 3vw;
-    font-weight: 900;
+    width: 13vw;
 }
 
 header .menu {
     width: max-content;
-
+    margin-top: 0px;
     list-style: none;
 
     display: flex;
@@ -43,23 +39,24 @@ header .menu > li {
 
     background-color: transparent;
     color: var(--menucrl);
-
-    font-size: 2vw;
-    font-weight: 800;
-
+    border: 0.5vw solid white;
+    font-size: 1.75vw;
+    font-weight: 600;
+    margin : 0.5vw;
+    border-radius: 2vw;
     --menucrl: white
 }
 
 header .menu > li:hover {
-    background-color: #D72638;
-    --menucrl: #202030
+    background-color: #403035;
+    --menucrl: #e0ffe5;
 }
 
 header .menu > li .submenu {
     padding-left: 1vw;
 
     font-weight: 500;
-    font-size: 1.5vw;
+    font-size: 1.35vw;
     
     display: flex;
     align-items: first baseline;
@@ -69,7 +66,7 @@ header .menu > li .submenu {
 header .menu > li .submenu::before {
     content: '';
     width: 0.2vw;
-    height: calc(var(--length) * 1.8vw);
+    height: calc(var(--length) * 1.6vw);
 
     position: absolute;
     left: 1.5vw;
