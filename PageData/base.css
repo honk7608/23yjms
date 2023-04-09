@@ -1,0 +1,56 @@
+* {
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+a {
+    color: black;
+    text-decoration-line: none;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+header {
+    width: max-content;
+    height: 100vh;
+
+    background-color: #222222;
+}
+
+header .logo {
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+header .menu {
+    width: max-content;
+
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+header .menu a {
+    padding: 10px;
+
+    background-color: transparent;
+    color: white;
+}
+
+header .menu a:hover {
+    background-color: #FFC300;
+    color: black;
+}
+
+header .menu a li {
+    width: 100%;
+
+    font-size: 2vw;
+    font-weight: 800;
+}
