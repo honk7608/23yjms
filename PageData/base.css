@@ -15,9 +15,12 @@ body {
 
 header {
     width: max-content;
-    height: 100vh;
+    min-height: 100vh;
+    height: max-content;
 
     background-color: #202020;
+
+    /* overflow-y: scroll; */
 }
 
 header .logo {
@@ -40,11 +43,10 @@ header .menu > li {
 
     background-color: transparent;
     color: var(--menucrl);
-    border: 0.5vw solid white;
     font-size: 1.75vw;
     font-weight: 600;
     margin : 0.5vw;
-    border-radius: 2vw;
+    border-radius: 1vw;
     --menucrl: white
 }
 
@@ -62,17 +64,6 @@ header .menu > li .submenu {
     display: flex;
     align-items: first baseline;
     flex-direction: column;
-}
-
-header .menu > li .submenu::before {
-    content: '';
-    width: 0.2vw;
-    height: calc(var(--length) * 1.6vw);
-
-    position: absolute;
-    left: 2.5vw;
-
-    background-color: var(--menucrl);
 }
 
 header .menu > li .submenu a {
