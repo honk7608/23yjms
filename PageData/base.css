@@ -17,13 +17,15 @@ header {
     width: max-content;
     height: 100vh;
 
-    background-color: #222222;
+    background-color: #202030;
 }
 
 header .logo {
     width: 100%;
     color: white;
     text-align: center;
+    font-size: 3vw;
+    font-weight: 900;
 }
 
 header .menu {
@@ -36,21 +38,45 @@ header .menu {
     padding: 0;
 }
 
-header .menu a {
-    padding: 10px;
+header .menu > li {
+    padding: 1vw;
 
     background-color: transparent;
-    color: white;
-}
-
-header .menu a:hover {
-    background-color: #FFC300;
-    color: black;
-}
-
-header .menu a li {
-    width: 100%;
+    color: var(--menucrl);
 
     font-size: 2vw;
     font-weight: 800;
+
+    --menucrl: white
+}
+
+header .menu > li:hover {
+    background-color: #D72638;
+    --menucrl: #202030
+}
+
+header .menu > li .submenu {
+    padding-left: 1vw;
+
+    font-weight: 500;
+    font-size: 1.5vw;
+    
+    display: flex;
+    align-items: first baseline;
+    flex-direction: column;
+}
+
+header .menu > li .submenu::before {
+    content: '';
+    width: 0.2vw;
+    height: calc(var(--length) * 1.8vw);
+
+    position: absolute;
+    left: 1.5vw;
+
+    background-color: var(--menucrl);
+}
+
+header .menu > li .submenu a {
+    color: var(--menucrl);
 }
