@@ -4,7 +4,7 @@
      * @param {string} routeName 경로명 (ex: PageData/home/home.html -> home)
      * @param {{code: string, content: string|[]}[]} replacement Html 내용을 replace할 내용
      */
-let EndWithRespond = function (res, routeName=null, replacement) {
+let EndWithRespond = function (res, routeName=null, replacement=null) {
     var fs = require('fs')
     var baseData = String(fs.readFileSync('./PageData/base.html', 'utf-8'))
     var respondData = String(fs.readFileSync(`./PageData/${routeName}/${routeName}.html`, 'utf-8'))
@@ -20,7 +20,7 @@ let EndWithRespond = function (res, routeName=null, replacement) {
     for (const key in replacement) {
         if (replacement[key].code == 'css_additional') {
             var cssExist = true
-            replacement[key].content.push(`css/${routeName}/${routeName}.css`)
+            replacement[key].content.push(`/css/${routeName}/${routeName}.css`)
             break
         }
     }
