@@ -113,7 +113,7 @@ a {
 
     header .menu li {
         color: white;
-        font-size: 1vw;
+        font-size: 4vw;
         font-weight: 800;
     }
 
@@ -131,7 +131,12 @@ a {
     }
 
     header .menu li .submenu a {
-        color: white;
+        color: black;
+        font-weight: 600;
+        background-color: white;
+        margin: 1vw;
+        padding: 2vw;
+        border-radius: 5vw;
     }
 
     header .menu li:hover .submenu {
