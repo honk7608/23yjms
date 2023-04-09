@@ -1,6 +1,7 @@
 var express = require('express')
 var asyncify = require('express-asyncify');
 var app = asyncify(express())
+let EndWithRespond = require('./SubModule/ResFunc.js')
 
 var port = process.env.PORT;
 
@@ -65,7 +66,10 @@ let EndWithRespond = function (res, routeName=null, replacement) {
 }
 
 //Route
-app.use('/test', require('./route/test.js'));
+app.use('/exam', require('./route/exam.js'));
+app.use('/living', require('./route/living.js'));
+app.use('/community', require('./route/community.js'));
+app.use('/schedule', require('./route/schedule.js'));
 
 //main
 app.get('/', async function (req, res) {
