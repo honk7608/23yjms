@@ -139,7 +139,7 @@ a {
         border-radius: 5vw;
     }
 
-    header .menu li:visited .submenu {
+    header .menu li:hover .submenu {
         display: flex;
     }
 }
