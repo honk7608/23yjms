@@ -1,3 +1,5 @@
+/* All */
+
 * {
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
@@ -7,6 +9,7 @@ a {
     text-decoration-line: none;
 }
 
+/* Desktop */
 @media screen and (min-width: 425px){
     body {
         display: flex;
@@ -52,31 +55,47 @@ a {
         padding : 0.5vw;
     }
 
-    header .menu > li .menu_name {
-        background-image: url('/src/pattern.png'), repeat-x;
+    header .menu > li p {
+        margin: 0;
+        margin-bottom: 0.5vw;
+        width: fit-content;
+    }
+
+    header .menu > li:hover p {
+        background: url('/src/pattern.png') repeat-x center bottom;
     }
     
     header .menu > li:hover {
-        background-color: #ff8d12;
+        background-color: #FF8D12;
+        /* #FF8D12 */
+        /* #427ADC */
         color: white;
     }
 
     header .menu > li .submenu {
-        padding-left: 1vw;
+        background-color: white;
+        padding: 1vw;
 
         font-weight: 500;
         font-size: 1.35vw;
         
-        display: flex;
+        display: none;
         align-items: first baseline;
         flex-direction: column;
+
+        border-radius: 1vw;
+    }
+
+    header .menu > li:hover .submenu a {
+        color: black;
     }
     
-    header .menu > li .submenu:hover {
-        color: white;
+    header .menu > li:hover .submenu {
+        display: flex;
     }
 }
 
+/* Mobile */
 @media screen and (max-width: 424px){
     body {
         display: flex;
