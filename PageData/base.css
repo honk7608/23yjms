@@ -162,6 +162,7 @@ a {
     }
     body {
         background-color: black;
+        color: white;
     }
     header .menu > li .submenu a {
         color: white;
@@ -179,9 +180,11 @@ a {
         color: white;
     }
     header .menu li .submenu a {
-        background-color: white;
+        background-color: black;
+        color: white;
     }
     body {
         background-color: black;
+        color: white;
     }
 }
