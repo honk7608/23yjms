@@ -19,7 +19,7 @@ a {
         height: max-content;
         min-height: 100vh;
 
-        background-color: #202020;
+        background-color: white;
         color: black;
             
         border-right: 1px #222222 solid;
@@ -85,6 +85,7 @@ a {
         height: max-content;
 
         background-color: white;
+        color: black
     }
 
     header .logo {
@@ -109,7 +110,6 @@ a {
     }
 
     header .menu li {
-        color: white;
         font-size: 4vw;
         font-weight: 800;
     }
@@ -128,7 +128,6 @@ a {
     }
 
     header .menu li .submenu a {
-        color: black;
         font-weight: 600;
         background-color: white;
         margin: 1vw;
