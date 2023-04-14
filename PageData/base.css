@@ -36,12 +36,11 @@ a {
     }
 
     header .menu {
-        width: max-content;
+        width: 100%;
         list-style: none;
         
         display: flex;
         flex-direction: column;
-        margin: auto;
         margin-top: 0px;
         padding: 0;
     }
@@ -53,7 +52,6 @@ a {
         font-size: 1.75vw;
         font-weight: 600;
         margin : 0.5vw;
-        border-radius: 1vw;
     }
 
     header .menu > li:hover {
