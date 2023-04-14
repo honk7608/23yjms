@@ -160,6 +160,9 @@ a {
     header .menu > li .submenu:hover {
         color: white;
     }
+    body {
+        background-color: black;
+    }
 }
 @media (prefers-color-scheme: dark) and (max-width: 424px) {
     header {
@@ -173,6 +176,9 @@ a {
         color: black;
     }
     header .menu li .submenu a {
+        background-color: black;
+    }
+    body {
         background-color: black;
     }
 }
