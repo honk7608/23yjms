@@ -26,7 +26,7 @@ a {
     }
 
     header .logo {
-        display: inline-flex;
+        display: inline-flexbox;
         width: 15vw;
     }
 
