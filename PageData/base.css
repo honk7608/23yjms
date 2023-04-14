@@ -1,3 +1,7 @@
+/* #FF8D12 */
+/* #427ADC */
+
+
 /* All */
 
 * {
@@ -50,15 +54,17 @@ a {
 
     header .menu > li {
         background-color: transparent;
-        font-size: 1.75vw;
-        font-weight: 600;
         padding : 0.5vw;
     }
-
+    
     header .menu > li p {
+        width: fit-content;
+        
         margin: 0;
         margin-bottom: 0.5vw;
-        width: fit-content;
+
+        font-size: 2vw;
+        font-weight: 800;
     }
 
     header .menu > li:hover p {
@@ -67,8 +73,6 @@ a {
     
     header .menu > li:hover {
         background-color: #FF8D12;
-        /* #FF8D12 */
-        /* #427ADC */
         color: white;
     }
 
@@ -76,7 +80,7 @@ a {
         background-color: white;
         padding: 1vw;
 
-        font-weight: 500;
+        font-weight: 700;
         font-size: 1.35vw;
         
         display: none;
@@ -85,13 +89,34 @@ a {
 
         border-radius: 1vw;
     }
-
-    header .menu > li:hover .submenu a {
-        color: black;
-    }
     
     header .menu > li:hover .submenu {
         display: flex;
+    }
+
+    header .menu > li:hover .submenu a {
+        color: black;
+        position: relative;
+        z-index: 2;
+    }
+    
+    header .menu > li:hover .submenu a::before {
+        background-color: #FF8D1250;
+        border-radius: 2vw;
+        
+        width: 100%;
+        height: 0.5vw;
+        position: absolute;
+        bottom: 0;
+
+        display: none;
+        content: '';
+
+        z-index: 1;
+    }
+
+    header .menu > li:hover .submenu a:hover::before {
+        display: block;
     }
 }
 
@@ -139,6 +164,10 @@ a {
         font-weight: 800;
     }
 
+    header .menu li:hover p {
+        background: url('/src/patternY.png') repeat-x center bottom;
+    }
+
     header .menu li .submenu {
         display: none;
         position: absolute;
@@ -164,45 +193,49 @@ a {
         display: flex;
     }
 }
-@media (prefers-color-scheme: dark) and (min-width: 425px) {
+
+
+/* DarkMode */
+@media (prefers-color-scheme: dark) {
     header {
         background-color: black;
         color: white;
             
         border-right: 1px #666666 solid;
     }
+
+    header .menu > li .submenu a {
+        color: white;
+    }
+
+    body {
+        background-color: black;
+        color: white;
+    }
+}
+
+@media (prefers-color-scheme: dark) and (min-width: 425px) {
     header .menu > li:hover {
         background-color: #0072f3;
         color: black;
     }
+
     header .menu > li .submenu:hover {
         color: black;
     }
-    body {
-        background-color: black;
-        color: white;
-    }
-    header .menu > li .submenu a {
-        color: white;
+
+    header .menu > li:hover .submenu a::before {
+        background-color: #0072f350;
     }
 }
-@media (prefers-color-scheme: dark) and (max-width: 424px) {
-    header {
-        background-color: black;
-        color: white;
-            
-        border-bottom: 1px #666666 solid;
-    }
+
+    @media (prefers-color-scheme: dark) and (max-width: 424px) {
     header .menu li .submenu {
         background-color: #0072f3;
         color: white;
     }
+
     header .menu li .submenu a {
         background-color: black;
-        color: white;
-    }
-    body {
-        background-color: black;
-        color: white;
     }
 }
