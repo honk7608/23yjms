@@ -46,8 +46,6 @@ a {
     }
 
     header .menu > li {
-        padding: 1vw;
-
         background-color: transparent;
         font-size: 1.75vw;
         font-weight: 600;
@@ -56,6 +54,7 @@ a {
 
     header .menu > li:hover {
         background-color: #ff8d12;
+        color: white;
     }
 
     header .menu > li .submenu {
@@ -123,7 +122,8 @@ a {
 
         flex-direction: row;
         justify-content: space-around;
-        background-color: #505050;
+        background-color: #ff8d12;
+        color: white
     }
 
     header .menu li .submenu a {
