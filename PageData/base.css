@@ -146,3 +146,33 @@ a {
         display: flex;
     }
 }
+@media (prefers-color-scheme: dark) and (min-width: 425px) {
+    header {
+        background-color: black;
+        color: white;
+            
+        border-right: 1px #666666 solid;
+    }
+    header .menu > li:hover {
+        background-color: #0072f3;
+        color: black;
+    }
+    header .menu > li .submenu:hover {
+        color: white;
+    }
+}
+@media (prefers-color-scheme: dark) and (max-width: 424px) {
+    header {
+        background-color: white;
+        color: black;
+            
+        border-bottom: 1px #666666 solid;
+    }
+    header .menu li .submenu {
+        background-color: #0072f3;
+        color: black;
+    }
+    header .menu li .submenu a {
+        background-color: black;
+    }
+}
