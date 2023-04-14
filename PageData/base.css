@@ -163,23 +163,23 @@ a {
     body {
         background-color: black;
     }
-    header .menu > li .submenu {
+    header .menu > li .submenu a {
         color: white;
     }
 }
 @media (prefers-color-scheme: dark) and (max-width: 424px) {
     header {
-        background-color: white;
-        color: black;
+        background-color: black;
+        color: white;
             
         border-bottom: 1px #666666 solid;
     }
     header .menu li .submenu {
         background-color: #0072f3;
-        color: black;
+        color: white;
     }
     header .menu li .submenu a {
-        background-color: white;
+        background-color: black;
     }
     body {
         background-color: black;
