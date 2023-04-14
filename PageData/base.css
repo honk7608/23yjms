@@ -52,8 +52,8 @@ a {
         padding : 0.5vw;
     }
 
-    header .menu > li .menu_name
-        url('/src/pattern.png') repeat-x
+    header .menu > li .menu_name {
+        background-image: url('/src/pattern.png') repeat-x;
     }
     
     header .menu > li:hover {
