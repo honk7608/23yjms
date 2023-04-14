@@ -16,10 +16,13 @@ a {
 
     header {
         width: max-content;
-        min-height: 100vh;
         height: max-content;
+        min-height: 100vh;
 
         background-color: #202020;
+        color: black
+            
+        border-right: 1px #222222 solid;
     }
 
     header .logo {
@@ -47,12 +50,10 @@ a {
         padding: 1vw;
 
         background-color: transparent;
-        color: var(--menucrl);
         font-size: 1.75vw;
         font-weight: 600;
         margin : 0.5vw;
         border-radius: 1vw;
-        --menucrl: white
     }
 
     header .menu > li:hover {
@@ -70,10 +71,6 @@ a {
         align-items: first baseline;
         flex-direction: column;
     }
-
-    header .menu > li .submenu a {
-        color: var(--menucrl);
-    }
 }
 
 @media screen and (max-width: 424px){
@@ -87,7 +84,7 @@ a {
         width: 100vw;
         height: max-content;
 
-        background-color: #202020;
+        background-color: white;
     }
 
     header .logo {
