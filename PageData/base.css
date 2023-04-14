@@ -158,7 +158,7 @@ a {
         color: black;
     }
     header .menu > li .submenu:hover {
-        color: white;
+        color: black;
     }
     body {
         background-color: black;
@@ -179,7 +179,7 @@ a {
         color: white;
     }
     header .menu li .submenu a {
-        background-color: black;
+        background-color: white;
     }
     body {
         background-color: black;
