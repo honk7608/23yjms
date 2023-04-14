@@ -52,7 +52,7 @@ a {
         padding : 0.5vw;
     }
 
-    header .menu > li p
+    header .menu > li .menu_name
         url('/src/pattern.png') repeat-x
     }
     
