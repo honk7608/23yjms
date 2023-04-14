@@ -41,7 +41,7 @@ a {
         
         display: flex;
         flex-direction: column;
-        margin-top: 0px;
+        margin-top: 20px;
         padding: 0;
     }
 
@@ -49,7 +49,7 @@ a {
         background-color: transparent;
         font-size: 1.75vw;
         font-weight: 600;
-        margin : 0.5vw;
+        padding : 0.5vw;
     }
 
     header .menu > li:hover {
