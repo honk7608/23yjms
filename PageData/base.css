@@ -73,7 +73,7 @@ a {
     }
     
     header .menu > li .submenu:hover {
-        color: white
+        color: white;
     }
 }
 
@@ -131,7 +131,7 @@ a {
         flex-direction: row;
         justify-content: space-around;
         background-color: #ff8d12;
-        color: white
+        color: white;
     }
 
     header .menu li .submenu a {
