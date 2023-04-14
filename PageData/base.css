@@ -52,6 +52,10 @@ a {
         padding : 0.5vw;
     }
 
+    header .menu > li#text {
+        url('/src/pattern.png') repeat-x
+    }
+    
     header .menu > li:hover {
         background-color: #ff8d12;
         color: white;
@@ -66,6 +70,10 @@ a {
         display: flex;
         align-items: first baseline;
         flex-direction: column;
+    }
+    
+    header .menu > li .submenu:hover {
+        color: white
     }
 }
 
