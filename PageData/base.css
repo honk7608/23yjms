@@ -230,6 +230,7 @@ a {
     }
 }
 
+/* DarkMode Desktop */
 @media (prefers-color-scheme: dark) and (min-width: 425px) {
     header .menu > li:hover {
         background-color: #0072f3;
@@ -245,10 +246,15 @@ a {
     }
 }
 
-    @media (prefers-color-scheme: dark) and (max-width: 424px) {
+/* DarkMode Mobile */
+@media (prefers-color-scheme: dark) and (max-width: 424px) {
     header .menu li .submenu {
         background-color: #0072f3;
         color: white;
+    }
+
+    header .menu > li p::before {
+        background-color: #0072f350;
     }
 
     header .menu li .submenu a {
