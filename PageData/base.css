@@ -149,11 +149,13 @@ input::-webkit-inner-spin-button {
         color: black;
             
         border-bottom: 1px #999 solid;
+
+        display: flex;
     }
 
     header .logo {
         display: inline-flex;
-        width: 15vw;
+        width: 20vw;
     }
 
     header .logo img{
@@ -162,7 +164,7 @@ input::-webkit-inner-spin-button {
     }
 
     header .menu {
-        width: 100%;
+        width: 80vw;
         padding: 0;
 
         list-style: none;
@@ -170,6 +172,11 @@ input::-webkit-inner-spin-button {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+    }
+
+    header .menu li {
+        display: flex;
+        align-items: center;
     }
 
     header .menu li p {
@@ -202,7 +209,7 @@ input::-webkit-inner-spin-button {
         position: absolute;
         
         left: 0;
-        top: 25vw;
+        top: 15vw;
 
         width: 100vw;
 
@@ -216,9 +223,10 @@ input::-webkit-inner-spin-button {
 
     header .menu li .submenu a {
         font-weight: 600;
+        font-size: 3vw;
         background-color: white;
         margin: 1vw;
-        padding: 2vw;
+        padding: 1vw;
         border-radius: 5vw;
     }
 
