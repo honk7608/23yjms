@@ -18,8 +18,11 @@
 }
 
 .select .option {
-    display: flex;
+    min-width: 35vw;
+
     gap: 1vw;
+    
+    display: flex;
     flex-direction: column;
 }
 
