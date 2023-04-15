@@ -87,7 +87,9 @@
     <script>
         HeaderEl = document.getElementsByTagName('header')[0]
         MainEl = document.getElementsByTagName('main')[0]
-        if (HeaderEl.clientWidth >= 424) {
+        BodyEl = document.getElementsByTagName('body')[0]
+
+        if (BodyEl.clientWidth >= 424) {
             MainEl.style = `width: calc(100vw - ${HeaderEl.clientWidth}px)`
         }
     </script>
