@@ -25,7 +25,7 @@ let EndWithRespond = function (res, routeName=null, replacement=null) {
         }
     }
     if (!cssExist) {
-        replacement.push({code: 'css_additional', content: [`css/${routeName}/${routeName}.css`]})
+        replacement.push({code: 'css_additional', content: [`/css/${routeName}/${routeName}.css`]})
     }
 
     // 대체 작업
