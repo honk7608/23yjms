@@ -38,12 +38,15 @@ input::-webkit-inner-spin-button {
     header {
         width: max-content;
         height: max-content;
+        min-width: calc(var(--header-font-size) * 5);
         min-height: 100vh;
 
         background-color: white;
         color: black;
             
         border-right: 1px #999999 solid;
+
+        --header-font-size: max(3vw, 30px)
     }
 
     header .logo {
@@ -76,7 +79,7 @@ input::-webkit-inner-spin-button {
 
         margin-bottom: 0.5vw;
 
-        font-size: 2vw;
+        font-size: var(--header-font-size);
         font-weight: 800;
     
         background: url('/src/patternY.png') repeat-x center bottom;
@@ -96,7 +99,7 @@ input::-webkit-inner-spin-button {
         padding: 1vw;
 
         font-weight: 700;
-        font-size: 1.35vw;
+        font-size: calc(var(--header-font-size) * 0.6);
         
         display: none;
         align-items: first baseline;

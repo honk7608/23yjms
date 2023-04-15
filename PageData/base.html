@@ -46,7 +46,7 @@
 <body>
     <header>
         <a class="logo" href="/">
-            <img src="/src/logo.jpg" alt="logo">
+            <img id="logo" src="/src/logo.jpg" alt="logo">
         </a>
         <ul class="menu">
             <li>
@@ -83,20 +83,18 @@
             return new Promise((resolve) => setTimeout(resolve, ms));
         }
         function adjustBodyWidth() {
-            console.log('A')
-
-            delay(500).then(() => {           
-                console.log('B')
-                HeaderEl = document.getElementsByTagName('header')[0]
-                MainEl = document.getElementsByTagName('main')[0]
-                BodyEl = document.getElementsByTagName('body')[0]
-                
-                if (BodyEl.clientWidth >= 424) {
-                    MainEl.style = `width: calc(100vw - ${HeaderEl.clientWidth}px)`
-                } else {
-                    MainEl.style = `width: 100vw`
-                }
-            })
+            HeaderEl = document.getElementsByTagName('header')[0]
+            MainEl = document.getElementsByTagName('main')[0]
+            BodyEl = document.getElementsByTagName('body')[0]
+            LogoEl = document.getElementById('logo')
+            
+            if (BodyEl.clientWidth >= 424) {
+                MainEl.style = `width: calc(100vw - ${HeaderEl.clientWidth}px)`
+                LogoEl.style = `width: ${HeaderEl.clientWidth}px`
+            } else {
+                MainEl.style = `width: 100vw`
+                LogoEl.style = ``
+            }
         }
 
         adjustBodyWidth()
