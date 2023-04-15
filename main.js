@@ -20,7 +20,6 @@ app.use(cookieParser())
 app.use('/exam', require('./route/exam.js'));
 app.use('/living', require('./route/living.js'));
 app.use('/community', require('./route/community.js'));
-app.use('/schedule', require('./route/schedule.js'));
 
 //main
 app.get('/', async function (req, res) {
