@@ -13,6 +13,10 @@ a {
     text-decoration-line: none;
 }
 
+p {
+    margin: 0;
+}
+
 main {
     padding: 1vw;
 }
@@ -69,8 +73,7 @@ input::-webkit-inner-spin-button {
     
     header .menu > li p {
         width: fit-content;
-        
-        margin: 0;
+
         margin-bottom: 0.5vw;
 
         font-size: 2vw;
@@ -199,7 +202,9 @@ input::-webkit-inner-spin-button {
     header .menu li .submenu {
         display: none;
         position: absolute;
+        
         left: 0;
+        top: 25vw;
 
         width: 100vw;
 
@@ -207,6 +212,8 @@ input::-webkit-inner-spin-button {
         justify-content: space-around;
         background-color: #FF8D12;
         color: white;
+
+        z-index: 1;
     }
 
     header .menu li .submenu a {
