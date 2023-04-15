@@ -37,7 +37,6 @@ input::-webkit-inner-spin-button {
 
     header {
         width: max-content;
-        height: max-content;
         min-width: calc(var(--header-font-size) * 5);
         min-height: 100vh;
 
