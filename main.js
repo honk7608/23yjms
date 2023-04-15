@@ -24,25 +24,6 @@ app.use('/schedule', require('./route/schedule.js'));
 
 //main
 app.get('/', async function (req, res) {
-    const Timetable = require('comcigan-parser');
-    const timetable = new Timetable();
-
-    async function getTimetable() {
-        while(true) {
-            try {
-                await timetable.init({ cache: 1000 * 60 * 60 })
-                await timetable.setSchool(49930)
-            } catch {
-                continue
-            }
-            break
-        }
-        result = await timetable.getTimetable()
-        return result
-    }
-
-    tableData = await getTimetable()
-
     EndWithRespond(res, 'home', [
         {
             code: 'timetableList',
