@@ -31,15 +31,11 @@
                     TrfirstText = `<td rowspan="2">${i + 1}</td>\n`
                     TrsecondText = ''
                     for (j = 0; j < 5; j++) {
-                        console.log(j, i)
-                        console.log(timetable[j])
                         TrfirstText += `<td>${timetable[j][i].subject}</td>\n`
                         TrsecondText += `<td>${timetable[j][i].teacher}</td>\n`
                     }
                     EntireTableText += `<tr>\n${TrfirstText}</tr>\n<tr>\n${TrsecondText}</tr>\n`
-                }
-                console.log(EntireTableText)
-                
+                }                
                 document.write(EntireTableText)
             }
         </script>
