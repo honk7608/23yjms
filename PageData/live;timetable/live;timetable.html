@@ -19,6 +19,12 @@
         <script>
             timetable = JSON.parse('<!-- {timetable_variable} -->')
             if (timetable) {                
+                ScGrade = timetable[0][0].grade
+                ScClass = timetable[0][0].class
+
+                document.getElementById('grade').value = ScGrade
+                document.getElementById('class').value = ScClass
+
                 EntireTableText = '<tr>\n<td>교시</td>\n<td>월</td>\n<td>화</td>\n<td>수</td>\n<td>목</td>\n<td>금</td>\n'
                 // i -> 교시, j -> 요일
                 for (i = 0; i < 7; i++) {
