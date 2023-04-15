@@ -1,3 +1,4 @@
+/* Select */
 .select {
     width: 100%;
     padding: 1vw;
@@ -79,7 +80,7 @@
     border: none;
     border-radius: 10vw;
 
-    width: 25vw;
+    width: 22.5vw;
 
     color: white;
     font-weight: 700;
@@ -109,4 +110,34 @@
     .select input[type="submit"] {
         width: 100%;
     }
+}
+
+/* Table */
+.tt {
+    width: 100%;
+    font-size: 2vw;
+
+    border-collapse: collapse;
+}
+
+.tt .time {
+    width: 5vw;
+}
+
+.tt .tthead {
+    font-weight: 900;
+}
+
+.tt .first {
+    border-top: 2px black solid;
+    font-weight: 700;
+}
+
+.tt .second {
+    font-size: 1.3vw;
+    font-weight: 500;
+}
+
+.tt td {
+    text-align: center;
 }
