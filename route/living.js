@@ -53,4 +53,8 @@ router.get('/meal', async function (req, res) {
     EndWithRespond(res, 'live;meal')
 })
 
+router.get('/one-month', async function (req, res) {
+    EndWithRespond(res, 'live;1month')
+})
+
 module.exports = router;
