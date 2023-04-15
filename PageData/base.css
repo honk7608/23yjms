@@ -72,6 +72,8 @@ input::-webkit-inner-spin-button {
 
         font-size: 2vw;
         font-weight: 800;
+    
+        background: url('/src/patternY.png') repeat-x center bottom;
     }
 
     header .menu > li:hover p {
@@ -200,7 +202,7 @@ input::-webkit-inner-spin-button {
 
         flex-direction: row;
         justify-content: space-around;
-        background-color: #ff8d12;
+        background-color: #FF8D12;
         color: white;
     }
 
