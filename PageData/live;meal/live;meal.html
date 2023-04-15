@@ -1,0 +1,10 @@
+<script>
+    const mealList = JSON.parse(`<!-- {meal} -->`)
+    for (const key in mealList) {
+        if(key != Number(key)) {
+            break
+        }
+        mealList[key] = mealList[key].replace('[중식](nextLine)','').split('(nextLine)').join('\n')
+    }
+    console.log(mealList)
+</script>

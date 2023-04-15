@@ -50,7 +50,26 @@ router.get('/timetable', async function (req, res) {
 })
 
 router.get('/meal', async function (req, res) {
-    EndWithRespond(res, 'live;meal')
+    const School = require('school-kr')
+    const school = new School()
+    
+    school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
+    while(true) {
+        try {
+            var meal = await school.getMeal()
+        } catch {
+            continue
+        }
+        break
+    }
+    console.log(meal)
+    var mealString = JSON.stringify(meal)
+    mealString = mealString.split('\\n').join('(nextLine)')
+
+    EndWithRespond(res, 'live;meal', [{
+        code: 'meal',
+        content: mealString
+    }])
 })
 
 router.get('/one-month', async function (req, res) {
