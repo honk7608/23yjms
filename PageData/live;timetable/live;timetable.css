@@ -89,7 +89,7 @@
     background-color: #427ADC;
 }
 
-/* Mobile */ @media screen and (max-width: 424px){
+/* Select Mobile */ @media screen and (max-width: 424px){
     .select {
         flex-direction: column;
         align-items: center;
@@ -115,29 +115,51 @@
 /* Table */
 .tt {
     width: 100%;
-    font-size: 2vw;
 
     border-collapse: collapse;
 }
 
 .tt .time {
+    font-size: 2.5vw;
+
     width: 5vw;
 }
 
-.tt .tthead {
+.tt .tthead td {
+    font-size: 2.5vw !important;
     font-weight: 900;
 }
 
-.tt .first {
-    border-top: 2px black solid;
+.tt .first td {
+    font-size: 2.5vw;
     font-weight: 700;
+    
+    border-top: 2px black solid;
 }
 
-.tt .second {
-    font-size: 1.3vw;
+.tt .second td {
+    font-size: 1.7vw;
     font-weight: 500;
 }
 
 .tt td {
     text-align: center;
+}
+
+.tt .not_time {
+    width: 12vw;
+}
+
+/* Select Mobile */ @media screen and (max-width: 424px) {
+    .tt .first td {
+        font-size: 5.5vw;
+    }
+
+    .tt .second td {
+        font-size: 3.7vw;
+    }
+
+    .tt .time {
+        font-size: 3vw;
+    }
 }

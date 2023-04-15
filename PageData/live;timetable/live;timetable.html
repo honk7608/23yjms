@@ -25,7 +25,15 @@
                 document.getElementById('grade').value = ScGrade
                 document.getElementById('class').value = ScClass
 
-                EntireTableText = '<tr class="tthead">\n<td class="time">교시</td>\n<td>월</td>\n<td>화</td>\n<td>수</td>\n<td>목</td>\n<td>금</td>\n'
+                EntireTableText = `
+                <tr class="tthead">
+                    <td class="time">교시</td>
+                    <td class="not_time">월</td>
+                    <td class="not_time">화</td>
+                    <td class="not_time">수</td>
+                    <td class="not_time">목</td>
+                    <td class="not_time">금</td>
+                </tr>\n`
                 // i -> 교시, j -> 요일
                 for (i = 0; i < 7; i++) {
                     TrfirstText = `<td class="time" rowspan="2">${i + 1}</td>\n`
