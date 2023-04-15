@@ -7,7 +7,7 @@
     
     box-sizing: border-box;
 
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 600;
 
     display: flex;
@@ -20,8 +20,13 @@
     gap: 4vw;
 }
 
+@media screen and (max-width: 424px){
+    .select .option {
+        flex-direction: column;
+    }
+}
 .select input[type="number"] {
-    font-size: 2vw;
+    font-size: 4vw;
     font-weight: 800;
 
     border: none;
@@ -72,5 +77,14 @@
 }
 
 .select input[type="submit"] {
-    width: 20%;
+    border: none;
+    border-radius: 10vw;
+
+    width: 25vw;
+
+    color: white;
+    font-weight: 700;
+    font-size: 4vw;
+
+    background-color: #427ADC;
 }
