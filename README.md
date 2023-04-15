@@ -10,7 +10,13 @@
 - 테스트 웹 : http://yjms.herokuapp.com
 - Github : https://github.com/honk7608/23yjms
 ### 홈페이지 계획잡기
+#### 호스팅 / 도메인
+- 호스팅
 
+        허가 날 때까지 기다리기
+-도메인
+
+        행정실 가서  받기
 #### 홈 구성
 - 학교 정식 사진 받기
 
