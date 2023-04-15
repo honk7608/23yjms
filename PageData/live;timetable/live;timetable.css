@@ -18,7 +18,6 @@
 }
 
 .select .option {
-    width: max-content;
     display: flex;
     gap: 1vw;
     flex-direction: column;
