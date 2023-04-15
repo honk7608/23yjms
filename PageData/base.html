@@ -84,5 +84,11 @@
     <main>
         <!-- {main_content} -->
     </main>
+    <script>
+        HeaderEl = document.getElementsByTagName('header')[0]
+        MainEl = document.getElementsByTagName('main')[0]
+        
+        MainEl.style = `width: calc(100vw - ${HeaderEl.clientWidth}px)`
+    </script>
 </body>
 </html>

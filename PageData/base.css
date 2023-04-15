@@ -13,6 +13,9 @@ a {
     text-decoration-line: none;
 }
 
+main {
+    padding: 1vw;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
