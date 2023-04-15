@@ -13,6 +13,13 @@ a {
     text-decoration-line: none;
 }
 
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* Desktop */
 @media screen and (min-width: 425px){
     body {
