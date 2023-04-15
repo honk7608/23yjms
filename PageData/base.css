@@ -27,8 +27,7 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Desktop */
-@media screen and (min-width: 425px){
+/* Desktop */ @media screen and (min-width: 425px){
     body {
         display: flex;
         flex-direction: row;
@@ -135,8 +134,7 @@ input::-webkit-inner-spin-button {
     }
 }
 
-/* Mobile */
-@media screen and (max-width: 424px){
+/* Mobile */ @media screen and (max-width: 424px){
     body {
         display: flex;
         flex-direction: column;
@@ -230,8 +228,7 @@ input::-webkit-inner-spin-button {
 }
 
 
-/* DarkMode */
-@media (prefers-color-scheme: dark) {
+/* DarkMode */ @media (prefers-color-scheme: dark) {
     header {
         background-color: black;
         color: white;
@@ -249,8 +246,7 @@ input::-webkit-inner-spin-button {
     }
 }
 
-/* DarkMode Desktop */
-@media (prefers-color-scheme: dark) and (min-width: 425px) {
+/* DarkMode Desktop */ @media (prefers-color-scheme: dark) and (min-width: 425px) {
     header .menu > li:hover {
         background-color: #0072f3;
         color: black;
@@ -265,8 +261,7 @@ input::-webkit-inner-spin-button {
     }
 }
 
-/* DarkMode Mobile */
-@media (prefers-color-scheme: dark) and (max-width: 424px) {
+/* DarkMode Mobile */ @media (prefers-color-scheme: dark) and (max-width: 424px) {
     header .menu li .submenu {
         background-color: #0072f3;
         color: white;
