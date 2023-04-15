@@ -28,6 +28,10 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+input {
+    border-radius: 0;
+}
+
 /* Desktop */ @media screen and (min-width: 425px){
     body {
         display: flex;
