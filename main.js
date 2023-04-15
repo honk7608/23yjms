@@ -24,13 +24,7 @@ app.use('/schedule', require('./route/schedule.js'));
 
 //main
 app.get('/', async function (req, res) {
-    EndWithRespond(res, 'home', [
-        {
-            code: 'timetableList',
-            content: JSON.stringify(tableData[3][11][0])
-        }
-    ]
-    )
+    EndWithRespond(res, 'home', [])
 })
 
 //app Starting
