@@ -23,6 +23,10 @@
     flex-direction: column;
 }
 
+.select .option div{
+    width: max-content;
+}
+
 .select input[type="number"] {
     font-size: var(--select-font-size);
 
