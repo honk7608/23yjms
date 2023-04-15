@@ -7,7 +7,9 @@
     
     box-sizing: border-box;
 
-    font-size: 4vw;
+    --select-font-size: min(4vw, 40px);
+
+    font-size: var(--select-font-size);
     font-weight: 600;
 
     display: flex;
@@ -17,16 +19,13 @@
 .select .option {
     width: max-content;
     display: flex;
-    gap: 4vw;
+    gap: 1vw;
+    flex-direction: column;
 }
 
-@media screen and (max-width: 424px){
-    .select .option {
-        flex-direction: column;
-    }
-}
 .select input[type="number"] {
-    font-size: 4vw;
+    font-size: var(--select-font-size);
+
     font-weight: 800;
 
     border: none;
@@ -84,7 +83,7 @@
 
     color: white;
     font-weight: 700;
-    font-size: 4vw;
+    font-size: var(--select-font-size);
 
     background-color: #427ADC;
 }
