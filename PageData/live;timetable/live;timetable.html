@@ -1,0 +1,41 @@
+<form class="select">
+    <div class="option">
+        <div>
+            <i class="fa-solid fa-quote-left"></i>
+            <input type="number" id="grade" name="grade" min="1" max="3" placeholder="?" required>학년 
+            <input type="number" id="class" name="class" min="1" max="13" placeholder="?" required>반 시간표
+            <i class="fa-solid fa-quote-right "></i>
+        </div>
+        
+        <div>
+            <input type="checkbox" id="cookie" name="cookie"> 학년/반 기억하기
+        </div>
+    </div>
+    <input type="submit">
+</form>
+
+<table class="tt">
+    <tbody>
+        <script>
+            timetable = JSON.parse('<!-- {timetable_variable} -->')
+            if (timetable) {                
+                EntireTableText = '<tr>\n<td>교시</td>\n<td>월</td>\n<td>화</td>\n<td>수</td>\n<td>목</td>\n<td>금</td>\n'
+                // i -> 교시, j -> 요일
+                for (i = 0; i < 7; i++) {
+                    TrfirstText = `<td rowspan="2">${i + 1}</td>\n`
+                    TrsecondText = ''
+                    for (j = 0; j < 5; j++) {
+                        console.log(j, i)
+                        console.log(timetable[j])
+                        TrfirstText += `<td>${timetable[j][i].subject}</td>\n`
+                        TrsecondText += `<td>${timetable[j][i].teacher}</td>\n`
+                    }
+                    EntireTableText += `<tr>\n${TrfirstText}</tr>\n<tr>\n${TrsecondText}</tr>\n`
+                }
+                console.log(EntireTableText)
+                
+                document.write(EntireTableText)
+            }
+        </script>
+    </tbody>
+</table>
