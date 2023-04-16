@@ -1,10 +1,63 @@
 <script>
     const mealList = JSON.parse(`<!-- {meal} -->`)
+    var endDay = 1
     for (const key in mealList) {
-        if(key != Number(key)) {
+        if (key != Number(key)) {
             break
         }
+        endDay = Number(key)
         mealList[key] = mealList[key].replace('[중식](nextLine)','').split('(nextLine)').join('\n')
     }
-    console.log(mealList)
+
+    function delay(ms = 1000) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    function writeMealInfo() {
+        delay(50).then(() => {
+        AllWidth = document.getElementsByTagName('main')[0].clientWidth
+        var repeatCount = (AllWidth - (AllWidth % 300)) / 300
+        if (repeatCount == 0) {repeatCount = 1}
+        
+            writtenList = []
+
+            for (i = 1; ; i++) {
+                if (mealList[i] == '') {continue}
+                else if (mealList[i] == undefined) {
+                    break
+                }
+                writtenList.push({day: i,data: mealList[i]})
+            }
+
+            // HTML/CSS 설정
+            ListEl = document.getElementById('mealList')
+            ListEl.style = `--one-width: ${ListEl.clientWidth / repeatCount}px;`
+
+            writtenText = ''
+            for(const key in writtenList) {
+                ThisText = 
+`<div class="mealItem">
+<div class="day">${writtenList[key].day}</div>
+<div class="mealData">
+${writtenList[key].data.split('\n').join('\n<br>')}
+</div>
+</div>\n`;
+                writtenText += ThisText;
+            }
+
+            ListEl.innerHTML = writtenText
+        })
+        console.log('AAAA')
+    }
+    writeMealInfo()
+
+    window.addEventListener("resize", (event) => {writeMealInfo()});
 </script>
+
+<div class="infoDiv">
+    급식표는 <span class="patternAccent">이번 달</span>의 정보만 제공합니다.<br>
+    <span style="font-weight: 400; font-size: 1.5vw;">(개발자라고 미래를 볼수는 없거든요 ㅠ)</span>
+</div>
+<div class="mealList" id="mealList">
+    <p>Loading...</p>
+</div>

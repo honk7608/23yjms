@@ -1,11 +1,29 @@
 /* #FF8D12 */
 /* #427ADC */
 
+/* Light/Dark Setting : Light */ @media (prefers-color-scheme: light) {
+    * {
+        --accent-color: #FF8D12;
+        --accent-color-transparent: #FF8D1250;  
+        --prefer-background: white;
+        --prefer-text: black;
+    }
+}
+
+/* Light/Dark Setting : Dark */ @media (prefers-color-scheme: dark) {
+    * {
+        --accent-color: #427ADC;
+        --accent-color-transparent: #427ADC50;  
+        --prefer-background: black;
+        --prefer-text: white;
+    }
+}
 
 /* All */
 
 * {
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    box-sizing: border-box;
 }
 
 a {
@@ -17,9 +35,17 @@ p {
     margin: 0;
 }
 
+body {
+    min-height: 100vh;
+    
+    background-color: var(--prefer-background);
+}
+
 main {
     padding: 1vw;
     box-sizing: border-box;
+
+    background-color: var(--prefer-background);
 }
 
 input::-webkit-outer-spin-button,
@@ -44,12 +70,21 @@ input {
         min-width: calc(var(--header-font-size) * 5);
         min-height: 100vh;
 
-        background-color: white;
-        color: black;
-            
+        box-sizing: border-box;
+
+        background-color: var(--prefer-background);
         border-right: 1px #999999 solid;
 
-        --header-font-size: max(3vw, 30px)
+        color: var(--prefer-text);
+        --header-font-size: max(3vw, 30px);
+        
+        position: fixed;
+    }
+
+    main {
+        /* position: absolute; */
+        box-sizing: border-box;
+        right: 0;
     }
 
     header .logo {
@@ -84,7 +119,7 @@ input {
 
         font-size: var(--header-font-size);
         font-weight: 800;
-    
+
         background: url('/src/patternY.png') repeat-x center bottom;
     }
 
@@ -93,12 +128,12 @@ input {
     }
     
     header .menu > li:hover {
-        background-color: #FF8D12;
-        color: white;
+        background-color: var(--accent-color);
+        color: var(--prefer-text);
     }
 
     header .menu > li .submenu {
-        background-color: white;
+        background-color: var(--prefer-background);
         padding: 1vw;
 
         font-weight: 700;
@@ -116,13 +151,13 @@ input {
     }
 
     header .menu > li:hover .submenu a {
-        color: black;
+        color: var(--prefer-text);
         position: relative;
         z-index: 2;
     }
     
     header .menu > li:hover .submenu a::before {
-        background-color: #FF8D1250;
+        background-color: var(--accent-color-transparent);
         border-radius: 2vw;
         
         width: 100%;
@@ -152,8 +187,8 @@ input {
         width: 100vw;
         height: max-content;
 
-        background-color: white;
-        color: black;
+        background-color: var(--prefer-background);
+        color: var(--prefer-text);
             
         border-bottom: 1px #999 solid;
 
@@ -193,7 +228,7 @@ input {
     }
 
     header .menu > li p::before {
-        background-color: #FF8D1250;
+        background-color: var(--accent-color-transparent);
         border-radius: 1vw;
         
         width: 100%;
@@ -222,8 +257,8 @@ input {
 
         flex-direction: row;
         justify-content: space-around;
-        background-color: #FF8D12;
-        color: white;
+        background-color: var(--accent-color);
+        color: var(--prefer-text);
 
         z-index: 1;
     }
@@ -231,7 +266,8 @@ input {
     header .menu li .submenu a {
         font-weight: 600;
         font-size: 3vw;
-        background-color: white;
+        background-color: var(--prefer-background);
+        color: var(--prefer-text);
         margin: 1vw;
         padding: 1vw;
         border-radius: 5vw;
@@ -242,51 +278,21 @@ input {
     }
 }
 
-
-/* DarkMode */ @media (prefers-color-scheme: dark) {
-    header {
-        background-color: black;
-        color: white;
-            
-        border-right: 1px #666666 solid;
-    }
-
-    header .menu > li .submenu a {
-        color: white;
-    }
-
-    body {
-        background-color: black;
-        color: white;
+@media (prefers-color-scheme: dark) {
+    header .menu > li p {
+        background: url('/src/patternB.png') repeat-x center bottom;
     }
 }
 
-/* DarkMode Desktop */ @media (prefers-color-scheme: dark) and (min-width: 425px) {
-    header .menu > li:hover {
-        background-color: #0072f3;
-        color: black;
-    }
-
-    header .menu > li .submenu:hover {
-        color: black;
-    }
-
-    header .menu > li:hover .submenu a::before {
-        background-color: #0072f350;
+/* 전체 페이지 적용 태그 */
+@media (prefers-color-scheme: light) {
+    .patternAccent {
+        background: url('/src/patternY.png') repeat-x center bottom;
     }
 }
 
-/* DarkMode Mobile */ @media (prefers-color-scheme: dark) and (max-width: 424px) {
-    header .menu li .submenu {
-        background-color: #0072f3;
-        color: white;
-    }
-
-    header .menu > li p::before {
-        background-color: #0072f350;
-    }
-
-    header .menu li .submenu a {
-        background-color: black;
+@media (prefers-color-scheme: dark) {
+    .patternAccent {
+        background: url('/src/patternB.png') repeat-x center bottom;
     }
 }
