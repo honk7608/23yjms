@@ -16,7 +16,7 @@
 
     display: flex;
     justify-content: space-between;
-    hyphens: auto;
+    white-space: nowrap;
 }
 
 .select .option {
