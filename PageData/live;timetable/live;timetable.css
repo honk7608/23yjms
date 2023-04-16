@@ -150,6 +150,7 @@
 
 .tt td {
     text-align: center;
+    border: 1px white solid;
 }
 
 .tt .not_time {
