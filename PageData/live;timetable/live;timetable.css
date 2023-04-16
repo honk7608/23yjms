@@ -125,14 +125,14 @@
 
     border-collapse: collapse;
     
-    border: 1px white solid;
+    border: 1px #999 solid;
 }
 
 .tt .time {
     font-size: 2.5vw;
 
     width: 5vw;
-    border: 1px white solid;
+    border: 1px #999 solid;
 }
 
 .tt .tthead td {
@@ -144,17 +144,17 @@
 .tt .first td {
     font-size: 2.5vw;
     font-weight: 700;
-    border-top: 1px white solid;
-    border-right: 1px white solid;
-    border-left: 1px white solid;
+    border-top: 1px #999 solid;
+    border-right: 1px #999 solid;
+    border-left: 1px #999 solid;
 }
 
 .tt .second td {
     font-size: 1.7vw;
     font-weight: 500;
-    border-right: 1px white solid;
-    border-left: 1px white solid;
-    border-bottom: 1px white solid;
+    border-right: 1px #999 solid;
+    border-left: 1px #999 solid;
+    border-bottom: 1px #999 solid;
 }
 
 .tt td {
@@ -163,7 +163,7 @@
 
 .tt .not_time {
     width: 12vw;
-    border: 1px white solid;
+    border: 1px #999 solid;
 }
 
 /* Select Mobile */ @media screen and (max-width: 424px) {
