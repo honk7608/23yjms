@@ -149,11 +149,12 @@
 .tt .second td {
     font-size: 1.7vw;
     font-weight: 500;
+    border-right: 1px white solid;
+    border-left: 1px white solid;
 }
 
 .tt td {
     text-align: center;
-    border: 1px white solid;
 }
 
 .tt .not_time {
