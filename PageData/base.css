@@ -69,12 +69,21 @@ input {
         min-width: calc(var(--header-font-size) * 5);
         min-height: 100vh;
 
+        box-sizing: border-box;
+
         background-color: var(--prefer-background);
-        color: var(--prefer-text);
-            
         border-right: 1px #999999 solid;
 
-        --header-font-size: max(3vw, 30px)
+        color: var(--prefer-text);
+        --header-font-size: max(3vw, 30px);
+        
+        position: fixed;
+    }
+
+    main {
+        /* position: absolute; */
+        box-sizing: border-box;
+        right: 0;
     }
 
     header .logo {
@@ -109,7 +118,7 @@ input {
 
         font-size: var(--header-font-size);
         font-weight: 800;
-    
+
         background: url('/src/patternY.png') repeat-x center bottom;
     }
 
@@ -267,4 +276,9 @@ input {
         display: flex;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    header .menu > li p {
         background: url('/src/patternB.png') repeat-x center bottom;
+    }
+}
