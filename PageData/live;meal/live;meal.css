@@ -1,0 +1,79 @@
+.infoDiv {
+    width: 100%;
+    padding: 1vw;
+
+    border: 1px #999 solid;
+    border-radius: 1vw;
+
+    color: var(--prefer-text);
+
+    --select-font-size: min(4vw, 40px);
+    font-size: var(--select-font-size);
+    font-weight: 700;
+}
+
+/* Mobile */ @media screen and (max-width: 424px){
+    .infoDiv {
+        --select-font-size: 8vw;
+    }
+}
+
+.infoDiv .patternAccent {
+    color: var(--accent-color);
+}
+
+.mealList {
+    margin-top: 2vw;
+
+    width: 100%;
+    background-color: var(--accent-color-transparent);
+
+    display: flex;
+
+    border-radius: 1vw;
+
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.mealList .mealItem {
+    width: max-content;
+    padding: 1vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+
+    border-right: var(--accent-color) 1px solid;
+}
+
+.mealList .mealItem:last-child {
+    border: none;
+}
+
+.mealList .mealItem .day {
+    width: 5vw;
+    height: 5vw;
+
+    border-radius: 50%;
+    background-color: var(--accent-color);
+
+    color: var(--prefer-text);
+    font-weight: 900;
+    font-size: 2vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mealList .mealItem .mealData {
+    background-color: white;
+    width: calc(var(--one-width) - 2vw);
+    height: max-content;
+
+    padding: 1vw;
+
+    border-radius: 1vw;
+}
