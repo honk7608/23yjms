@@ -16,7 +16,7 @@
 
     display: flex;
     justify-content: space-between;
-    word-break: break-all;
+    word-break: keep-all;
 }
 
 .select .option {
