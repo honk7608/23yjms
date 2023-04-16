@@ -62,7 +62,7 @@ router.get('/meal', async function (req, res) {
         }
         break
     }
-    console.log(meal)
+
     var mealString = JSON.stringify(meal)
     mealString = mealString.split('\\n').join('(nextLine)')
 

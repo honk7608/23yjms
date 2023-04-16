@@ -1,3 +1,4 @@
+/* InfoDiv */
 .infoDiv {
     width: 100%;
     padding: 1vw;
@@ -22,6 +23,7 @@
     color: var(--accent-color);
 }
 
+/* MealList */
 .mealList {
     margin-top: 2vw;
 
@@ -34,6 +36,7 @@
 
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
 
     position: relative;
 }
@@ -48,6 +51,8 @@
     gap: 1vw;
 
     border-right: var(--accent-color) 1px solid;
+
+    scroll-snap-align: start;
 }
 
 .mealList .mealItem:last-child {
@@ -62,7 +67,7 @@
     background-color: var(--accent-color);
 
     color: var(--prefer-text);
-    font-weight: 900;
+    font-weight: 800;
     font-size: 2vw;
 
     display: flex;
@@ -80,6 +85,8 @@
     background-color: transparent;
 
     border: var(--accent-color) 2px solid;
+
+    font-weight: 400;
 }
 
 .mealList .mealItem .today::before {
@@ -88,7 +95,7 @@
     position: absolute;
 
     font-size: 2vw;
-    font-weight: 900;
+    font-weight: 800;
     font-family: 'Pacifico', cursive;
 
     transform: translateX(max(6vw, 20px));

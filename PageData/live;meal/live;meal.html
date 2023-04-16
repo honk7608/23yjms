@@ -1,89 +1,124 @@
-<script>
-    const mealList = JSON.parse(`<!-- {meal} -->`)
-    var endDay = 1
-    for (const key in mealList) {
-        if (key != Number(key)) {
-            break
-        }
-        endDay = Number(key)
-        mealList[key] = mealList[key].replace('[중식](nextLine)','').split('(nextLine)').join('\n')
-    }
-
-    function delay(ms = 1000) {
-        return new Promise((resolve) => setTimeout(resolve, ms));
-    }
-
-    delay(50).then(() => {
-        // HTML/CSS 설정
-        AllWidth = document.getElementsByTagName('main')[0].clientWidth
-        var repeatCount = (AllWidth - (AllWidth % 300)) / 300
-        if (repeatCount == 0) {repeatCount = 1}
-            
-        ListEl = document.getElementById('mealList')
-        ListEl.style = `--one-width: ${ListEl.clientWidth / repeatCount}px;`
-    })
-
-    writtenList = []
-
-    for (i = 1; ; i++) {
-        if (mealList[i] == '') {continue}
-        else if (mealList[i] == undefined) {
-            break
-        }
-        writtenList.push({day: i,data: mealList[i]})
-    } 
-
-    writtenText = ''
-    for(const key in writtenList) {
-        if(writtenList[key].day == mealList.day) {
-            ThisText = 
-            `<div class="mealItem">
-                <div class="day today">${writtenList[key].day}</div>
-                <div class="mealData">
-                    ${writtenList[key].data.split('\n').join('\n<br>')}
-                </div>
-            </div>\n`;
-        } else if(writtenList[key].day < mealList.day) {
-            ThisText = 
-            `<div class="mealItem">
-                <div class="day before">${writtenList[key].day}</div>
-                <div class="mealData">
-                    ${writtenList[key].data.split('\n').join('\n<br>')}
-                </div>
-            </div>\n`;
-        } else {
-            ThisText = 
-            `<div class="mealItem">
-                <div class="day next">${writtenList[key].day}</div>
-                <div class="mealData">
-                    ${writtenList[key].data.split('\n').join('\n<br>')}
-                </div>
-            </div>\n`;
-        }
-        writtenText += ThisText;
-    }
-
-    delay(50).then(() => {
-        ListEl = document.getElementById('mealList')
-        ListEl.innerHTML = writtenText
-    })
-        
-    window.addEventListener("resize", (event) => {
-        delay(50).then(() => {
-            AllWidth = document.getElementsByTagName('main')[0].clientWidth
-            var repeatCount = (AllWidth - (AllWidth % 300)) / 300
-            if (repeatCount == 0) {repeatCount = 1}
-
-            ListEl = document.getElementById('mealList')
-            ListEl.style = `--one-width: ${ListEl.clientWidth / repeatCount}px;`
-        })
-    });
-</script>
-
 <div class="infoDiv">
     급식표는 <span class="patternAccent">이번 달의 정보만 제공</span>합니다.<br>
     <span style="font-weight: 400; font-size: 1.5vw;">(개발자라고 미래를 볼수는 없거든요 ㅠ)</span>
 </div>
+
+<div class="inputDiv">
+    <input  id="numInput" type="number" placeholder="며칠로 이동할까요?">
+    <button id="moveButton">이동하기</button>
+    or
+    <a id="todayButton">오늘 보기</a>
+
+    <script>
+        const mealList = JSON.parse(`<!-- {meal} -->`)
+        var endDay = 1
+        for (const key in mealList) {
+            if (key != Number(key)) {
+                break
+            }
+            endDay = Number(key)
+            mealList[key] = mealList[key].replace('[중식](nextLine)','').split('(nextLine)').join('\n')
+        }
+    
+        function delay(ms = 1000) {
+            return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+    
+        delay(50).then(() => {
+            // HTML/CSS 설정
+            AllWidth = document.getElementsByTagName('main')[0].clientWidth
+            var repeatCount = (AllWidth - (AllWidth % 300)) / 300
+            if (repeatCount == 0) {repeatCount = 1}
+                
+            ListEl = document.getElementById('mealList')
+            ListEl.style = `--one-width: ${ListEl.clientWidth / repeatCount}px;`
+        })
+    
+        writtenList = []
+    
+        for (i = 1; ; i++) {
+            if (mealList[i] == '') {continue}
+            else if (mealList[i] == undefined) {
+                break
+            }
+            writtenList.push({day: i,data: mealList[i]})
+        } 
+    
+        writtenText = ''
+        for(const key in writtenList) {
+            if(writtenList[key].day == mealList.day) {
+                ThisText = 
+                `<div class="mealItem">
+                    <div class="day today" id="${writtenList[key].day}">${writtenList[key].day}</div>
+                    <div class="mealData">
+                        ${writtenList[key].data.split('\n').join('\n<br>')}
+                    </div>
+                </div>\n`;
+            } else if(writtenList[key].day < mealList.day) {
+                ThisText = 
+                `<div class="mealItem">
+                    <div class="day before" id="${writtenList[key].day}">${writtenList[key].day}</div>
+                    <div class="mealData">
+                        ${writtenList[key].data.split('\n').join('\n<br>')}
+                    </div>
+                </div>\n`;
+            } else {
+                ThisText = 
+                `<div class="mealItem">
+                    <div class="day next" id="${writtenList[key].day}">${writtenList[key].day}</div>
+                    <div class="mealData">
+                        ${writtenList[key].data.split('\n').join('\n<br>')}
+                    </div>
+                </div>\n`;
+            }
+            writtenText += ThisText;
+        }
+    
+        delay(50).then(() => {
+            ListEl = document.getElementById('mealList')
+            ListEl.innerHTML = writtenText
+        })
+            
+        window.addEventListener("resize", (event) => {
+            delay(50).then(() => {
+                AllWidth = document.getElementsByTagName('main')[0].clientWidth
+                var repeatCount = (AllWidth - (AllWidth % 300)) / 300
+                if (repeatCount == 0) {repeatCount = 1}
+    
+                ListEl = document.getElementById('mealList')
+                ListEl.style = `--one-width: ${ListEl.clientWidth / repeatCount}px;`
+            })
+        });
+
+        TodayButtonEl = document.getElementById('todayButton')
+        while (true) { 
+            if(mealList[mealList.day] == '') {mealList.day += 1; continue}
+            else if(mealList[mealList.day] == undefined) {
+                for (i = mealList.day; mealList[i] == undefined || mealList[i] == ''; i--) {
+                    mealList.day = i
+                }
+                mealList.day -= 1
+            }
+            break
+        }
+        TodayButtonEl.href = `#${mealList.day}`
+    </script>
+    <script>
+        ButtonEl = document.getElementById('moveButton')
+        ButtonEl.addEventListener("click", (event) => {
+            InputEl = document.getElementById("numInput")
+            InputEl.value = Number(InputEl.value)
+            while (true) {
+                HrefEl = document.getElementById(InputEl.value)
+                if (HrefEl == null) {
+                    InputEl.value = 1 + Number(InputEl.value)
+                } else {break}
+            }
+            window.location.href = `/living/meal#${InputEl.value}`
+        })
+    </script>
+</div>
+
 <div class="mealList" id="mealList">
     <p>Loading...</p>
 </div>
