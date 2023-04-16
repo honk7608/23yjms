@@ -123,6 +123,8 @@
     width: 100%;
 
     border-collapse: collapse;
+    
+    border: 1px white solid;
 }
 
 .tt .time {
