@@ -129,6 +129,7 @@
     font-size: 2.5vw;
 
     width: 5vw;
+    border: 1px white solid;
 }
 
 .tt .tthead td {
@@ -159,6 +160,7 @@
 
 .tt .not_time {
     width: 12vw;
+    border: 1px white solid;
 }
 
 /* Select Mobile */ @media screen and (max-width: 424px) {
