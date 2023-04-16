@@ -20,8 +20,6 @@
 }
 
 .select .option {
-    min-width: 40vw;
-
     gap: 1vw;
     
     display: flex;
