@@ -23,6 +23,7 @@
 
 * {
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    box-sizing: border-box;
 }
 
 a {
@@ -279,6 +280,19 @@ input {
 
 @media (prefers-color-scheme: dark) {
     header .menu > li p {
+        background: url('/src/patternB.png') repeat-x center bottom;
+    }
+}
+
+/* 전체 페이지 적용 태그 */
+@media (prefers-color-scheme: light) {
+    .patternAccent {
+        background: url('/src/patternY.png') repeat-x center bottom;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .patternAccent {
         background: url('/src/patternB.png') repeat-x center bottom;
     }
 }
