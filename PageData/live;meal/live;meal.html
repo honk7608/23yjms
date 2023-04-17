@@ -102,8 +102,10 @@
             break
         }
         TodayButtonEl.href = `#${mealList.day}`
-    </script>
-    <script>
+        
+        InputEl = document.getElementById("numInput")
+        InputEl.max = endDay
+
         ButtonEl = document.getElementById('moveButton')
         ButtonEl.addEventListener("click", (event) => {
             InputEl = document.getElementById("numInput")
