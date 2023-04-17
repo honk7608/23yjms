@@ -15,14 +15,17 @@
 /* button */
 .inputDiv button {
     text-align: center;
-    padding: 4vw;
+    font-size: 2vw;
+    padding: 2vw;
     margin: 1vw;
-    box-shadow: 0px 5px #999;
+    box-shadow: 0px 6px #999;
     color: var(--prefer-background);
     background-color: var(--prefer-text);
     border-radius: 5px;
+    transition: all 0.2s ;
+  
 }
-.inputDiv button:hover {
+.inputDiv button:visited {
     box-shadow: 0px 0px #999;
 }
 
