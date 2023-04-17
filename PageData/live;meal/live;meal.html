@@ -101,7 +101,9 @@
             }
             break
         }
-        TodayButtonEl.href = `#${mealList.day}`
+        TodayButtonEl.addEventListener("click", (event) => {
+            window.location.href = `/living/meal#${mealList.day}`
+        })
         
         InputEl = document.getElementById("numInput")
         InputEl.max = endDay
