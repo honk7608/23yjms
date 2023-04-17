@@ -17,10 +17,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    width: 2vw;
-}
-#numInput {
-    width: 2vw;
+    font-size: 2vw;
 }
 
 /* Mobile */ @media screen and (max-width: 424px){
