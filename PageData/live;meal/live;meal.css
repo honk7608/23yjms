@@ -13,6 +13,16 @@
     font-weight: 700;
 }
 
+.inputdiv button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 2vw;
+}
+#numInput {
+    width: 2vw;
+}
+
 /* Mobile */ @media screen and (max-width: 424px){
     .infoDiv {
         --select-font-size: 8vw;
