@@ -28,6 +28,16 @@
 .inputDiv button:active {
     box-shadow: 0px 0px #999;
 }
+.inputDiv input {
+    width: min-content;
+    padding: 1vw;
+    font-size: 2vw;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    color: var(--prefer-background);
+    background-color: var(--prefer-text);
+}
 
 /* Mobile */ @media screen and (max-width: 424px){
     .infoDiv {
