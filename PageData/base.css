@@ -24,6 +24,8 @@
 * {
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     box-sizing: border-box;
+    background-color: var(--prefer-background);
+    color: var(--prefer-text);
 }
 
 a {
@@ -38,14 +40,12 @@ p {
 body {
     min-height: 100vh;
     
-    background-color: var(--prefer-background);
 }
 
 main {
     padding: 1vw;
     box-sizing: border-box;
 
-    background-color: var(--prefer-background);
 }
 
 input::-webkit-outer-spin-button,
@@ -72,10 +72,8 @@ input {
 
         box-sizing: border-box;
 
-        background-color: var(--prefer-background);
         border-right: 1px #999999 solid;
 
-        color: var(--prefer-text);
         --header-font-size: max(3vw, 30px);
         
         position: fixed;
@@ -129,11 +127,9 @@ input {
     
     header .menu > li:hover {
         background-color: var(--accent-color);
-        color: var(--prefer-text);
     }
 
     header .menu > li .submenu {
-        background-color: var(--prefer-background);
         padding: 1vw;
 
         font-weight: 700;
@@ -151,7 +147,6 @@ input {
     }
 
     header .menu > li:hover .submenu a {
-        color: var(--prefer-text);
         position: relative;
         z-index: 2;
     }
@@ -187,8 +182,6 @@ input {
         width: 100vw;
         height: max-content;
 
-        background-color: var(--prefer-background);
-        color: var(--prefer-text);
             
         border-bottom: 1px #999 solid;
 
@@ -258,16 +251,12 @@ input {
         flex-direction: row;
         justify-content: space-around;
         background-color: var(--accent-color);
-        color: var(--prefer-text);
-
         z-index: 1;
     }
 
     header .menu li .submenu a {
         font-weight: 600;
         font-size: 3vw;
-        background-color: var(--prefer-background);
-        color: var(--prefer-text);
         margin: 1vw;
         padding: 1vw;
         border-radius: 5vw;
