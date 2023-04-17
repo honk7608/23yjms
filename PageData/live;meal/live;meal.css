@@ -35,14 +35,13 @@
     box-shadow: 0px 0px var(--accent-color-transparent);
 }
 .inputDiv input {
-    width: min-content;
+    width: 40vw;
     padding: 1vw;
-    font-size: 2vw;
-    border: 0;
-    border-radius: 10px;
+    font-size: 3.5vw;
+    border-radius: 20vw;
     outline: none;
-    color: var(--prefer-background);
-    background-color: var(--prefer-text);
+    color: black;
+    background-color: #999;
 }
 
 /* Mobile */ @media screen and (max-width: 424px){
