@@ -18,21 +18,22 @@
     font-size: 3.5vw;
     padding: 1vw;
     margin: 1vw;
-    box-shadow: 0px 6px #999;
+    box-shadow: 0px 7px #999;
     color: black;
     background-color: #999;
-    border-radius: 6px;
+    border-radius: 7px;
     transition: all 0.1s ;
+    border: 0px;
   
 }
 .inputDiv button:active {
     box-shadow: 0px 0px #777;
 }
 .inputDiv input {
-    width: 10vw;
+    width: 5vw;
     padding: 1vw;
     font-size: 3.5vw;
-    border-radius: 20px;
+    border-radius: 10vw;
     outline: none;
     color: black;
     background-color: #999;
