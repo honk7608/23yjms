@@ -40,8 +40,6 @@
     
         writtenList = []
 
-        console.log(mealList)
-
         for (i = 1; ; i++) {
             if (mealList[i] == '') {continue}
             else if (mealList[i] == undefined) {
@@ -50,8 +48,6 @@
             dateObject = new Date(2023, mealList.month - 1, i);
             writtenList.push({day: i,data: mealList[i],weekday: [null,'Mon','Tue','Wed','Thu','Fri',null][dateObject.getDay()]})
         } 
-    
-        console.log(writtenList)
 
         writtenText = ''
         for(const key in writtenList) {
@@ -117,10 +113,18 @@
         ButtonEl.addEventListener("click", (event) => {
             InputEl = document.getElementById("numInput")
             InputEl.value = Number(InputEl.value)
+            if(InputEl.value > endDay) {return}
             while (true) {
                 HrefEl = document.getElementById(InputEl.value)
                 if (HrefEl == null) {
                     InputEl.value = 1 + Number(InputEl.value)
+                } else if (InputEl.value > endDay) {
+                    while (true) {
+                        if (HrefEl == null) {
+                            InputEl.value = Number(InputEl.value) - 1
+                        } else {break}
+                    }
+                    break
                 } else {break}
             }
             window.location.href = `/living/meal#${InputEl.value}`
