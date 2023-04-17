@@ -21,11 +21,11 @@
     box-shadow: 0px 6px #999;
     color: var(--prefer-background);
     background-color: var(--prefer-text);
-    border-radius: 5px;
-    transition: all 0.2s ;
+    border-radius: 6px;
+    transition: all 0.1s ;
   
 }
-.inputDiv button:visited {
+.inputDiv button:hover {
     box-shadow: 0px 0px #999;
 }
 
