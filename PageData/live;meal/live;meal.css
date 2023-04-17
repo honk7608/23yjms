@@ -14,10 +14,7 @@
 }
 
 .inputdiv button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    font-size: 2vw;
+    font-size: 4vw;
 }
 
 /* Mobile */ @media screen and (max-width: 424px){
