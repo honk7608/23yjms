@@ -12,14 +12,37 @@
     font-size: var(--select-font-size);
     font-weight: 700;
 }
-/* button */
+
+/* Mobile */ @media screen and (max-width: 424px){
+    .infoDiv {
+        --select-font-size: 8vw;
+    }
+}
+
+.infoDiv .patternAccent {
+    color: var(--accent-color);
+}
+
+/* InputDiv */
+.inputDiv {
+    width: 100%;
+    margin-top: 2vw;
+    padding: 1vw;
+
+    border: 1px #999 solid;
+    border-radius: 1vw;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Button & Input */
 .inputDiv button {
     text-align: center;
     font-size: 2vw;
     font-weight: 700;
 
-    padding: 2vw;
-    margin: 1vw;
+    padding: 1vw;
 
     box-shadow: 3px 6px #999;
     
@@ -31,11 +54,18 @@
     
     transition: all 0.1s ;
 }
+
 .inputDiv button:active {
     box-shadow: 0px 0px var(--accent-color-transparent);
 }
+
+.inputDiv button:hover {
+    color: var(--prefer-background);
+}
+
 .inputDiv input {
-    width: 40vw;
+    width: min-content;
+    height: 100%;
     padding: 1vw;
     font-size: 3.5vw;
     border-radius: 20vw;
@@ -44,14 +74,13 @@
     background-color: #999;
 }
 
-/* Mobile */ @media screen and (max-width: 424px){
-    .infoDiv {
-        --select-font-size: 8vw;
-    }
-}
+.inputDiv .sep {
+    width: fit-content;
+    padding: 1vw;
 
-.infoDiv .patternAccent {
-    color: var(--accent-color);
+    border-radius: 1vw;
+
+    background-color: var(--accent-color-transparent);
 }
 
 /* MealList */

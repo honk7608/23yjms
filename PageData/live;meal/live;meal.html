@@ -4,10 +4,14 @@
 </div>
 
 <div class="inputDiv">
-    <input  id="numInput" type="number" placeholder="며칠로 이동할까요?">
-    <button id="moveButton">이동하기</button>
-    or
-    <button id="todayButton">오늘 보기</button>
+    <div class="sep">
+        <input  id="numInput" type="number" placeholder="며칠로 이동할까요?">
+        <button id="moveButton">이동하기</button>
+    </div>
+    <!-- <span>혹은</span> -->
+    <div class="sep">
+        <button id="todayButton">오늘 보기</button>
+    </div>
 
     <script>
         const mealList = JSON.parse(`<!-- {meal} -->`)
