@@ -18,7 +18,7 @@
     font-size: 3.5vw;
     padding: 1vw;
     margin: 1vw;
-    box-shadow: 0px 7px #999;
+    box-shadow: 0px 7px #555;
     color: black;
     background-color: #999;
     border-radius: 7px;
@@ -30,10 +30,10 @@
     box-shadow: 0px 0px #555;
 }
 .inputDiv input {
-    width: 30vw;
+    width: 40vw;
     padding: 1vw;
     font-size: 3.5vw;
-    border-radius: 10vw;
+    border-radius: 20vw;
     outline: none;
     color: black;
     background-color: #999;
