@@ -35,42 +35,43 @@
         })
     
         writtenList = []
-    
+
+        console.log(mealList)
+
         for (i = 1; ; i++) {
             if (mealList[i] == '') {continue}
             else if (mealList[i] == undefined) {
                 break
             }
-            writtenList.push({day: i,data: mealList[i]})
+            dateObject = new Date(2023, mealList.month - 1, i);
+            writtenList.push({day: i,data: mealList[i],weekday: [null,'Mon','Tue','Wed','Thu','Fri',null][dateObject.getDay()]})
         } 
     
+        console.log(writtenList)
+
         writtenText = ''
         for(const key in writtenList) {
             if(writtenList[key].day == mealList.day) {
                 ThisText = 
                 `<div class="mealItem">
-                    <div class="day today" id="${writtenList[key].day}">${writtenList[key].day}</div>
-                    <div class="mealData">
-                        ${writtenList[key].data.split('\n').join('\n<br>')}
-                    </div>
-                </div>\n`;
+                    <div class="day today" id="${writtenList[key].day}">`;
             } else if(writtenList[key].day < mealList.day) {
                 ThisText = 
                 `<div class="mealItem">
-                    <div class="day before" id="${writtenList[key].day}">${writtenList[key].day}</div>
-                    <div class="mealData">
-                        ${writtenList[key].data.split('\n').join('\n<br>')}
-                    </div>
-                </div>\n`;
+                    <div class="day before" id="${writtenList[key].day}">`;
             } else {
                 ThisText = 
                 `<div class="mealItem">
-                    <div class="day next" id="${writtenList[key].day}">${writtenList[key].day}</div>
+                    <div class="day next" id="${writtenList[key].day}">`;
+            }
+            ThisText += 
+            `           <p class='dayNumber'>${writtenList[key].day}</p>
+                        <p class='weekDay'>${writtenList[key].weekday}</p>
+                    </div>
                     <div class="mealData">
                         ${writtenList[key].data.split('\n').join('\n<br>')}
                     </div>
                 </div>\n`;
-            }
             writtenText += ThisText;
         }
     
