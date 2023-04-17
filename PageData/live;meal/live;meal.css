@@ -16,8 +16,8 @@
 .inputDiv button {
     text-align: center;
     font-size: 3.5vw;
-    padding: 1.5vw;
-    margin: 0.5vw;
+    padding: 1vw;
+    margin: 1vw;
     box-shadow: 0px 6px #999;
     color: black;
     background-color: #999;
@@ -29,7 +29,7 @@
     box-shadow: 0px 0px #777;
 }
 .inputDiv input {
-    width: min-content;
+    width: 10vw;
     padding: 1vw;
     font-size: 3.5vw;
     border-radius: 20px;
