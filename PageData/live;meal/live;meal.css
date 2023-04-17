@@ -14,7 +14,16 @@
 }
 
 .inputdiv button {
-    font-size: 4vw;
+    text-align: center;
+    padding: 4vw;
+    margin: 1vw;
+    box-shadow: 0px 5px #999;
+    color: var(--prefer-background);
+    background-color: var(--prefer-text);
+    border-radius: 5px;
+}
+.inputdiv button:hover {
+    box-shadow: 0px 0px #999;
 }
 
 /* Mobile */ @media screen and (max-width: 424px){
