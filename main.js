@@ -1,5 +1,6 @@
 const express = require('express');
 const asyncify = require('express-asyncify');
+const session = require('express-session');
 const app = asyncify(express());
 
 const EndWithRespond = require('./SubModule/ResFunc.js');
@@ -17,10 +18,18 @@ app.use(require('body-parser').urlencoded({ extended: false }));
 const cookieParser = require('cookie-parser');
 app.use(cookieParser())
 
+// app.use(session({
+//     secret: 'keyboard cat',
+//     resave: false,
+//     saveUninitialized: true,
+//     store: new FileStore()
+// }));
+
 //Route
 app.use('/exam', require('./route/exam.js'));
 app.use('/living', require('./route/living.js'));
 app.use('/community', require('./route/community.js'));
+app.use('/member', require('./route/member.js'));
 
 //main
 app.get('/', async function (req, res) {
