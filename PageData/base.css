@@ -183,21 +183,19 @@ input {
 
         padding: 0.5vw;
 
-        color: #F4EEE0;
-        background-color: #393646;
-
+        color: var(--prefer-text);
         display: flex;
         gap: 0.5vw;
     }
 
     header .member .member_icon{
-        background-color: #6D5D6E;
-        color: #F4EEE0;
+        color: inherit;
 
-        font-size: 2vw;
+        font-size: calc(var(--header-font-size) - 1vw);
+        /* --header-font-size: max(3vw, 30px); */
 
-        width: 4vw;
-        height: 4vw;
+        width: calc( var(--header-font-size) + 1.5vw);
+        height: calc( var(--header-font-size) + 1.5vw);
         border-radius: 50%;
 
         padding: 0.5vw;
@@ -210,13 +208,33 @@ input {
     header .member .member_text{
         height: inherit;
 
-        color: #F4EEE0;
+        color: inherit;
         
         font-weight: 700;
-        font-size: 2vw;
+        font-size: calc(var(--header-font-size) - 1vw);
 
         display: flex;
         align-items: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        header .member {
+            background-color: #333;
+        }
+
+        header .member .member_icon {
+            background-color: #666;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        header .member {
+            background-color: #ddd;
+        }
+
+        header .member .member_icon {
+            background-color: #aaa;
+        }
     }
 }
 
@@ -237,6 +255,7 @@ input {
         border-bottom: 1px #999 solid;
 
         display: flex;
+        align-items: center;
     }
 
     header .logo {
@@ -321,13 +340,18 @@ input {
         display: flex;
     }
 
-    header .menu .member .member_text {
+    header .member {
+        text-align: center;
+        font-size: 4vw;
+        margin-right: 1vw;
+    }
+
+    header .member .member_text {
         display: none;
     }
 
-    header .menu .member .member_icon {
-        text-align: center;
-        font-size: 4vw;
+    header .member .member_icon {
+        font-size: 5vw;
         color: var(--prefer-text);
     }
 
