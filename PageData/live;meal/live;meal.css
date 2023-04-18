@@ -25,7 +25,7 @@
 
 /* InputDiv */
 .inputDiv {
-    width: 30vw;
+    width: max-content;
     margin-top: 2vw;
 
     border-radius: 1vw;
