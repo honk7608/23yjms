@@ -207,7 +207,7 @@ input {
         justify-content: center;
     }
 
-    header .member a{
+    header .member .member_text{
         height: inherit;
 
         color: #F4EEE0;
@@ -266,7 +266,7 @@ input {
     }
 
     header .menu li p {
-        font-size: 5vw;
+        font-size: 4.5vw;
         font-weight: 800;
         position: relative;
     }
@@ -309,7 +309,7 @@ input {
 
     header .menu li .submenu a {
         font-weight: 600;
-        font-size: 4vw;
+        font-size: 3.5vw;
         background-color: var(--prefer-background);
         color: var(--prefer-text);
         margin: 1vw;
@@ -321,10 +321,15 @@ input {
         display: flex;
     }
 
-    header .menu .member {
-        text-align: center;
-        font-size: 3vw;
+    header .menu .member .member_text {
+        display: none;
     }
+
+    header .menu .member .member_icon {
+        text-align: center;
+        font-size: 4vw;
+    }
+
 }
 
 @media (prefers-color-scheme: dark) {
