@@ -11,6 +11,8 @@
     --select-font-size: min(4vw, 40px);
     font-size: var(--select-font-size);
     font-weight: 700;
+    /* for safari */
+    white-space: pre-line;
 }
 
 /* Mobile */ @media screen and (max-width: 424px){
