@@ -62,7 +62,7 @@
 }
 
 .inputDiv input {
-    width: fit-content;
+    width: 50vw;
     padding-left: 1vw;
     padding-right: 1vw;
 
