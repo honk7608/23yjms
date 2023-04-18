@@ -328,6 +328,7 @@ input {
     header .menu .member .member_icon {
         text-align: center;
         font-size: 4vw;
+        color: var(--prefer-text);
     }
 
 }
