@@ -12,7 +12,7 @@
     font-size: var(--select-font-size);
     font-weight: 700;
     /* for safari */
-    white-space: pre-line;
+    word-break: keep-all;
 }
 
 /* Mobile */ @media screen and (max-width: 424px){
