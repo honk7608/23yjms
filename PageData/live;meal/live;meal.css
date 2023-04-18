@@ -62,7 +62,7 @@
 }
 
 .inputDiv input {
-    width: 20vw;
+    width: max-content;
     height: 100%;
     padding-left: 1vw;
     padding-right: 1vw;
