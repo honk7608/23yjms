@@ -1,7 +1,8 @@
-var express = require('express')
-var asyncify = require('express-asyncify');
-var app = asyncify(express())
-let EndWithRespond = require('./SubModule/ResFunc.js')
+const express = require('express');
+const asyncify = require('express-asyncify');
+const app = asyncify(express());
+
+const EndWithRespond = require('./SubModule/ResFunc.js');
 
 var port = process.env.PORT;
 
