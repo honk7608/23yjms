@@ -62,8 +62,8 @@
 }
 
 .inputDiv input {
-    width: min-content;
-    height: min-content;
+    width: 50%;
+    height: 100%;
     padding-left: 1vw;
     padding-right: 1vw;
 
