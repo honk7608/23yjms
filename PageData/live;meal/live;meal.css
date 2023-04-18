@@ -62,7 +62,7 @@
 }
 
 .inputDiv input {
-    width: 50vw;
+    width: 47vw;
     padding-left: 1vw;
     padding-right: 1vw;
 
@@ -87,7 +87,7 @@
 
 /* Mobile */ @media screen and (max-width: 424px){
     .inputDiv .sep > *{
-        font-size: 6vw;
+        font-size: 5.8vw;
     }
 }
 
