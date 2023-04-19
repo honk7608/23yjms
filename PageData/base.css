@@ -311,10 +311,9 @@ input {
 
     header .menu li .submenu {
         display: none;
-        position: absolute;
+        position: relative;
         
         left: 0px;
-        display: block;
         width: 100vw;
 
         flex-direction: row;
@@ -322,7 +321,6 @@ input {
         background-color: var(--accent-color);
         color: var(--prefer-text);
 
-        z-index: 1;
     }
 
     header .menu li .submenu a {
