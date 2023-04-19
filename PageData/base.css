@@ -311,7 +311,7 @@ input {
 
     header .menu li .submenu {
         display: none;
-        position: sticky;
+        position: fixed;
         
         left: 0;
         width: 100vw;
