@@ -205,16 +205,44 @@ input {
         justify-content: center;
     }
 
-    header .member .member_text{
+    header .member .NoLog{
         height: inherit;
 
         color: inherit;
         
         font-weight: 700;
-        font-size: calc(var(--header-font-size) - 1vw);
+        font-size: calc(var(--header-font-size) - 1.25vw);
 
         display: flex;
-        align-items: center;
+        flex-direction: column;
+    }
+
+    header .member button {
+        background-color: #E74646;
+        color: white;
+
+        position: absolute;
+        left: 0vw;
+
+        width: max-content;
+        padding: 1vw;
+        border-top-right-radius: 1vw;
+        border-bottom-right-radius: 1vw;
+        border: none;
+
+        font-size: 2vw;
+        font-weight: 700;
+
+        z-index: -1;
+
+        transition: 1s;
+    }
+
+    header .member:hover button {
+        left: var(--headerW);
+        width: max-content;
+
+        transition: 1s;
     }
 
     @media (prefers-color-scheme: dark) {

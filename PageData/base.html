@@ -75,13 +75,11 @@
                 </div>
             </li>
         </ul>
-        <a href="/member" class="member">
-            <div class="member_icon">
+        <div class="member" id="member">
+            <a href="/member" class="member_icon">
                 <i class="fa-solid fa-user"></i>
-            </div>
-            <span class="member_text">
-                로그인
-            </span>
+            </a>
+            <!-- {member_div} -->
         </a>
     </header>
     <main>
@@ -93,13 +91,16 @@
             MainEl = document.getElementsByTagName('main')[0]
             BodyEl = document.getElementsByTagName('body')[0]
             LogoEl = document.getElementById('logo')
+            MemberEl = document.getElementById('member')
             
             if (BodyEl.clientWidth >= 424) {
                 MainEl.style = `width: calc(100vw - ${HeaderEl.clientWidth}px); margin-left: ${HeaderEl.clientWidth}px;`
                 LogoEl.style = `width: ${HeaderEl.clientWidth}px;`
+                MemberEl.style = `--headerW: ${HeaderEl.clientWidth}px;`
             } else {
                 MainEl.style = `width: 100vw`
                 LogoEl.style = ``
+                MemberEl.style = ``
             }
         }
 

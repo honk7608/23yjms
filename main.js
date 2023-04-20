@@ -1,6 +1,5 @@
 const express = require('express');
 const asyncify = require('express-asyncify');
-const session = require('express-session');
 const app = asyncify(express());
 
 const EndWithRespond = require('./SubModule/ResFunc.js');
@@ -18,12 +17,40 @@ app.use(require('body-parser').urlencoded({ extended: false }));
 const cookieParser = require('cookie-parser');
 app.use(cookieParser())
 
-// app.use(session({
-//     secret: 'keyboard cat',
-//     resave: false,
-//     saveUninitialized: true,
-//     store: new FileStore()
-// }));
+//Session, MySQL
+var MysqlConnectionOptions = {
+    host     : 'us-cdbr-east-06.cleardb.net',
+    user     : 'b18831d7e311aa',
+    password : 'b1c17694',
+    database : 'heroku_5821b2671e7c820'
+};
+
+app.use('*', async function(req, res, next){
+    //Connection with Database
+    req.dbOption = MysqlConnectionOptions;
+    next()
+});
+
+var session = require('express-session')
+var SQLSessionStore = require('express-mysql-session')(session);
+
+app.use(session({
+    secret: 'Y11@$2j12u46@#M812986s!@@#',
+    resave: false,
+    saveUninitialized: true,
+    store: new SQLSessionStore(MysqlConnectionOptions)
+}))
+
+app.use('*', function(req, res, next) {
+    if (!req.session.member) {        
+        req.session.member = {
+            isLogged: false,
+            id: 'null'
+        }
+    }
+    
+    next()
+})
 
 //Route
 app.use('/exam', require('./route/exam.js'));
