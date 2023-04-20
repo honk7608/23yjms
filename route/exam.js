@@ -4,15 +4,15 @@ var router = asyncify(express.Router());
 const EndWithRespond = require('../SubModule/ResFunc.js')
 
 router.get('/eval-list', async function (req, res) {
-    EndWithRespond(res, 'exam;list')
+    EndWithRespond(req, res, 'exam;list')
 })
 
 router.get('/mid-final-exam', async function (req, res) {
-    EndWithRespond(res, 'exam;midfinal')
+    EndWithRespond(req, res, 'exam;midfinal')
 })
 
 router.get('/performance-assessment', async function (req, res) {
-    EndWithRespond(res, 'exam;perform')
+    EndWithRespond(req, res, 'exam;perform')
 })
 
 

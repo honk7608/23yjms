@@ -66,14 +66,14 @@ router.get('/meal', async function (req, res) {
     var mealString = JSON.stringify(meal)
     mealString = mealString.split('\\n').join('(nextLine)')
 
-    EndWithRespond(res, 'live;meal', [{
+    EndWithRespond(req, res, 'live;meal', [{
         code: 'meal',
         content: mealString
     }])
 })
 
 router.get('/one-month', async function (req, res) {
-    EndWithRespond(res, 'live;1month')
+    EndWithRespond(req, res, 'live;1month')
 })
 
 module.exports = router;

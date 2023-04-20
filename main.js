@@ -33,7 +33,7 @@ app.use('/member', require('./route/member.js'));
 
 //main
 app.get('/', async function (req, res) {
-    EndWithRespond(res, 'home', [])
+    EndWithRespond(req, res, 'home', [])
 })
 
 //app Starting

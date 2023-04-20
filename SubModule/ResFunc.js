@@ -1,10 +1,11 @@
 /** 
      * 주어진 데이터로 요청에 응답해주는 함수
+     * @param {Request} req Request 변수
      * @param {Response} res Response 변수
      * @param {string} routeName 경로명 (ex: PageData/home/home.html -> home)
      * @param {{code: string, content: string|[]}[]} replacement Html 내용을 replace할 내용
      */
-const EndWithRespond = function (res, routeName=null, replacement=null) {
+const EndWithRespond = function (req, res, routeName=null, replacement=null) {
     var fs = require('fs')
     var baseData = String(fs.readFileSync('./PageData/base.html', 'utf-8'))
     var respondData = String(fs.readFileSync(`./PageData/${routeName}/${routeName}.html`, 'utf-8'))
@@ -13,6 +14,32 @@ const EndWithRespond = function (res, routeName=null, replacement=null) {
         replacement = [{code: 'main_content', content: respondData}].concat(replacement)
     } else {
         replacement = [{code: 'main_content', content: respondData}]
+    }
+
+    if (req.session.member.isLogged) {
+        replacement = [{
+                code: 'member_div',
+                content: 
+`<a href="/member/me" class="member_text">
+    ${req.session.member.id}
+</a>
+<form action='/member/logout' method='post' id='logoutForm'>
+    <button form='logoutForm' type='submit'>Log Out</button>
+</form>`
+}].concat(replacement)
+    } else {
+    replacement = [{
+        code: 'member_div',
+        content: 
+`<div class="NoLog">
+    <a href="/member/login" class="login_text">
+        Log in
+    </a>
+    <a href="/member/sign-up" class="signup_text">
+        Sign Up
+    </a>
+</div>`
+        }].concat(replacement)
     }
 
     // css replacement 존재여부 확인
