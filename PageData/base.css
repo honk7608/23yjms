@@ -378,16 +378,21 @@ input {
         font-size: 5vw;
         color: var(--prefer-text);
     }
-    header .member .member_text {
+    header .member .login_text {
         
+        color: var(--prefer-text);
+        font-size: 2vw;
+    }
+    header .member .signup_text {
         color: var(--prefer-text);
         font-size: 2vw;
     }
     #logoutForm {
         
-        background-color: var(--prefer-background);
+        background-color: var(--accent-color);
         color: var(--prefer-text);
         font-size: 2vw;
+        border: 0;
     }
 
 }
