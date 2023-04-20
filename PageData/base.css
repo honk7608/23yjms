@@ -391,7 +391,7 @@ input {
 
     header .member .signup_text {
         color: var(--prefer-text);
-        font-size: 3vw;
+        font-size: 3.5vw;
     }
 
     #logoutForm button {
@@ -402,7 +402,7 @@ input {
         
         border-radius: 1vw;
         border: none;
-        font-size: 3vw;
+        font-size: 3.5vw;
     }
 
 }
