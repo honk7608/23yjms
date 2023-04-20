@@ -382,7 +382,7 @@ input {
     header .member .login_text {
         
         color: var(--prefer-text);
-        font-size: 4vw;
+        font-size: 3.5vw;
     }
 
     header .member .member_text {
@@ -391,15 +391,18 @@ input {
 
     header .member .signup_text {
         color: var(--prefer-text);
-        font-size: 4vw;
+        font-size: 3.5vw;
     }
 
-    #logoutForm {
+    #logoutForm button {
         
-        background-color: var(--accent-color);
+            
         color: var(--prefer-text);
+        background-color: var(--accent-color);
+        
+        border-radius: 1vw;
+        border: none;
         font-size: 2vw;
-        border: 0;
     }
 
 }
