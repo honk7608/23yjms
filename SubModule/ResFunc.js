@@ -33,11 +33,11 @@ const EndWithRespond = function (req, res, routeName=null, replacement=null) {
         content: 
 `<div class="NoLog">
     <a href="/member/login" class="login_text">
-        Log in
+        Login
     </a>
     <br>
     <a href="/member/sign-up" class="signup_text">
-        Sign Up
+        SignUp
     </a>
 </div>`
         }].concat(replacement)
