@@ -40,6 +40,7 @@ router.get('/timetable', async function (req, res) {
     }
         
     EndWithRespond(
+        req,
         res, 
         'live;timetable',
         [{
