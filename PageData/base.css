@@ -382,7 +382,7 @@ input {
     header .member .login_text {
         
         color: var(--prefer-text);
-        font-size: 3.5vw;
+        font-size: 3vw;
     }
 
     header .member .member_text {
@@ -391,7 +391,7 @@ input {
 
     header .member .signup_text {
         color: var(--prefer-text);
-        font-size: 3.5vw;
+        font-size: 3vw;
     }
 
     #logoutForm button {
