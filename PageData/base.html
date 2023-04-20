@@ -94,13 +94,15 @@
             MemberEl = document.getElementById('member')
             
             if (BodyEl.clientWidth >= 424) {
-                MainEl.style = `width: calc(100vw - ${HeaderEl.clientWidth}px); margin-left: ${HeaderEl.clientWidth}px;`
-                LogoEl.style = `width: ${HeaderEl.clientWidth}px;`
-                MemberEl.style = `--headerW: ${HeaderEl.clientWidth}px;`
+                // MainEl.style.cssText = `width: calc(100vw - ${HeaderEl.clientWidth}px); margin-left: ${HeaderEl.clientWidth}px;`
+                MainEl.style.width = `calc(100vw - ${HeaderEl.clientWidth}px)`
+                MainEl.style.marginLeft = `${HeaderEl.clientWidth}px`
+                LogoEl.style.cssText = `width: ${HeaderEl.clientWidth}px;`
+                MemberEl.style.cssText = `--headerW: ${HeaderEl.clientWidth}px;`
             } else {
-                MainEl.style = `width: 100vw`
-                LogoEl.style = ``
-                MemberEl.style = ``
+                MainEl.style.cssText = `width: 100vw;`
+                LogoEl.style.cssText = ``
+                MemberEl.style.cssText = ``
             }
         }
 

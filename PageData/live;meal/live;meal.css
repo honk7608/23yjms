@@ -114,7 +114,7 @@
 }
 
 .mealList .mealItem {
-    width: max-content;
+    width: var(--one-width);
     padding: 1vw;
 
     display: flex;
@@ -125,6 +125,8 @@
     border-right: var(--accent-color) 1px solid;
 
     scroll-snap-align: start;
+    
+    transition: 0.1s;
 }
 
 .mealList .mealItem:last-child {
@@ -188,6 +190,8 @@
     padding: 1vw;
 
     border-radius: 1vw;
+
+    transition: 0.1s;
 }
 
 /* Mobile */ @media screen and (max-width: 424px){
@@ -223,4 +227,42 @@
         font-size: 5vw;    
         transform: translateX(max(13vw, 24px));
 }
+}
+
+/* allergyDiv */
+.allergyDiv {
+    width: 100%;
+    padding: 1vw;
+
+    border: 1px #999 solid;
+    border-radius: 1vw;
+
+    color: var(--prefer-text);
+
+    --select-font-size: min(4vw, 40px);
+    font-size: var(--select-font-size);
+    font-weight: 700;
+    /* for safari */
+    word-break: keep-all;
+}
+
+.allergyDiv .patternAccent {
+    color: var(--accent-color);
+}
+
+.allergyDiv ol {
+    display: grid;
+    grid-template-columns: repeat(var(--count), 1fr);
+    margin: 1.5vw;
+    padding: 0;
+}
+
+.allergyDiv ol > span {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5vw;
+}
+
+.allergyDiv ol .numbering {
+    color: var(--accent-color);
 }
