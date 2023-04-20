@@ -1,4 +1,4 @@
-.id input {
+input.id {
     width: 100%;
     height: 100%;
     padding-left: 1vw;
@@ -14,7 +14,7 @@
     background-color: #999;
 }
 
-.pw input {
+input.pw {
     width: 100%;
     height: 100%;
     padding-left: 1vw;
@@ -30,7 +30,7 @@
     background-color: #999;
 }
 
-.submit input {
+input.submit {
     color: var(--prefer-text);
     background-color: var(--accent-color);
     
