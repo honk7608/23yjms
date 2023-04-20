@@ -24,7 +24,7 @@ const EndWithRespond = function (req, res, routeName=null, replacement=null) {
     ${req.session.member.id}
 </a>
 <form action='/member/logout' method='post' id='logoutForm'>
-    <button form='logoutForm' type='submit'>Log Out</button>
+    <button form='logoutForm' type='submit'>LogOut</button>
 </form>`
 }].concat(replacement)
     } else {
@@ -33,11 +33,11 @@ const EndWithRespond = function (req, res, routeName=null, replacement=null) {
         content: 
 `<div class="NoLog">
     <a href="/member/login" class="login_text">
-        로그인
+        Login
     </a>
     <br>
     <a href="/member/sign-up" class="signup_text">
-        회원가입
+        SignUp
     </a>
 </div>`
         }].concat(replacement)
