@@ -374,13 +374,20 @@ input {
         margin-right: 1vw;
     }
 
-    header .member .member_text {
-        display: none;
-    }
-
     header .member .member_icon {
         font-size: 5vw;
         color: var(--prefer-text);
+    }
+    header .member .member_text {
+        
+        color: var(--prefer-text);
+        font-size: 2vw;
+    }
+    #logoutForm {
+        
+        background-color: var(--prefer-background);
+        color: var(--prefer-text);
+        font-size: 2vw;
     }
 
 }

@@ -35,6 +35,7 @@ const EndWithRespond = function (req, res, routeName=null, replacement=null) {
     <a href="/member/login" class="login_text">
         Log in
     </a>
+    <br>
     <a href="/member/sign-up" class="signup_text">
         Sign Up
     </a>
