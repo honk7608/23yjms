@@ -1,10 +1,8 @@
 input.id {
-    width: 100%;
+    width: 50%;
     height: 100%;
-    padding-left: 1vw;
-    padding-right: 1vw;
 
-    font-size: 2vw;
+    font-size: 5vw;
 
     border: none;
     border-radius: 20vw;
@@ -12,15 +10,15 @@ input.id {
 
     color: black;
     background-color: #999;
+    padding: 3vw;
+    margin: 2vw;
 }
 
 input.pw {
-    width: 100%;
+    width: 50%;
     height: 100%;
-    padding-left: 1vw;
-    padding-right: 1vw;
 
-    font-size: 2vw;
+    font-size: 5vw;
 
     border: none;
     border-radius: 20vw;
@@ -28,18 +26,21 @@ input.pw {
 
     color: black;
     background-color: #999;
+    padding: 3vw;
+    margin: 2vw;
 }
 
 input.submit {
     color: var(--prefer-text);
     background-color: var(--accent-color);
     
-    border-radius: 1vw;
+    border-radius: 2vw;
     border: none;
     
     text-align: center;
-    font-size: 2vw;
+    font-size: 5vw;
     font-weight: 700;
     
-    padding: 1vw;
+    padding: 3vw;
+    margin: 2vw;
 }
