@@ -1,50 +1,61 @@
 main {
+    display: flex;
     align-items: center;
+    justify-content: center;
+
+    background: url(https://images.unsplash.com/photo-1564669733547-c6ca390e11c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) no-repeat;
 }
 
-input.id {
-    width: 50%;
-    height: 100%;
-
-    font-size: 5vw;
-
-    border: none;
-    border-radius: 20vw;
-    outline: none;
-
-    color: black;
-    background-color: #999;
-    padding: 3vw;
-    margin: 2vw;
+@media (prefers-color-scheme: dark) {
+    * {
+        --form-back: #00000095;
+        --input-back: #FFFFFF95;
+    }
 }
 
-input.pw {
-    width: 50%;
-    height: 100%;
+@media (prefers-color-scheme: light) {
+    * {
+        --form-back: #FFFFFF95;
+        --input-back: #00000095;
+    }
+}
 
-    font-size: 5vw;
+form {
+    background-color: var(--form-back);
 
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+
+    padding: 5vw;
+    
+    border-radius: 5vw;
+}
+
+input {
+    width: 100%;
+
+    padding: 1vw;
+}
+
+input[type='text'], input[type='password'] {
+    color: var(--prefer-text);
+    background-color: transparent;
+    
     border: none;
-    border-radius: 20vw;
-    outline: none;
+    border-bottom: var(--prefer-text) 3px solid;
 
-    color: black;
-    background-color: #999;
-    padding: 3vw;
-    margin: 2vw;
+    font-size: 3vw;
 }
 
 input.submit {
     color: var(--prefer-text);
     background-color: var(--accent-color);
     
-    border-radius: 2vw;
+    border-radius: 1vw;
     border: none;
     
     text-align: center;
-    font-size: 5vw;
+    font-size: 3vw;
     font-weight: 700;
-    
-    padding: 3vw;
-    margin: 2vw;
 }
