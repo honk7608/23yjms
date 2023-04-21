@@ -37,6 +37,7 @@ input {
     width: 100%;
 
     padding: 1vw;
+    font-size: inherit;
 }
 
 input[type='text'], input[type='password'] {
@@ -46,7 +47,6 @@ input[type='text'], input[type='password'] {
     border: none;
     border-bottom: var(--prefer-text) 3px solid;
 
-    font-size: 3vw;
 }
 
 input.submit {
@@ -57,7 +57,6 @@ input.submit {
     border: none;
     
     text-align: center;
-    font-size: 3vw;
     font-weight: 700;
 }
 
