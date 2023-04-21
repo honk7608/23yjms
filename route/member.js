@@ -4,6 +4,11 @@ var router = asyncify(express.Router());
 var mysql = require('mysql2/promise');
 const EndWithRespond = require('../SubModule/ResFunc.js')
 
+router.get('/', async function (req, res) {
+    if (req.session.member.isLogged) {res.redirect('/member/me')}
+    else {res.redirect('/member/login')}
+})
+
 router.get('/login', async function (req, res) {
     if (req.session.member.isLogged) {res.redirect('/')}
     EndWithRespond(req, res, 'mem;login')
