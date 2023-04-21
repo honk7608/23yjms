@@ -1,34 +1,6 @@
-/* InfoDiv */
-.infoDiv {
-    width: 100%;
-    padding: 1vw;
-
-    border: 1px #999 solid;
-    border-radius: 1vw;
-
-    color: var(--prefer-text);
-
-    --select-font-size: min(4vw, 40px);
-    font-size: var(--select-font-size);
-    font-weight: 700;
-    /* for safari */
-    word-break: keep-all;
-}
-
-/* Mobile */ @media screen and (max-width: 424px){
-    .infoDiv {
-        --select-font-size: 8vw;
-    }
-}
-
-.infoDiv .patternAccent {
-    color: var(--accent-color);
-}
-
 /* InputDiv */
 .inputDiv {
     width: 100%;
-    margin-top: 2vw;
 
     border-radius: 1vw;
 
@@ -44,7 +16,7 @@
 
     padding: 1vw;
 
-    box-shadow: 3px 6px #99999950;
+    box-shadow: -3px 6px #99999950;
     
     color: var(--prefer-text);
     background-color: var(--accent-color);
@@ -96,7 +68,7 @@
 
 /* MealList */
 .mealList {
-    margin-top: 2vw;
+    margin-top: 1vw;
 
     width: 100%;
     background-color: var(--accent-color-transparent) !important;
@@ -168,18 +140,6 @@
     font-weight: 400;
 }
 
-.mealList .mealItem .today::before {
-    content: 'Today';
-    color: var(--accent-color);
-    position: absolute;
-
-    font-size: 2vw;
-    font-weight: 800;
-    font-family: 'Pacifico', cursive;
-
-    transform: translateX(max(6vw, 20px));
-}
-
 .mealList .mealItem .mealData {
     background-color: var(--prefer-background);
     color: var(--prefer-text);
@@ -229,10 +189,11 @@
 }
 }
 
-/* allergyDiv */
-.allergyDiv {
+/* additionalDiv */
+.additionalDiv {
     width: 100%;
     padding: 1vw;
+    margin-bottom: 1vw;
 
     border: 1px #999 solid;
     border-radius: 1vw;
@@ -246,23 +207,31 @@
     word-break: keep-all;
 }
 
-.allergyDiv .patternAccent {
-    color: var(--accent-color);
+/* Info Mobile */ @media screen and (max-width: 424px){
+    .additionalDiv {
+        --select-font-size: 8vw;
+    }
 }
 
-.allergyDiv ol {
+.additionalDiv ol {
     display: grid;
-    grid-template-columns: repeat(var(--count), 1fr);
+    grid-template-columns: repeat(var(--repeat-count), 1fr);
     margin: 1.5vw;
     padding: 0;
 }
 
-.allergyDiv ol > span {
+.additionalDiv ol > span {
     text-align: center;
     font-weight: 500;
-    font-size: 1.5vw;
+    font-size: 2.5vw;
 }
 
-.allergyDiv ol .numbering {
+.additionalDiv ol .numbering {
     color: var(--accent-color);
+}
+
+/* Allergy Mobile */ @media screen and (max-width: 424px){ 
+    .additionalDiv ol > span {
+        font-size: 4.5vw;
+    }
 }
