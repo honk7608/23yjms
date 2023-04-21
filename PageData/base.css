@@ -79,10 +79,12 @@ input {
         --header-font-size: max(3vw, 30px);
         
         position: fixed;
+
+        z-index: 1;
     }
 
     main {
-        /* position: absolute; */
+        position: absolute;
         box-sizing: border-box;
         right: 0;
     }
