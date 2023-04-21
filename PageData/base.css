@@ -402,9 +402,33 @@ input {
         font-size: 3.5vw;
     }
 
-    #logoutForm button {
+    header .member .NoLog {
+        position: absolute;
+        top: var(--headerH);
+        left: 0;
         
-            
+        background-color: var(--accent-color);
+        width: 100vw;
+
+        display: none;
+        justify-content: space-around;
+    }
+
+    header .member .NoLog a {
+        font-weight: 600;
+        font-size: 3.5vw;
+        background-color: var(--prefer-background);
+        color: var(--prefer-text);
+        margin: 1vw;
+        padding: 1vw;
+        border-radius: 5vw;
+    }
+
+    header .member:hover .NoLog {
+        display: flex;
+    }
+
+    #logoutForm button {     
         color: var(--prefer-text);
         background-color: var(--accent-color);
         
@@ -425,11 +449,13 @@ input {
 @media (prefers-color-scheme: light) {
     .patternAccent {
         background: url('/src/patternY.png') repeat-x center bottom;
+        color: var(--accent-color);
     }
 }
 
 @media (prefers-color-scheme: dark) {
     .patternAccent {
         background: url('/src/patternB.png') repeat-x center bottom;
+        color: var(--accent-color);
     }
 }
