@@ -237,14 +237,20 @@ input {
 
         z-index: -1;
 
-        transition: 1s;
+        transition: left 0.5s ease-in, box-shadow 0.1s;
+
+        box-shadow: -3px 6px #99999950;
     }
 
     header .member:hover button {
         left: var(--headerW);
         width: max-content;
 
-        transition: 1s;
+        transition: left 0.5s ease-out, box-shadow 0.1s;
+    }
+
+    header .member button:hover {
+        box-shadow: 0px 0px #99999950;
     }
 
     @media (prefers-color-scheme: dark) {
