@@ -60,3 +60,11 @@ input.submit {
     font-size: 3vw;
     font-weight: 700;
 }
+
+@media screen and (max-width: 424px){
+    form {
+    background-color: var(--form-back);
+    width: 80vw;
+    font-size: 6.5vw;
+    }
+}
