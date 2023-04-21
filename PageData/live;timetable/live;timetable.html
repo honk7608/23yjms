@@ -1,9 +1,13 @@
 <form class="select">
     <div class="option">
         <div>
-            <!-- <i class="fa-solid fa-quote-left"></i> -->
-            <input type="number" id="grade" name="grade" min="1" max="3" placeholder="?" required>학년 
-            <input type="number" id="class" name="class" min="1" max="13" placeholder="?" required>반 시간표
+            <span>
+                <input type="number" id="grade" name="grade" min="1" max="3" placeholder="?" required>
+                학년 
+                <input type="number" id="class" name="class" min="1" max="13" placeholder="?" required>
+                반
+            </span>
+            시간표
             <!-- <i class="fa-solid fa-quote-right "></i> -->
         </div>
         
@@ -14,18 +18,19 @@
     <input type="submit" value="적용하기">
 </form>
 
-<table class="tt">
-    <tbody>
-        <script>
-            timetable = JSON.parse('<!-- {timetable_variable} -->')
-            if (timetable) {                
-                ScGrade = timetable[0][0].grade
-                ScClass = timetable[0][0].class
 
-                document.getElementById('grade').value = ScGrade
-                document.getElementById('class').value = ScClass
+<script>
+    timetable = JSON.parse('<!-- {timetable_variable} -->')
+    if (timetable) {                
+        ScGrade = timetable[0][0].grade
+        ScClass = timetable[0][0].class
 
-                EntireTableText = `
+        document.getElementById('grade').value = ScGrade
+        document.getElementById('class').value = ScClass
+
+        EntireTableText = `
+        <table class="tt">
+            <tbody>
                 <tr class="tthead">
                     <td class="time">교시</td>
                     <td class="not_time">월</td>
@@ -34,30 +39,39 @@
                     <td class="not_time">목</td>
                     <td class="not_time">금</td>
                 </tr>\n`
-                // i -> 교시, j -> 요일
-                for (i = 0; i < 7; i++) {
-                    TrfirstText = `<td class="time" rowspan="2">${i + 1}</td>\n`
-                    TrsecondText = ''
-                    for (j = 0; j < 5; j++) {
-                        if (timetable[j][i].subject == '') {
-                            TrfirstText += `<td class='null'></td>\n`
-                            TrsecondText += `<td class='null'></td>\n`
-                        } else if (timetable[j][i].subject == '학스') {
-                            TrfirstText += `<td rowspan="2">스포츠</td>\n`
-                            TrsecondText += `\n`
-                        } else if (timetable[j][i].subject == '동활') {
-                            TrfirstText += `<td rowspan="2">동아리</td>\n`
-                            TrsecondText += `\n`
-                        } else {
-                            TrfirstText += `<td>${timetable[j][i].subject}</td>\n`
-                            TrsecondText += `<td>${timetable[j][i].teacher}○</td>\n`
-                        }
-                    }
-                    if(i%2 == 1) {trtype = 'even'} else {trtype = 'odd'}
-                    EntireTableText += `<tr class="first  ${trtype}">\n${TrfirstText}</tr>\n<tr class="second ${trtype}">\n${TrsecondText}</tr>\n`
-                }                
-                document.write(EntireTableText)
+        // i -> 교시, j -> 요일
+        for (i = 0; i < 7; i++) {
+            TrfirstText = `<td class="time" rowspan="2">${i + 1}</td>\n`
+            TrsecondText = ''
+            for (j = 0; j < 5; j++) {
+                if (timetable[j][i].subject == '') {
+                    TrfirstText += `<td class='null'></td>\n`
+                    TrsecondText += `<td class='null'></td>\n`
+                } else if (timetable[j][i].subject == '학스') {
+                    TrfirstText += `<td rowspan="2">스포츠</td>\n`
+                    TrsecondText += `\n`
+                } else if (timetable[j][i].subject == '동활') {
+                    TrfirstText += `<td rowspan="2">동아리</td>\n`
+                    TrsecondText += `\n`
+                } else {
+                    TrfirstText += `<td>${timetable[j][i].subject}</td>\n`
+                    TrsecondText += `<td>${timetable[j][i].teacher}○</td>\n`
+                }
             }
-        </script>
-    </tbody>
-</table>
+            if(i%2 == 1) {trtype = 'even'} else {trtype = 'odd'}
+            EntireTableText += `<tr class="first  ${trtype}">\n${TrfirstText}</tr>\n<tr class="second ${trtype}">\n${TrsecondText}</tr>\n`
+        }
+        EntireTableText += 
+        `    </tbody>
+        </table>`
+        document.write(EntireTableText)
+    } else {
+        NoInputText = 
+`<div class='NoInput'>
+    <span class='patternAccent'>학년, 반을 입력하면 시간표가 나옵니다!</span><br>
+    (안 알려주시면 알 방법이 없어요... 해킹을 할 수는 없잖아요?)
+</div>`
+        document.write(NoInputText)
+    }
+
+</script>
