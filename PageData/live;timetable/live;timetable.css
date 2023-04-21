@@ -195,6 +195,7 @@
 .NoInput {
     font-weight: 300;
     font-size: 2vw;
+    color: var(--prefer-text);
 }
 
 .NoInput span {
