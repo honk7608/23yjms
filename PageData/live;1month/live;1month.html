@@ -12,19 +12,6 @@
     const mode = Number('<!-- {mode} -->')
   
     if(mode == 0) {
-        // MealData
-        const mealList = JSON.parse(`<!-- {meal} -->`)
-        if(mealList != '') {
-            var endDay = 1
-            for (const key in mealList) {
-                if (key != Number(key)) {
-                    break
-                }
-                endDay = Number(key)
-                mealList[key] = mealList[key].replace('[중식](nextLine)','').split('(nextLine)').join('\n')
-            }
-        }
-
         startWeekDay = new Date(2023, Number('<!-- {month} -->') - 1, 1).getDay()
         endWeekDay = new Date(2023, Number('<!-- {month2} -->'), 0).getDay()
         weekDayList = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
