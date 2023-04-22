@@ -92,30 +92,19 @@ router.get('/schedule', async function (req, res) {
     const reqMonth = queryData.month
     const reqMode = queryData.mode // 0: Calendar, 1: List
 
-    if(reqMode == 0) {
-        if(reqMonth > ThisMonth + 1) {var responseMeal = false}
-        else {var responseMeal = true}
-        
+    if(reqMode == 0) {        
         const School = require('school-kr')
         const school = new School()
         
         school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
         while(true) {
             try {
-                if (responseMeal) {
-                    var meal = await school.getMeal({month: reqMonth})
-                }
                 var calendar = await school.getCalendar({separator: '(separator)', month: reqMonth});
             } catch {
                 continue
             }
             break
         }
-        
-        if (responseMeal) {
-            var mealString = JSON.stringify(meal)
-            mealString = mealString.split('\\n').join('(nextLine)')
-        } else {mealString = ''}
     } else {
         const School = require('school-kr')
         const school = new School()
