@@ -51,6 +51,7 @@ ul.calendarMode li .dateDiv {
     border-radius: 50%;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 ul.calendarMode li.scheduleTrue .dateDiv {
@@ -101,6 +102,7 @@ ul.calendarMode li.afterMonth {
     ul.calendarMode li .dateDiv {
         width: max-content;
         background-color: transparent !important;
+        font-size: 3.3vw;
     }
 }
 
@@ -131,8 +133,11 @@ ul.listMode > li .monthNumber {
     justify-content: center;
 
     border-radius: 50%;
-    font-weight: 700;
-    font-size: 2vw;
+    font-weight: 500;
+    font-size: 2.5vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 ul.listMode > li ul {
