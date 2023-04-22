@@ -84,11 +84,15 @@ input {
 
         z-index: 1;
 
+        position: absolute;
+        left: 0;
+
         overflow-x: hidden;
         overflow-y: scroll;
     }
 
     main {
+        position: absolute;
         box-sizing: border-box;
         right: 0;
     }
@@ -182,9 +186,6 @@ input {
     }
 
     header .member {
-        /* position: absolute; */
-        bottom: 0;
-
         width: 100%;
 
         padding: 0.5vw;
@@ -213,7 +214,7 @@ input {
 
     header .member .member_text {
         font-size: 2vw;
-        color: white;
+        color: var(--prefer-text);
     }
 
     header .member .NoLog {

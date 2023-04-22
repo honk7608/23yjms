@@ -100,11 +100,11 @@
             
             if (BodyEl.clientWidth >= 424) {
                 MainEl.style.width = `calc(100vw - ${HeaderEl.clientWidth + 1}px)`
-                LogoEl.style.cssText = `width: ${HeaderEl.clientWidth + 1}px;`
+                // LogoEl.style.cssText = `width: ${HeaderEl.clientWidth + 1}px;`
                 MemberEl.style.cssText = `--headerW: ${HeaderEl.clientWidth + 1}px;`
             } else {
                 MainEl.style.cssText = `width: 100vw;`
-                LogoEl.style.cssText = ``
+                // LogoEl.style.cssText = ``
                 MemberEl.style.cssText = `--headerH: ${HeaderEl.clientHeight}px;`
                 for(const key in SubmenuEls) {
                     if(key != Number(key)) {break}
