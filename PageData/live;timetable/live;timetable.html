@@ -29,7 +29,7 @@
         document.getElementById('class').value = ScClass
 
         EntireTableText = `
-        <table class="tt">
+        <table class="content tt">
             <tbody>
                 <tr class="tthead">
                     <td class="time">교시</td>
@@ -67,11 +67,24 @@
         document.write(EntireTableText)
     } else {
         NoInputText = 
-`<div class='NoInput'>
+`<div class='NoInput content'>
     <span class='patternAccent'>학년, 반을 입력하면 시간표가 나옵니다!</span><br>
     (안 알려주시면 알 방법이 없어요... 해킹을 할 수는 없잖아요?)
 </div>`
         document.write(NoInputText)
+    }
+
+    // Submit시 Loading
+    FormEls = document.getElementsByTagName('form')
+    console.log(FormEls)
+    for(const index in FormEls) {
+        FormEl = FormEls[index]
+        console.log(FormEl, index)
+        if(index == 'length') {break}
+        FormEl.addEventListener("submit", (event) => {
+            ContentEl = document.getElementsByClassName('content')[0]
+            ContentEl.innerHTML = '<div class="loadingDiv">Loading...</div>'
+        });
     }
 
 </script>
