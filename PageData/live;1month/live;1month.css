@@ -14,7 +14,7 @@
     color: var(--prefer-text);
     background-color: var(--accent-color);
     
-    border-radius: 15%;
+    border-radius: 2vw;
     border: none;
     width: min-content;
     text-align: center;
