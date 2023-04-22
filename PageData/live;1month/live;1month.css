@@ -19,6 +19,7 @@
     width: min-content;
     text-align: center;
     font-weight: 500;
+    word-break: keep-all;
 }
 
 /* 캘린더 모드 */
