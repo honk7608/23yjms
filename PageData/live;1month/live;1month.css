@@ -14,9 +14,9 @@
     color: var(--prefer-text);
     background-color: var(--accent-color);
     
-    border-radius: 1vw;
+    border-radius: 15%;
     border: none;
-    
+    width: min-content;
     text-align: center;
     font-weight: 500;
 }
