@@ -126,7 +126,6 @@ router.get('/schedule', async function (req, res) {
     var calenderString = JSON.stringify(calendar)
 
     EndWithRespond(req, res, 'live;1month', [
-        {code: 'meal', content: mealString}, 
         {code: 'calendar', content: calenderString},
         {code: 'month', content: reqMonth},
         {code: 'month2', content: reqMonth},
