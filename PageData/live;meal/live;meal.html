@@ -105,8 +105,9 @@
         AllWidth = MainEl.clientWidth
         var repeatCount = (AllWidth - (AllWidth % 300)) / 300
         if (repeatCount == 0) {repeatCount = 1}
+        else if(repeatCount > 10) {repeatCount = 10}
 
-        AddText = `--one-width: ${ListEl.clientWidth / repeatCount}px; --count: ${repeatCount};`
+        AddText = `--one-width: ${ListEl.clientWidth / repeatCount}px; --count: min(${repeatCount}, 5);`
         MainEl.style.cssText += AddText
         })
     }
