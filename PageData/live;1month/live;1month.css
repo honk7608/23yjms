@@ -99,6 +99,7 @@ ul.listMode > li .monthNumber {
 
     border-radius: 50%;
     font-weight: 700;
+    font-size: 2vw;
 }
 
 ul.listMode > li ul {
