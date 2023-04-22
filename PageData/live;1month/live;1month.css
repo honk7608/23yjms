@@ -10,6 +10,17 @@
     font-size: var(--recommend-font-size);
 }
 
+.selectDiv button {
+    color: var(--prefer-text);
+    background-color: var(--accent-color);
+    
+    border-radius: 1vw;
+    border: none;
+    
+    text-align: center;
+    font-weight: 500;
+}
+
 /* 캘린더 모드 */
 ul.calendarMode {
     display: grid;
