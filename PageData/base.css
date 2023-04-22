@@ -81,14 +81,14 @@ input {
 
         color: var(--prefer-text);
         --header-font-size: max(3vw, 30px);
-        
-        position: fixed;
 
         z-index: 1;
+
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
 
     main {
-        position: absolute;
         box-sizing: border-box;
         right: 0;
     }
@@ -182,7 +182,7 @@ input {
     }
 
     header .member {
-        position: absolute;
+        /* position: absolute; */
         bottom: 0;
 
         width: 100%;
@@ -258,7 +258,7 @@ input {
     }
 
     @media (prefers-color-scheme: dark) {
-        header .member {
+        header .member, header .logo {
             background-color: #333;
         }
 
@@ -268,7 +268,7 @@ input {
     }
 
     @media (prefers-color-scheme: light) {
-        header .member {
+        header .member, header .logo {
             background-color: #ddd;
         }
 

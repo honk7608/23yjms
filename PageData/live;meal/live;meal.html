@@ -98,7 +98,7 @@
 
     // mealItem 한개 width 설정
     function setOneWidth() {
-        delay(5).then(() => {
+        delay(75).then(() => {
         ListEl = document.getElementById('mealList')
         ListEl.innerHTML = writtenText
 
@@ -161,7 +161,7 @@
     AllergyEl = document.getElementsByClassName('additionalDiv')[0]
 
     function setAllergyGrid() {
-        delay(50).then(() => {
+        delay(75).then(() => {
             BodyEl = document.getElementsByTagName('body')[0]
             vw = BodyEl.clientWidth * 0.15
             if (!(BodyEl.clientWidth >= 424)) {

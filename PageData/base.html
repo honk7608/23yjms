@@ -45,9 +45,15 @@
 </head>
 <body>
     <header>
-        <a class="logo" href="/">
-            <img id="logo" src="/src/logo.jpg" alt="logo">
+        <a class="logo" href="/" id="logo">
+            <img src="/src/logo.jpg" alt="logo">
         </a>
+        <div class="member" id="member">
+            <a href="/member" class="member_icon">
+                <i class="fa-solid fa-user"></i>
+            </a>
+            <!-- {member_div} -->
+        </div>
         <ul class="menu">
             <li>
                 <p class="menu_name">평가 자료</p>
@@ -75,12 +81,6 @@
                 </div>
             </li>
         </ul>
-        <div class="member" id="member">
-            <a href="/member" class="member_icon">
-                <i class="fa-solid fa-user"></i>
-            </a>
-            <!-- {member_div} -->
-        </a>
     </header>
     <main>
         <!-- {main_content} -->
@@ -100,8 +100,8 @@
             
             if (BodyEl.clientWidth >= 424) {
                 MainEl.style.width = `calc(100vw - ${HeaderEl.clientWidth + 1}px)`
-                LogoEl.style.cssText = `width: ${HeaderEl.clientWidth}px;`
-                MemberEl.style.cssText = `--headerW: ${HeaderEl.clientWidth}px;`
+                LogoEl.style.cssText = `width: ${HeaderEl.clientWidth + 1}px;`
+                MemberEl.style.cssText = `--headerW: ${HeaderEl.clientWidth + 1}px;`
             } else {
                 MainEl.style.cssText = `width: 100vw;`
                 LogoEl.style.cssText = ``
@@ -113,7 +113,7 @@
             }
         }
 
-        delay(1000).then(() => {adjustBodyWidth()})
+        delay(50).then(() => {adjustBodyWidth()})
         window.onresize = adjustBodyWidth
     </script>
 </body>
