@@ -1,0 +1,84 @@
+<script>
+    // CalendarData
+    const calendarList = JSON.parse(`<!-- {calendar} -->`)
+
+    for (const key in calendarList) {
+        if (key != Number(key)) {
+            break
+        }
+        endDay = Number(key)
+    }
+
+    const mode = Number('<!-- {mode} -->')
+  
+    if(mode == 0) {
+        // MealData
+        const mealList = JSON.parse(`<!-- {meal} -->`)
+        if(mealList != '') {
+            var endDay = 1
+            for (const key in mealList) {
+                if (key != Number(key)) {
+                    break
+                }
+                endDay = Number(key)
+                mealList[key] = mealList[key].replace('[중식](nextLine)','').split('(nextLine)').join('\n')
+            }
+        }
+
+        startWeekDay = new Date(2023, Number('<!-- {month} -->') - 1, 1).getDay()
+        endWeekDay = new Date(2023, Number('<!-- {month2} -->'), 0).getDay()
+        weekDayList = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+        
+        calendarText = `<ul class='calendarMode'>\n`
+        for (i = Number(startWeekDay); i > 0; i--) {
+            calendarText += `<li class='beforeMonth'></li>\n`
+        }
+        for (const key in calendarList) {
+            if(key != Number(key)) {continue}
+            if(calendarList[key] == '') {calendarText += `<li id='${key}' class='scheduleFalse'><div class='dateDiv'>${key}</div></li>\n`; continue}
+            calendarText += `<li id='${key}' class='scheduleTrue'><div class='dateDiv'>${key}</div><div class='scheduleDiv'><span>${calendarList[key].split('(separator)').join('</span><span>')}</span></div></li>\n`
+        }
+        for (i = 6 - Number(endWeekDay); i > 0; i--) {
+            calendarText += `<li class='afterMonth'></li>\n`
+        }
+        
+        console.log(startWeekDay)
+        console.log(endWeekDay)
+    } else {
+        const Today = new Date()
+        const TodayMonth = Today.getMonth() 
+        const TodayDate = Today.getDate()
+        calendarText = `<ul class='listMode'>\n`
+        for (const monthIndex in calendarList) {
+            if(monthIndex != Number(monthIndex)) {continue}
+
+            if(Number(monthIndex) + 1 < 10) {monthText = `0${Number(monthIndex) + 1}`}
+            else {monthText = String(Number(monthIndex) + 1)}
+
+            calendarText += `<li class='monthDiv'>\n<div class='monthNumber'>${monthText}</div>\n<ul class='scheduleDiv'>\n`
+
+            for (const key in calendarList[monthIndex]) {
+                if(key != Number(key)) {continue}
+                if(calendarList[monthIndex][key] == '') {continue}
+
+
+                if(key < 10) {dateText = `0${key}`}
+                else {dateText = String(key)}
+
+                scheduleList = calendarList[monthIndex][key].split('(separator)')
+                
+                if(Number(monthIndex) <= TodayMonth && Number(key) <= TodayDate) {
+                    additionalClass = ` class='pastSchedule'`
+                } else {additionalClass = ''}
+
+                for(const index in scheduleList) {
+                    calendarText += `<li${additionalClass}><span class='dateSpan'>${monthText}.${dateText}</span> ${scheduleList[index]}</li>`
+                }
+            }
+            calendarText += `</ul>\n</li>\n`
+        }
+    }
+    calendarText += '</ul>'
+
+    document.write(calendarText)
+</script>

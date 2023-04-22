@@ -2,11 +2,11 @@ var express = require('express');
 var asyncify = require('express-asyncify');
 var router = asyncify(express.Router());
 const EndWithRespond = require('../SubModule/ResFunc.js')
-var url = require('url');
+const url = require('url');
 
 router.get('/timetable', async function (req, res) {
-    var requrl = req.url;
-    var queryData = url.parse(requrl, true).query;
+    const requrl = req.url;
+    const queryData = url.parse(requrl, true).query;
 
     var ScGrade = Number(queryData.grade)
     var ScClass = Number(queryData.class)
@@ -73,8 +73,76 @@ router.get('/meal', async function (req, res) {
     }])
 })
 
-router.get('/one-month', async function (req, res) {
-    EndWithRespond(req, res, 'live;1month')
+router.get('/schedule', async function (req, res) {
+    const requrl = req.url;
+    var queryData = url.parse(requrl, true).query;
+
+    const Today = new Date()
+    const ThisMonth = Today.getMonth()
+
+    if(!queryData) {
+        queryData.month = ThisMonth + 1
+        queryData.mode = 0 //Calendar
+    }
+    if(queryData.month != Number(queryData.month)) {
+        queryData.month = ThisMonth + 1
+    }
+    if(!queryData.mode) {queryData.mode = 0}
+
+    const reqMonth = queryData.month
+    const reqMode = queryData.mode // 0: Calendar, 1: List
+
+    if(reqMode == 0) {
+        if(reqMonth > ThisMonth + 1) {var responseMeal = false}
+        else {var responseMeal = true}
+        
+        const School = require('school-kr')
+        const school = new School()
+        
+        school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
+        while(true) {
+            try {
+                if (responseMeal) {
+                    var meal = await school.getMeal({month: reqMonth})
+                }
+                var calendar = await school.getCalendar({separator: '(separator)', month: reqMonth});
+            } catch {
+                continue
+            }
+            break
+        }
+        
+        if (responseMeal) {
+            var mealString = JSON.stringify(meal)
+            mealString = mealString.split('\\n').join('(nextLine)')
+        } else {mealString = ''}
+    } else {
+        const School = require('school-kr')
+        const school = new School()
+        
+        school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
+        while(true) {
+            var calendar = []
+            try {
+                for(i = 1; i <= 12; i++) {
+                    calendar.push(await school.getCalendar({separator: '(separator)', month: i}));
+                }
+            } catch {
+                continue
+            }
+            break
+        }
+    }
+
+    var calenderString = JSON.stringify(calendar)
+
+    EndWithRespond(req, res, 'live;1month', [
+        {code: 'meal', content: mealString}, 
+        {code: 'calendar', content: calenderString},
+        {code: 'month', content: reqMonth},
+        {code: 'month2', content: reqMonth},
+        {code: 'mode', content: reqMode}
+    ])
 })
 
 module.exports = router;
