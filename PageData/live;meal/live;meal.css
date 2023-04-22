@@ -200,17 +200,10 @@
 
     color: var(--prefer-text);
 
-    --select-font-size: min(4vw, 40px);
-    font-size: var(--select-font-size);
+    font-size: var(--recommend-font-size);
     font-weight: 700;
     /* for safari */
     word-break: keep-all;
-}
-
-/* Info Mobile */ @media screen and (max-width: 424px){
-    .additionalDiv {
-        --select-font-size: 8vw;
-    }
 }
 
 .additionalDiv ol {

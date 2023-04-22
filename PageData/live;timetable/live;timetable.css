@@ -11,9 +11,7 @@
     
     box-sizing: border-box;
 
-    --select-font-size: min(4vw, 40px);
-
-    font-size: var(--select-font-size);
+    font-size: var(--recommend-font-size);
     font-weight: 600;
 
     display: flex;
@@ -42,7 +40,7 @@
     padding-right: 0.5vw;
     width: 5vw;
 
-    font-size: var(--select-font-size);
+    font-size: var(--recommend-font-size);
     font-weight: 800;
     text-align: right;
     color: var(--prefer-text);
@@ -98,7 +96,7 @@
 
     color: var(--prefer-text);
     font-weight: 700;
-    font-size: var(--select-font-size);
+    font-size: var(--recommend-font-size);
 
     background-color: var(--accent-color);
 }
@@ -108,8 +106,6 @@
         flex-direction: column;
         align-items: center;
         gap: 2vw;
-
-        --select-font-size: 8vw;
     }
 
     .select .option {

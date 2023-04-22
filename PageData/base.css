@@ -59,6 +59,10 @@ input {
 }
 
 /* Desktop */ @media screen and (min-width: 425px){
+    * {
+        --recommend-font-size: min(4vw, 40px)
+    }
+
     body {
         display: flex;
         flex-direction: row;
@@ -275,6 +279,10 @@ input {
 }
 
 /* Mobile */ @media screen and (max-width: 424px){
+    * {
+        --recommend-font-size: 8vw
+    }
+
     body {
         display: flex;
         flex-direction: column;
