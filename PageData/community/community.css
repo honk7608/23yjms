@@ -1,0 +1,68 @@
+main {
+    padding: 0;
+}
+
+.infoDiv {
+    width: 100%;
+    padding: 1vw;
+
+    background-color: var(--accent-color-transparent);
+}
+
+.infoDiv .titleDiv {    
+    font-size: var(--recommend-font-size);
+    font-weight: 700;
+}
+
+.articleDiv {
+    width: 100%;
+    padding: 1vw;
+}
+
+.articleDiv table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.articleDiv td {
+    text-align: center;
+    padding: 1vw;
+    position: relative;
+
+    background-color: transparent;
+}
+
+.articleDiv td.articleTitle {
+    text-align: left;
+}
+
+.articleDiv tr.tableHeader td {
+    padding: 2vw;
+    border-bottom: #999 1px solid;
+}
+
+.articleDiv tr.articleTr:hover td:first-child{
+    border-bottom-left-radius: 2vw;
+}
+
+.articleDiv tr.articleTr:hover td:last-child{
+    border-top-right-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+}
+
+@media (prefers-color-scheme: dark) {
+    .articleDiv tr.articleTr:hover td {
+        background-color: #333; /*666*/
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .articleDiv tr.articleTr:hover td {
+        background-color: #ddd; /*aaa*/
+    }
+}
+
+.articleDiv tr.articleTr.me td.articleAuthor {
+    font-weight: 700;
+}
