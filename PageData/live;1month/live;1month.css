@@ -87,6 +87,13 @@ ul.calendarMode li.afterMonth {
     background-color: var(--transparent-back);
 }
 
+/* CalendarMode Mobile */ @media screen and (max-width: 424px){ 
+    ul.calendarMode li.scheduleTrue .dateDiv {
+        width: max-content;
+        background-color: transparent;
+    }
+}
+
 /* 리스트 모드 */
 ul.listMode {
     display: grid;
