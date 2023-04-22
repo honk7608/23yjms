@@ -10,6 +10,18 @@
     font-size: var(--recommend-font-size);
 }
 
+.selectDiv button {
+    color: var(--prefer-text);
+    background-color: var(--accent-color);
+    
+    border-radius: 2vw;
+    border: none;
+    width: min-content;
+    text-align: center;
+    font-weight: 500;
+    word-break: keep-all;
+}
+
 /* 캘린더 모드 */
 ul.calendarMode {
     display: grid;
@@ -35,12 +47,12 @@ ul.calendarMode li .dateDiv {
 
     width: 3vw;
     height: 3vw;
-
+    font-size: 2.5vw;
     display: flex;
-    align-items: center;
-    justify-content: center;
-
     border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 ul.calendarMode li.scheduleTrue .dateDiv {
@@ -91,6 +103,7 @@ ul.calendarMode li.afterMonth {
     ul.calendarMode li .dateDiv {
         width: max-content;
         background-color: transparent !important;
+        font-size: 3.3vw;
     }
 }
 
@@ -113,16 +126,19 @@ ul.listMode > li .monthNumber {
     color: var(--prefer-text);
     background-color: var(--accent-color);
 
-    width: 3vw;
-    height: 3vw;
+    width: 5.5vw;
+    height: 5.5vw;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     border-radius: 50%;
-    font-weight: 700;
-    font-size: 2vw;
+    font-weight: 500;
+    font-size: 4vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 ul.listMode > li ul {
@@ -134,8 +150,9 @@ ul.listMode > li ul {
 
 ul.listMode > li ul li {
     color: var(--prefer-text);
-    font-size: 2vw;
+    font-size: 3.5vw;
     word-break: keep-all;
+    font-weight: 300;
 }
 
 /* NoData */
