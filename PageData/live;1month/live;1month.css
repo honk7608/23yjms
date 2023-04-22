@@ -109,5 +109,7 @@ ul.listMode > li ul {
 }
 
 ul.listMode > li ul li {
-
+    color: var(--prefer-text);
+    font-size: 2vw;
+    word-break: keep-all;
 }
