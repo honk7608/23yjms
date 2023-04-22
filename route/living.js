@@ -84,13 +84,23 @@ router.get('/schedule', async function (req, res) {
         queryData.month = ThisMonth + 1
         queryData.mode = 0 //Calendar
     }
-    if(queryData.month != Number(queryData.month)) {
-        queryData.month = ThisMonth + 1
+
+    if(!queryData.month) {queryData.month = ThisMonth + 1}
+    else if(queryData.month != Number(queryData.month)) {
+        queryMonthList = queryData.month.split('-')
+        if((queryMonthList[0] != Number(queryMonthList[0]) || queryMonthList[1] != Number(queryMonthList[1])) && queryMonthList.length == 2) {
+            queryData.month = ThisMonth + 1
+        } else {
+            queryData.month = queryMonthList[1]
+            var reqYear = queryMonthList[0]
+        }
     }
+
     if(!queryData.mode) {queryData.mode = 0}
 
     const reqMonth = queryData.month
     const reqMode = queryData.mode // 0: Calendar, 1: List
+    if(!reqYear) {var reqYear = Today.getFullYear()}
 
     if(reqMode == 0) {        
         const School = require('school-kr')
@@ -99,7 +109,7 @@ router.get('/schedule', async function (req, res) {
         school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
         while(true) {
             try {
-                var calendar = await school.getCalendar({separator: '(separator)', month: reqMonth});
+                var calendar = await school.getCalendar({separator: '(separator)', month: reqMonth, year: reqYear});
             } catch {
                 continue
             }
@@ -127,8 +137,7 @@ router.get('/schedule', async function (req, res) {
 
     EndWithRespond(req, res, 'live;1month', [
         {code: 'calendar', content: calenderString},
-        {code: 'month', content: reqMonth},
-        {code: 'month2', content: reqMonth},
+        {code: 'queryData', content: `${reqYear}-${reqMonth}`},
         {code: 'mode', content: reqMode}
     ])
 })

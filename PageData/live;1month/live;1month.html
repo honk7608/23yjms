@@ -1,36 +1,61 @@
+<div class="selectDiv">
+    <span class="patternAccent">한달 달력으로 보기</span>
+    <form action="/living/schedule" method="get" id="oneMonthForm">
+        <input type="month" name="month" id="monthInput">
+        <input type="number" name="mode" value="0" style="display: none;">
+        <button form="oneMonthForm" type="submit">적용하기</button>
+    </form>
+    <hr>
+    <span class="patternAccent">1년 학사일정 보기</span>    
+    <form action="/living/schedule" method="get" id="oneYearForm">
+        <input type="number" name="mode" value="1" style="display: none;">
+        <button type="submit" form="oneYearForm">적용하기</button>
+    </form>
+</div>
+
 <script>
     // CalendarData
     const calendarList = JSON.parse(`<!-- {calendar} -->`)
-
-    for (const key in calendarList) {
-        if (key != Number(key)) {
-            break
-        }
-        endDay = Number(key)
-    }
-
     const mode = Number('<!-- {mode} -->')
-  
+
     if(mode == 0) {
-        startWeekDay = new Date(2023, Number('<!-- {month} -->') - 1, 1).getDay()
-        endWeekDay = new Date(2023, Number('<!-- {month2} -->'), 0).getDay()
-        weekDayList = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-        
-        calendarText = `<ul class='calendarMode'>\n`
-        for (i = Number(startWeekDay); i > 0; i--) {
-            calendarText += `<li class='beforeMonth'></li>\n`
+        if(!calendarList[1]) {document.write('<div class=NoData><span class="patternAccent">데이터가 없네요...</span><br>혹시 미래를 보려 하신건 아니죠?</div>')}
+        else {
+            for (const key in calendarList) {
+                if (key != Number(key)) {continue}
+                calendarList[key] = calendarList[key].split('(separator)').filter(value => value != '토요휴업일').join('(separator)')
+            }
+            
+            queryData = '<!-- {queryData} -->'
+            SelectedYear = queryData.split('-')[0]
+            SelectedMonth = queryData.split('-')[1]
+            
+            MonthInputEl = document.getElementById('monthInput')
+            MonthInputEl.value = queryData
+            
+            startWeekDay = new Date(SelectedYear, SelectedMonth - 1, 1).getDay()
+            endWeekDay = new Date(SelectedYear, SelectedMonth, 0).getDay()
+            weekDayList = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+            
+            calendarText = `<ul class='calendarMode'>\n`
+            for (i = 0; i <= 6; i++) {
+                calendarText += `<li>${weekDayList[i]}</li>`
+            }
+            for (i = Number(startWeekDay); i > 0; i--) {
+                calendarText += `<li class='beforeMonth'></li>\n`
+            }
+            for (const key in calendarList) {
+                if(key != Number(key)) {continue}
+                if(calendarList[key] == '') {calendarText += `<li id='${key}' class='scheduleFalse'><div class='dateDiv'>${key}</div></li>\n`; continue}
+                calendarText += `<li id='${key}' class='scheduleTrue'><div class='dateDiv'>${key}</div><div class='scheduleDiv'><span>${calendarList[key].split('(separator)').join('</span><span>')}</span></div></li>\n`
+            }
+            for (i = 6 - Number(endWeekDay); i > 0; i--) {
+                calendarText += `<li class='afterMonth'></li>\n`
+            }
+            
+            console.log(startWeekDay)
+            console.log(endWeekDay)
         }
-        for (const key in calendarList) {
-            if(key != Number(key)) {continue}
-            if(calendarList[key] == '') {calendarText += `<li id='${key}' class='scheduleFalse'><div class='dateDiv'>${key}</div></li>\n`; continue}
-            calendarText += `<li id='${key}' class='scheduleTrue'><div class='dateDiv'>${key}</div><div class='scheduleDiv'><span>${calendarList[key].split('(separator)').join('</span><span>')}</span></div></li>\n`
-        }
-        for (i = 6 - Number(endWeekDay); i > 0; i--) {
-            calendarText += `<li class='afterMonth'></li>\n`
-        }
-        
-        console.log(startWeekDay)
-        console.log(endWeekDay)
     } else {
         const Today = new Date()
         const TodayMonth = Today.getMonth() 

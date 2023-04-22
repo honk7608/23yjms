@@ -1,9 +1,23 @@
+.selectDiv {
+    border: 1px #999 solid;
+    border-radius: 1vw;
+    padding: 1vw;
+    font-size: var(--recommend-font-size);
+    font-weight: 700;
+}
+
+.selectDiv input, button{
+    font-size: var(--recommend-font-size);
+}
+
 /* 캘린더 모드 */
 ul.calendarMode {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
 
     list-style: none;
+
+    padding: 0;
 }
 
 ul.calendarMode li {
@@ -79,6 +93,8 @@ ul.listMode {
     grid-template-columns: repeat(3, 1fr);
 
     list-style: none;
+
+    padding: 0;
 }
 
 ul.listMode > li {
@@ -112,4 +128,25 @@ ul.listMode > li ul li {
     color: var(--prefer-text);
     font-size: 2vw;
     word-break: keep-all;
+}
+
+/* NoData */
+.NoData {
+    font-weight: 300;
+    font-size: 2vw;
+    color: var(--prefer-text);
+}
+
+.NoData span {
+    font-weight: 700;
+    font-size: 4vw;
+}
+
+/* NoData Mobile */ @media screen and (max-width: 424px){
+    .NoData {
+        font-size: 4vw;
+    }
+    .NoData span {
+        font-size: 8vw;
+    }
 }
