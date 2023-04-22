@@ -18,9 +18,7 @@
     const calendarList = JSON.parse(`<!-- {calendar} -->`)
     const mode = Number('<!-- {mode} -->')
 
-    if(mode == 0) {
-        console.log(calendarList[1])
-        
+    if(mode == 0) {       
         if(calendarList[1] == undefined || calendarList[1] == null) {
             document.write('<div class=NoData><span class="patternAccent">데이터가 없네요...</span><br>혹시 미래를 보려 하신건 아니죠?</div>')
             calendarText = ''
@@ -57,9 +55,7 @@
             for (i = 6 - Number(endWeekDay); i > 0; i--) {
                 calendarText += `<li class='afterMonth'></li>\n`
             }
-            
-            console.log(startWeekDay)
-            console.log(endWeekDay)
+
             calendarText += '</ul>'
         }
     } else {
