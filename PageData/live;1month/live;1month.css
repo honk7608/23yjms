@@ -46,11 +46,11 @@ ul.calendarMode li .dateDiv {
 
     width: 3vw;
     height: 3vw;
-
+    font-size: 3vw;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    text-align: center;
     border-radius: 50%;
 }
 
