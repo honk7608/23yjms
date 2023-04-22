@@ -76,10 +76,8 @@
 
     // Submit시 Loading
     FormEls = document.getElementsByTagName('form')
-    console.log(FormEls)
     for(const index in FormEls) {
         FormEl = FormEls[index]
-        console.log(FormEl, index)
         if(index == 'length') {break}
         FormEl.addEventListener("submit", (event) => {
             ContentEl = document.getElementsByClassName('content')[0]
