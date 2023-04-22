@@ -88,7 +88,7 @@ ul.calendarMode li.afterMonth {
 }
 
 /* CalendarMode Mobile */ @media screen and (max-width: 424px){ 
-    ul.calendarMode li.scheduleTrue .dateDiv {
+    ul.calendarMode li .dateDiv {
         width: max-content;
         background-color: transparent;
     }
