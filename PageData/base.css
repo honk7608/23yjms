@@ -27,7 +27,7 @@
 }
 
 a {
-    color: black;
+    color: var(--prefer-text);
     text-decoration-line: none;
 }
 
@@ -477,12 +477,12 @@ input {
 /* ScrollBar */
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
+body::-webkit-scrollbar, header::-webkit-scrollbar {
     display: none;
 }
   
 /* Hide scrollbar for IE, Edge and Firefox */
-body {
+body, header {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
