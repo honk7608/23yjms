@@ -7,16 +7,20 @@ main {
     padding: 1vw;
 
     background-color: var(--accent-color-transparent);
+    color: var(--prefer-text);
 }
 
 .infoDiv .titleDiv {    
     font-size: var(--recommend-font-size);
     font-weight: 700;
+    color: inherit;
 }
 
 .articleDiv {
     width: 100%;
     padding: 1vw;
+
+    color: var(--prefer-text);
 }
 
 .articleDiv table {
@@ -39,16 +43,11 @@ main {
 
 .articleDiv tr.tableHeader td {
     padding: 2vw;
+    border-bottom: #999 2px solid;
+}
+
+.articleDiv tr.articleTr td {
     border-bottom: #999 1px solid;
-}
-
-.articleDiv tr.articleTr:hover td:first-child{
-    border-bottom-left-radius: 2vw;
-}
-
-.articleDiv tr.articleTr:hover td:last-child{
-    border-top-right-radius: 2vw;
-    border-bottom-right-radius: 2vw;
 }
 
 @media (prefers-color-scheme: dark) {
