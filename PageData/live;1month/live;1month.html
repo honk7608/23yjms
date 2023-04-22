@@ -19,7 +19,12 @@
     const mode = Number('<!-- {mode} -->')
 
     if(mode == 0) {
-        if(!calendarList[1]) {document.write('<div class=NoData><span class="patternAccent">데이터가 없네요...</span><br>혹시 미래를 보려 하신건 아니죠?</div>')}
+        console.log(calendarList[1])
+        
+        if(calendarList[1] == undefined || calendarList[1] == null) {
+            document.write('<div class=NoData><span class="patternAccent">데이터가 없네요...</span><br>혹시 미래를 보려 하신건 아니죠?</div>')
+            calendarText = ''
+        }
         else {
             for (const key in calendarList) {
                 if (key != Number(key)) {continue}
@@ -55,6 +60,7 @@
             
             console.log(startWeekDay)
             console.log(endWeekDay)
+            calendarText += '</ul>'
         }
     } else {
         const Today = new Date()
@@ -89,8 +95,8 @@
             }
             calendarText += `</ul>\n</li>\n`
         }
+        calendarText += '</ul>'
     }
-    calendarText += '</ul>'
 
     document.write(calendarText)
 </script>
