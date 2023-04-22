@@ -211,7 +211,12 @@ input {
         justify-content: center;
     }
 
-    header .member .NoLog{
+    header .member .member_text {
+        font-size: 2vw;
+        color: white;
+    }
+
+    header .member .NoLog {
         height: inherit;
 
         color: inherit;
