@@ -33,7 +33,6 @@
         <input  id="numInput" type="number" placeholder="며칠로 이동할까요?">
         <button id="moveButton">이동하기</button>
     </div>
-    <!-- <span>혹은</span> -->
     <div class="sep">
         <button id="todayButton">오늘 보기</button>
     </div>
@@ -66,7 +65,7 @@
             break
         }
         dateObject = new Date(2023, mealList.month - 1, i);
-        writtenList.push({day: i,data: mealList[i],weekday: [null,'Mon','Tue','Wed','Thu','Fri',null][dateObject.getDay()]})
+        writtenList.push({day: i, data: mealList[i], weekday: [null,'Mon','Tue','Wed','Thu','Fri',null][dateObject.getDay()]})
     } 
 
     writtenText = ''
