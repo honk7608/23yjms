@@ -226,5 +226,6 @@
 /* Allergy Mobile */ @media screen and (max-width: 424px){ 
     .additionalDiv ol > span {
         font-size: 4.5vw;
+        --repeat-count: 3;
     }
 }
