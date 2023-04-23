@@ -65,3 +65,20 @@ main {
 .articleDiv tr.articleTr.me td.articleAuthor {
     font-weight: 700;
 }
+
+.articleDiv td .articleMenu div {
+    display: none;
+    position: absolute;
+}
+
+.articleDiv td:hover .articleMenu div {
+    display: block;
+}
+
+.articleDiv td .articleMenu div .edit {
+    display: none;
+}
+
+.articleDiv tr.me td .articleMenu div .edit {
+    display: block;
+}

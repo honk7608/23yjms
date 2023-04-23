@@ -42,7 +42,7 @@ app.use(session({
 }))
 
 app.use('*', function(req, res, next) {
-    if (!req.session.member) {        
+    if (!req.session.member) {
         req.session.member = {
             isLogged: false,
             id: 'null'

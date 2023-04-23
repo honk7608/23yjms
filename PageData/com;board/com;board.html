@@ -1,0 +1,48 @@
+<div class="infoDiv">
+    <div class="titleDiv">소통 공간 - <span class="patternAccent"><!-- {pageTitle} --></span></div>
+    <div class="describe"><!-- {pageDescribe} --></div>
+</div>
+<div class="articleDiv">
+    <table>
+        <tr class="tableHeader">
+            <td>번호</td>
+            <td>제목</td>
+            <td>작성자</td>
+            <td>작성일시</td>
+            <td></td>
+        </tr>
+        <script>
+            const boardName = '<!-- {boardName} -->'
+            const Articles = JSON.parse('<!-- {articles} -->')
+            const LoggedId = Number('<!-- {memberID} -->')
+
+            DisplayText = ''
+            for(const key in Articles) {
+                article = Articles[key]
+                if(article.author_id == LoggedId) {additionalTag = ' me'}
+                else {additionalTag = ''}
+                ArticleCreatedTime = new Date(article.createdTime)
+
+                displayDateText = `${ArticleCreatedTime.getFullYear()}.${ArticleCreatedTime.getMonth() + 1}.${ArticleCreatedTime.getDate()}` 
+                
+                DisplayText += 
+`<tr class="articleTr${additionalTag}">
+    <td class="articleNum">${article.id}</td>
+    <td class="articleTitle"><a href="/community/viewArticle?board=${boardName}&articleID=${article.id}">${article.title}</a></td>
+    <td class="articleAuthor">${article.author_name}</td>
+    <td class="articleDate">${displayDateText}</td>
+    <td>
+        <i class="fa-solid fa-ellipsis-vertical articleMenu">
+            <div>
+                <a href="/community/editArticle?board=${boardName}&articleID=${article.id}" class="edit">수정하기</a>
+                <a href="/community/reportArticle?board=${boardName}&articleID=${article.id}" class="report">신고하기</a>
+            </div>
+        </i>
+    </td>
+</tr>
+`
+            }
+            document.write(DisplayText)
+        </script>
+    </table>
+</div>
