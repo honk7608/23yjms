@@ -223,9 +223,11 @@
     color: var(--accent-color);
 }
 
-/* Allergy Mobile */ @media screen and (max-width: 424px){ 
+/* Allergy Mobile */ @media screen and (max-width: 424px) { 
+    .additionalDiv ol {
+        grid-template-columns: repeat(3, 1fr);
+    }
     .additionalDiv ol > span {
         font-size: 4.5vw;
-        --repeat-count: 3;
     }
 }
