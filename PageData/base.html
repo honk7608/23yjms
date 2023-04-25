@@ -102,19 +102,23 @@
                 MainEl.style.width = `calc(100vw - ${HeaderEl.clientWidth + 1}px)`
                 // LogoEl.style.cssText = `width: ${HeaderEl.clientWidth + 1}px;`
                 MemberEl.style.cssText = `--headerW: ${HeaderEl.clientWidth + 1}px;`
+                HeaderEl = ``
             } else {
                 MainEl.style.cssText = `width: 100vw;`
-                // LogoEl.style.cssText = ``
                 MemberEl.style.cssText = `--headerH: ${HeaderEl.clientHeight}px;`
-                for(const key in SubmenuEls) {
-                    if(key != Number(key)) {break}
-                    SubmenuEls[key].style.cssText = `top: ${HeaderEl.clientHeight}px;`
-                }
+                HeaderEl.style.cssText = `--headerH: ${HeaderEl.clientHeight}px;`
+                // for(const key in SubmenuEls) {
+                //     if(key != Number(key)) {continue}
+                //     SubmenuEls[key].style.cssText = `top: ${HeaderEl.clientHeight}px;`
+                // }
             }
         }
 
-        delay(50).then(() => {adjustBodyWidth()})
-        window.onresize = adjustBodyWidth
+        for(i = 0;i < 100;i ++) {
+            if(i % 10) {continue}
+            delay(i).then(() => {adjustBodyWidth()})
+        }
+        window.addEventListener('resize', adjustBodyWidth)
     </script>
 </body>
 </html>
