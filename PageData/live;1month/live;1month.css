@@ -22,6 +22,14 @@
     word-break: keep-all;
 }
 
+.loadingDiv {
+    font-size: 5vw;
+    background-color: var(--accent-color);
+    color: var(--prefer-text);
+    background: url('/src/pattern.png') repeat-x center bottom;
+    text-align: center;
+}
+
 /* 캘린더 모드 */
 ul.calendarMode {
     display: grid;
@@ -55,6 +63,11 @@ ul.calendarMode li .dateDiv {
     text-align: center;
     align-items: center;
     justify-content: center;
+}
+
+ul.calendarMode li .weekDay {
+    color: var(--prefer-text);
+    background-color: var(--accent-color-transparent);
 }
 
 ul.calendarMode li.scheduleTrue .dateDiv {

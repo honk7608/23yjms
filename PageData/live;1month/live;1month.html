@@ -42,7 +42,7 @@
             
             calendarText = `<ul class='content calendarMode'>\n`
             for (i = 0; i <= 6; i++) {
-                calendarText += `<li>${weekDayList[i]}</li>`
+                calendarText += `<li class='weekDay'>${weekDayList[i]}</li>`
             }
             for (i = Number(startWeekDay); i > 0; i--) {
                 calendarText += `<li class='beforeMonth'></li>\n`
