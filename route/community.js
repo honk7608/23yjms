@@ -31,6 +31,7 @@ async function getBoardArticles(dbOption, boardName, startID=null, count=10) {
         ${additionalQuery}
         LIMIT ${count};`);
     
+    connection.end()
     return Articles 
 }
 
