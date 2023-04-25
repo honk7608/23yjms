@@ -60,7 +60,7 @@ input {
 
 /* Desktop */ @media screen and (min-width: 425px){
     * {
-        --recommend-font-size: min(4vw, 40px)
+        --big-font-size: min(4vw, 40px)
     }
 
     body {
@@ -286,7 +286,7 @@ input {
 
 /* Mobile */ @media screen and (max-width: 424px){
     * {
-        --recommend-font-size: 8vw
+        --big-font-size: 6vw
     }
 
     body {

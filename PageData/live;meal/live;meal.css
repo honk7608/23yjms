@@ -200,7 +200,7 @@
 
     color: var(--prefer-text);
 
-    font-size: var(--recommend-font-size);
+    font-size: var(--big-font-size);
     font-weight: 700;
     /* for safari */
     word-break: keep-all;

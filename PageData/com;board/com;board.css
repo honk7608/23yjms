@@ -11,7 +11,7 @@ main {
 }
 
 .infoDiv .titleDiv {    
-    font-size: var(--recommend-font-size);
+    font-size: var(--big-font-size);
     font-weight: 700;
     color: inherit;
 }

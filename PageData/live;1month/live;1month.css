@@ -2,12 +2,12 @@
     border: 1px #999 solid;
     border-radius: 1vw;
     padding: 1vw;
-    font-size: var(--recommend-font-size);
+    font-size: var(--big-font-size);
     font-weight: 700;
 }
 
 .selectDiv input, button{
-    font-size: var(--recommend-font-size);
+    font-size: var(--big-font-size);
 }
 
 .selectDiv button {
