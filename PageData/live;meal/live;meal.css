@@ -186,7 +186,11 @@
     .mealList .mealItem .today::before {
         font-size: 5vw;    
         transform: translateX(max(13vw, 24px));
-}
+    }
+
+    .mealList .mealItem .mealData {
+        width: 100%;
+    }
 }
 
 /* additionalDiv */
