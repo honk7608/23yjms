@@ -1,16 +1,20 @@
 <div class="selectDiv">
-    <span class="patternAccent">한달 달력으로 보기</span>
-    <form action="/living/schedule" method="get" id="oneMonthForm">
-        <input type="month" name="month" id="monthInput" class="monthInput" required>
-        <input type="number" name="mode" value="0" style="display: none;">
-        <button form="oneMonthForm" class="oneMonthForm" type="submit">적용하기</button>
-    </form>
+    <div class="CategoryDiv">
+        <span class="patternAccent">한달 달력으로 보기</span>
+        <form action="/living/schedule" method="get" id="oneMonthForm">
+            <input type="month" name="month" id="monthInput" class="monthInput" required>
+            <input type="number" name="mode" value="0" style="display: none;">
+            <button form="oneMonthForm" class="oneMonthForm" type="submit">적용하기</button>
+        </form>
+    </div>
     <hr>
-    <span class="patternAccent">1년 학사일정 보기</span>    
-    <form action="/living/schedule" method="get" id="oneYearForm">
-        <input type="number" name="mode" value="1" style="display: none;">
-        <button type="submit" form="oneYearForm" class="oneYearForm">적용하기</button>
-    </form>
+    <div class="CategoryDiv">
+        <span class="patternAccent">1년 학사일정 보기</span>    
+        <form action="/living/schedule" method="get" id="oneYearForm">
+            <input type="number" name="mode" value="1" style="display: none;">
+            <button type="submit" form="oneYearForm" class="oneYearForm">적용하기</button>
+        </form>
+    </div>
 </div>
 
 <script>
@@ -19,6 +23,13 @@
     const mode = Number('<!-- {mode} -->')
 
     if(mode == 0) {       
+        queryData = '<!-- {queryData} -->'
+        SelectedYear = queryData.split('-')[0]
+        SelectedMonth = queryData.split('-')[1]
+        
+        MonthInputEl = document.getElementById('monthInput')
+        MonthInputEl.value = queryData
+
         if(calendarList[1] == undefined || calendarList[1] == null) {
             document.write('<div class="content NoData"><span class="patternAccent">데이터가 없네요...</span><br>혹시 미래를 보려 하신건 아니죠?</div>')
             calendarText = ''
@@ -28,12 +39,6 @@
                 if (key != Number(key)) {continue}
                 calendarList[key] = calendarList[key].split('(separator)').filter(value => value != '토요휴업일').join('(separator)')
             }
-            
-            queryData = '<!-- {queryData} -->'
-            SelectedYear = queryData.split('-')[0]
-            SelectedMonth = queryData.split('-')[1]
-            MonthInputEl = document.getElementById('monthInput')
-            MonthInputEl.value = queryData
             
             startWeekDay = new Date(SelectedYear, SelectedMonth - 1, 1).getDay()
             endWeekDay = new Date(SelectedYear, SelectedMonth, 0).getDay()
@@ -68,12 +73,13 @@
             if(Number(monthIndex) + 1 < 10) {monthText = `0${Number(monthIndex) + 1}`}
             else {monthText = String(Number(monthIndex) + 1)}
 
-            calendarText += `<li class='monthDiv'>\n<div class='monthNumber'>${monthText}</div>\n<ul class='scheduleDiv'>\n`
+            calendarText += `<li class='monthDiv'>\n<div class='monthNumber'>${monthText}</div>\n`
 
+            MonthScheduleText = ``
             for (const key in calendarList[monthIndex]) {
                 if(key != Number(key)) {continue}
+                calendarList[monthIndex][key] = calendarList[monthIndex][key].split('(separator)').filter(value => value != '토요휴업일').join('(separator)')
                 if(calendarList[monthIndex][key] == '') {continue}
-
 
                 if(key < 10) {dateText = `0${key}`}
                 else {dateText = String(key)}
@@ -85,10 +91,12 @@
                 } else {additionalClass = ''}
 
                 for(const index in scheduleList) {
-                    calendarText += `<li${additionalClass}><span class='dateSpan'>${monthText}.${dateText}</span> ${scheduleList[index]}</li>`
+                    MonthScheduleText += `<li${additionalClass}><span class='dateSpan'>${monthText}.${dateText}</span> ${scheduleList[index]}</li>`
                 }
             }
-            calendarText += `</ul>\n</li>\n`
+
+            if(MonthScheduleText == '') {continue}
+            calendarText += `<ul class='scheduleDiv'>\n${MonthScheduleText}</ul>\n</li>\n`
         }
         calendarText += '</ul>'
     }

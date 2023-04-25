@@ -6,6 +6,11 @@
     font-weight: 700;
 }
 
+.selectDiv .CategoryDiv {
+    display: flex;
+    gap: 1vw;
+}
+
 .selectDiv input, button{
     font-size: var(--big-font-size);
 }
@@ -53,14 +58,18 @@ ul.calendarMode li {
 ul.calendarMode li .dateDiv {
     color: var(--prefer-text);
 
-    width: 3vw;
-    height: 3vw;
-    font-size: 2.5vw;
-    display: flex;
+    width: calc(var(--big-font-size) * 1.5);
+    height: calc(var(--big-font-size) * 1.5);
+
+    font-size: var(--big-font-size);
+    
+    border: 2px var(--accent-color) solid;
     border-radius: 50%;
+    
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -68,19 +77,18 @@ ul.calendarMode li .dateDiv {
 ul.calendarMode li.weekDay {
     color: var(--prefer-text);
     background-color: var(--accent-color-transparent);
+    
     text-align: center;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5vw;
+    
+    font-size: var(--big-font-size);
 }
 
 ul.calendarMode li.scheduleTrue .dateDiv {
-    background-color: var(--accent-color);
+    background-color: var(--accent-color-transparent);
     font-weight: 700;
 }
 
 ul.calendarMode li.scheduleFalse .dateDiv {
-    background-color: var(--accent-color);
     font-weight: 300;
 }
 
@@ -93,6 +101,9 @@ ul.calendarMode li .scheduleDiv {
     
     padding: 1vw;
     border-radius: 1vw;
+
+    font-size: calc(var(--big-font-size) * 0.5);
+    word-break: keep-all;
 }
 
 ul.calendarMode li .scheduleDiv span {
@@ -139,14 +150,17 @@ ul.listMode {
 ul.listMode > li {
     border: 1px #999 solid;
     padding: 0.5vw;
-}
 
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
 ul.listMode > li .monthNumber {
     color: var(--prefer-text);
     background-color: var(--accent-color);
 
-    width: 5.5vw;
-    height: 5.5vw;
+    width: calc(var(--big-font-size) * 1.5);
+    height: calc(var(--big-font-size) * 1.5);
 
     display: flex;
     align-items: center;
@@ -154,7 +168,7 @@ ul.listMode > li .monthNumber {
 
     border-radius: 50%;
     font-weight: 500;
-    font-size: 4vw;
+    font-size: var(--big-font-size);
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -169,7 +183,7 @@ ul.listMode > li ul {
 
 ul.listMode > li ul li {
     color: var(--prefer-text);
-    font-size: 3.5vw;
+    font-size: calc(var(--big-font-size) * 0.5);
     word-break: keep-all;
     font-weight: 300;
 }
