@@ -71,6 +71,7 @@ ul.calendarMode li.weekDay {
     text-align: center;
     align-items: center;
     justify-content: center;
+    font-size: 2.5vw;
 }
 
 ul.calendarMode li.scheduleTrue .dateDiv {
