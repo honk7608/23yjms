@@ -10,8 +10,11 @@ router.get('/', async function (req, res) {
 })
 
 router.get('/login', async function (req, res) {
-    if (req.session.member.isLogged) {res.redirect('/')}
-    EndWithRespond(req, res, 'mem;login')
+    if (req.session.member.isLogged) {
+        if(req.session.lastUrl == '/member/login') {res.redirect('/')}
+        else {res.redirect(req.session.lastUrl)}
+    }
+    else {EndWithRespond(req, res, 'mem;login', [], false)}
 });
 
 router.post('/login', async function (req, res) {
@@ -20,7 +23,7 @@ router.post('/login', async function (req, res) {
             isLogged: true,
             id: req.body.id
         }
-        res.redirect('/')
+        res.redirect(req.session.lastUrl)
     } else {
         res.redirect('/member/login')
     }
@@ -32,7 +35,7 @@ router.post('/logout', async function (req, res) {
         id: null
     }
 
-    res.redirect('/')
+    res.redirect(req.session.lastUrl)
 })
 
 router.get('/me', async function (req, res) {

@@ -48,6 +48,9 @@ app.use('*', function(req, res, next) {
             id: 'null'
         }
     }
+    if (!req.session.lastUrl) {
+        req.session.lastUrl = '/'
+    }
     
     next()
 })

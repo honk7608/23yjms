@@ -4,8 +4,11 @@
      * @param {Response} res Response 변수
      * @param {string} routeName 경로명 (ex: PageData/home/home.html -> home)
      * @param {{code: string, content: string|[]}[]} replacement Html 내용을 replace할 내용
+     * @param {Boolean} saveUrl req.session.lastUrl 변수에 현재 주소를 저장할지 결정
      */
-const EndWithRespond = function (req, res, routeName=null, replacement=null) {
+const EndWithRespond = function (req, res, routeName=null, replacement=null, saveUrl=true) {
+    if(saveUrl) {req.session.lastUrl = req.originalUrl}
+
     var fs = require('fs')
     var baseData = String(fs.readFileSync('./PageData/base.html', 'utf-8'))
     var respondData = String(fs.readFileSync(`./PageData/${routeName}/${routeName}.html`, 'utf-8'))
