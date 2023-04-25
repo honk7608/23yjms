@@ -68,4 +68,12 @@ router.get('/board', async function (req, res) {
     }
 })
 
+router.get('/viewArticle', async function (req, res) {
+    EndWithRespond(req, res, 'com;viewArticle', [])
+})
+
+router.get('/writeArticle', async function (req, res) {
+    EndWithRespond(req, res, 'com;writeArticle', [])
+})
+
 module.exports = router;
