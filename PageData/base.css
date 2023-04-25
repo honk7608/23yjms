@@ -357,28 +357,32 @@ input {
         position: absolute;
         
         left: 0;
-        top: 14.4vw;
+        top: var(--headerH);
 
         width: 100vw;
 
-        flex-direction: row;
-        justify-content: space-around;
-        background-color: var(--accent-color);
+        grid-template-columns: repeat(var(--submenuColumns), 1fr);
+        gap: 0;
+        
+        background-color: var(--prefer-background);
         color: var(--prefer-text);
+        box-shadow: -3px 6px #99999950;
     }
 
     header .menu li .submenu a {
         font-weight: 600;
         font-size: 3.5vw;
-        background-color: var(--prefer-background);
         color: var(--prefer-text);
-        margin: 1vw;
+        background-color: var(--accent-color-transparent);
         padding: 1vw;
-        border-radius: 5vw;
+        border-right: var(--accent-color) 1px solid;
+        border-bottom: var(--accent-color) 1px solid;
+
+        text-align: center;
     }
 
     header .menu li:hover .submenu {
-        display: flex;
+        display: grid;
     }
 
     header .member {
