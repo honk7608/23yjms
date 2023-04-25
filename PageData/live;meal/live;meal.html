@@ -139,7 +139,7 @@
     ButtonEl = document.getElementById('moveButton')
     ButtonEl.addEventListener("click", (event) => {
         InputEl = document.getElementById("numInput")
-        InputEl.value = Number(InputEl.value)
+        InputEl.value = Math.round(Number(InputEl.value))
         if(InputEl.value > endDay) {return}
         while (true) {
             HrefEl = document.getElementById(InputEl.value)
