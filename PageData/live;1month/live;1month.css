@@ -68,8 +68,6 @@ ul.calendarMode li .dateDiv {
 ul.calendarMode li.weekDay {
     color: var(--prefer-text);
     background-color: var(--accent-color-transparent);
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
     align-items: center;
     justify-content: center;
