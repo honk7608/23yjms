@@ -82,8 +82,6 @@ input {
         color: var(--prefer-text);
         --header-font-size: max(3vw, 30px);
 
-        z-index: 1;
-
         position: absolute;
         left: 0;
 
@@ -163,7 +161,6 @@ input {
     header .menu > li:hover .submenu a {
         color: var(--prefer-text);
         position: relative;
-        z-index: 2;
     }
     
     header .menu > li:hover .submenu a::before {
@@ -177,8 +174,6 @@ input {
 
         display: none;
         content: '';
-
-        z-index: 1;
     }
 
     header .menu > li:hover .submenu a:hover::before {
@@ -191,8 +186,10 @@ input {
         padding: 0.5vw;
 
         color: var(--prefer-text);
-        display: flex;
+        
+        display: grid;
         gap: 0.5vw;
+        grid-template-columns: auto 1fr;
     }
 
     header .member .member_icon{
@@ -229,23 +226,24 @@ input {
         flex-direction: column;
     }
 
-    header .member button {
+    header .member form {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        display: flex;
+    }
+
+    header .member form button {
         background-color: #E74646;
         color: white;
-
-        position: absolute;
         left: 0vw;
 
-        width: max-content;
+        width: 100%;
         padding: 1vw;
-        border-top-right-radius: 1vw;
-        border-bottom-right-radius: 1vw;
+        border-radius: 1vw;
         border: none;
 
         font-size: 2vw;
         font-weight: 700;
-
-        z-index: -1;
 
         transition: left 0.5s ease-in, box-shadow 0.1s;
 
@@ -253,9 +251,6 @@ input {
     }
 
     header .member:hover button {
-        left: var(--headerW);
-        width: max-content;
-
         transition: left 0.5s ease-out, box-shadow 0.1s;
     }
 
@@ -351,8 +346,6 @@ input {
 
         display: none;
         content: '';
-
-        z-index: 1;
     }
 
     header .menu > li:hover p::before {
@@ -372,8 +365,6 @@ input {
         justify-content: space-around;
         background-color: var(--accent-color);
         color: var(--prefer-text);
-
-        z-index: 1;
     }
 
     header .menu li .submenu a {
