@@ -66,6 +66,19 @@ app.get('/', async function (req, res) {
     EndWithRespond(req, res, 'home', [])
 })
 
+//error pages
+//404 (not found)
+app.use(function(req, res, next) {
+    EndWithRespond(req, res, 'err;NotFound', [{code: 'lastUrlText', content: req.session.lastUrl}], false)
+})
+
+//500 (error in app)
+app.use(function(err, req, res, next) {
+    console.log(`\n[ Error :: ${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}]`)
+    console.error(err.stack)    
+    EndWithRespond(req, res, 'err;AppError', [], false)
+})
+
 //app Starting
 app.listen(port, function () {
     console.log('============================================================')

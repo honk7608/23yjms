@@ -1,0 +1,59 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+}
+
+/* Desktop */ @media screen and (min-width: 425px){
+    main {
+        height: 100vh;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .errorCode {
+        color: #EEE;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .errorCode {
+        color: #151515;
+    }
+}
+
+.errorMessage {
+    display: flex;
+    flex-direction: column;
+    
+    font-size: var(--big-font-size);
+}
+
+.patternAccent {
+    width: max-content;
+    font-weight: 700;
+    font-size: calc(var(--big-font-size) * 2);
+}
+
+.subMessage {
+    font-weight: 500;
+    margin-bottom: 3vw;
+
+    color: var(--prefer-text);
+}
+
+.errorCode {
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: max-content;
+    
+    font-size: 30vw;
+    font-weight: 900;
+    text-size-adjust: auto;
+    
+    display: flex;
+    align-items: center;
+}
