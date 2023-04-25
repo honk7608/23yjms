@@ -1,6 +1,6 @@
 <div class="selectDiv">
     <div class="CategoryDiv">
-        <span class="patternAccent">한달 달력으로 보기</span>
+        <span class="patternAccent" style="word-break: keep-all;">한달 달력으로 보기</span>
         <form action="/living/schedule" method="get" id="oneMonthForm">
             <input type="month" name="month" id="monthInput" class="monthInput" required>
             <input type="number" name="mode" value="0" style="display: none;">
@@ -9,7 +9,7 @@
     </div>
     <hr>
     <div class="CategoryDiv">
-        <span class="patternAccent">1년 학사일정 보기</span>    
+        <span class="patternAccent" style="word-break: keep-all;">1년 학사일정 보기</span>    
         <form action="/living/schedule" method="get" id="oneYearForm">
             <input type="number" name="mode" value="1" style="display: none;">
             <button type="submit" form="oneYearForm" class="oneYearForm">적용하기</button>
