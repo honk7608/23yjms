@@ -111,7 +111,7 @@
         MainEl.style.cssText += AddText
         })
     }
-    
+
     setOneWidth()
     window.addEventListener("resize", (event) => {setOneWidth()});
 
@@ -129,6 +129,9 @@
     }
 
     TodayButtonEl.addEventListener("click", (event) => {
+        window.location.href = `/living/meal#${mealList.day}`
+    })
+    delay(100).then((event) => {
         window.location.href = `/living/meal#${mealList.day}`
     })
     
