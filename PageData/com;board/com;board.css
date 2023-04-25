@@ -16,6 +16,21 @@ main {
     color: inherit;
 }
 
+.infoDiv .writeDiv {
+    display: block;
+    padding: 0.5vw;
+    padding-left: 1vw;
+    margin-top: 1vw;
+
+    border-radius: 20vw;
+    
+    background-color: var(--accent-color);
+    color: var(--prefer-background);
+
+    font-weight: 700;
+    font-size: 2vw;
+}
+
 .articleDiv {
     width: 100%;
     padding: 1vw;

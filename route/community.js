@@ -62,7 +62,8 @@ router.get('/board', async function (req, res) {
             {code: 'pageDescribe', content: categoryData[boardName].describe},
             {code: 'articles', content: JSON.stringify(Articles)},
             {code: 'memberID', content: req.session.member.id},
-            {code: 'boardName', content: boardName}
+            {code: 'boardName1', content: boardName},
+            {code: 'boardName2', content: boardName}
         ])
     }
 })
