@@ -32,7 +32,7 @@
             queryData = '<!-- {queryData} -->'
             SelectedYear = queryData.split('-')[0]
             SelectedMonth = queryData.split('-')[1]
-            
+            calendarText += `<div class='monthNumber'>${mqueryData.split('-')[1]}</div>`
             MonthInputEl = document.getElementById('monthInput')
             MonthInputEl.value = queryData
             
