@@ -48,6 +48,7 @@ main {
     box-sizing: border-box;
 
     background-color: var(--prefer-background);
+    color: var(--prefer-text);
 }
 
 input::-webkit-outer-spin-button,
