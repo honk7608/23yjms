@@ -67,16 +67,36 @@ app.get('/', async function (req, res) {
 })
 
 //error pages
+//no-permission
+app.get('/no-perm', async function (req, res) {
+    EndWithRespond(req, res, 'errPage', [
+        {code: 'lastUrlText', content: req.session.lastUrl},
+        {code: 'mainMessage', content: '그.. 누구세요?'},
+        {code: 'subMessage', content: '여기 들어올 수 없는 분인 것 같네요... 죄송하지만 돌아가주세요'},
+        {code: 'errCode', content: ''}
+    ], false)
+})
+
 //404 (not found)
 app.use(function(req, res, next) {
-    EndWithRespond(req, res, 'err;NotFound', [{code: 'lastUrlText', content: req.session.lastUrl}], false)
+    EndWithRespond(req, res, 'errPage', [
+        {code: 'lastUrlText', content: req.session.lastUrl},
+        {code: 'mainMessage', content: '어, 여기가 어디죠?'},
+        {code: 'subMessage', content: '길을 잃으신 것 같네요...'},
+        {code: 'errCode', content: '404'}
+    ], false)
 })
 
 //500 (error in app)
 app.use(function(err, req, res, next) {
-    console.log(`\n[ Error :: ${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}]`)
+    console.log(`\n[ Error :: ${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} ]`)
     console.error(err.stack)    
-    EndWithRespond(req, res, 'err;AppError', [], false)
+    EndWithRespond(req, res, 'errPage', [
+        {code: 'lastUrlText', content: req.session.lastUrl},
+        {code: 'mainMessage', content: '에취! 에엣취!'},
+        {code: 'subMessage', content: '제가 좀 아프네요... 건강해지면 다시 와주세요'},
+        {code: 'errCode', content: '500'}
+    ], false)
 })
 
 //app Starting
