@@ -17,15 +17,19 @@ main {
 }
 
 .infoDiv .writeDiv {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: max(0.5vw, 10px);
+    
+    margin-top: 1vw;
     padding: 0.5vw;
     padding-left: 1vw;
-    margin-top: 1vw;
 
     border-radius: 20vw;
     
     background-color: var(--accent-color);
-    color: var(--prefer-background);
+    color: var(--prefer-text);
 
     font-weight: 700;
     font-size: 2vw;
