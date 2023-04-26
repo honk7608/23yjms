@@ -5,6 +5,7 @@
     * {
         --accent-color: #FF8D12;
         --accent-color-transparent: #FF8D1250;  
+        --accent-color-light: #FADDC1;
         --prefer-background: white;
         --prefer-text: black;
     }
@@ -14,6 +15,7 @@
     * {
         --accent-color: #427ADC;
         --accent-color-transparent: #427ADC50;  
+        --accent-color-light: #192643;
         --prefer-background: black;
         --prefer-text: white;
     }
