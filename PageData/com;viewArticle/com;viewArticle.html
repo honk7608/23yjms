@@ -1,0 +1,20 @@
+<div class="infoDiv">
+    <span class="title"><!-- {title} --></span>
+    <hr>
+    <ul class="additionalInfo">
+        <li>작성일시 : <!-- {createdDate} --></li>
+        <li>게시판 : <!-- {boardStringName} --></li>
+        <li>작성자 : <!-- {author_name} --></li>
+    </ul>
+    <a class="returnDiv" href="/community/board?boardName=<!-- {boardName1} -->">
+        <i class="fa-solid fa-arrow-left"></i> 
+        게시판으로 돌아가기
+    </a>
+</div>
+<div class="contentDiv">
+    <script>
+        const article = JSON.parse('<!-- {articleData} -->')
+        console.log(article)
+        document.write(article.content)
+    </script>
+</div>
