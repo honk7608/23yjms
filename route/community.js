@@ -22,6 +22,8 @@ async function getBoardArticles(dbOption, boardName, startID=null, count=10) {
         additionalQuery = ``
     }
 
+    console.log(additionalQuery)
+
     // 글 모두 가져오기
     const [Articles, fields] = await connection.execute(
         `SELECT ${boardName}_board.id, title, createdTime, user.name AS author_name, author_id 
@@ -122,8 +124,43 @@ router.get('/viewArticle', async function (req, res) {
         const article = await getOneArticle(req.dbOption, boardName, articleID)
         displayDateText = `${article.createdTime.getFullYear()}.${article.createdTime.getMonth() + 1}.${article.createdTime.getDate()}`
 
+        // LineChange
+        displayContent = article.content.split('\r\n').join('<br>')
+
+        // ***
+        BoldItalicList = displayContent.split('***')
+        for(i = 0; i < BoldItalicList.length; i++) {
+            if(i % 2 == 0) {continue}
+            BoldItalicList[i] = `<span style="font-weight: bold; font-style: italic;">${BoldItalicList[i]}</span>`
+        }
+        displayContent = BoldItalicList.join('')
+
+        // **
+        BoldList = displayContent.split('**')
+        for(i = 0; i < BoldList.length; i++) {
+            if(i % 2 == 0) {continue}
+            BoldList[i] = `<span style="font-weight: bold;">${BoldList[i]}</span>`
+        }
+        displayContent = BoldList.join('')
+
+        // *
+        ItalicList = displayContent.split('*')
+        for(i = 0; i < ItalicList.length; i++) {
+            if(i % 2 == 0) {continue}
+            ItalicList[i] = `<span style="font-style: italic;">${ItalicList[i]}</span>`
+        }
+        displayContent = ItalicList.join('')
+
+        // --
+        LineThroughList = displayContent.split('--')
+        for(i = 0; i < LineThroughList.length; i++) {
+            if(i % 2 == 0) {continue}
+            LineThroughList[i] = `<span style="text-decoration: line-through;">${LineThroughList[i]}</span>`
+        }
+        displayContent = LineThroughList.join('')
+
         EndWithRespond(req, res, 'com;viewArticle', [
-            {code: 'articleData', content: JSON.stringify(article)},
+            {code: 'articleData', content: displayContent},
             {code: 'boardName1', content: boardName},
             {code: 'title', content: article.title},
             {code: 'createdDate', content: displayDateText},
@@ -143,20 +180,74 @@ router.get('/writeArticle', async function (req, res) {
     for(const oneboardName in categoryData) {
         if (boardName == oneboardName) {existingBoard = true; break;}
     }
+    if(!existingBoard) {return res.redirect(req.session.lastUrl)}
 
-    if(!existingBoard) {res.redirect(req.session.lastUrl)}
+    if(articleID) {
+        const article = await getOneArticle(req.dbOption, boardName, articleID)
+        if(article.author_id != req.session.member.id) {return req.redirect('/no-perm')}
+        EndWithRespond(req, res, 'com;writeArticle', [
+            {code: 'textContent', content: article.content},
+            {code: 'articleTitle', content: article.title},
+            {code: 'boardName', content: boardName},
+            {code: 'articleIDText', content: `&articleID=${article.id}`}
+        ])
+    }
     else {
-        if(articleID) {
-            const article = await getOneArticle(req.dbOption, boardName, articleID)
-            if(article.author_id != req.session.member.id) {req.redirect('/no-perm')}
-            else {EndWithRespond(req, res, 'com;writeArticle', [])}
-        }
-        else {EndWithRespond(req, res, 'com;writeArticle', [])}
+        EndWithRespond(req, res, 'com;writeArticle', [
+            {code: 'textContent', content: ''},
+            {code: 'articleTitle', content: ''},
+            {code: 'boardName', content: boardName},
+            {code: 'articleIDText', content: ''}
+        ])
     }
 })
 
 router.post('/writeArticle', async function (req, res) {
-    res.redirect('')
+    if(!req.session.member.isLogged) {return res.redirect('/member/login')}
+    
+    var Article = {}
+
+    const requrl = req.url;
+    const queryData = url.parse(requrl, true).query;
+    const boardName = queryData.board
+    const articleID = queryData.articleID
+
+    Article.content = req.body.content
+    Article.title = req.body.title
+
+    existingBoard = false
+    for(const oneboardName in categoryData) {
+        if (boardName == oneboardName) {existingBoard = true; break;}
+    }
+    if(!existingBoard) {console.log('Non-Exisitent'); return res.redirect(req.session.lastUrl)}
+
+    const connection = await mysql.createConnection(req.dbOption);
+
+    if(!articleID) {
+        Article.author_id = req.session.member.id
+
+        lastArticle = await getBoardArticles(req.dbOption, boardName, null, 1)
+        if(lastArticle.length == 0) {Article.id = 1}
+        else {Article.id = lastArticle[0].id + 1}
+
+        Article.createdTime = new Date()
+        queryText = `INSERT INTO ${boardName}_board (id, title, content, createdTime, author_id)
+        VALUES (${Article.id}, '${Article.title}', '${Article.content}', '${Article.createdTime.toJSON()}', ${Article.author_id})`
+        await connection.execute(queryText)
+    } else {
+        Article.id = articleID
+        beforeArticle = await getOneArticle(req.dbOption, boardName, Article.id)
+        if(req.session.member.id != beforeArticle.author_id) {return res.redirect(`/community/board?boardName=${boardName}`)}
+        await connection.execute(
+            `UPDATE ${boardName}_board
+            SET title = '${Article.title}', content = '${Article.content}'
+            WHERE id = ${Article.id};`
+        )
+    }
+
+    connection.end()
+
+    res.redirect(`/community/viewArticle?board=${boardName}&articleID=${Article.id}`)
 })
 
 module.exports = router;

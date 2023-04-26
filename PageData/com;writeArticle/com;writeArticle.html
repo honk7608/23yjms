@@ -1,0 +1,22 @@
+<form action="/community/writeArticle?board=<!-- {boardName} --><!-- {articleIDText} -->" method="post" id="InputForm">
+    <input type="text" class="title" name="title" placeholder="제목" value="<!-- {articleTitle} -->">
+    <textarea wrap="soft" rows="10" cols="50" form="InputForm" name="content"><!-- {textContent} --></textarea>
+    <button type="submit">저장하고 게시하기</button>
+</form>
+<div>
+    텍스트 꾸미는 법
+    <ul>
+        <li>
+            **aaa** 로 쓰면 aaa는 볼드처리됩니다. (<span style="font-weight: bold;">aaa</span>)
+        </li>
+        <li>
+            *bbb* 로 쓰면 bbb는 이탤릭 처리됩니다. (<span style="font-style: italic;">bbb</span>)
+        </li>
+        <li>
+            ***ccc*** 로 쓰면 ccc는 볼드&이탤릭 처리됩니다. (<span style="font-weight: bold; font-style: italic;">ccc</span>) 
+        </li>
+        <li>
+            --ddd-- 로 쓰면 ddd는 취소선 처리됩니다. (<span style="text-decoration: line-through;">ddd</span>)
+        </li>
+    </ul>
+</div>
