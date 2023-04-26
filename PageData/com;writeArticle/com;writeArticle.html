@@ -1,5 +1,5 @@
 <form action="/community/writeArticle?board=<!-- {boardName} --><!-- {articleIDText} -->" method="post" id="InputForm">
-    <input type="text" class="title" name="title" placeholder="제목" value="<!-- {articleTitle} -->">
+    <input type="text" class="title" name="title" placeholder="제목" value="<!-- {articleTitle} -->" required>
     <textarea wrap="soft" rows="10" cols="50" form="InputForm" name="content"><!-- {textContent} --></textarea>
     <button type="submit">저장하고 게시하기</button>
 </form>
