@@ -102,7 +102,11 @@
                 MainEl.style.width = `calc(100vw - ${HeaderEl.clientWidth + 1}px)`
                 // LogoEl.style.cssText = `width: ${HeaderEl.clientWidth + 1}px;`
                 MemberEl.style.cssText = `--headerW: ${HeaderEl.clientWidth + 1}px;`
-                HeaderEl = ``
+                if(BodyEl.clientHeight < MainEl.clientHeight) {
+                    HeaderEl.style.cssText = `height: ${MainEl.clientHeight}px;`
+                } else {
+                    HeaderEl.style.cssText = ``
+                }
             } else {
                 MainEl.style.cssText = `width: 100vw;`
                 MemberEl.style.cssText = `--headerH: ${HeaderEl.clientHeight}px;`

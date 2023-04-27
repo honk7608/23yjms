@@ -28,8 +28,8 @@ main {
 
     border-radius: 20vw;
     
-    background-color: var(--accent-color);
-    color: var(--prefer-text);
+    background-color: var(--accent-color-weak);
+    color: var(--prefer-background);
 
     font-weight: 700;
     font-size: 2vw;
@@ -54,6 +54,8 @@ main {
     position: relative;
 
     background-color: transparent;
+
+    word-break: keep-all;
 }
 
 .articleDiv td.articleTitle {

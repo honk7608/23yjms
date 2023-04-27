@@ -1,6 +1,94 @@
-input {
+main {
+    padding: 0;
+}
+
+.infoDiv {
+    background-color: var(--accent-color-weak);
+    color: var(--prefer-background);
+
     width: 100%;
+    padding: 1vw;
+}
+
+.infoDiv input {
+    width: 100%;
+
+    padding: 0.5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+
     font-size: var(--big-font-size);
+    font-weight: 700;
+        
+    color: var(--prefer-text);
+
+    outline: none;
+    border: 1px solid var(--prefer-background);
+    border-radius: 20vw;
+}
+
+@media (prefers-color-scheme: light) {
+    .infoDiv input {
+        background-color: #FFFFFF75;
+    }
+    .infoDiv input::placeholder {
+        color: #757575;
+    }
+    textarea {
+        background-color: #00000050;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .infoDiv input {
+        background-color: #00000075;
+    }
+    .infoDiv input::placeholder {
+        color: #8A8A8A;
+    }
+    textarea {
+        background-color: #FFFFFF50;
+    }
+}
+
+.infoDiv .ButtonsDiv {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vw;
+}
+
+.infoDiv .ButtonsDiv a,
+.infoDiv .ButtonsDiv button {
+    display: flex;
+    align-items: center;
+    gap: max(0.5vw, 10px);
+
+    position: relative;
+
+    padding: 0.5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+
+    border-radius: 20vw;
+
+    font-weight: 700;
+    font-size: 2vw;
+
+    border: none;
+}
+
+.infoDiv .ButtonsDiv a.ToBoard {
+    background-color: var(--accent-color-strong);
+    color: var(--prefer-text);
+}
+
+.infoDiv .ButtonsDiv a.ToArticle {
+    background-color: var(--accent-color);
+    color: var(--prefer-text);
+}
+
+.contentDiv {
+    padding: 1vw;
 }
 
 textarea {
@@ -8,4 +96,21 @@ textarea {
     width: 100%;
     height: 100%;
     font-size: calc(var(--big-font-size) * 0.6);
+
+    color: var(--prefer-text);
+}
+
+.decorationDiv {
+    margin: 1vw;
+    padding: 1vw;
+
+    border: 1px #999 solid;
+    border-radius: 1vw;
+
+    font-size: calc(var(--big-font-size) * 0.6);
+}
+
+.decorationDiv span.patternAccent {
+    font-size: var(--big-font-size);
+    font-weight: 700;
 }

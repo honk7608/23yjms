@@ -6,10 +6,16 @@
         <li>게시판 : <!-- {boardStringName} --></li>
         <li>작성자 : <!-- {author_name} --></li>
     </ul>
-    <a class="returnDiv" href="/community/board?boardName=<!-- {boardName1} -->">
-        <i class="fa-solid fa-arrow-left"></i> 
-        게시판으로 돌아가기
-    </a>
+    <div class="ButtonsDiv">    
+        <a class="returnDiv" href="/community/board?boardName=<!-- {boardName1} -->" style="justify-content: flex-start;">
+            <i class="fa-solid fa-arrow-left"></i> 
+            게시판으로 돌아가기
+        </a>
+        <a class="editDiv" href="/community/writeArticle?board=<!-- {boardName2} -->&articleID=<!-- {articleID} -->" style="justify-content: flex-end;">
+            수정하기
+            <i class="fa-solid fa-pen-to-square"></i>
+        </a>
+    </div>
 </div>
 <div class="contentDiv">
     <!-- {articleData} -->

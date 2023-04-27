@@ -32,25 +32,37 @@ main {
     justify-content: space-around;
 }
 
-.infoDiv .returnDiv {
+.infoDiv .ButtonsDiv {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vw;
+}
+
+.infoDiv .ButtonsDiv a {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     gap: max(0.5vw, 10px);
 
     position: relative;
 
-    margin-top: 1vw;
     padding: 0.5vw;
     padding-left: 1vw;
+    padding-right: 1vw;
 
     border-radius: 20vw;
-    
-    background-color: var(--accent-color-light);
-    color: var(--prefer-text);
 
     font-weight: 700;
     font-size: 2vw;
+}
+
+.infoDiv .ButtonsDiv a.returnDiv {
+    background-color: var(--accent-color-strong);
+    color: var(--prefer-text);
+}
+
+.infoDiv .ButtonsDiv a.editDiv {
+    background-color: var(--accent-color-weak);
+    color: var(--prefer-background);
 }
 
 .contentDiv {

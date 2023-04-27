@@ -159,9 +159,27 @@ router.get('/viewArticle', async function (req, res) {
         }
         displayContent = LineThroughList.join('')
 
+        // __
+        UnderLineList = displayContent.split('__')
+        for(i = 0; i < UnderLineList.length; i++) {
+            if(i % 2 == 0) {continue}
+            UnderLineList[i] = `<span style="text-decoration: underline;">${UnderLineList[i]}</span>`
+        }
+        displayContent = UnderLineList.join('')
+
+        // @@
+        ColorAccentList = displayContent.split('@@')
+        for(i = 0; i < ColorAccentList.length; i++) {
+            if(i % 2 == 0) {continue}
+            ColorAccentList[i] = `<span style="color: var(--accent-color);">${ColorAccentList[i]}</span>`
+        }
+        displayContent = ColorAccentList.join('')
+
         EndWithRespond(req, res, 'com;viewArticle', [
             {code: 'articleData', content: displayContent},
+            {code: 'articleID', content: article.id},
             {code: 'boardName1', content: boardName},
+            {code: 'boardName2', content: boardName},
             {code: 'title', content: article.title},
             {code: 'createdDate', content: displayDateText},
             {code: 'boardStringName', content: categoryData[boardName].title},
@@ -184,20 +202,24 @@ router.get('/writeArticle', async function (req, res) {
 
     if(articleID) {
         const article = await getOneArticle(req.dbOption, boardName, articleID)
-        if(article.author_id != req.session.member.id) {return req.redirect('/no-perm')}
+        if(article.author_id != req.session.member.id) {return res.redirect('/no-perm')}
         EndWithRespond(req, res, 'com;writeArticle', [
+            {code: 'boardName1', content: boardName},
+            {code: 'articleIDText1', content: `&articleID=${article.id}`},
+            {code: 'back_url', content: `viewArticle?board=${boardName}&articleID=${article.id}`},
             {code: 'textContent', content: article.content},
-            {code: 'articleTitle', content: article.title},
-            {code: 'boardName', content: boardName},
-            {code: 'articleIDText', content: `&articleID=${article.id}`}
+            {code: 'returnDivClass', content: 'ToArticle'},
+            {code: 'articleTitle', content: article.title}
         ])
     }
     else {
         EndWithRespond(req, res, 'com;writeArticle', [
+            {code: 'articleIDText1', content: ''},
+            {code: 'boardName1', content: boardName},
+            {code: 'back_url', content: `board?boardName=${boardName}`},
             {code: 'textContent', content: ''},
-            {code: 'articleTitle', content: ''},
-            {code: 'boardName', content: boardName},
-            {code: 'articleIDText', content: ''}
+            {code: 'returnDivClass', content: 'ToBoard'},
+            {code: 'articleTitle', content: ''}
         ])
     }
 })
