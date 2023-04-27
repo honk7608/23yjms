@@ -10,7 +10,7 @@
 ### 자료
 
 - 구글 드라이브 : http://gg.gg/yjms2023project
-- 테스트 웹 : http://yjms.herokuapp.com
+- 테스트 웹 : http://yjms.site
 - Github : https://github.com/honk7608/23yjms
 
 ### 홈페이지 계획잡기

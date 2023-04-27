@@ -143,7 +143,7 @@ ul.calendarMode li.afterMonth {
 /* CalendarMode Mobile */ @media screen and (max-width: 424px){ 
     ul.calendarMode li .dateDiv {
         background-color: transparent !important;
-        font-size: 3.3vw;
+        font-size: 4vw;
     }
 }
 
