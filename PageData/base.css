@@ -417,15 +417,20 @@ input {
     }
 
     header .member .NoLog {
+        display: none;
         position: absolute;
-        top: var(--headerH);
-        left: 0;
         
-        background-color: var(--prefer-background);
+        left: 0;
+        top: var(--headerH);
+
         width: 100vw;
 
-        display: none;
-        justify-content: space-around;
+        grid-template-columns: repeat(var(--submenuColumns), 1fr);
+        gap: 0;
+        
+        background-color: var(--prefer-background);
+        color: var(--prefer-text);
+        box-shadow: -3px 6px #99999950;
     }
 
     header .member .NoLog a {
