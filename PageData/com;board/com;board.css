@@ -97,8 +97,9 @@ main {
     display: none;
 
     position: absolute;
-    left: 0;
-    width: 100%;
+    right: 0;
+    width: max-content;
+    min-width: 100%;
     padding: 1vw;
 
     word-break: keep-all;
