@@ -376,7 +376,7 @@ input {
 
     header .menu li .submenu a {
         font-weight: 600;
-        font-size: 3.5vw;
+        font-size: 4.5vw;
         color: var(--prefer-text);
         background-color: var(--accent-color-transparent);
         padding: 1vw;
