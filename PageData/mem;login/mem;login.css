@@ -34,6 +34,7 @@ form {
     padding: 5vw;
     
     border-radius: 5vw;
+    height: fit-content;
 }
 
 input {
