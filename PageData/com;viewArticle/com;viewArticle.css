@@ -65,6 +65,16 @@ main {
     color: var(--prefer-background);
 }
 
+.infoDiv .ButtonsDiv.NotMe a.returnDiv {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.infoDiv .ButtonsDiv.NotMe a.editDiv {
+    display: none;
+}
+
+
 .contentDiv {
     padding: 1vw;
     font-size: calc(var(--big-font-size) * 0.6);

@@ -22,8 +22,6 @@ async function getBoardArticles(dbOption, boardName, startID=null, count=10) {
         additionalQuery = ``
     }
 
-    console.log(additionalQuery)
-
     // 글 모두 가져오기
     const [Articles, fields] = await connection.execute(
         `SELECT ${boardName}_board.id, title, createdTime, user.name AS author_name, author_id 
@@ -174,6 +172,9 @@ router.get('/viewArticle', async function (req, res) {
             ColorAccentList[i] = `<span style="color: var(--accent-color);">${ColorAccentList[i]}</span>`
         }
         displayContent = ColorAccentList.join('')
+        
+        if(article.author_id == req.session.member.id) {AdditionalClass = ''}
+        else {AdditionalClass = ' NotMe'}
 
         EndWithRespond(req, res, 'com;viewArticle', [
             {code: 'articleData', content: displayContent},
@@ -183,7 +184,8 @@ router.get('/viewArticle', async function (req, res) {
             {code: 'title', content: article.title},
             {code: 'createdDate', content: displayDateText},
             {code: 'boardStringName', content: categoryData[boardName].title},
-            {code: 'author_name', content: article.author_name}
+            {code: 'author_name', content: article.author_name},
+            {code: 'ButtonsDivAddClass', content: AdditionalClass}
         ])
     }
 })
