@@ -431,11 +431,13 @@ input {
     header .member .NoLog a {
         font-weight: 600;
         font-size: 3.5vw;
-        background-color: var(--prefer-background);
         color: var(--prefer-text);
-        margin: 1vw;
+        background-color: var(--accent-color-transparent);
         padding: 1vw;
-        border-radius: 5vw;
+        border-right: var(--accent-color) 1px solid;
+        border-bottom: var(--accent-color) 1px solid;
+
+        text-align: center;
     }
 
     header .member:hover .NoLog {
