@@ -394,6 +394,7 @@ input {
         text-align: center;
         font-size: 4vw;
         margin-right: 1vw;
+        margin-right: 1vw;
     }
 
     header .member .member_icon {
@@ -414,6 +415,10 @@ input {
     header .member .signup_text {
         color: var(--prefer-text);
         font-size: 3.5vw;
+    }
+    
+    header .menu > li:hover p::before {
+        display: block;
     }
 
     header .member .NoLog {
@@ -441,6 +446,7 @@ input {
         padding: 1vw;
         border-right: var(--accent-color) 1px solid;
         border-bottom: var(--accent-color) 1px solid;
+        align-items: center;
 
         text-align: center;
     }
