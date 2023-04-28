@@ -43,7 +43,7 @@ input {
     font-size: inherit;
 }
 
-input[type='text'], input[type='password'] input[type='number']{
+input[type='text'], input[type='password'], input[type='number']{
     color: var(--prefer-text);
     background-color: transparent;
     
