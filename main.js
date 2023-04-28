@@ -69,6 +69,7 @@ app.get('/', async function (req, res) {
 //error pages
 //no-permission
 app.get('/no-perm', async function (req, res) {
+    if(!req.session.lastUrl) {req.session.lastUrl == '/'}
     EndWithRespond(req, res, 'errPage', [
         {code: 'lastUrlText', content: req.session.lastUrl},
         {code: 'mainMessage', content: '그.. 누구세요?'},
