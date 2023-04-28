@@ -15,7 +15,7 @@ main {
         --input-back: #FFFFFF95;
     }
 }
-
+ 
 @media (prefers-color-scheme: light) {
     * {
         --form-back: #FFFFFF95;
