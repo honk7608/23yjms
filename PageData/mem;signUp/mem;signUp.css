@@ -53,6 +53,7 @@ input[type='text'], input[type='password'], input[type='number']{
 }
 
 button.submit {
+    font-size: 3vw;
     color: var(--prefer-text);
     background-color: var(--accent-color);
     
@@ -67,6 +68,10 @@ button.submit {
     form {
         background-color: var(--form-back);
         width: 80vw;
+        font-size: 6.5vw;
+    }
+    
+    button.submit {
         font-size: 6.5vw;
     }
 }
