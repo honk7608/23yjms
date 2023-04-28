@@ -52,7 +52,7 @@ input[type='text'], input[type='password'], input[type='number']{
 
 }
 
-button[type='submit'] {
+button.submit {
     color: var(--prefer-text);
     background-color: var(--accent-color);
     
