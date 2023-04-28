@@ -1,0 +1,72 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url(https://images.unsplash.com/photo-1564669733547-c6ca390e11c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+    * {
+        --form-back: #00000095;
+        --input-back: #FFFFFF95;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    * {
+        --form-back: #FFFFFF95;
+        --input-back: #00000095;
+    }
+}
+
+form {
+    background-color: var(--form-back);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    font-size: 3vw;
+
+    padding: 5vw;
+    
+    border-radius: 5vw;
+}
+
+input {
+    width: 100%;
+
+    padding: 1vw;
+    font-size: inherit;
+}
+
+input[type='text'], input[type='password'] input[type='number']{
+    color: var(--prefer-text);
+    background-color: transparent;
+    
+    border: none;
+    border-bottom: var(--prefer-text) 3px solid;
+
+}
+
+input.submit {
+    color: var(--prefer-text);
+    background-color: var(--accent-color);
+    
+    border-radius: 1vw;
+    border: none;
+    
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Mobile */ @media screen and (max-width: 424px){
+    form {
+        background-color: var(--form-back);
+        width: 80vw;
+        font-size: 6.5vw;
+    }
+}

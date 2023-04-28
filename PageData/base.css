@@ -421,7 +421,7 @@ input {
         top: var(--headerH);
         left: 0;
         
-        background-color: var(--accent-color);
+        background-color: var(--prefer-background);
         width: 100vw;
 
         display: none;
