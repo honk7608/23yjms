@@ -22,6 +22,22 @@
         align-items: center;
     }
 
+    header .logo img.LogoForDesktop {
+        display: none;
+    }
+
+    header .logo {
+        display: inline-flex;
+        width: 20vw;
+
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+
+    header .logo img.LogoForMobile {
+        width: 100%;
+        object-fit: cover;
+    }
 
     header .menu {
         width: 80vw;

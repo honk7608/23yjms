@@ -48,7 +48,8 @@
 <body>
     <header>
         <a class="logo" href="/" id="logo">
-            <img src="/src/logo.jpg" alt="logo">
+            <!-- <img class="LogoForDesktop" src="/src/logo.jpg" alt="로고"> -->
+            <img class="LogoForMobile" src="/src/logoShort.png" alt="로고">
         </a>
         <div class="member" id="member">
             <a class="member_icon">
@@ -102,7 +103,7 @@
             
             if (BodyEl.clientWidth >= 601) {
                 MainEl.style.width = `calc(100vw - ${HeaderEl.clientWidth + 1}px)`
-                // LogoEl.style.cssText = `width: ${HeaderEl.clientWidth + 1}px;`
+                LogoEl.style.cssText = `min-height: calc(${HeaderEl.clientWidth + 1}px * 1050 / 1400);`
                 MemberEl.style.cssText = `--headerW: ${HeaderEl.clientWidth + 1}px;`
                 if(BodyEl.clientHeight < MainEl.clientHeight) {
                     HeaderEl.style.cssText = `height: ${MainEl.clientHeight}px;`
@@ -113,10 +114,7 @@
                 MainEl.style.cssText = `width: 100vw;`
                 MemberEl.style.cssText = `--headerH: ${HeaderEl.clientHeight}px;`
                 HeaderEl.style.cssText = `--headerH: ${HeaderEl.clientHeight}px;`
-                // for(const key in SubmenuEls) {
-                //     if(key != Number(key)) {continue}
-                //     SubmenuEls[key].style.cssText = `top: ${HeaderEl.clientHeight}px;`
-                // }
+                LogoEl.style.cssText = ''
             }
         }
 

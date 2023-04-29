@@ -35,6 +35,25 @@
         right: 0;
     }
 
+    header .logo img.LogoForMobile {
+        display: none;
+    }
+
+    header .logo {
+        display: inline-flex;
+        width: 100%;
+        justify-content: center;
+
+        background-image: url(/src/logo.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    header .logo img.LogoForDesktop {
+        max-width: 15vw;
+        object-fit: contain;
+    }
 
     header .menu {
         width: 100%;
