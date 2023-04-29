@@ -1,0 +1,212 @@
+    * {
+        --big-font-size: min(4vw, 40px)
+    }
+
+    body {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+    }
+
+    header {
+        width: max-content;
+        min-width: calc(var(--header-font-size) * 5);
+        min-height: 100vh;
+
+        box-sizing: border-box;
+
+        background-color: var(--prefer-background);
+        border-right: 1px #999999 solid;
+
+        color: var(--prefer-text);
+        --header-font-size: max(3vw, 30px);
+
+        position: absolute;
+        left: 0;
+
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+
+    main {
+        position: absolute;
+        box-sizing: border-box;
+        right: 0;
+    }
+
+
+    header .menu {
+        width: 100%;
+        list-style: none;
+        
+        display: flex;
+        flex-direction: column;
+        margin-top: 1vw;
+        padding: 0;
+    }
+
+    header .menu > li {
+        background-color: transparent;
+        padding : 0.5vw;
+    }
+    
+    header .menu > li p {
+        width: fit-content;
+
+        margin-bottom: 0.5vw;
+
+        font-size: var(--header-font-size);
+        font-weight: 800;
+    }
+
+    @media (prefers-color-scheme: light) {
+        header .menu > li p {
+            background: url('/src/patternY.png') repeat-x center bottom;
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        header .menu > li p {
+            background: url('/src/patternB.png') repeat-x center bottom;
+        }
+    }
+
+    header .menu > li:hover p {
+        background: url('/src/pattern.png') repeat-x center bottom;
+    }
+    
+    header .menu > li:hover {
+        background-color: var(--accent-color);
+        color: var(--prefer-text);
+    }
+
+    header .menu > li .submenu {
+        background-color: var(--prefer-background);
+        padding: 1vw;
+
+        font-weight: 700;
+        font-size: calc(var(--header-font-size) * 0.6);
+        
+        display: none;
+        align-items: first baseline;
+        flex-direction: column;
+
+        border-radius: 1vw;
+    }
+    
+    header .menu > li:hover .submenu {
+        display: flex;
+    }
+
+    header .menu > li:hover .submenu a {
+        color: var(--prefer-text);
+        position: relative;
+    }
+    
+    header .menu > li:hover .submenu a::before {
+        background-color: var(--accent-color-transparent);
+        border-radius: 2vw;
+        
+        width: 100%;
+        height: 0.5vw;
+        position: absolute;
+        bottom: 0;
+
+        display: none;
+        content: '';
+    }
+
+    header .menu > li:hover .submenu a:hover::before {
+        display: block;
+    }
+
+    header .member {
+        width: 100%;
+
+        padding: 0.5vw;
+
+        color: var(--prefer-text);
+        
+        display: grid;
+        gap: 0.5vw;
+        grid-template-columns: auto 1fr;
+    }
+
+    header .member .member_icon{
+        color: inherit;
+
+        font-size: calc(var(--header-font-size) - 1vw);
+        /* --header-font-size: max(3vw, 30px); */
+
+        width: calc( var(--header-font-size) + 1.5vw);
+        height: calc( var(--header-font-size) + 1.5vw);
+        border-radius: 50%;
+
+        padding: 0.5vw;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    header .member .member_text {
+        font-size: 2vw;
+        color: var(--prefer-text);
+    }
+
+    header .member .NoLog {
+        height: inherit;
+
+        color: inherit;
+        
+        font-weight: 700;
+        font-size: calc(var(--header-font-size) - 1.25vw);
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    header .member form {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        display: flex;
+    }
+
+    header .member form button {
+        background-color: #E74646;
+        color: white;
+        left: 0vw;
+
+        width: 100%;
+        padding: 1vw;
+        border-radius: 1vw;
+        border: none;
+
+        font-size: 2vw;
+        font-weight: 700;
+
+        transition: left 0.5s ease-in, box-shadow 0.1s;
+
+        box-shadow: -3px 6px #99999950;
+    }
+
+    header .member:hover button {
+        transition: left 0.5s ease-out, box-shadow 0.1s;
+    }
+
+    header .member button:hover {
+        box-shadow: 0px 0px #99999950;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        header .member .member_icon {
+            background-color: #666;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        header .member .member_icon {
+            background-color: #aaa;
+        }
+    }
+}
