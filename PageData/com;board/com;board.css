@@ -40,6 +40,7 @@ main {
     padding: 1vw;
 
     color: var(--prefer-text);
+    font-size: 1.5vw;
 }
 
 .articleDiv table {
@@ -125,4 +126,11 @@ main {
 .articleDiv tr.me td .articleMenu div .edit,
 .articleDiv tr.me td .articleMenu div hr {
     display: block;
+}
+
+@media screen and (max-width: 424px){
+    .infoDiv .writeDiv {
+        font-size: 4.5vw;
+    }
+    
 }
