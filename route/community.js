@@ -125,25 +125,19 @@ router.get('/viewArticle', async function (req, res) {
         // LineChange
         displayContent = article.content.split('\r\n').join('<br>')
 
-        // ***
-        BoldItalicList = displayContent.split('***')
-        for(i = 0; i < BoldItalicList.length; i++) {
-            if(i % 2 == 0) {continue}
-            BoldItalicList[i] = `<span style="font-weight: bold; font-style: italic;">${BoldItalicList[i]}</span>`
-        }
-        displayContent = BoldItalicList.join('')
-
         // **
         BoldList = displayContent.split('**')
         for(i = 0; i < BoldList.length; i++) {
+            if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `**${BoldList[i]}`; continue}
             if(i % 2 == 0) {continue}
             BoldList[i] = `<span style="font-weight: bold;">${BoldList[i]}</span>`
         }
         displayContent = BoldList.join('')
 
-        // *
-        ItalicList = displayContent.split('*')
+        // $$
+        ItalicList = displayContent.split('$$')
         for(i = 0; i < ItalicList.length; i++) {
+            if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `$$${BoldList[i]}`; continue}
             if(i % 2 == 0) {continue}
             ItalicList[i] = `<span style="font-style: italic;">${ItalicList[i]}</span>`
         }
@@ -152,6 +146,7 @@ router.get('/viewArticle', async function (req, res) {
         // --
         LineThroughList = displayContent.split('--')
         for(i = 0; i < LineThroughList.length; i++) {
+            if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `--${BoldList[i]}`; continue}
             if(i % 2 == 0) {continue}
             LineThroughList[i] = `<span style="text-decoration: line-through;">${LineThroughList[i]}</span>`
         }
@@ -160,6 +155,7 @@ router.get('/viewArticle', async function (req, res) {
         // __
         UnderLineList = displayContent.split('__')
         for(i = 0; i < UnderLineList.length; i++) {
+            if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `__${BoldList[i]}`; continue}
             if(i % 2 == 0) {continue}
             UnderLineList[i] = `<span style="text-decoration: underline;">${UnderLineList[i]}</span>`
         }
@@ -168,6 +164,7 @@ router.get('/viewArticle', async function (req, res) {
         // @@
         ColorAccentList = displayContent.split('@@')
         for(i = 0; i < ColorAccentList.length; i++) {
+            if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `@@${BoldList[i]}`; continue}
             if(i % 2 == 0) {continue}
             ColorAccentList[i] = `<span style="color: var(--accent-color);">${ColorAccentList[i]}</span>`
         }
