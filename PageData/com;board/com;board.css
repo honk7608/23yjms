@@ -132,6 +132,11 @@ main {
     .infoDiv .writeDiv {
         font-size: 4.5vw;
     }
+
+    .articleDiv {
+        font-size: 2vw;
+    }
+
     .articlediv .articleTitle {
         word-break: break-all;
     }
