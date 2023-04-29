@@ -1,3 +1,4 @@
+/* Desktop */ @media screen and (min-width: 601px){
     * {
         --big-font-size: min(4vw, 40px)
     }

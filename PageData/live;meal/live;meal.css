@@ -60,7 +60,7 @@
     background-color: var(--accent-color-transparent);
 }
 
-/* Mobile */ @media screen and (max-width: 424px){
+/* Mobile */ @media screen and (max-width: 600px){
     .inputDiv .sep > *{
         font-size: 5vw;
     }
@@ -154,7 +154,7 @@
     transition: 0.1s;
 }
 
-/* Mobile */ @media screen and (max-width: 424px){
+/* Mobile */ @media screen and (max-width: 600px){
     body {
         min-height: 100vh;
     }
@@ -227,7 +227,7 @@
     color: var(--accent-color);
 }
 
-/* Allergy Mobile */ @media screen and (max-width: 424px) { 
+/* Allergy Mobile */ @media screen and (max-width: 600px) { 
     .additionalDiv ol {
         grid-template-columns: repeat(3, 1fr);
     }

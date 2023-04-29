@@ -140,7 +140,7 @@ ul.calendarMode li.afterMonth {
     background-color: var(--transparent-back);
 }
 
-/* CalendarMode Mobile */ @media screen and (max-width: 424px){ 
+/* CalendarMode Mobile */ @media screen and (max-width: 600px){ 
     ul.calendarMode li .dateDiv {
         background-color: transparent !important;
         font-size: 4vw;
@@ -210,7 +210,7 @@ ul.listMode > li ul li {
     font-size: 4vw;
 }
 
-/* NoData Mobile */ @media screen and (max-width: 424px){
+/* NoData Mobile */ @media screen and (max-width: 600px){
     .NoData {
         font-size: 4vw;
     }

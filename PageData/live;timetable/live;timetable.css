@@ -101,7 +101,7 @@
     background-color: var(--accent-color);
 }
 
-/* Select Mobile */ @media screen and (max-width: 424px){
+/* Select Mobile */ @media screen and (max-width: 600px){
     .select {
         flex-direction: column;
         align-items: center;
@@ -173,7 +173,7 @@
     border: 1px #999 solid;
 }
 
-/* Table Mobile */ @media screen and (max-width: 424px) {
+/* Table Mobile */ @media screen and (max-width: 600px) {
     .tt .first td {
         font-size: 5.5vw;
     }
@@ -199,7 +199,7 @@
     font-size: 4vw;
 }
 
-/* NoInput Mobile */ @media screen and (max-width: 424px){
+/* NoInput Mobile */ @media screen and (max-width: 600px){
     .NoInput {
         font-size: 4vw;
     }

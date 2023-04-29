@@ -64,7 +64,7 @@ input.submit {
     font-weight: 700;
 }
 
-/* Mobile */ @media screen and (max-width: 424px){
+/* Mobile */ @media screen and (max-width: 600px){
     form {
         background-color: var(--form-back);
         width: 80vw;

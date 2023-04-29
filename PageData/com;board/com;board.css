@@ -128,7 +128,7 @@ main {
     display: block;
 }
 
-@media screen and (max-width: 424px){
+@media screen and (max-width: 600px){
     .infoDiv .writeDiv {
         font-size: 4.5vw;
     }
