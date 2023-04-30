@@ -3,7 +3,7 @@ main {
     align-items: center;
     justify-content: center;
 
-    background-image: url(https://images.unsplash.com/photo-1564669733547-c6ca390e11c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+    background-image: url(/src/frontDoor.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
@@ -11,28 +11,27 @@ main {
 
 @media (prefers-color-scheme: dark) {
     * {
-        --form-back: #00000095;
-        --input-back: #FFFFFF95;
+        --form-back: #000000CC;
+        --input-back: #FFFFFFCC;
     }
 }
- 
+
 @media (prefers-color-scheme: light) {
     * {
-        --form-back: #FFFFFF95;
-        --input-back: #00000095;
+        --form-back: #FFFFFFCC;
+        --input-back: #000000CC;
     }
 }
 
 div.signupText {
-    color: black;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display: block;    
+    margin: auto;
+    width: max-content;
+    
     text-align: center;
-    padding: 3vw;
-    font-size: 6vw;
-    background-color: var(--accent-color);
-    background: url('/src/pattern.png') repeat-x center bottom;
+    color: var(--accent-color);
+    font-size: calc(var(--big-font-size) * 2);
+    font-weight: 900;
 }
 
 form {
@@ -41,7 +40,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 1vw;
-    font-size: 3vw;
+    font-size: var(--big-font-size);
 
     padding: 5vw;
     
@@ -61,11 +60,10 @@ input[type='text'], input[type='password'], input[type='number']{
     
     border: none;
     border-bottom: var(--prefer-text) 3px solid;
-
 }
 
 button.submit {
-    font-size: 3vw;
+    font-size: inherit;
     color: var(--prefer-text);
     background-color: var(--accent-color);
     
@@ -80,10 +78,5 @@ button.submit {
     form {
         background-color: var(--form-back);
         width: 80vw;
-        font-size: 6.5vw;
-    }
-    
-    button.submit {
-        font-size: 6.5vw;
     }
 }
