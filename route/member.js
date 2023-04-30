@@ -78,7 +78,7 @@ router.post('/sign-up', async function (req, res) {
         LIMIT 1;`
     )
 
-    if(Users.length != 0) {res.redirect('/member/sign-up')}
+    if(Users.length != 0) {return res.redirect('/member/sign-up')}
     else {
         await connection.execute(
             `INSERT INTO user (id, pw, permission, name)
