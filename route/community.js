@@ -271,4 +271,36 @@ router.post('/writeArticle', async function (req, res) {
     res.redirect(`/community/viewArticle?board=${boardName}&articleID=${Article.id}`)
 })
 
+router.get('/deleteArticle', async function (req, res) {
+    if(!req.session.member.isLogged) {return res.redirect('/member/login')}
+
+    const requrl = req.url;
+    const queryData = url.parse(requrl, true).query;
+    const boardName = queryData.board
+    const articleID = queryData.articleID
+
+    existingBoard = false
+    for(const oneboardName in categoryData) {
+        if (boardName == oneboardName) {existingBoard = true; break;}
+    }
+    if(!existingBoard) {console.log('Non-Exisitent'); return res.redirect(req.session.lastUrl)}
+
+    const Article = await getOneArticle(req.dbOption, boardName, articleID)
+    
+    if(!Article) {return res.redirect(req.session.lastUrl)}
+    else if(req.session.member.id != Article.author_id) {res.redirect('/no-perm')}
+
+    const connection = await mysql.createConnection(req.dbOption);
+
+    await connection.execute(
+        `UPDATE ${boardName}_board
+        SET is_enabled = 0
+        WHERE id = ${Article.id};`
+    )
+
+    res.redirect(`/community/board?boardName=${boardName}`)
+
+    connection.end()
+})
+
 module.exports = router;

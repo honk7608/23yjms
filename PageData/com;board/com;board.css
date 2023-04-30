@@ -118,12 +118,12 @@ main {
     display: block;
 }
 
-.articleDiv td .articleMenu div .edit,
+.articleDiv td .articleMenu div .needMe,
 .articleDiv tr td .articleMenu div hr {
     display: none;
 }
 
-.articleDiv tr.me td .articleMenu div .edit,
+.articleDiv tr.me td .articleMenu div .needMe,
 .articleDiv tr.me td .articleMenu div hr {
     display: block;
 }
