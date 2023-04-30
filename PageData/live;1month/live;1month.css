@@ -105,6 +105,7 @@ ul.calendarMode li.scheduleFalse .dateDiv {
 
 ul.calendarMode li .scheduleDiv {
     background-color: var(--accent-color-transparent);
+    color: black;
 
     display: flex;
     flex-direction: column;
@@ -113,7 +114,7 @@ ul.calendarMode li .scheduleDiv {
     padding: 1vw;
     border-radius: 1vw;
 
-    font-size: calc(var(--big-font-size) * 0.5);
+    font-size: calc(var(--big-font-size) * 0.7);
     word-break: keep-all;
 }
 
@@ -143,7 +144,7 @@ ul.calendarMode li.afterMonth {
 /* CalendarMode Mobile */ @media screen and (max-width: 600px){ 
     ul.calendarMode li .dateDiv {
         background-color: transparent !important;
-        font-size: 4vw;
+        font-size: 5.5vw;
     }
 }
 
