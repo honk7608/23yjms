@@ -26,7 +26,7 @@ main {
     padding: 0.5vw;
     padding-left: 1vw;
 
-    border-radius: 20vw;
+    border-radius: 100vw;
     
     background-color: var(--accent-color-weak);
     color: var(--prefer-background);

@@ -24,7 +24,7 @@ main {
 
     outline: none;
     border: 1px solid var(--prefer-background);
-    border-radius: 20vw;
+    border-radius: 100vw;
 }
 
 @media (prefers-color-scheme: light) {
@@ -69,7 +69,7 @@ main {
     padding-left: 1vw;
     padding-right: 1vw;
 
-    border-radius: 20vw;
+    border-radius: 100vw;
 
     font-weight: 700;
     font-size: 2vw;
