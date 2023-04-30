@@ -24,7 +24,7 @@
     const calendarList = JSON.parse(`<!-- {calendar} -->`)
     const mode = Number('<!-- {mode} -->')
 
-    if(mode == 0) {       
+    if(mode == 0) { //캘린더 모드
         queryData = '<!-- {queryData} -->'
         SelectedYear = queryData.split('-')[0]
         SelectedMonth = queryData.split('-')[1]
@@ -63,8 +63,15 @@
             }
 
             calendarText += '</ul>'
+            calendarText += 
+`<div class="normalErrorMessage">
+    <span class="patternAccent">앗, 달력이 너무 커서 꽉 끼네요...</span>
+    <br>
+    아쉽게도 핸드폰으로는 이걸 보기 어려울 것 같네요.<br>
+    다른 기기로 오시거나 '1년 전체보기'를 사용해주세요!
+</div>`
         }
-    } else {
+    } else { //리스트 모드
         const Today = new Date()
         const TodayMonth = Today.getMonth() 
         const TodayDate = Today.getDate()

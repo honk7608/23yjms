@@ -144,9 +144,14 @@ ul.calendarMode li.afterMonth {
 }
 
 /* CalendarMode Mobile */ @media screen and (max-width: 600px){ 
-    ul.calendarMode li .dateDiv {
-        background-color: transparent !important;
-        font-size: 5.5vw;
+    ul.calendarMode {
+        display: none;
+    }
+}
+
+/* CalendarMode Desktop */ @media screen and (min-width: 601px){ 
+    .normalErrorMessage{
+        display: none;
     }
 }
 
@@ -199,25 +204,4 @@ ul.listMode > li ul li {
     font-size: calc(var(--big-font-size) * 0.5);
     word-break: keep-all;
     font-weight: 300;
-}
-
-/* NoData */
-.NoData {
-    font-weight: 300;
-    font-size: 2vw;
-    color: var(--prefer-text);
-}
-
-.NoData span {
-    font-weight: 700;
-    font-size: 4vw;
-}
-
-/* NoData Mobile */ @media screen and (max-width: 600px){
-    .NoData {
-        font-size: 4vw;
-    }
-    .NoData span {
-        font-size: 8vw;
-    }
 }
