@@ -118,8 +118,8 @@
             }
         }
 
-        for(i = 0;i < 100;i ++) {
-            if(i % 10) {continue}
+        for(i = 0;i < 1000;i ++) {
+            if(i % 10 != 0) {continue}
             delay(i).then(() => {adjustBodyWidth()})
         }
         window.addEventListener('resize', adjustBodyWidth)
