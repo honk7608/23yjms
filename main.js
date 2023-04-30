@@ -80,6 +80,7 @@ app.get('/no-perm', async function (req, res) {
 
 //404 (not found)
 app.use(function(req, res, next) {
+    if(!req.session.lastUrl) {req.session.lastUrl == '/'}
     EndWithRespond(req, res, 'errPage', [
         {code: 'lastUrlText', content: req.session.lastUrl},
         {code: 'mainMessage', content: '어, 여기가 어디죠?'},
@@ -90,6 +91,7 @@ app.use(function(req, res, next) {
 
 //500 (error in app)
 app.use(function(err, req, res, next) {
+    if(!req.session.lastUrl) {req.session.lastUrl == '/'}
     console.log(`\n[ Error :: ${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} ]`)
     console.error(err.stack)    
     EndWithRespond(req, res, 'errPage', [
