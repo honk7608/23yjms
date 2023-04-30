@@ -63,7 +63,14 @@ router.get('/sign-up', async function (req, res) {
 
 router.post('/sign-up', async function (req, res) {
     const connection = await mysql.createConnection(req.dbOption);
-    if(req.body.id != Math.round(Number(req.body.id))) {return res.redirect()}
+    if(req.body.id != Math.round(Number(req.body.id))) {return res.redirect('/member/sign-up')}
+    if(String(req.body.id).length != 5) {return res.redirect('/member/sign-up')}
+    stgrade = String(req.body.id)[0]
+    stclass = String(req.body.id)[1] + String(req.body.id)[2]
+    stnumber = String(req.body.id)[3] + String(req.body.id)[4]
+
+    if(stgrade < 1 || stgrade > 3 || stclass < 0 || stclass > 13 || stgrade != 3 && stclass > 10 || stnumber > 30)
+    {return res.redirect('/member/sign-up')}
 
     const [Users, fields] = await connection.execute(
         `SELECT * FROM user
