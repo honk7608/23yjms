@@ -35,6 +35,20 @@ main {
     font-size: 2vw;
 }
 
+.pageDiv {
+    margin: 1vw;
+    padding: 1vw;
+
+    border-radius: 1vw;
+    border: var(--prefer-text) 1px solid;
+    
+    font-size: var(--big-font-size);
+}
+
+.pageDiv input {
+    font-size: inherit;
+}
+
 .articleDiv {
     width: 100%;
     padding: 1vw;
