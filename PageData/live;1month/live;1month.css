@@ -105,7 +105,7 @@ ul.calendarMode li.scheduleFalse .dateDiv {
 
 ul.calendarMode li .scheduleDiv {
     background-color: var(--accent-color-transparent);
-    color: var(--prefer-text);
+    color: black;
 
     display: flex;
     flex-direction: column;
