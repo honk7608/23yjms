@@ -49,6 +49,7 @@ router.post('/logout', async function (req, res) {
 })
 
 router.get('/me', async function (req, res) {
+    if(!req.session.member.isLogged) {return res.redirect('/')}
     EndWithRespond(req, res, 'mem;me')
 });
 
