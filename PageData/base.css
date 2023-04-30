@@ -1,7 +1,5 @@
-/* #FF8D12 */
-/* #427ADC */
-
-/* Light/Dark Setting : Light */ @media (prefers-color-scheme: light) {
+/* Color Tags */
+@media (prefers-color-scheme: light) {
     * {
         --accent-color: #FF8D12;
         --accent-color-transparent: #FF8D1250;  
@@ -12,7 +10,7 @@
     }
 }
 
-/* Light/Dark Setting : Dark */ @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
     * {
         --accent-color: #427ADC;
         --accent-color-transparent: #427ADC50;  
@@ -61,6 +59,18 @@ input::-webkit-inner-spin-button {
 
 input {
     border-radius: 0;
+}
+
+/* normalErrorMessage */
+.normalErrorMessage {
+    font-weight: 300;
+    font-size: calc(var(--big-font-size) / 2);
+    color: var(--prefer-text);
+}
+
+.normalErrorMessage span {
+    font-weight: 700;
+    font-size: var(--big-font-size);
 }
 
 @media (prefers-color-scheme: light) {

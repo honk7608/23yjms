@@ -187,18 +187,6 @@
     }
 }
 
-/* NoInput */
-.NoInput {
-    font-weight: 300;
-    font-size: 2vw;
-    color: var(--prefer-text);
-}
-
-.NoInput span {
-    font-weight: 700;
-    font-size: 4vw;
-}
-
 /* NoInput Mobile */ @media screen and (max-width: 600px){
     .NoInput {
         font-size: 4vw;
