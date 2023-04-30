@@ -44,8 +44,8 @@
         width: 100%;
         justify-content: center;
 
-        background-image: url(/src/logo.jpg);
-        background-size: cover;
+        background-image: url(/src/logoLong.png);
+        background-size: 100% auto;
         background-repeat: no-repeat;
         background-position: center;
     }
