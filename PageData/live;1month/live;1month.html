@@ -17,6 +17,8 @@
     </div>
 </div>
 
+<div class="loadingDiv" style="display: none;">Loading...</div>
+
 <script>
     // CalendarData
     const calendarList = JSON.parse(`<!-- {calendar} -->`)
@@ -110,7 +112,8 @@
         if(index == 'length') {break}
         FormEl.addEventListener("submit", (event) => {
             ContentEl = document.getElementsByClassName('content')[0]
-            ContentEl.innerHTML = '<div class="loadingDiv">Loading...</div>'
+            ContentEl.innerHTML = ''
+            document.getElementsByClassName('loadingDiv')[0].style.display = 'block'
         });
     }
 </script>

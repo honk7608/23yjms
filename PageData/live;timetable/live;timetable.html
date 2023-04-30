@@ -18,6 +18,7 @@
     <input type="submit" value="적용하기">
 </form>
 
+<div class="loadingDiv" style="display: none;">Loading...</div>
 
 <script>
     timetable = JSON.parse('<!-- {timetable_variable} -->')
@@ -81,7 +82,8 @@
         if(index == 'length') {break}
         FormEl.addEventListener("submit", (event) => {
             ContentEl = document.getElementsByClassName('content')[0]
-            ContentEl.innerHTML = '<div class="loadingDiv">Loading...</div>'
+            ContentEl.innerHTML = ''
+            document.getElementsByClassName('loadingDiv')[0].style.display = 'block'
         });
     }
 
