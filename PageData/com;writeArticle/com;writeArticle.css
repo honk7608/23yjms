@@ -122,9 +122,7 @@ textarea {
         font-size: 4vw;
     }
     
-    .infoDiv .ButtonsDiv a.ToArticle {
-        background-color: var(--accent-color-weak);
-        color: var(--prefer-background);
+    .infoDiv .ButtonsDiv button {
         font-size: 4vw;
     }
 }
