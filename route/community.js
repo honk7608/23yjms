@@ -130,7 +130,7 @@ router.get('/viewArticle', async function (req, res) {
         for(i = 0; i < BoldList.length; i++) {
             if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `**${BoldList[i]}`; continue}
             if(i % 2 == 0) {continue}
-            BoldList[i] = `<span style="font-weight: bold;">${BoldList[i]}</span>`
+            BoldList[i] = `<b>${BoldList[i]}</b>`
         }
         displayContent = BoldList.join('')
 
@@ -139,7 +139,7 @@ router.get('/viewArticle', async function (req, res) {
         for(i = 0; i < ItalicList.length; i++) {
             if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `$$${BoldList[i]}`; continue}
             if(i % 2 == 0) {continue}
-            ItalicList[i] = `<span style="font-style: italic;">${ItalicList[i]}</span>`
+            ItalicList[i] = `<i>${ItalicList[i]}</i>`
         }
         displayContent = ItalicList.join('')
 
