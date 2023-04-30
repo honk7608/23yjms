@@ -27,8 +27,8 @@
                 else {additionalTag = ''}
                 ArticleCreatedTime = new Date(article.createdTime)
 
-                displayDateText = `${ArticleCreatedTime.getFullYear()}.${ArticleCreatedTime.getMonth() + 1}.${ArticleCreatedTime.getDate()}` 
-                
+                var displayDateText = `${String(ArticleCreatedTime.getFullYear()).slice(-2)}.${('0' + String(ArticleCreatedTime.getMonth() + 1)).slice(-2)}.${String('0' + String(ArticleCreatedTime.getDate())).slice(-2)}`
+
                 DisplayText += 
 `<tr class="articleTr${additionalTag}">
     <td class="articleNum">${article.id}</td>

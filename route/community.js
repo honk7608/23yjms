@@ -120,7 +120,7 @@ router.get('/viewArticle', async function (req, res) {
     if(!existingBoard) {res.redirect(req.session.lastUrl)}
     else {       
         const article = await getOneArticle(req.dbOption, boardName, articleID)
-        displayDateText = `${article.createdTime.getFullYear()}.${article.createdTime.getMonth() + 1}.${article.createdTime.getDate()}`
+        var displayDateText = `${String(article.createdTime.getFullYear()).slice(-2)}.${('0' + String(article.createdTime.getMonth() + 1)).slice(-2)}.${String('0' + String(article.createdTime.getDate())).slice(-2)}`
 
         // LineChange
         displayContent = article.content.split('\r\n').join('<br>')
