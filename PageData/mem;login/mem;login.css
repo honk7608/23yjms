@@ -23,6 +23,14 @@ main {
     }
 }
 
+div.loginText {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 3vw;
+    font-size: 10vw;
+}
+
 form {
     background-color: var(--form-back);
 
