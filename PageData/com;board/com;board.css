@@ -130,11 +130,11 @@ main {
 
 @media screen and (max-width: 600px){
     .infoDiv .writeDiv {
-        font-size: 4.5vw;
+        font-size: 4vw;
     }
 
     .articleDiv {
-        font-size: 2vw;
+        font-size: 3.5vw;
     }
 
     .articleDiv .articleTitle {

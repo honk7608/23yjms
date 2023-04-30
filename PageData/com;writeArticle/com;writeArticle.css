@@ -114,3 +114,17 @@ textarea {
     font-size: var(--big-font-size);
     font-weight: 700;
 }
+
+/* Mobile */ @media screen and (max-width: 600px){
+    .infoDiv .ButtonsDiv a.ToBoard {
+        background-color: var(--accent-color-strong);
+        color: var(--prefer-text);
+        font-size: 4vw;
+    }
+    
+    .infoDiv .ButtonsDiv a.ToArticle {
+        background-color: var(--accent-color-weak);
+        color: var(--prefer-background);
+        font-size: 4vw;
+    }
+}
