@@ -31,7 +31,7 @@
         width: 20vw;
 
         padding-left: 5vw;
-        padding-right: 5vw;
+        padding-right: 3vw;
     }
 
     header .logo img.LogoForMobile {
@@ -115,7 +115,7 @@
         text-align: center;
         font-size: 4vw;
         margin-right: 1vw;
-        margin-left: 2vw;
+        margin-left: 3vw;
     }
 
     header .member .member_icon {
