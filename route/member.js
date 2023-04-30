@@ -69,7 +69,7 @@ router.post('/sign-up', async function (req, res) {
     stclass = String(req.body.id)[1] + String(req.body.id)[2]
     stnumber = String(req.body.id)[3] + String(req.body.id)[4]
 
-    if(stgrade < 1 || stgrade > 3 || stclass < 0 || stclass > 13 || stgrade != 3 && stclass > 10 || stnumber > 30)
+    if(stgrade < 1 || stgrade > 3 || stclass < 1 || stclass > 13 || stgrade != 3 && stclass > 10 || stnumber < 1 || stnumber > 30)
     {return res.redirect('/member/sign-up')}
 
     const [Users, fields] = await connection.execute(
