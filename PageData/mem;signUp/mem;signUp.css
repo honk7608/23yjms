@@ -24,11 +24,15 @@ main {
 }
 
 div.signupText {
+    color: black;
+    display: block;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     padding: 3vw;
     font-size: 10vw;
+    background-color: var(--accent-color);
+    background: url('/src/pattern.png') repeat-x center bottom;
 }
 
 form {
