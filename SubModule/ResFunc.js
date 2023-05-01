@@ -1,5 +1,3 @@
-const FileBaseRoot = '/home/hosting_users/honk7608/apps/honk7608_yjms'
-
 /** 
      * 주어진 데이터로 요청에 응답해주는 함수
      * @param {Request} req Request 변수
@@ -12,8 +10,8 @@ const EndWithRespond = function (req, res, routeName=null, replacement=null, sav
     if(saveUrl) {req.session.lastUrl = req.originalUrl}
 
     const fs = require('fs')
-    var baseData = String(fs.readFileSync(`${FileBaseRoot}/PageData/base.html`, 'utf-8'))
-    var respondData = String(fs.readFileSync(`${FileBaseRoot}/PageData/${routeName}/${routeName}.html`, 'utf-8'))
+    var baseData = String(fs.readFileSync(`${req.FileBaseRoot}/PageData/base.html`, 'utf-8'))
+    var respondData = String(fs.readFileSync(`${req.FileBaseRoot}/PageData/${routeName}/${routeName}.html`, 'utf-8'))
 
     if (replacement) {
         replacement = [{code: 'main_content', content: respondData}].concat(replacement)

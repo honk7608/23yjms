@@ -3,7 +3,7 @@ const asyncify = require('express-asyncify');
 const app = asyncify(express());
 
 var port = process.env.PORT;
-const FileBaseRoot = '/home/hosting_users/honk7608/apps/honk7608_yjms'
+const FileBaseRoot = process.env.FILEBASEROOT
 
 const EndWithRespond = require(`${FileBaseRoot}/SubModule/ResFunc.js`);
 
@@ -67,8 +67,8 @@ app.use('/member', require('./route/member.js'));
 //main
 app.get('/', async function (req, res) {
     const fs = require('fs')
-    console.log(fs.readdirSync(`${FileBaseRoot}/PageData`))
-    console.log(fs.readFileSync(`${FileBaseRoot}/PageData/base.html`, 'utf-8'))
+    try {console.log(fs.readFileSync(`${FileBaseRoot}.log`, 'utf-8'))}
+    catch {}
     EndWithRespond(req, res, 'home', [])
 })
 
