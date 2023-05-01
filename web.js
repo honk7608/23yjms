@@ -66,6 +66,7 @@ app.get('/', async function (req, res) {
     const fs = require('fs')
     checkRoot = [
         '.', 
+        '..', 
         './bin',
         './boot',
         './dev',
