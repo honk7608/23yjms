@@ -106,5 +106,5 @@ app.use(function(err, req, res, next) {
 app.listen(port, function () {
     console.log('============================================================')
     date = new Date()
-    console.log('[ Server Started ::', `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`,']')
+    console.log('[ Server Started CAFE24 ::', `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`,']')
 })
