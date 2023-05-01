@@ -11,8 +11,8 @@ const FileBaseRoot = '/home/hosting_users/honk7608/apps/honk7608_yjms'
 const EndWithRespond = function (req, res, routeName=null, replacement=null, saveUrl=true) {
     if(saveUrl) {req.session.lastUrl = req.originalUrl}
 
-    var fs = require('fs')
-    var baseData = String(fs.readFileSync(`${FileBaseRoot}/PageData/base.html', 'utf-8`))
+    const fs = require('fs')
+    var baseData = String(fs.readFileSync(`${FileBaseRoot}/PageData/base.html`, 'utf-8'))
     var respondData = String(fs.readFileSync(`${FileBaseRoot}/PageData/${routeName}/${routeName}.html`, 'utf-8'))
 
     if (replacement) {
