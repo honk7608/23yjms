@@ -13,6 +13,6 @@
     "url": "^0.11.0"
   },
   "scripts": {
-    "start": "node main.js"
+    "start": "node web.js"
   }
 }
