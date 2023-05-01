@@ -3,7 +3,12 @@ const asyncify = require('express-asyncify');
 const app = asyncify(express());
 
 var port = process.env.PORT;
-const FileBaseRoot = process.env.FILEBASEROOT
+if(!process.env.FILEBASEROOT) {
+    var FileBaseRoot = '/home/hosting_users/honk7608/apps/honk7608_yjms'
+} else {
+    var FileBaseRoot = process.env.FILEBASEROOT
+}
+
 
 const EndWithRespond = require(`${FileBaseRoot}/SubModule/ResFunc.js`);
 
