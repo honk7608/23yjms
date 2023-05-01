@@ -42,7 +42,7 @@ app.use(session({
 }))
 
 app.use('*', function(req, res, next) {
-    req.FileBaseRoot = '/home/hosting_users/honk7608/apps/honk7608_yjms/PageData'
+    req.FileBaseRoot = '/home/hosting_users/honk7608/apps/honk7608_yjms'
 
     if (!req.session.member) {
         req.session.member = {
@@ -66,8 +66,7 @@ app.use('/member', require('./route/member.js'));
 //main
 app.get('/', async function (req, res) {
     const fs = require('fs')
-    console.log(fs.readdirSync('/home/hosting_users/honk7608/apps/honk7608_yjms'))
-    console.log(fs.readFileSync('/home/hosting_users/honk7608/apps/honk7608_yjms.log'))
+    console.log(fs.readdirSync('/home/hosting_users/honk7608/apps/honk7608_yjms/PageData'))
     EndWithRespond(req, res, 'home', [])
 })
 
