@@ -68,7 +68,7 @@ app.use('/member', require('./route/member.js'));
 app.get('/', async function (req, res) {
     const fs = require('fs')
     console.log(fs.readdirSync('/home/hosting_users/honk7608/apps/honk7608_yjms/PageData'))
-    console.log(fs.readdirSync(`${PageData}/PageData`))
+    console.log(fs.readdirSync(`${FileBaseRoot}/PageData`))
     EndWithRespond(req, res, 'home', [])
 })
 
