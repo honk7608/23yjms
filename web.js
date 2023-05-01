@@ -42,7 +42,7 @@ app.use(session({
 }))
 
 app.use('*', function(req, res, next) {
-    req.FileBaseRoot = '/home/hosting_users/honk7608/apps/honk7608_yjms'
+    req.FileBaseRoot = '/home/hosting_users/honk7608/apps/honk7608_yjms/PageData'
 
     if (!req.session.member) {
         req.session.member = {
