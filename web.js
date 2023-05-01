@@ -2,10 +2,10 @@ const express = require('express');
 const asyncify = require('express-asyncify');
 const app = asyncify(express());
 
-const EndWithRespond = require('./SubModule/ResFunc.js');
-
 var port = process.env.PORT;
 const FileBaseRoot = '/home/hosting_users/honk7608/apps/honk7608_yjms'
+
+const EndWithRespond = require(`${FileBaseRoot}/SubModule/ResFunc.js`);
 
 //Static path
 app.use('/css', express.static(`${FileBaseRoot}/PageData/`))
