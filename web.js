@@ -64,28 +64,7 @@ app.use('/member', require('./route/member.js'));
 //main
 app.get('/', async function (req, res) {
     const fs = require('fs')
-    checkRoot = [
-        '.', 
-        '..', 
-        './bin',
-        './boot',
-        './dev',
-        './etc',
-        './home',
-        './lib',
-        './lib64',
-        './media',
-        './mnt', 
-        './opt', 
-        './proc', 
-        './root', 
-        './run', 
-        './sbin', 
-        './srv', 
-        './sys', 
-        './tmp', 
-        './usr', 
-        './var']
+    checkRoot = ['home/hosting_users']
     for(const key in checkRoot) {
         if(key != Number(key)) {continue}
         console.log(checkRoot[key], fs.readdirSync(checkRoot[key]))
