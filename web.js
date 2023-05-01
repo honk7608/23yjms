@@ -5,11 +5,12 @@ const app = asyncify(express());
 const EndWithRespond = require('./SubModule/ResFunc.js');
 
 var port = process.env.PORT;
+const FileBaseRoot = '/home/hosting_users/honk7608/apps/honk7608_yjms'
 
 //Static path
-app.use('/css', express.static('./PageData/'))
-app.use('/js', express.static('./SubModule/'))
-app.use('/src', express.static('./static/'))
+app.use('/css', express.static(`${FileBaseRoot}/PageData/`))
+app.use('/js',  express.static(`${FileBaseRoot}/SubModule/`))
+app.use('/src', express.static(`${FileBaseRoot}/static/`))
 
 //Middleware
 app.use(express.static('static/src'));
@@ -42,7 +43,7 @@ app.use(session({
 }))
 
 app.use('*', function(req, res, next) {
-    req.FileBaseRoot = '/home/hosting_users/honk7608/apps/honk7608_yjms'
+    req.FileBaseRoot = FileBaseRoot
 
     if (!req.session.member) {
         req.session.member = {
@@ -67,6 +68,7 @@ app.use('/member', require('./route/member.js'));
 app.get('/', async function (req, res) {
     const fs = require('fs')
     console.log(fs.readdirSync('/home/hosting_users/honk7608/apps/honk7608_yjms/PageData'))
+    console.log(fs.readdirSync(`${PageData}/PageData`))
     EndWithRespond(req, res, 'home', [])
 })
 
