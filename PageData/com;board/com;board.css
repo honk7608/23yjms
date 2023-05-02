@@ -45,8 +45,32 @@ main {
     font-size: var(--big-font-size);
 }
 
-.pageDiv input {
+.pageDiv input[type="number"] {
     font-size: inherit;
+    width: 41vw;
+    height: 100%;
+    padding-left: 1vw;
+    padding-right: 1vw;
+
+    font-size: 2vw;
+
+    border: none;
+    border-radius: 100vw;
+    outline: none;
+
+    color: black;
+    background-color: #999;
+}
+
+.pageDiv input[type="submit"] {
+    border: none;
+    border-radius: 100vw;
+
+    color: var(--prefer-text);
+    font-weight: 700;
+    font-size: var(--big-font-size);
+
+    background-color: var(--accent-color);
 }
 
 .articleDiv {
