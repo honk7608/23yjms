@@ -47,12 +47,10 @@ main {
 
 .pageDiv input[type="number"] {
     font-size: inherit;
-    width: 41vw;
+    width: 12;
     height: 100%;
-    padding-left: 1vw;
-    padding-right: 1vw;
 
-    font-size: 2vw;
+    font-size: 4vw;
 
     border: none;
     border-radius: 100vw;
@@ -68,8 +66,8 @@ main {
 
     color: var(--prefer-text);
     font-weight: 700;
-    font-size: var(--big-font-size);
-
+    font-size: 3.5vw;
+    padding: 0.5vw;
     background-color: var(--accent-color);
 }
 
