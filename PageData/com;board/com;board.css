@@ -46,9 +46,8 @@ main {
 }
 
 .pageDiv input[type="number"] {
-    font-size: inherit;
-    width: 12;
-    height: 100%;
+    width: 12vw;
+    height: 7vw;
 
     font-size: 4vw;
 
@@ -176,6 +175,16 @@ main {
     .articleDiv .articleTitle {
         word-break: break-all;
     }
+        
+    .pageDiv input[type="number"] {
+        width: 20vw;
+        height: 8vw;
+        font-size: 6vw;
+    }
 
-    
+    .pageDiv input[type="submit"] {
+        font-size: 5vw;
+    }
+
+        
 }
