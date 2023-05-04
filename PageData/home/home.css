@@ -35,7 +35,7 @@ main {
     .mainImgBanner {
         text-shadow: var(--prefer-text) 1px 0 50px;
     
-        -webkit-text-stroke-width: 4px;
+        -webkit-text-stroke-width: 1px;
         -webkit-text-stroke-color: var(--prefer-background);
     }
 }
