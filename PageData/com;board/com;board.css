@@ -37,8 +37,9 @@ main {
 
 .pageDiv {
     margin: 1vw;
+    margin-bottom: 0;
     padding: 1vw;
-
+    
     border-radius: 1vw;
     border: var(--prefer-text) 1px solid;
     
@@ -46,10 +47,8 @@ main {
 }
 
 .pageDiv input[type="number"] {
-    width: 12vw;
-    height: 7vw;
-
-    font-size: 4vw;
+    font-size: var(--big-font-size);;
+    padding: 0.5vw;
 
     border: none;
     border-radius: 100vw;
@@ -65,7 +64,7 @@ main {
 
     color: var(--prefer-text);
     font-weight: 700;
-    font-size: 3.5vw;
+    font-size: var(--big-font-size);
     padding: 0.5vw;
     background-color: var(--accent-color);
 }
@@ -99,7 +98,6 @@ main {
 }
 
 .articleDiv tr.tableHeader td {
-    padding: 2vw;
     border-bottom: #999 2px solid;
 }
 
