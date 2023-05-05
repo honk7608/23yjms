@@ -24,7 +24,7 @@ main {
 
 @media (prefers-color-scheme: light) {
     .mainImgBanner {
-        text-shadow: var(--prefer-text) 0 0 20px;
+        text-shadow: var(--prefer-text) 0 0 30px;
     
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: var(--prefer-background);
@@ -33,7 +33,7 @@ main {
 
 @media (prefers-color-scheme: dark) {
     .mainImgBanner {
-        text-shadow: var(--prefer-text) 0 0 20px;
+        text-shadow: var(--prefer-text) 0 0 30px;
     
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: var(--prefer-background);
