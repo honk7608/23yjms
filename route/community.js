@@ -142,7 +142,8 @@ router.get('/board', async function (req, res) {
             {code: 'memberID', content: req.session.member.id},
             {code: 'max_page1', content: maxPage},
             {code: 'max_page2', content: maxPage},
-            {code: 'current_page', content: targetPage}
+            {code: 'current_page', content: targetPage},
+            {code: 'css_additional', content: ['/css/com;board/com;board.css']}
         ]);
     }
 })
