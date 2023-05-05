@@ -1,0 +1,100 @@
+<div class="infoDiv">
+    <div class="titleDiv">소통 공간 <i class="fa-solid fa-chevron-right"></i> <span class="patternAccent">행정실 수리 요청</span></div>
+    <div class="describe">행정실에 오감 없이 수리요청을 하기 위한 게시판</div>
+    <a class="writeDiv" href="/community/writeArticle?board=fix">
+        게시글 작성하기 
+        <i class="fa-solid fa-arrow-right"></i>
+    </a>
+</div>
+
+<form class="pageDiv" action="/community/board" method="get">
+    페이지 : 
+    <input type="number" min="1" step="1" max="<!-- {max_page1} -->" value="<!-- {current_page} -->" name="page" required>
+    <input type="text" value="fix" name="boardName" style="display: none;">
+    / <!-- {max_page2} -->
+    <input type="submit" value="이동하기">
+</form>
+
+<div class="articleDiv">
+    <table>
+        <tr class="tableHeader">
+            <td></td>
+            <td>번호</td>
+            <td>상태</td>
+            <td>제목</td>
+            <td>작성자</td>
+            <td>작성일시</td>
+            <td></td>
+        </tr>
+        <script>
+const boardName = 'fix'
+const Articles = JSON.parse('<!-- {articles} -->')
+const LoggedId = Number('<!-- {memberID} -->')
+
+DisplayText = ''
+for(const key in Articles) {
+    article = Articles[key]
+    if(article.author_id == LoggedId) {additionalTag = ' me'}
+    else {additionalTag = ''}
+    ArticleCreatedTime = new Date(article.createdTime)
+
+    var displayDateText = `${String(ArticleCreatedTime.getFullYear()).slice(-2)}.${('0' + String(ArticleCreatedTime.getMonth() + 1)).slice(-2)}.${String('0' + String(ArticleCreatedTime.getDate())).slice(-2)}`
+
+    DisplayText += 
+`<tr class="articleTr${additionalTag} inactive" id="articlehead:${key}" onclick="ToggleArticle(${key})">
+    <td class="articleViewContent"><i class="fa-solid fa-plus"></i></td>
+    <td class="articleNum">${article.id}</td>
+    <td class="articleStatus">해결됨</td>
+    <td class="articleTitle"><a>${article.title}</a></td>
+    <td class="articleAuthor">${article.author_name}</td>
+    <td class="articleDate">${displayDateText}</td>
+    <td>
+        <i class="fa-solid fa-ellipsis-vertical articleMenu">
+            <div>
+                <a href="/community/writeArticle?board=${boardName}&articleID=${article.id}" class="edit needMe">수정하기</a>
+                <hr>
+                <a href="/community/deleteArticle?board=${boardName}&articleID=${article.id}" class="delete needMe">삭제하기</a>
+                <hr>
+                <a href="/community/reportArticle?board=${boardName}&articleID=${article.id}" class="report">신고하기</a>
+            </div>
+        </i>
+    </td>
+</tr>
+<tr id="articlecontent:${key}" class="articleContentTr inactive">
+    <td colspan="7" class="articleMainContent">${article.content}</td>
+</tr>`
+    }
+
+function ToggleArticle(targetId) {
+    console.log(targetId)
+
+    articleHeaderEl = document.getElementById(`articlehead:${targetId}`)
+    articleContentEl = document.getElementById(`articlecontent:${targetId}`)
+
+    HeaderElCL = articleHeaderEl.className.split(' ')
+    ContentElCL = articleContentEl.className.split(' ')
+    if(HeaderElCL.includes('active') || ContentElCL.includes('active')) {
+        articleHeaderEl.classList.replace('active', 'inactive')
+        articleContentEl.classList.replace('active', 'inactive')
+    } else {
+        var activeEls = document.getElementsByClassName('active')
+        for(i = 0; activeEls.length != 0;) {
+            if(!activeEls[i]) {continue}
+            activeEls[i].classList.replace('active', 'inactive')
+        }
+
+        articleHeaderEl.classList.replace('inactive', 'active')
+        articleContentEl.classList.replace('inactive', 'active')
+
+        contentTdEl = articleContentEl.getElementsByTagName('td')
+        console.log(contentTdEl[0])
+        console.log(contentTdEl[0].colspan)
+        contentTdEl[0].colspan = '7'
+        console.log(contentTdEl[0].colspan)
+    }
+}
+
+document.write(DisplayText)   
+        </script>
+    </table>
+</div>

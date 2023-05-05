@@ -13,12 +13,12 @@ const url = require('url');
  * @param {Number} count 데이터의 최대 개수
  * @returns {{author_id: Number, author_name: String, createdTime: Date, id: Number, title: String}[]} 게시물 리스트
  */
-async function getBoardArticles(dbOption, boardName, startIndex=null, count=10) {
+async function getBoardArticles(dbOption, boardName, startIndex=null, count=10, addNeedData='', addWhereQuery='') {
     queryText = 
-`SELECT ${boardName}_board.id, title, createdTime, user.name AS author_name, author_id 
+`SELECT ${boardName}_board.id, title, createdTime, user.name AS author_name, author_id${addNeedData}
 FROM ${boardName}_board 
 LEFT JOIN user ON ${boardName}_board.author_id = user.id 
-WHERE is_enabled = 1
+WHERE is_enabled = 1${addWhereQuery}
 ORDER BY ${boardName}_board.id DESC;`
 
     const connection = await mysql.createConnection(dbOption);
@@ -101,23 +101,50 @@ router.get('/board', async function (req, res) {
     }
     if(!existingBoard) {return res.redirect(req.session.lastUrl)}
 
-    var Articles = await getBoardArticles(req.dbOption, boardName, targetPage * 10 - 9)
+    if(boardName != 'fix') {
+        var Articles = await getBoardArticles(req.dbOption, boardName, targetPage * 10 - 9)
 
-    const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
-    maxPage = (lastArticle[0].AllIndex - (lastArticle[0].AllIndex % 10)) / 10
-    if(lastArticle[0].AllIndex % 10 != 0) {maxPage += 1}
+        const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
+        maxPage = (lastArticle[0].AllIndex - (lastArticle[0].AllIndex % 10)) / 10
+        if(lastArticle[0].AllIndex % 10 != 0) {maxPage += 1}
 
-    EndWithRespond(req, res, 'com;board', [
-        {code: 'pageTitle', content: categoryData[boardName].title},
-        {code: 'pageDescribe', content: categoryData[boardName].describe},
-        {code: 'articles', content: JSON.stringify(Articles)},
-        {code: 'memberID', content: req.session.member.id},
-        {code: 'boardName1', content: boardName},
-        {code: 'boardName2', content: boardName},
-        {code: 'boardName3', content: boardName},
-        {code: 'max_page1', content: maxPage},
-        {code: 'max_page2', content: maxPage}
-    ])
+        EndWithRespond(req, res, 'com;board', [
+            {code: 'pageTitle', content: categoryData[boardName].title},
+            {code: 'pageDescribe', content: categoryData[boardName].describe},
+            {code: 'articles', content: JSON.stringify(Articles)},
+            {code: 'memberID', content: req.session.member.id},
+            {code: 'boardName1', content: boardName},
+            {code: 'boardName2', content: boardName},
+            {code: 'boardName3', content: boardName},
+            {code: 'max_page1', content: maxPage},
+            {code: 'max_page2', content: maxPage},
+            {code: 'current_page', content: targetPage}
+        ]);
+    } else {
+        const searchCondition = queryData.isDone
+        conditionText = ''
+        if(searchCondition == undefined) {conditionText = ''}
+        else if (searchCondition) {conditionText = 'AND is_done = 1'}
+        else if (!searchCondition) {conditionText = 'AND is_done = 0'}
+        
+        var Articles = await getBoardArticles(req.dbOption, boardName, targetPage * 10 - 9, 10, ', content', conditionText)
+        // LineChange
+        for(const key in Articles) {
+            Articles[key].content = Articles[key].content.split('\r\n').join('<br>')
+        }
+
+        const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
+        maxPage = (lastArticle[0].AllIndex - (lastArticle[0].AllIndex % 10)) / 10
+        if(lastArticle[0].AllIndex % 10 != 0) {maxPage += 1}
+
+        EndWithRespond(req, res, 'com;fix_board', [
+            {code: 'articles', content: JSON.stringify(Articles)},
+            {code: 'memberID', content: req.session.member.id},
+            {code: 'max_page1', content: maxPage},
+            {code: 'max_page2', content: maxPage},
+            {code: 'current_page', content: targetPage}
+        ]);
+    }
 })
 
 router.get('/viewArticle', async function (req, res) {
