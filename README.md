@@ -10,15 +10,15 @@
 
 ### 자료
 
-- Drive : http://gg.gg/yjms2023project
+- Drive : <http://gg.gg/yjms2023project>
 
-- GitHub : https://github.com/honk7608/23yjms
+- GitHub : <https://github.com/honk7608/23yjms>
 
 ### 홈페이지 계획잡기
 
 #### 운영
 
-- 테스트 웹 http://yjms.herokuapp.com
+- 테스트 웹 : <http://yjms.herokuapp.com>
 
         heroku(무료) 이용
 
@@ -26,8 +26,8 @@
 
         - 느린 속도
 
-- 공개용 웹 http://yjms.site
-        
+- 공개용 웹 : <http://yjms.site>
+
         카페24(유료) 이용
 
         - GitHub 연동 X(변경 어려움)
@@ -43,6 +43,10 @@
 - 내용 구성
 
         회의 필요
+
+- 섀도우
+
+        사파리사파리사파리사파리사파리
 
 #### 계정
 
@@ -82,18 +86,18 @@
 
         세부 디자인 수정
 
-- 한달 급식표 
+- 한달 급식표
 
         세부 디자인 수정
 
 - 한달 달력
-        
+
         세부 디자인 수정
-        
+
 #### 소통 공간
 
 - 학교/학생회 공지
-        
+
         세부 디자인 수정
 
 - 공부 필기자료
@@ -113,4 +117,3 @@
 ### 각자 할점
 
 - 맡은 역할 열심히
-
