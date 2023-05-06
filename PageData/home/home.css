@@ -3,6 +3,7 @@ main {
 }
 
 .mainImgBanner {
+    z-index: 1;
     width: 100%;
     min-height: 50vh;
 
@@ -24,7 +25,7 @@ main {
 
 @media (prefers-color-scheme: light) {
     .mainImgBanner {
-        text-shadow: 0 0 2em var(--prefer-text);
+        text-shadow: 0 0 1em var(--prefer-text);
     
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: var(--prefer-background);
@@ -33,10 +34,11 @@ main {
 
 @media (prefers-color-scheme: dark) {
     .mainImgBanner {
-        text-shadow: 0 0 2em var(--prefer-text);
+        text-shadow: 0 0 1em var(--prefer-text);
     
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: var(--prefer-background);
+        
     }
 }
 
