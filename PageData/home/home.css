@@ -11,7 +11,7 @@ main {
 
     padding: var(--big-font-size);
     
-    color: transparent;
+    color: var(--prefer-background);
     font-weight: 900;
 
     background-position: center bottom 25%;
@@ -25,6 +25,8 @@ main {
     width: 70%;
     background-image: url(/src/wideShot.jpg);
     font-size: 3.5vw;
+
+    text-shadow: var(--prefer-text) -5px -5px 0;
 }
 
 .today{
@@ -66,24 +68,10 @@ main {
     justify-content: space-around;
 }
 
-@media (prefers-color-scheme: light) {
-    .mainImgBanner {
-        text-shadow: var(--prefer-text) 0 0 30px;
-    
-        -webkit-text-stroke-width: 2px;
-        -webkit-text-stroke-color: var(--prefer-background);
-    }
 .information img {
     width: calc(var(--big-font-size) * 2);
 }
 
-@media (prefers-color-scheme: dark) {
-    .mainImgBanner {
-        text-shadow: var(--prefer-text) 0 0 30px;
-    
-        -webkit-text-stroke-width: 2px;
-        -webkit-text-stroke-color: var(--prefer-background);
-    }
 }
 
 h1 {
