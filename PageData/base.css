@@ -111,9 +111,11 @@ body, header {
 }
 
 footer {
-    border: 1px solid #999;
-    color: var(--prefer-text);
+    border-top: 1px solid #999;
+    color: #999;
     text-align: center;
     position: absolute;
+    font-size: 2vw;
     bottom: 0;
+    width: 100vw
 }
