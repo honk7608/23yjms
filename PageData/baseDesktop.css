@@ -3,6 +3,10 @@
         --big-font-size: min(4vw, 40px)
     }
 
+    .wrap {
+        display: flex;
+    }
+
     body {
         display: flex;
         flex-direction: row;
@@ -22,17 +26,12 @@
         color: var(--prefer-text);
         --header-font-size: max(3vw, 30px);
 
-        position: absolute;
-        left: 0;
-
         overflow-x: hidden;
         overflow-y: scroll;
     }
 
     main {
-        position: absolute;
         box-sizing: border-box;
-        right: 0;
     }
 
     header .logo img.LogoForMobile {
