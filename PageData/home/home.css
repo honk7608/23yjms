@@ -60,6 +60,11 @@ main {
     font-size: 2vw;
 }
 
+.information ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
 
 @media (prefers-color-scheme: light) {
     .mainImgBanner {
@@ -68,6 +73,8 @@ main {
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: var(--prefer-background);
     }
+.information img {
+    width: calc(var(--big-font-size) * 2);
 }
 
 @media (prefers-color-scheme: dark) {
