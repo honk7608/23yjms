@@ -37,10 +37,20 @@ p {
     margin: 0;
 }
 
+html {
+    height: 100%;
+}
+
 body {
-    min-height: 100vh;
+    height: 100%;
     
     background-color: var(--prefer-background);
+}
+
+.wrap {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 3vh;
 }
 
 main {
@@ -99,8 +109,11 @@ body, header {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
 footer {
     border: 1px solid #999;
     color: var(--prefer-text);
     text-align: center;
+    position: absolute;
+    bottom: 0;
 }
