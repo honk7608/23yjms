@@ -27,6 +27,14 @@ main {
 
 .today{
     flex: auto;
+    margin: 1vw;
+    border: 0;
+    border-radius: 2vw;
+    background-color: var(--accent-color-strong);
+}
+.todaytitle {
+    text-align: center;
+    font-size: 2vw;
 }
 
 @media (prefers-color-scheme: light) {
