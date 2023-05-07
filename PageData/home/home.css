@@ -31,21 +31,25 @@ main {
     z-index: 1;
 }
 .doubleStroke:before { /*inner*/
-    content: attr(title);
+    content: "이곳은 학생들을 위한 소통의 장,\A 양지 네트워크입니다!";
     position: absolute;
     -webkit-text-stroke: 0.11em var(--prefer-text); 
     
     left: 0;
     top: 0;
     z-index: -1;
+
+    white-space: pre-wrap;
 }
 .doubleStroke:after { /*outer*/
-    content: attr(title);
+    content: "이곳은 학생들을 위한 소통의 장,\A 양지 네트워크입니다!";
     position: absolute;
     -webkit-text-stroke: 0.25em var(--prefer-background);
     left: 0;
     top: 0;
     z-index: -2;
+
+    white-space: pre-wrap;
 }
 
 .today{
