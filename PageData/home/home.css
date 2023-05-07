@@ -21,6 +21,10 @@ main {
     margin: 0;
 }
 
+.today{
+    display: inline;
+}
+
 @media (prefers-color-scheme: light) {
     .mainImgBanner {
         text-shadow: var(--prefer-text) 0 0 30px;
