@@ -74,8 +74,7 @@ router.post('/sign-up', async function (req, res) {
 
     const [Users, fields] = await connection.execute(
         `SELECT * FROM user
-        WHERE user.id = ${req.body.id}
-        LIMIT 1;`
+        WHERE user.id = ${req.body.id};`
     )
 
     if(Users.length != 0) {return res.redirect('/member/sign-up')}
