@@ -27,15 +27,36 @@ main {
 
 .today{
     flex: auto;
-    margin: 1vw;
+    margin: 2vw;
     border: 0;
     border-radius: 2vw;
     background-color: var(--accent-color-strong);
-}
-.todaytitle {
-    text-align: center;
     font-size: 2vw;
 }
+
+.todaytitle {
+    text-align: center;
+    font-size: 3vw;
+    margin-top: 1.5vw;
+}
+
+.announcement {
+    margin: 2vw;
+    border: 0;
+    border-radius: 2vw;
+    background-color: var(--accent-color-strong);
+    font-size: 2vw;
+}
+
+.information {
+    
+    margin: 2vw;
+    border: 0;
+    border-radius: 2vw;
+    background-color: var(--accent-color-strong);
+    font-size: 2vw;
+}
+
 
 @media (prefers-color-scheme: light) {
     .mainImgBanner {
