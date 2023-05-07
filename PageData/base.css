@@ -99,3 +99,8 @@ body, header {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+footer {
+    border: 1px solid #999;
+    color: var(--prefer-text);
+    text-align: center;
+}
