@@ -1,6 +1,7 @@
 main {
     padding: 0 !important;
 }
+
 .maintoday {
     display: flex;
 }
@@ -37,11 +38,12 @@ main {
 .todaytitle {
     text-align: center;
     font-size: 3vw;
-    margin-top: 1.5vw;
+    padding-top: 1.5vw;
 }
 
 .announcement {
     margin: 2vw;
+    padding: 1vw;
     border: 0;
     border-radius: 2vw;
     background-color: var(--accent-color-strong);
@@ -49,7 +51,7 @@ main {
 }
 
 .information {
-    
+    padding: 1vw;
     margin: 2vw;
     border: 0;
     border-radius: 2vw;
