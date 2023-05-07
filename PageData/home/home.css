@@ -27,7 +27,7 @@ main {
     color: var(--prefer-background);
     font-weight: 900;
     position: relative;
-    font-size: var(--big-font-size);
+    font-size: calc(var(--big-font-size) * 1.5);
     z-index: 1;
 }
 .doubleStroke:before { /*inner*/
