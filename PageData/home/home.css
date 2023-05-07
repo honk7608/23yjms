@@ -38,28 +38,22 @@ main {
     font-size: 2vw;
 }
 
-.todaytitle {
+.titleText {
     text-align: center;
-    font-size: 3vw;
-    padding-top: 1.5vw;
+    font-size: var(--big-font-size);
+    font-weight: 700;
+    width: fit-content;
 }
 
-.announcement {
-    margin: 2vw;
+.contentDiv {
     padding: 1vw;
     border: 0;
-    border-radius: 2vw;
-    background-color: var(--accent-color-strong);
-    font-size: 2vw;
-}
+    border-radius: 1vw;
+    margin: 2vw;
 
-.information {
-    padding: 1vw;
-    margin: 2vw;
-    border: 0;
-    border-radius: 2vw;
+    font-size: calc(var(--big-font-size) / 2);
+    
     background-color: var(--accent-color-strong);
-    font-size: 2vw;
 }
 
 .information ul {
@@ -72,6 +66,8 @@ main {
     width: calc(var(--big-font-size) * 2);
 }
 
+.one_line_announce {
+    border-radius: 100vw !important;
 }
 
 h1 {
