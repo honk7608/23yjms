@@ -9,7 +9,6 @@ main {
 .mainImgBanner {
     flex: initial;
     z-index: 1;
-    min-height: 50vh;
 
     padding: var(--big-font-size);
     
