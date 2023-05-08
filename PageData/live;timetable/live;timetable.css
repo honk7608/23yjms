@@ -123,8 +123,9 @@
 }
 
 .license {
-    font-size: 2vw;
+    font-size: 1vw;
     margin-bottom: 1vw;
+    color: #999 !important;
 }
 
 /* Table */
