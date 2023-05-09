@@ -10,9 +10,9 @@
     }
 
     header {
-
+        top: 0;
         width: 100vw;
-        height: max-content;
+        height: 20vh;
 
         background-color: var(--prefer-background);
         color: var(--prefer-text);
@@ -21,6 +21,8 @@
 
         display: flex;
         align-items: center;
+        position: fixed;
+        top: 0;
     }
 
     header .logo img.LogoForDesktop {
@@ -184,5 +186,9 @@
         border-radius: 1vw;
         border: none;
         font-size: 3.5vw;
+    }
+    
+    body {
+        padding-top: 20vh;
     }
 }

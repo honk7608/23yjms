@@ -13,7 +13,7 @@
 
     header {
 
-        width: max-content;
+        width: 16vw;
         min-width: calc(var(--header-font-size) * 5);
         min-height: 100vh;
 
@@ -27,6 +27,8 @@
 
         overflow-x: hidden;
         overflow-y: scroll;
+        position: fixed;
+        left: 0;
     }
 
     main {
@@ -214,6 +216,10 @@
 
     header .member button:hover {
         box-shadow: 0px 0px #99999950;
+    }
+
+    body {
+        padding-left: 16vw;
     }
 
     @media (prefers-color-scheme: dark) {
