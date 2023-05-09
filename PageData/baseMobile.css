@@ -12,7 +12,7 @@
     header {
         top: 0;
         width: 100vw;
-        height: 20vh;
+        height: 9vh;
 
         background-color: var(--prefer-background);
         color: var(--prefer-text);
@@ -189,6 +189,6 @@
     }
     
     body {
-        padding-top: 20vh;
+        padding-top: 9vh;
     }
 }
