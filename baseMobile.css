@@ -1,0 +1,194 @@
+/* Mobile */ @media screen and (max-width: 600px){
+    * {
+        --big-font-size: 6vw
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    header {
+        top: 0;
+        width: 100vw;
+        height: 20vh;
+
+        background-color: var(--prefer-background);
+        color: var(--prefer-text);
+            
+        border-bottom: 1px #999 solid;
+
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+    }
+
+    header .logo img.LogoForDesktop {
+        display: none;
+    }
+
+    header .logo {
+        display: inline-flex;
+        width: 20vw;
+
+        padding-left: 5vw;
+        padding-right: 3vw;
+    }
+
+    header .logo img.LogoForMobile {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    header .menu {
+        width: 80vw;
+        padding: 0;
+
+        list-style: none;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    header .menu li {
+        display: flex;
+        align-items: center;
+    }
+
+    header .menu li p {
+        font-size: 4.5vw;
+        font-weight: 800;
+        position: relative;
+    }
+
+    header .menu > li p::before {
+        background-color: var(--accent-color-transparent);
+        border-radius: 1vw;
+        
+        width: 100%;
+        height: 2vw;
+        position: absolute;
+        bottom: 0;
+
+        display: none;
+        content: '';
+    }
+
+    header .menu > li:hover p::before {
+        display: block;
+    }
+
+    header .menu li .submenu {
+        display: none;
+        position: absolute;
+        
+        left: 0;
+        top: var(--headerH);
+
+        width: 100vw;
+
+        grid-template-columns: repeat(var(--submenuColumns), 1fr);
+        gap: 0;
+        
+        background-color: var(--prefer-background);
+        color: var(--prefer-text);
+        box-shadow: -3px 6px #99999950;
+    }
+
+    header .menu li .submenu a {
+        font-weight: 600;
+        font-size: 4.5vw;
+        color: var(--prefer-text);
+        background-color: var(--accent-color-transparent);
+        padding: 1vw;
+        border-right: var(--accent-color) 1px solid;
+        border-bottom: var(--accent-color) 1px solid;
+
+        text-align: center;
+    }
+
+    header .menu li:hover .submenu {
+        display: grid;
+    }
+
+    header .member {
+        text-align: center;
+        font-size: 4vw;
+        margin-right: 1vw;
+        margin-left: 3vw;
+    }
+
+    header .member .member_icon {
+        font-size: 6vw;
+        color: var(--prefer-text);
+    }
+
+    header .member .login_text {
+        
+        color: var(--prefer-text);
+        font-size: 3vw;
+    }
+
+    header .member .member_text {
+        color: var(--prefer-text);
+    }
+
+    header .member .signup_text {
+        color: var(--prefer-text);
+        font-size: 3.5vw;
+    }
+    
+    header .menu > li:hover p::before {
+        display: block;
+    }
+
+    header .member .NoLog {
+        display: none;
+        position: absolute;
+        
+        left: 0;
+        top: var(--headerH);
+
+        width: 100vw;
+
+        grid-template-columns: repeat(var(--submenuColumns), 1fr);
+        gap: 0;
+        
+        background-color: var(--prefer-background);
+        color: var(--prefer-text);
+        box-shadow: -3px 6px #99999950;
+    }
+
+    header .member .NoLog a {
+        width: 50%;
+        font-weight: 600;
+        font-size: 4.5vw;
+        color: var(--prefer-text);
+        background-color: var(--accent-color-transparent);
+        padding: 1vw;
+        border-right: var(--accent-color) 1px solid;
+        border-bottom: var(--accent-color) 1px solid;
+
+        text-align: center;
+    }
+
+    header .member:hover .NoLog {
+        display: flex;
+    }
+
+    #logoutForm button {     
+        color: var(--prefer-text);
+        background-color: var(--accent-color);
+        
+        border-radius: 1vw;
+        border: none;
+        font-size: 3.5vw;
+    }
+    
+    body {
+        padding-top: 20vh;
+    }
+}
