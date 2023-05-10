@@ -116,7 +116,6 @@ footer {
 
     height: 3vh;
     position : relative;
-    transform : translateY(-100%);
     border-top: 1px solid #999;
     color: #999 !important;
     text-align: center;
