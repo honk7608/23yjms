@@ -1,0 +1,102 @@
+.select .option {
+    gap: 1vw;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.select .option div{
+    width: max-content;
+}
+
+.select .option span {
+    color: var(--accent-color);
+}
+
+.select input[type="number"] {
+    padding: 0;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    width: 5vw;
+
+    font-size: var(--big-font-size);
+    font-weight: 800;
+    text-align: right;
+    color: var(--prefer-text);
+
+    border: none;
+    border-radius: 1vw;
+    background-color: var(--accent-color-transparent);
+}
+
+.select input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+
+    font: inherit;
+    color: currentColor;
+    
+    width: 1em;
+    height: 1em;
+    box-sizing: content-box;
+    
+    border: 0.1em solid var(--prefer-text);
+    border-radius: 0.15em;
+    transform: translateY(0.2em);
+
+    position: relative;
+}
+
+.select input[type="checkbox"]:before {
+    width: 0.7em;
+    height: 0.7em;
+    left: 0.15em;
+    top: 0.15em;
+
+    content: '';
+    display: block;
+    background-color: var(--prefer-background);
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+
+    position: absolute;
+}
+
+.select input[type="checkbox"]:checked {
+    background-color: var(--prefer-text);
+}
+
+.select input[type="submit"] {
+    border: none;
+    border-radius: 100vw;
+
+    width: 22.5vw;
+
+    color: var(--prefer-text);
+    font-weight: 700;
+    font-size: var(--big-font-size);
+
+    background-color: var(--accent-color);
+}
+
+/* Select Mobile */ @media screen and (max-width: 600px){
+    .select {
+        flex-direction: column;
+        align-items: center;
+        gap: 2vw;
+    }
+
+    .select .option {
+        width: 100%;
+        align-items: center;
+    }
+
+    .select input[type="number"] {
+        width: 8vw;
+    }
+
+    .select input[type="submit"] {
+        width: 100%;
+    }
+}
