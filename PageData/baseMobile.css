@@ -108,6 +108,7 @@
         border-bottom: var(--accent-color) 1px solid;
 
         text-align: center;
+        z-index: 2;
     }
 
     header .menu li:hover .submenu {
