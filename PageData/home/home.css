@@ -100,8 +100,4 @@ h1 {
     .mainImgBanner {
         width: 60%;
     }
-
-    .contentDiv {
-        flex-direction:row-reverse;
-    }
 }
