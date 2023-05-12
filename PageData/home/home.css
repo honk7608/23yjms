@@ -8,7 +8,7 @@ main {
 
 .mainImgBanner {
     margin: 0;
-    width: 70%;
+    width: 100%;
     
     padding: var(--big-font-size);
     
@@ -94,10 +94,4 @@ main {
 
 h1 {
     color: var(--prefer-text);
-}
-
-/* Mobile */ @media screen and (max-width: 600px){
-    .mainImgBanner {
-        width: 60%;
-    }
 }
