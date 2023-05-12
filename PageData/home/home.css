@@ -78,10 +78,16 @@ main {
     background-color: var(--accent-color-strong);
 }
 
+.rowdiv {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
 .information ul {
     list-style: none;
     display: flex;
     justify-content: space-around;
+    padding: 0;
 }
 
 .information img {
