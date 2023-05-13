@@ -98,6 +98,8 @@
     header .menu > li:hover {
         background-color: var(--accent-color);
         color: var(--prefer-text);
+        
+        border-radius: 1vw;
     }
 
     header .menu > li .submenu {
@@ -112,7 +114,7 @@
         align-items: first baseline;
         flex-direction: column;
 
-        border-radius: 2vw;
+        border-radius: 1vw;
     }
     
     header .menu > li:hover .submenu {
