@@ -12,8 +12,6 @@
     }
 
     header {
-
-        width: 16vw;
         min-width: calc(var(--header-font-size) * 5);
         min-height: 100vh;
 
@@ -72,9 +70,10 @@
     
     header .menu > li p {
         width: fit-content;
-
+        margin: auto;
         margin-bottom: 0.5vw;
-
+        
+        text-align: center;
         font-size: var(--header-font-size);
         font-weight: 800;
     }
@@ -98,8 +97,7 @@
     header .menu > li:hover {
         background-color: var(--accent-color);
         color: var(--prefer-text);
-        
-        border-radius: 1vw;
+        border-radius: 1.25vw;
     }
 
     header .menu > li .submenu {
@@ -173,8 +171,13 @@
     }
 
     header .member .member_text {
-        font-size: 3vw;
+        font-size: var(--big-font-size);
         color: var(--prefer-text);
+
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     header .member .NoLog {

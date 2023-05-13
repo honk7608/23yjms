@@ -106,6 +106,7 @@
                 MainEl.style.width = `calc(100vw - ${HeaderEl.clientWidth + 1}px)`
                 LogoEl.style.cssText = `min-height: calc(${HeaderEl.clientWidth + 1}px * 213 / 560);`
                 MemberEl.style.cssText = `--headerW: ${HeaderEl.clientWidth + 1}px;`
+                BodyEl.style.cssText = `padding-left: ${HeaderEl.clientWidth + 1}px;`
                 if(BodyEl.clientHeight < MainEl.clientHeight) {
                     HeaderEl.style.cssText = `height: ${MainEl.clientHeight}px;`
                 } else {
@@ -116,6 +117,7 @@
                 MemberEl.style.cssText = `--headerH: ${HeaderEl.clientHeight}px;`
                 HeaderEl.style.cssText = `--headerH: ${HeaderEl.clientHeight}px;`
                 LogoEl.style.cssText = ''
+                BodyEl.style.cssText = ``
             }
         }
 
