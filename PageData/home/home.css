@@ -16,7 +16,8 @@ main {
     margin: 0;
     width: 100%;
     
-    padding: var(--big-font-size);
+    padding-top: var(--big-font-size);
+    margin: 0 auto;
     
     background-image: url(/src/wideShot.jpg);
     background-position: center bottom 25%;
