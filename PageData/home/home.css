@@ -8,7 +8,7 @@ main {
 
 .mainImgBanner {
     margin: 0;
-    width: 70%;
+    width: 100%;
     
     padding: var(--big-font-size);
     
@@ -78,10 +78,16 @@ main {
     background-color: var(--accent-color-strong);
 }
 
+.rowdiv {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
 .information ul {
     list-style: none;
     display: flex;
     justify-content: space-around;
+    padding: 0;
 }
 
 .information img {
@@ -94,10 +100,4 @@ main {
 
 h1 {
     color: var(--prefer-text);
-}
-
-/* Mobile */ @media screen and (max-width: 600px){
-    .mainImgBanner {
-        width: 60%;
-    }
 }

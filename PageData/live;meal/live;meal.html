@@ -1,9 +1,20 @@
-<div class="additionalDiv">
-    급식표는 <span class="patternAccent">이번 달의 정보만 제공</span>합니다.<br>
-    <span style="font-weight: 300; font-size: 1.5vw;">(개발자라고 미래를 볼수는 없거든요 ㅠ)</span>
+<span class="patternAccent">이번 달 급식 정보</span>
 
-    <hr>
-    
+<div class="inputDiv">
+    <div class="sep">
+        <input  id="numInput" type="number" placeholder="며칠로 이동할까요?" min="1" step="1">
+        <button id="moveButton">이동하기</button>
+    </div>
+    <div class="sep">
+        <button id="todayButton">오늘 보기</button>
+    </div>
+</div>
+
+<div class="mealList" id="mealList">
+    <p>Loading...</p>
+</div>
+
+<div class="additionalDiv">    
     <span class="patternAccent">알레르기 정보</span><br>
     <ol>
         <span><span class="numbering">1 </span>난류</span>
@@ -26,20 +37,6 @@
         <span><span class="numbering">18 </span>조개류</span>
         <span><span class="numbering">19 </span>잣</span>
     </ol>
-</div>
-
-<div class="inputDiv">
-    <div class="sep">
-        <input  id="numInput" type="number" placeholder="며칠로 이동할까요?" min="1" step="1">
-        <button id="moveButton">이동하기</button>
-    </div>
-    <div class="sep">
-        <button id="todayButton">오늘 보기</button>
-    </div>
-</div>
-
-<div class="mealList" id="mealList">
-    <p>Loading...</p>
 </div>
 
 <script>
