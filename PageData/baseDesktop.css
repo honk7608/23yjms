@@ -104,6 +104,7 @@
         background-color: var(--prefer-background);
         padding: 1vw;
 
+
         font-weight: 700;
         font-size: calc(var(--header-font-size) * 0.6);
         
@@ -111,7 +112,7 @@
         align-items: first baseline;
         flex-direction: column;
 
-        border-radius: 1vw;
+        border-radius: 2vw;
     }
     
     header .menu > li:hover .submenu {
