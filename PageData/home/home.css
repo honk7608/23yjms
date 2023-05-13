@@ -60,12 +60,28 @@ main {
     white-space: pre-wrap;
 }
 
-.today{
+.today {
     flex: auto;
     margin: 2vw;
     border: 0;
     border-radius: 2vw;
     background-color: var(--accent-color-strong);
+}
+
+.today ul {
+    padding: 0;
+
+    list-style: none;
+    font-size: calc(var(--big-font-size) / 1.3);
+
+    display: grid;
+    gap: 5px;
+}
+
+.today ul li {
+    padding: 1vw;
+    background-color: var(--accent-color);
+    font-weight: 700;
 }
 
 .titleText {
@@ -92,10 +108,13 @@ main {
 }
 
 .information ul {
+    width: 100%;
+    
+    padding: 0;
     list-style: none;
+    
     display: flex;
     justify-content: space-around;
-    padding: 0;
 }
 
 .information img {
@@ -104,6 +123,7 @@ main {
 
 .one_line_announce {
     border-radius: 100vw !important;
+    margin-bottom: 0;
 }
 
 h1 {
