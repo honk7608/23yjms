@@ -58,9 +58,9 @@
                         mainTimerId = null
                     }
                     let restartTimerStartTime = new Date()
-                    delay(20*1000).then(() => {
+                    delay(10*1000).then(() => {
                         nowTime = new Date()
-                        if(nowTime.getTime() - restartTimerStartTime.getTime() >= 19*1000) {
+                        if(nowTime.getTime() - restartTimerStartTime.getTime() >= 9*1000) {
                             startTimer()
                             restartTimerStartTime = null
                         }
