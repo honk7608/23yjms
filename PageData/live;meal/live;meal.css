@@ -1,3 +1,8 @@
+span.patternAccent.Title {
+    font-size: var(--big-font-size);
+    font-weight: 700;
+}
+
 /* InputDiv */
 .inputDiv {
     width: 100%;
@@ -69,6 +74,7 @@
 /* MealList */
 .mealList {
     margin-top: 1vw;
+    margin-bottom: 1vw;
 
     width: 100%;
     background-color: var(--accent-color-transparent) !important;
@@ -147,6 +153,8 @@
     width: calc(var(--one-width) - 2vw);
     height: max-content;
 
+    font-size: calc(var(--big-font-size) / 1.5);
+
     padding: 1vw;
 
     border-radius: 1vw;
@@ -197,21 +205,23 @@
 .additionalDiv {
     width: 100%;
     padding: 1vw;
-    margin-bottom: 1vw;
+    margin-top: 1vw;
 
     border: 1px #999 solid;
     border-radius: 1vw;
 
     color: var(--prefer-text);
 
-    font-size: var(--big-font-size);
+    font-size: calc(var(--big-font-size) / 1.3);
     font-weight: 700;
     /* for safari */
     word-break: keep-all;
 }
 
 .additionalDiv > span {
-    font-size: var(--big-font-size)    
+    font-size: calc(var(--big-font-size) / 1.3);
+    font-weight: 600;
+    word-break: keep-all;
 }
 
 .additionalDiv ol {
@@ -223,8 +233,8 @@
 
 .additionalDiv ol > span {
     text-align: center;
-    font-weight: 500;
-    font-size: calc(var(--big-font-size)/1.5);;
+    font-weight: 300;
+    font-size: calc(var(--big-font-size) / 1.5);;
 }
 
 .additionalDiv ol .numbering {

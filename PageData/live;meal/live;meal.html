@@ -1,4 +1,8 @@
-<span class="patternAccent">이번 달 급식 정보</span>
+<span class="patternAccent Title">이번 달 급식 정보</span>
+
+<div class="mealList" id="mealList">
+    <p>Loading...</p>
+</div>
 
 <div class="inputDiv">
     <div class="sep">
@@ -8,10 +12,6 @@
     <div class="sep">
         <button id="todayButton">오늘 보기</button>
     </div>
-</div>
-
-<div class="mealList" id="mealList">
-    <p>Loading...</p>
 </div>
 
 <div class="additionalDiv">    
@@ -100,7 +100,7 @@
         ListEl.innerHTML = writtenText
 
         AllWidth = MainEl.clientWidth
-        var repeatCount = (AllWidth - (AllWidth % 300)) / 300
+        var repeatCount = (AllWidth - (AllWidth % 400)) / 400
         if (repeatCount == 0) {repeatCount = 1}
         else if(repeatCount > 10) {repeatCount = 10}
 
@@ -128,7 +128,7 @@
     TodayButtonEl.addEventListener("click", (event) => {
         window.location.href = `/living/meal#${mealList.day}`
     })
-    delay(100).then((event) => {
+    delay(1000).then((event) => {
         window.location.href = `/living/meal#${mealList.day}`
     })
     
