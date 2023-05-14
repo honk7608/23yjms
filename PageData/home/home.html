@@ -7,12 +7,77 @@
     </div>
 </div>
 
-<div class="contentDiv one_line_announce">
-    [공지] 사파리사파리사파리사 파리사 파리사 파리;;
-</div>
-
 <div class="rowdiv">
     <div class="contentDiv today">
+        <div class="contentDiv one_line_announce">
+            <div id="announce_content"><span class="announceTag">공지</span> 5월 버스킹 취소</div>
+            <script>
+                const contentList = [
+                    '<span class="announceTag">공지</span> 5월 버스킹 취소',
+                    '<span class="announceTag">공지</span> 5월 등교 노래 신청',
+                    '<span class="announceTag">공지</span> 체육대회(05.19) 관련 공지',
+                    '<span class="updateTag">업데이트</span> 공지 부분 디테일 대폭 증가'
+                ]
+
+                function delay(ms = 1000) {
+                    return new Promise((resolve) => setTimeout(resolve, ms));
+                }
+
+                let contentIndex = 0
+
+                function moveByUser(delta, stopTimer) {
+                    const contentEl = document.getElementById('announce_content')
+                    contentIndex += Number(delta)
+                    if (contentIndex >= contentList.length) {
+                        contentIndex = 0
+                    } else if (contentIndex < 0) {
+                        contentIndex = contentList.length - 1
+                    }
+
+                    contentEl.style.opacity = 0
+                    delay(500).then(() => {
+                        contentEl.style.opacity = 1
+                        contentEl.innerHTML = contentList[contentIndex]
+                    })
+
+                    if(stopTimer) {
+                        endTimer()
+                    }
+                }
+
+                function startTimer() {
+                    if(mainTimerId != null) {return}
+                    mainTimerId = setInterval(moveByUser, 5*1000, 1, false)
+                }
+
+                function endTimer() {
+                    console.log(mainTimerId)
+
+                    if(mainTimerId != null) {
+                        clearInterval(mainTimerId)
+                        mainTimerId = null
+                    }
+                    let restartTimerStartTime = new Date()
+                    delay(20*1000).then(() => {
+                        nowTime = new Date()
+                        if(nowTime.getTime() - restartTimerStartTime.getTime() >= 19*1000) {
+                            startTimer()
+                            restartTimerStartTime = null
+                        }
+                    })
+                }
+
+                let mainTimerId = setInterval(moveByUser, 5*1000, 1, false)
+                let restartTimerStartTime = null
+            </script>
+            <div class="controlButtonDiv">
+                <i class="fa-solid fa-angle-left" onclick="moveByUser(-1, true);"></i>
+                <i class="fa-solid fa-angle-right" onclick="moveByUser(1, true);"></i>
+            </div>
+        </div>
+
+        <hr>
+
         <div class="titleText patternAccent">오늘의 정보</div>
         <ul class="todayList">
             <li><a href="/living/meal">급식</a></li>
@@ -34,7 +99,7 @@
 
 
     <div class="contentDiv information">
-        <div class="titleText patternAccent">학생회와의 소통창구!</div>
+        <div class="titleText patternAccent">학생회와의<br> 소통창구!</div>
         <ul>
             <li><a href="https://www.youtube.com/@yjms_23/featured"><img src="/src/homeIcons/yt.png"></a></li>
             <li><a href="https://instagram.com/yjms_23?igshid=YmMyMTA2M2Y="><img src="/src/homeIcons/ist.png"></a></li>
