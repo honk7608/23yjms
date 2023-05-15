@@ -121,10 +121,12 @@
             }
         }
 
-        for(i = 0;i < 1000;i ++) {
-            if(i % 10 != 0) {continue}
-            delay(i).then(() => {adjustBodyWidth()})
-        }
+        timerId = setInterval(adjustBodyWidth, 100)
+        delay(5*1000).then(() => {
+            clearInterval(timerId)
+            timerId = setInterval(adjustBodyWidth, 60*1000)
+        })
+
         window.addEventListener('resize', adjustBodyWidth)
     </script>
     <footer class="mobile">
