@@ -70,7 +70,7 @@ main {
 .contentDiv {
     padding: 1vw;
     border: 0;
-    border-radius: 1vw;
+    border-radius: 2vw;
     margin: 2vw;
 
     font-size: calc(var(--big-font-size) / 1.3);
@@ -87,7 +87,6 @@ main {
     flex: auto;
     margin: 2vw;
     border: 0;
-    border-radius: 2vw;
     background-color: var(--accent-color-strong);
 }
 
@@ -108,17 +107,16 @@ main {
     text-align: center;
 }
 
-.today hr {
-    border-color: var(--prefer-text);
-}
-
 .today .one_line_announce {
     margin: 0;
-    padding: 0;
+    margin-top: 1vw;
+    padding: 0.5vw;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    background-color: white;
 }
 
 .today .one_line_announce .controlButtonDiv {
@@ -180,11 +178,18 @@ main {
 .information ul li:last-child {
     grid-column-start: 1;
     grid-column-end: 3;
-    display: block;
 }
 
 .information ul li {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.information ul li a {
+    width: fit-content;
+    height: fit-content;
+    display: block;
 }
 
 .information img {
