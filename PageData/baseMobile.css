@@ -12,7 +12,6 @@
     header {
         top: 0;
         width: 100vw;
-        height: 9vh;
 
         background-color: var(--prefer-background);
         color: var(--prefer-text);
@@ -21,8 +20,8 @@
 
         display: flex;
         align-items: center;
-        position: fixed;
-        top: 0;
+        
+        z-index: 2;
     }
 
     header .logo img.LogoForDesktop {
@@ -189,9 +188,6 @@
         border: none;
         font-size: 3.5vw;
     }
-    
-    body {
-        padding-top: 9vh;
 
     footer.desktop {
         display: none;
