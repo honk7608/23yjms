@@ -192,5 +192,8 @@
     
     body {
         padding-top: 9vh;
+
+    footer.desktop {
+        display: none;
     }
 }
