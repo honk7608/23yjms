@@ -117,5 +117,5 @@ app.use(function(err, req, res, next) {
 app.listen(port, function () {
     console.log('============================================================')
     date = new Date()
-    console.log('[ Server Started ::', `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`,']')
+    console.log('[ Server Started ::', `${('0' + String(date.getFullYear())).slice(-2)}년 ${('0' + String(date.getMonth() + 1)).slice(-2)}월 ${('0' + String(date.getDate())).slice(-2)}일 ${('0' + String(date.getHours())).slice(-2)}:${('0' + String(date.getMinutes())).slice(-2)}:${('0' + String(date.getSeconds())).slice(-2)}`,']')
 })
