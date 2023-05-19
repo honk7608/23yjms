@@ -93,23 +93,30 @@
 
     MainEl = document.getElementsByTagName('main')[0]
 
+    ListEl = document.getElementById('mealList')
+    ListEl.innerHTML = writtenText
     // mealItem 한개 width 설정
     function setOneWidth() {
         delay(75).then(() => {
-        ListEl = document.getElementById('mealList')
-        ListEl.innerHTML = writtenText
+            ListEl = document.getElementById('mealList')
 
-        AllWidth = MainEl.clientWidth
-        var repeatCount = (AllWidth - (AllWidth % 400)) / 400
-        if (repeatCount == 0) {repeatCount = 1}
-        else if(repeatCount > 10) {repeatCount = 10}
+            AllWidth = MainEl.clientWidth
+            var repeatCount = (AllWidth - (AllWidth % 400)) / 400
+            if (repeatCount == 0) {repeatCount = 1}
+            else if(repeatCount > 10) {repeatCount = 10}
 
-        AddText = `--one-width: ${ListEl.clientWidth / repeatCount}px; --count: min(${repeatCount}, 5);`
-        MainEl.style.cssText += AddText
+            AddText = `--one-width: ${ListEl.clientWidth / repeatCount}px; --count: min(${repeatCount}, 5);`
+            MainEl.style.cssText += AddText
         })
     }
 
     setOneWidth()
+
+    timerId = setInterval(setOneWidth, 500)
+    delay(2*1000).then(() => {
+        clearInterval(timerId)
+        timerId = setInterval(setOneWidth, 60*1000)
+    })
     window.addEventListener("resize", (event) => {setOneWidth()});
 
     // 오늘 보기 설정
@@ -172,6 +179,11 @@
         })
     }
     setAllergyGrid()
+    timerId2 = setInterval(setAllergyGrid, 500)
+    delay(2*1000).then(() => {
+        clearInterval(timerId)
+        timerId2 = setInterval(setAllergyGrid, 60*1000)
+    })
 
     window.addEventListener("resize", (event) => {setAllergyGrid()});
 </script>
