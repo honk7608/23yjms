@@ -11,6 +11,10 @@
         margin: 0;
     }
 
+    main {
+        box-sizing: border-box;
+    }
+
     header {
         min-width: calc(var(--header-font-size) * 5);
         min-height: 100vh;
@@ -27,10 +31,6 @@
         overflow-y: scroll;
         position: fixed;
         left: 0;
-    }
-
-    main {
-        box-sizing: border-box;
     }
 
     header .logo img.LogoForMobile {
@@ -238,9 +238,5 @@
         header .member .member_icon {
             background-color: #aaa;
         }
-    }
-
-    footer.mobile {
-        display: none;
     }
 }
