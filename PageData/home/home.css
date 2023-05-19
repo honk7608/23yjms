@@ -119,6 +119,8 @@ main {
 
     background-color: white;
     color: black;
+
+    border-radius: 100vw;
 }
 
 .today .one_line_announce .controlButtonDiv {
