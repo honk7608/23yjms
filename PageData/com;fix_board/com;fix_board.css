@@ -17,3 +17,7 @@
 .articleTr.active:hover td {
     background-color: var(--accent-color) !important;
 }
+
+td.articleMainContent {
+    text-align: left;
+}

@@ -72,7 +72,12 @@ const EndWithRespond = function (req, res, routeName=null, replacement=null, sav
         baseData = baseData.replace(`<!-- {${replacement[key].code}} -->`, replacement[key].content)
     }
 
-    res.writeHead(200, { 'Content-Type': 'text/html' });
+    if(routeName != 'errPage' || !(replacement[3].code == 'errCode' && replacement[3].content != '')) {    
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+    }
+    else {    
+        res.writeHead(replacement[3].content, { 'Content-Type': 'text/html' });
+    }
     res.write(baseData);
     res.end();
 }

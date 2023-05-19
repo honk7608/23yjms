@@ -243,7 +243,16 @@ router.get('/writeArticle', async function (req, res) {
 
     if(articleID) {
         const article = await getOneArticle(req.dbOption, boardName, articleID)
-        if(article.author_id != req.session.member.id) {return res.redirect('/no-perm')}
+        if(!article || boardName == fixe) {
+            if(!req.session.lastUrl) {req.session.lastUrl == '/'}
+            return EndWithRespond(req, res, 'errPage', [
+                {code: 'lastUrlText', content: req.session.lastUrl},
+                {code: 'mainMessage', content: '어, 여기가 어디죠?'},
+                {code: 'subMessage', content: '길을 잃으신 것 같네요...'},
+                {code: 'errCode', content: '404'}
+            ], false)
+        }
+        else if(article.author_id != req.session.member.id) {return res.redirect('/no-perm')}
         EndWithRespond(req, res, 'com;writeArticle', [
             {code: 'boardName1', content: boardName},
             {code: 'articleIDText1', content: `&articleID=${article.id}`},
@@ -252,8 +261,19 @@ router.get('/writeArticle', async function (req, res) {
             {code: 'returnDivClass', content: 'ToArticle'},
             {code: 'articleTitle', content: article.title}
         ])
-    }
-    else {
+    
+    } else {
+        if(boardName == 'fix') {
+            return EndWithRespond(req, res, 'com;fix_writeArticle', [
+                {code: 'css_additional', content: ['/css/com;writeArticle/com;writeArticle.css']},
+                {code: 'articleIDText1', content: ''},
+                {code: 'boardName1', content: boardName},
+                {code: 'back_url', content: `board?boardName=${boardName}`},
+                {code: 'textContent', content: ''},
+                {code: 'returnDivClass', content: 'ToBoard'},
+                {code: 'articleTitle', content: ''}
+            ])
+        }
         EndWithRespond(req, res, 'com;writeArticle', [
             {code: 'articleIDText1', content: ''},
             {code: 'boardName1', content: boardName},
