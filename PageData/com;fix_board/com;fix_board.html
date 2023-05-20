@@ -51,6 +51,8 @@ for(const key in Articles) {
     <td>
         <i class="fa-solid fa-ellipsis-vertical articleMenu">
             <div>
+                <a href="/community/writeArticle?board=${boardName}&articleID=${article.id}" class="edit needMe">수정하기</a>
+                <hr>
                 <a href="/community/deleteArticle?board=${boardName}&articleID=${article.id}" class="delete needMe">삭제하기</a>
             </div>
         </i>
