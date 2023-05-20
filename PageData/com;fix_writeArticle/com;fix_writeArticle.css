@@ -2,7 +2,13 @@
     width: 100%;
     padding: 1vw;
 
-    color: var(--prefer-text);
+    color: var(--prefer-background);
+    
+    border: 1px #999 solid;
+    border-radius: 1vw;
+    margin-bottom: 2vh;
+    background-color: var(--accent-color-transparent);
+    
     box-sizing: border-box;
 
     font-size: var(--big-font-size);
