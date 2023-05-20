@@ -1,7 +1,18 @@
 .area {
+    width: 100%;
+    padding: 1vw;
+
+    color: var(--prefer-text);
+    box-sizing: border-box;
+
     font-size: var(--big-font-size);
     font-weight: 600;
+
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
 }
+
 .area .class {
     gap: 1vw;
     
