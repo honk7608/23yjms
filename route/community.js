@@ -143,7 +143,7 @@ router.get('/board', async function (req, res) {
             {code: 'max_page1', content: maxPage},
             {code: 'max_page2', content: maxPage},
             {code: 'current_page', content: targetPage},
-            {code: 'css_additional', content: ['/css/com;board/com;board.css']}
+            {code: 'css_additional', content: []}
         ]);
     }
 })
@@ -265,7 +265,7 @@ router.get('/writeArticle', async function (req, res) {
     } else {
         if(boardName == 'fix') {
             return EndWithRespond(req, res, 'com;fix_writeArticle', [
-                {code: 'css_additional', content: ['/css/com;writeArticle/com;writeArticle.css']},
+                {code: 'css_additional', content: []},
                 {code: 'articleIDText1', content: ''},
                 {code: 'boardName1', content: boardName},
                 {code: 'back_url', content: `board?boardName=${boardName}`},
