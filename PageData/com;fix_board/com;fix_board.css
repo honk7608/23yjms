@@ -21,3 +21,191 @@
 td.articleMainContent {
     text-align: left;
 }
+main {
+    padding: 0;
+}
+
+.infoDiv {
+    width: 100%;
+    padding: 1vw;
+
+    background-color: var(--accent-color-transparent);
+    color: var(--prefer-text);
+}
+
+.infoDiv .titleDiv {    
+    font-size: var(--big-font-size);
+    font-weight: 700;
+    color: inherit;
+}
+
+.infoDiv .writeDiv {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: max(0.5vw, 10px);
+    
+    margin-top: 1vw;
+    padding: 0.5vw;
+    padding-left: 1vw;
+
+    border-radius: 100vw;
+    
+    background-color: var(--accent-color-weak);
+    color: var(--prefer-background);
+
+    font-weight: 700;
+    font-size: 2vw;
+}
+
+.pageDiv {
+    margin: 1vw;
+    margin-bottom: 0;
+    padding: 1vw;
+    
+    border-radius: 1vw;
+    border: var(--prefer-text) 1px solid;
+    
+    font-size: var(--big-font-size);
+}
+
+.pageDiv input[type="number"] {
+    font-size: var(--big-font-size);;
+    padding: 0.5vw;
+
+    border: none;
+    border-radius: 100vw;
+    outline: none;
+
+    color: black;
+    background-color: #999;
+}
+
+.pageDiv input[type="submit"] {
+    border: none;
+    border-radius: 100vw;
+
+    color: var(--prefer-text);
+    font-weight: 700;
+    font-size: var(--big-font-size);
+    padding: 0.5vw;
+    background-color: var(--accent-color);
+}
+
+.articleDiv {
+    width: 100%;
+    padding: 1vw;
+
+    color: var(--prefer-text);
+    font-size: 1.5vw;
+}
+
+.articleDiv table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.articleDiv td {
+    text-align: center;
+    padding: 1vw;
+    position: relative;
+
+    background-color: transparent;
+
+    word-break: keep-all;
+}
+
+.articleDiv td.articleTitle {
+    text-align: left;
+}
+
+.articleDiv tr.tableHeader td {
+    border-bottom: #999 2px solid;
+}
+
+.articleDiv tr.articleTr td {
+    border-bottom: #999 1px solid;
+}
+
+@media (prefers-color-scheme: dark) {
+    .articleDiv tr.articleTr:hover td {
+        background-color: #333; /*666*/
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .articleDiv tr.articleTr:hover td {
+        background-color: #ddd; /*aaa*/
+    }
+}
+
+.articleDiv tr.articleTr.me td.articleAuthor {
+    font-weight: 700;
+}
+
+.articleDiv tr.articleTr .articleTitle a:hover{
+    position: relative;
+    font-weight: 700;
+    text-decoration: var(--accent-color) 3px underline solid;
+}
+
+.articleDiv td .articleMenu div {
+    display: none;
+
+    position: absolute;
+    right: 0;
+    width: max-content;
+    min-width: 100%;
+    padding: 1vw;
+
+    word-break: keep-all;
+    
+    border: 1px var(--prefer-text) solid;
+    border-radius: 1vw;
+
+    background-color: var(--prefer-background);
+    box-shadow: -3px 6px #99999950;
+    
+    z-index: 1;
+}
+
+.articleDiv td:hover .articleMenu div {
+    display: block;
+}
+
+.articleDiv td .articleMenu div .needMe,
+.articleDiv tr td .articleMenu div hr {
+    display: none;
+}
+
+.articleDiv tr.me td .articleMenu div .needMe,
+.articleDiv tr.me td .articleMenu div hr {
+    display: block;
+}
+
+@media screen and (max-width: 600px){
+    .infoDiv .writeDiv {
+        font-size: 4vw;
+    }
+
+    .articleDiv {
+        font-size: 3.5vw;
+    }
+
+    .articleDiv .articleTitle {
+        word-break: break-all;
+    }
+        
+    .pageDiv input[type="number"] {
+        width: 20vw;
+        height: 8vw;
+        font-size: 6vw;
+    }
+
+    .pageDiv input[type="submit"] {
+        font-size: 5vw;
+    }
+
+        
+}

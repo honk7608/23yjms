@@ -9,7 +9,7 @@
     font-size: var(--big-font-size);
     font-weight: 600;
 
-    display: flex;
+    display: inline;
     justify-content: space-between;
     white-space: nowrap;
 }
@@ -43,6 +43,19 @@
     border: none;
     border-radius: 1vw;
     background-color: var(--accent-color-transparent);
+}
+
+.otherArea {
+    width: 100%;
+    padding: 0.5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    font-size: var(--big-font-size);
+    font-weight: 700;
+    color: var(--prefer-text);
+    outline: none;
+    border: 1px solid var(--prefer-background);
+    border-radius: 100vw;
 }
 
 main {
