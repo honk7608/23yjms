@@ -66,6 +66,7 @@ main {
     font-size: var(--big-font-size);
     font-weight: 700;
     width: fit-content;
+    background-color: var(--accent-color-strong);
 }
 
 .contentDiv {
@@ -88,7 +89,6 @@ main {
     flex: auto;
     margin: 2vw;
     border: 0;
-    background-color: var(--accent-color-strong);
 }
 
 .today ul {
@@ -104,6 +104,7 @@ main {
 .today ul li {
     padding: 1vw;
     background-color: var(--accent-color);
+    color: var(--prefer-background);
     font-weight: 700;
     text-align: center;
     border-radius: 2vw;
