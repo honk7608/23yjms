@@ -4,12 +4,13 @@
     color: var(--prefer-background);
     
     box-sizing: border-box;
-
+   
     font-size: var(--big-font-size);
     font-weight: 600;
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
     white-space: nowrap;
 }
 
@@ -18,9 +19,6 @@
     
     display: flex;
     flex-direction: row;
-    padding-bottom: 1vw;
-    padding-right: 1vw;
-    padding-top: 0.6vw;
 }
 
 .area .class div{
