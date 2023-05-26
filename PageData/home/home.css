@@ -39,6 +39,7 @@ main {
     font-size: calc(var(--big-font-size) * 1.5);
     z-index: 1;
 }
+
 .doubleStroke:before { /*inner*/
     content: "이곳은 학생들을 위한 소통의 장,\A 양지 네트워크입니다!";
     position: absolute;
@@ -50,6 +51,7 @@ main {
 
     white-space: pre-wrap;
 }
+
 .doubleStroke:after { /*outer*/
     content: "이곳은 학생들을 위한 소통의 장,\A 양지 네트워크입니다!";
     position: absolute;

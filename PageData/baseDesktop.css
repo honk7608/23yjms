@@ -79,19 +79,23 @@
     }
 
     @media (prefers-color-scheme: light) {
-        header .menu > li p.menu_name {
+        header .menu > li p {
             background: url('/src/patternY.png') repeat-x center bottom;
         }
     }
 
     @media (prefers-color-scheme: dark) {
-        header .menu > li p.menu_name {
+        header .menu > li p {
             background: url('/src/patternB.png') repeat-x center bottom;
         }
     }
 
     header .menu > li:hover p {
         background: url('/src/pattern.png') repeat-x center bottom;
+    }
+
+    header .menu > li:hover p.menu_name {
+        color: var(--prefer-background);
     }
     
     header .menu > li:hover {
@@ -120,7 +124,7 @@
     }
 
     header .menu > li:hover .submenu a {
-        color: var(--prefer-background);
+        color: var(--prefer-text);
         position: relative;
     }
     
