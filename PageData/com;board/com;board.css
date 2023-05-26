@@ -62,7 +62,7 @@ main {
     border: none;
     border-radius: 100vw;
 
-    color: var(--prefer-text);
+    color: var(--prefer-background);
     font-weight: 700;
     font-size: var(--big-font-size);
     padding: 0.5vw;

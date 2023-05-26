@@ -145,8 +145,6 @@ textarea {
 
 /* Mobile */ @media screen and (max-width: 600px){
     .infoDiv .ButtonsDiv a.ToBoard {
-        background-color: var(--accent-color-strong);
-        color: var(--prefer-text);
         font-size: 4vw;
     }
     
