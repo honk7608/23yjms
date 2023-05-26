@@ -29,6 +29,7 @@ main {
     flex: initial;
     justify-content: center;
     align-items: center;
+    font-family: "TheJamsil5Bold" !important;
 }
 
 .doubleStroke {
