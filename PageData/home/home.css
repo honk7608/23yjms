@@ -76,7 +76,7 @@ main {
 
     font-size: calc(var(--big-font-size) / 1.3);
     
-    background-color: var(--accent-color-strong);
+    background-color: var(--accent-color-weak);
 }
 
 .rowdiv {

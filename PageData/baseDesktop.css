@@ -120,7 +120,7 @@
     }
 
     header .menu > li:hover .submenu a {
-        color: var(--prefer-text);
+        color: var(--prefer-background);
         position: relative;
     }
     
