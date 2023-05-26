@@ -64,7 +64,7 @@ input[type='text'], input[type='password'], input[type='number']{
 
 button.submit {
     font-size: inherit;
-    color: var(--prefer-text);
+    color: var(--prefer-background);
     background-color: var(--accent-color);
     
     border-radius: 1vw;
