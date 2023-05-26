@@ -66,7 +66,7 @@ main {
     font-size: var(--big-font-size);
     font-weight: 700;
     width: fit-content;
-    background-color: var(--accent-color-strong);
+    color: var(--accent-color-strong);
 }
 
 .contentDiv {

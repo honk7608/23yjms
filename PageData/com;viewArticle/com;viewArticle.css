@@ -13,6 +13,7 @@ main {
 .infoDiv .title {
     font-weight: 700;
     font-size: var(--big-font-size);
+    color: var(--prefer-background);
 }
 
 .infoDiv > hr {
