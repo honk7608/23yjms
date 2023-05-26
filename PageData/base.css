@@ -3,8 +3,8 @@
     * {
         --accent-color: #228B22;
         --accent-color-transparent: #228B2250;  
-        --accent-color-strong: #FADDC1;
-        --accent-color-weak: #4B2E12;
+        --accent-color-strong: #a5f3a5;
+        --accent-color-weak: #155115;
         --prefer-background: white;
         --prefer-text: black;
     }
@@ -14,8 +14,8 @@
     * {
         --accent-color: #90EE90;
         --accent-color-transparent: #90EE9050;  
-        --accent-color-strong: #192643;
-        --accent-color-weak: #C8D5F2;
+        --accent-color-strong: #6CEE6C;
+        --accent-color-weak: #A7F2A7;
         --prefer-background: black;
         --prefer-text: white;
     }
