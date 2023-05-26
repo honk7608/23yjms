@@ -111,6 +111,10 @@ body, header {
     scrollbar-width: none;  /* Firefox */
 }
 
+header {
+   font-family: "MBC1961GulimM";
+}
+
 footer {
     height: 3vh;
     position : relative;
