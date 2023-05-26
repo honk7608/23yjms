@@ -1,7 +1,7 @@
 /* Color Tags */
 @media (prefers-color-scheme: light) {
     * {
-        --accent-color: #FF8D12;
+        --accent-color: #228B22;
         --accent-color-transparent: #FF8D1250;  
         --accent-color-strong: #FADDC1;
         --accent-color-weak: #4B2E12;
@@ -12,7 +12,7 @@
 
 @media (prefers-color-scheme: dark) {
     * {
-        --accent-color: #427ADC;
+        --accent-color: #90EE90;
         --accent-color-transparent: #427ADC50;  
         --accent-color-strong: #192643;
         --accent-color-weak: #C8D5F2;
