@@ -122,7 +122,7 @@ main {
 
 .infoDiv .ButtonsDiv a.ToBoard {
     background-color: var(--accent-color-strong);
-    color: var(--prefer-text);
+    color: var(--prefer-background);
 }
 
 .infoDiv .ButtonsDiv a.ToArticle {

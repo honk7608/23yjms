@@ -27,7 +27,7 @@
 }
 
 .selectDiv button {
-    color: var(--prefer-text);
+    color: var(--prefer-background);
     background-color: var(--accent-color);
     
     border-radius: 2vw;

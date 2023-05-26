@@ -17,7 +17,7 @@ main {
 }
 
 .infoDiv > hr {
-    border: var(--prefer-text) 1px solid;
+    border: var(--prefer-background) 1px solid;
 }
 
 .infoDiv .additionalInfo {
@@ -76,7 +76,7 @@ main {
 
 .infoDiv .ButtonsDiv a.returnDiv {
     background-color: var(--accent-color-strong);
-    color: var(--prefer-text);
+    color: var(--prefer-background);
 }
 
 .infoDiv .ButtonsDiv a.editDiv {

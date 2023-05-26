@@ -23,7 +23,7 @@ span.patternAccent.Title {
 
     box-shadow: -3px 6px #99999950;
     
-    color: var(--prefer-text);
+    color: var(--prefer-background);
     background-color: var(--accent-color);
     
     border-radius: 1vw;
@@ -37,7 +37,7 @@ span.patternAccent.Title {
 }
 
 .inputDiv button:hover {
-    color: var(--prefer-background);
+    background-color: var(--accent-color-weak);
 }
 
 .inputDiv input {
