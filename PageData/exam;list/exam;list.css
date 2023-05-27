@@ -121,3 +121,55 @@
         width: 100%;
     }
 }
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead th {
+    background-color: var(--accent-color);
+    font-size: var(--big-font-size);
+    color: var(--prefer-background);
+
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 2vw;
+}
+
+table tr.defTr td {
+    background-color: var(--accent-color-transparent);
+    font-size: calc(var(--big-font-size)/1.5);
+    font-weight: 500;
+    text-align: center;
+    border: none !important;
+}
+
+table td {
+    text-align: center;
+    font-size: calc(var(--big-font-size)/3);
+    word-break: keep-all;
+}
+
+table tr.topSubject {
+    border-top: 3px var(--prefer-text) solid;
+}
+
+table td.subjectName {
+    font-weight: 600;
+    font-size: calc(var(--big-font-size)/2);
+}
+
+table td.performName {
+    text-align: left;
+}
+
+table td.performName, td.performPoint {
+    border-top: 1px var(--prefer-text) solid;
+}
+
+table td.percent_midFinal,
+table td.percent_perform,
+table td.performPoint {
+    width: fit-content;
+}
