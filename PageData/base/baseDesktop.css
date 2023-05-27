@@ -70,7 +70,8 @@
     
     header .menu > li p {
         width: fit-content;
-        margin: auto;
+        margin: 1.75vw;
+        margin-top: 0vw;
         margin-bottom: 0.5vw;
         
         text-align: center;
