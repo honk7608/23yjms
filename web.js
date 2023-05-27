@@ -71,9 +71,6 @@ app.use('/member', require('./route/member.js'));
 
 //main
 app.get('/', async function (req, res) {
-    const fs = require('fs')
-    try {console.log(fs.readFileSync(`${FileBaseRoot}.log`, 'utf-8'))}
-    catch {}
     EndWithRespond(req, res, 'home', [])
 })
 
