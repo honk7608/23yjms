@@ -131,11 +131,39 @@ header {
 }
 
 footer {
-    height: 3vh;
-    position : relative;
-    border-top: 1px solid #999;
+    padding: 1vw;
     
-    color: #999 !important;
-    text-align: center;
+    position : relative;
+
     font-size: calc(var(--big-font-size) / 2);
+
+    background: #1b263b;
+    color: white;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+footer div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+footer div.additional_page {
+    padding: 0.5vw;
+    gap: 0.5vw;
+
+    background-color: #778da9;
+    
+    color: #1b263b;
+    font-weight: 700;
+}
+
+footer a {
+    color: inherit !important;
+}
+
+footer a:hover {
+    text-decoration: underline #FFFFFF70 solid 3px;
 }

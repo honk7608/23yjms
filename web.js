@@ -76,7 +76,12 @@ app.get('/', async function (req, res) {
 
 //version
 app.get('/version', async function (req, res) {
-    EndWithRespond(req, res, 'version', [])
+    EndWithRespond(req, res, 'etc;version', [])
+})
+
+//rules
+app.get('/rules', async function (req, res) {
+    EndWithRespond(req, res, 'etc;rules', [])
 })
 
 //error pages
