@@ -11,7 +11,7 @@
     <div class="contentDiv today">
         <div class="titleText patternAccent">오늘의 정보</div>
 
-        <div class="contentDiv one_line_announce">
+        <div class="contentDiv one_line_announce" id="announce_div">
             <div id="announce_content"><span class="announceTag">공지</span> 5월 버스킹 취소</div>
             <script>
                 const contentList = [
@@ -53,8 +53,6 @@
                 }
 
                 function endTimer() {
-                    console.log(mainTimerId)
-
                     if(mainTimerId != null) {
                         clearInterval(mainTimerId)
                         mainTimerId = null
@@ -95,10 +93,31 @@
             todayResize()
         </script>
     </div>
+    <script>
+        function announceResize() {
+            if (BodyEl.clientWidth >= 601) {
+                const annDivEl = document.getElementById('announce_div')
+                annDivBorderRadius = annDivEl.clientHeight
+                annDivBorderRadius = annDivBorderRadius / 2
+                annDivEl.style.paddingLeft = `${annDivBorderRadius}px`
+                annDivEl.style.paddingRight = `${annDivBorderRadius}px`
+                console.log(annDivEl, annDivEl.style, annDivBorderRadius)
+            } else {
+                annDivEl.style.paddingLeft = ``
+                annDivEl.style.paddingRight = ``
+            }
+        }
+        window.addEventListener('resize', announceResize)
+        announceResize()
+    </script>
 
 
     <div class="contentDiv information">
-        <div class="titleText patternAccent">학생회와의<br> 소통창구!</div>
+        <div class="titleTextWrap">
+            <div class="titleText patternAccent">학생회와의</div>
+            <div class="nbspText">&nbsp;</div>
+            <div class="titleText patternAccent">소통창구!</div>
+        </div>
         <ul>
             <li><a href="https://www.youtube.com/@yjms_23/featured"><img src="/src/homeIcons/yt.png"></a></li>
             <li><a href="https://instagram.com/yjms_23?igshid=YmMyMTA2M2Y="><img src="/src/homeIcons/ist.png"></a></li>
