@@ -74,6 +74,11 @@ app.get('/', async function (req, res) {
     EndWithRespond(req, res, 'home', [])
 })
 
+//version
+app.get('/version', async function (req, res) {
+    EndWithRespond(req, res, 'version', [])
+})
+
 //error pages
 //no-permission
 app.get('/no-perm', async function (req, res) {
