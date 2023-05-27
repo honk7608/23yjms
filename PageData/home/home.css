@@ -82,6 +82,10 @@ main {
     background-color: var(--accent-color-weak);
 }
 
+.contentDiv .patternAccent {
+    background: url('/src/pattern.png') repeat-x center bottom;
+}
+
 .rowdiv {
     display: grid;
     grid-template-columns: 1fr auto;

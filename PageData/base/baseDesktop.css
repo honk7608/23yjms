@@ -81,13 +81,13 @@
 
     @media (prefers-color-scheme: light) {
         header .menu > li p {
-            background: url('/src/patternY.png') repeat-x center bottom;
+            background: url('/src/patternLight.png') repeat-x center bottom;
         }
     }
 
     @media (prefers-color-scheme: dark) {
         header .menu > li p {
-            background: url('/src/patternB.png') repeat-x center bottom;
+            background: url('/src/patternDark.png') repeat-x center bottom;
         }
     }
 

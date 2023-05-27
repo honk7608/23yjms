@@ -101,14 +101,14 @@ input {
 
 @media (prefers-color-scheme: light) {
     .patternAccent {
-        background: url('/src/patternY.png') repeat-x center bottom;
+        background: url('/src/patternLight.png') repeat-x center bottom;
         color: var(--accent-color);
     }
 }
 
 @media (prefers-color-scheme: dark) {
     .patternAccent {
-        background: url('/src/patternB.png') repeat-x center bottom;
+        background: url('/src/patternDark.png') repeat-x center bottom;
         color: var(--accent-color);
     }
 }
