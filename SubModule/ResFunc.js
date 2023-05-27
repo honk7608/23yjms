@@ -10,7 +10,7 @@ const EndWithRespond = function (req, res, routeName=null, replacement=null, sav
     if(saveUrl) {req.session.lastUrl = req.originalUrl}
 
     const fs = require('fs')
-    var baseData = String(fs.readFileSync(`${req.FileBaseRoot}/PageData/base.html`, 'utf-8'))
+    var baseData = String(fs.readFileSync(`${req.FileBaseRoot}/PageData/base/base.html`, 'utf-8'))
     var respondData = String(fs.readFileSync(`${req.FileBaseRoot}/PageData/${routeName}/${routeName}.html`, 'utf-8'))
 
     if (replacement) {
