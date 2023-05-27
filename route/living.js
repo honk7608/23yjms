@@ -19,7 +19,12 @@ router.get('/timetable', async function (req, res) {
             const timetable = new Timetable();
         
             async function getTimetable() {
+                tryCount = 0
                 while(true) {
+                    tryCount += 1
+                    if(tryCount > 20) {
+                        res.redirect('/404notfound')
+                    }
                     try {
                         await timetable.init({ cache: 1000 * 60 * 60 })
                         await timetable.setSchool(49930)
@@ -51,21 +56,29 @@ router.get('/timetable', async function (req, res) {
 })
 
 router.get('/meal', async function (req, res) {
-    const School = require('school-kr')
-    const school = new School()
-    
-    school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
-    while(true) {
-        try {
-            var meal = await school.getMeal()
-        } catch {
-            continue
-        }
-        break
-    }
+    // const School = require('school-kr')
+    // const school = new School()
+    //
+    // tryCount = 0
+    // while(true) {
+    //     tryCount += 1
+    //     console.log(tryCount)
+    //     if(tryCount > 20) {
+    //         res.redirect('/404notfound')
+    //     }
+    //     try {
+    //         school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
+    //         var meal = await school.getMeal()
+    //     } catch {
+    //         continue
+    //     }
+    //     break
+    // }
+    //
+    // var mealString = JSON.stringify(meal)
+    // mealString = mealString.split('\\n').join('(nextLine)')
 
-    var mealString = JSON.stringify(meal)
-    mealString = mealString.split('\\n').join('(nextLine)')
+    mealString = '' //임시
 
     EndWithRespond(req, res, 'live;meal', [{
         code: 'meal',
@@ -106,9 +119,14 @@ router.get('/schedule', async function (req, res) {
         const School = require('school-kr')
         const school = new School()
         
-        school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
+        tryCount = 0
         while(true) {
+            tryCount += 1
+            if(tryCount > 20) {
+                res.redirect('/404notfound')
+            }
             try {
+                school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
                 var calendar = await school.getCalendar({separator: '(separator)', month: reqMonth, year: reqYear});
             } catch {
                 continue
@@ -119,10 +137,16 @@ router.get('/schedule', async function (req, res) {
         const School = require('school-kr')
         const school = new School()
         
-        school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
+        tryCount = 0
         while(true) {
+            tryCount += 1
+            if(tryCount > 20) {
+                res.redirect('/404notfound')
+            }
+
             var calendar = []
             try {
+                school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
                 for(i = 1; i <= 12; i++) {
                     calendar.push(await school.getCalendar({separator: '(separator)', month: i}));
                 }
