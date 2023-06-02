@@ -111,8 +111,9 @@
         padding: 1vw;
 
 
-        font-weight: 700;
+        font-weight: normal;
         font-size: calc(var(--header-font-size) * 0.6);
+       
         font-family: "Dovemayo_gothic" !important;
         
         display: none;
