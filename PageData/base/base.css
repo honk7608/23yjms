@@ -126,10 +126,6 @@ body, header {
     scrollbar-width: none;  /* Firefox */
 }
 
-header {
-   font-family: "Dovemayo_gothic" !important;
-}
-
 footer {
     padding: 1vw;
     
