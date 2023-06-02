@@ -65,9 +65,9 @@
 
     header .menu li p {
         font-size: 4.5vw;
-        font-weight: 800;
+        font-weight: normal !important;
         position: relative;
-       font-family: "Dovemayo_gothic" !important;
+        font-family: "Dovemayo_gothic" !important;
     }
 
     header .menu > li p::before {
@@ -107,7 +107,7 @@
     }
 
     header .menu li .submenu a {
-        font-weight: 600;
+        font-weight: normal !important;
         font-size: 4.5vw;
         color: var(--prefer-text);
         background-color: var(--accent-color-transparent);
