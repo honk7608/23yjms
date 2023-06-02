@@ -199,11 +199,6 @@
         display: flex;
         flex-direction: column;
     }
-   
-    header .member .NoLog a {
-        font-weight: normal !important;
-        font-family: "Dovemayo_gothic" !important;
-    }
 
     header .member form {
         grid-column-start: 1;
