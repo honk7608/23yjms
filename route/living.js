@@ -56,29 +56,27 @@ router.get('/timetable', async function (req, res) {
 })
 
 router.get('/meal', async function (req, res) {
-    // const School = require('school-kr')
-    // const school = new School()
-    //
-    // tryCount = 0
-    // while(true) {
-    //     tryCount += 1
-    //     console.log(tryCount)
-    //     if(tryCount > 20) {
-    //         res.redirect('/404notfound')
-    //     }
-    //     try {
-    //         school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
-    //         var meal = await school.getMeal()
-    //     } catch {
-    //         continue
-    //     }
-    //     break
-    // }
-    //
-    // var mealString = JSON.stringify(meal)
-    // mealString = mealString.split('\\n').join('(nextLine)')
-
-    mealString = '' //임시
+    const School = require('school-kr')
+    const school = new School()
+    
+    tryCount = 0
+    while(true) {
+        tryCount += 1
+        console.log(tryCount)
+        if(tryCount > 20) {
+            res.redirect('/404notfound')
+        }
+        try {
+            school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
+            var meal = await school.getMeal()
+        } catch {
+            continue
+        }
+        break
+    }
+    
+    var mealString = JSON.stringify(meal)
+    mealString = mealString.split('\\n').join('(nextLine)')
 
     EndWithRespond(req, res, 'live;meal', [{
         code: 'meal',
