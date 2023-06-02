@@ -73,6 +73,7 @@
         margin: 1.75vw;
         margin-top: 0vw;
         margin-bottom: 0.5vw;
+        font-weight: normal;
         font-family: "Dovemayo_gothic" !important;
         text-align: center;
         font-size: var(--header-font-size);
