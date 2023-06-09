@@ -14,6 +14,7 @@ const url = require('url');
  * @returns {{author_id: Number, author_name: String, createdTime: Date, id: Number, title: String}[]} 게시물 리스트
  */
 async function getBoardArticles(dbOption, boardName, startIndex=null, count=10, addNeedData='', addWhereQuery='') {
+    if(boardName == 'fix') {addNeedData = `, place, specific_place${addNeedData}`}
     queryText = 
 `SELECT ${boardName}_board.id, title, createdTime, user.name AS author_name, author_id${addNeedData}
 FROM ${boardName}_board 
@@ -52,10 +53,11 @@ ORDER BY ${boardName}_board.id DESC;`
  * @returns {{author_id: Number, author_name: String, createdTime: Date, id: Number, title: String}} 게시물 하나의 데이터
  */
 async function getOneArticle(dbOption, boardName, articleID) {
+    if(boardName == 'fix') {addData = ', place, specific_place'}
     const connection = await mysql.createConnection(dbOption);
 
     const [Articles, fields] = await connection.execute(
-        `SELECT ${boardName}_board.id, title, content, createdTime, user.name AS author_name, author_id 
+        `SELECT ${boardName}_board.id, title${addData}, content, createdTime, user.name AS author_name, author_id 
         FROM ${boardName}_board 
         LEFT JOIN user ON ${boardName}_board.author_id = user.id 
         WHERE ${boardName}_board.id = ${articleID}
@@ -250,7 +252,7 @@ router.get('/writeArticle', async function (req, res) {
 
     if(articleID) {
         const article = await getOneArticle(req.dbOption, boardName, articleID)
-        if(!article || boardName == 'fix') {
+        if(!article) {
             if(!req.session.lastUrl) {req.session.lastUrl == '/'}
             return EndWithRespond(req, res, 'errPage', [
                 {code: 'lastUrlText', content: req.session.lastUrl},
@@ -258,8 +260,20 @@ router.get('/writeArticle', async function (req, res) {
                 {code: 'subMessage', content: '길을 잃으신 것 같네요...'},
                 {code: 'errCode', content: '404'}
             ], false)
+        } else if(article.author_id != req.session.member.id) {
+            return res.redirect('/no-perm')
+        } else if (boardName == 'fix') {
+            return EndWithRespond(req, res, 'com;fix_writeArticle', [
+                {code: 'boardName1', content: boardName},
+                {code: 'articleIDText1', content: `&articleID=${article.id}`},
+                {code: 'back_url', content: `viewArticle?board=${boardName}&articleID=${article.id}`},
+                {code: 'textContent', content: article.content},
+                {code: 'placeContent', content: article.place},
+                {code: 'sp_placeContent', content: article.specific_place},
+                {code: 'returnDivClass', content: 'ToArticle'},
+                {code: 'articleTitle', content: article.title}
+            ])
         }
-        else if(article.author_id != req.session.member.id) {return res.redirect('/no-perm')}
         EndWithRespond(req, res, 'com;writeArticle', [
             {code: 'boardName1', content: boardName},
             {code: 'articleIDText1', content: `&articleID=${article.id}`},
@@ -272,9 +286,12 @@ router.get('/writeArticle', async function (req, res) {
     } else {
         if(boardName == 'fix') {
             return EndWithRespond(req, res, 'com;fix_writeArticle', [
+                {code: 'articleIDText1', content: ''},
                 {code: 'css_additional', content: []},
                 {code: 'back_url', content: `board?boardName=${boardName}`},
                 {code: 'textContent', content: ''},
+                {code: 'placeContent', content: 'none'},
+                {code: 'sp_placeContent', content: ''},
                 {code: 'returnDivClass', content: 'ToBoard'},
                 {code: 'articleTitle', content: ''}
             ])
@@ -349,25 +366,23 @@ router.post('/fix_writeArticle', async function (req, res) {
 
     Article.content = req.body.content
     Article.title = req.body.title
+    Article.place = req.body.place
+    Article.specific_place = req.body.sp_place
 
-    existingBoard = false
-    for(const oneboardName in categoryData) {
-        if (boardName == oneboardName) {existingBoard = true; break;}
-    }
-    if(!existingBoard || boardName == 'fix') {return res.redirect(req.session.lastUrl)}
+    console.log(Article)
 
     const connection = await mysql.createConnection(req.dbOption);
 
     if(!articleID) {
         Article.author_id = req.session.member.id
 
-        lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
+        lastArticle = await getBoardArticles(req.dbOption, 'fix', 1, 1)
         if(lastArticle.length == 0) {Article.id = 1}
         else {Article.id = lastArticle[0].id + 1}
 
         Article.createdTime = new Date()
-        queryText = `INSERT INTO ${boardName}_board (id, title, content, createdTime, author_id)
-        VALUES (${Article.id}, '${Article.title}', '${Article.content}', '${Article.createdTime.toJSON()}', ${Article.author_id})`
+        queryText = `INSERT INTO fix_board (id, title, place, specific_place, content, createdTime, author_id)
+        VALUES (${Article.id}, '${Article.title}', '${Article.place}', '${Article.specific_place}', '${Article.content}', '${Article.createdTime.toJSON()}', ${Article.author_id})`
         await connection.execute(queryText)
     } else {
         Article.id = articleID
@@ -375,14 +390,14 @@ router.post('/fix_writeArticle', async function (req, res) {
         if(req.session.member.id != beforeArticle.author_id) {return res.redirect(`/community/board?boardName=${boardName}`)}
         await connection.execute(
             `UPDATE ${boardName}_board
-            SET title = '${Article.title}', content = '${Article.content}'
+            SET title = '${Article.title}', place = '${Article.place}', specific_place = '${Article.specific_place}', content = '${Article.content}'
             WHERE id = ${Article.id};`
         )
     }
 
     connection.end()
 
-    res.redirect(`/community/viewArticle?board=${boardName}&articleID=${Article.id}`)
+    res.redirect(`/community/viewArticle?board=fix&articleID=${Article.id}`)
 })
 
 router.get('/deleteArticle', async function (req, res) {
