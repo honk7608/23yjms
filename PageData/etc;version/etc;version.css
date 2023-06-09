@@ -1,0 +1,7 @@
+h1 {
+    font-size: var(--big-font-size);
+}
+
+li {
+    font-size: calc(var(--big-font-size)/1.5);
+}
