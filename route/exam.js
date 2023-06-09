@@ -44,9 +44,4 @@ router.get('/mid-final-exam', async function (req, res) {
     EndWithRespond(req, res, 'exam;midfinal')
 })
 
-router.get('/performance-assessment', async function (req, res) {
-    EndWithRespond(req, res, 'exam;perform')
-})
-
-
 module.exports = router;
