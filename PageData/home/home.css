@@ -29,7 +29,6 @@ main {
     flex: initial;
     justify-content: center;
     align-items: center;
-    font-family: "Dovemayo_gothic" !important;
 }
 
 .doubleStroke {
@@ -38,6 +37,7 @@ main {
     position: relative;
     font-size: calc(var(--big-font-size) * 1.5);
     z-index: 1;
+    font-family: "Dovemayo_gothic" !important;
 }
 
 .doubleStroke:before { /*inner*/
