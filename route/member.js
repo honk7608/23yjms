@@ -26,8 +26,10 @@ router.post('/login', async function (req, res) {
     )
 
     if(Users.length == 0) { //해당 유저 미존재
+        console.log('Non-exsisting-user')
         res.redirect('/member/login')
     } else if (Users[0].pw != req.body.pw) { //잘못된 PW
+        console.log('Wrong pw')
         res.redirect('/member/login')
     } else {
         req.session.member = {
@@ -65,19 +67,20 @@ router.post('/sign-up', async function (req, res) {
     const connection = await mysql.createConnection(req.dbOption);
     if(req.body.id != Math.round(Number(req.body.id))) {return res.redirect('/member/sign-up')}
     if(String(req.body.id).length != 5) {return res.redirect('/member/sign-up')}
-    stgrade = String(req.body.id)[0]
-    stclass = String(req.body.id)[1] + String(req.body.id)[2]
-    stnumber = String(req.body.id)[3] + String(req.body.id)[4]
-
-    if(stgrade < 1 || stgrade > 3 || stclass < 1 || stclass > 13 || stgrade != 3 && stclass > 10 || stnumber < 1 || stnumber > 30)
-    {return res.redirect('/member/sign-up')}
+    const regex = new RegExp('^(([1-2](0[1-9]|10))|(3(0[1-9]|1[0-3])))[0-2][0-9]$');
+    
+    if(regex.test(req.body.id))
+    {console.log('학번 형식 미충족'); return res.redirect('/member/sign-up')}
 
     const [Users, fields] = await connection.execute(
         `SELECT * FROM user
         WHERE user.id = ${req.body.id};`
     )
 
-    if(Users.length != 0) {return res.redirect('/member/sign-up')}
+    if(Users.length != 0) {
+        console.log('이미 존재하는 유저')
+        return res.redirect('/member/sign-up')
+    }
     else {
         await connection.execute(
             `INSERT INTO user (id, pw, permission, name)
