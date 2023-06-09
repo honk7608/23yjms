@@ -59,4 +59,14 @@
             document.write(DisplayText)
         </script>
     </table>
+    <script>
+        ArticleExists = JSON.parse('<!-- {ArticleExists} -->')
+        if(!ArticleExists) {
+            var tableEl = document.getElementsByTagName('table')[0]
+            tableEl.innerHTML = ''
+            document.write(
+                `아직 아무 글도 없네요...`
+                )
+        }
+    </script>
 </div>

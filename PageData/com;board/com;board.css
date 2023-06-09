@@ -56,6 +56,8 @@ main {
 
     color: black;
     background-color: #999;
+
+    text-align: center;
 }
 
 .pageDiv input[type="submit"] {

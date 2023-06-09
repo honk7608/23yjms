@@ -104,11 +104,18 @@ router.get('/board', async function (req, res) {
     if(boardName != 'fix') {
         var Articles = await getBoardArticles(req.dbOption, boardName, targetPage * 10 - 9)
 
-        const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
-        maxPage = (lastArticle[0].AllIndex - (lastArticle[0].AllIndex % 10)) / 10
-        if(lastArticle[0].AllIndex % 10 != 0) {maxPage += 1}
+        if(Articles.length != 0) {
+            const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
+            maxPage = (lastArticle[0].AllIndex - (lastArticle[0].AllIndex % 10)) / 10
+            if(lastArticle[0].AllIndex % 10 != 0) {maxPage += 1}
+            articleExists = true
+        } else {
+            articleExists = false
+            maxPage = 1
+        }
 
         EndWithRespond(req, res, 'com;board', [
+            {code: 'ArticleExists', content: JSON.stringify(articleExists)},
             {code: 'pageTitle', content: categoryData[boardName].title},
             {code: 'pageDescribe', content: categoryData[boardName].describe},
             {code: 'articles', content: JSON.stringify(Articles)},
@@ -243,7 +250,7 @@ router.get('/writeArticle', async function (req, res) {
 
     if(articleID) {
         const article = await getOneArticle(req.dbOption, boardName, articleID)
-        if(!article || boardName == fixe) {
+        if(!article || boardName == 'fix') {
             if(!req.session.lastUrl) {req.session.lastUrl == '/'}
             return EndWithRespond(req, res, 'errPage', [
                 {code: 'lastUrlText', content: req.session.lastUrl},
@@ -266,8 +273,6 @@ router.get('/writeArticle', async function (req, res) {
         if(boardName == 'fix') {
             return EndWithRespond(req, res, 'com;fix_writeArticle', [
                 {code: 'css_additional', content: []},
-                {code: 'articleIDText1', content: ''},
-                {code: 'boardName1', content: boardName},
                 {code: 'back_url', content: `board?boardName=${boardName}`},
                 {code: 'textContent', content: ''},
                 {code: 'returnDivClass', content: 'ToBoard'},
@@ -302,7 +307,54 @@ router.post('/writeArticle', async function (req, res) {
     for(const oneboardName in categoryData) {
         if (boardName == oneboardName) {existingBoard = true; break;}
     }
-    if(!existingBoard) {console.log('Non-Exisitent'); return res.redirect(req.session.lastUrl)}
+    if(!existingBoard || boardName == 'fix') {return res.redirect(req.session.lastUrl)}
+
+    const connection = await mysql.createConnection(req.dbOption);
+
+    if(!articleID) {
+        Article.author_id = req.session.member.id
+
+        lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
+        if(lastArticle.length == 0) {Article.id = 1}
+        else {Article.id = lastArticle[0].id + 1}
+
+        Article.createdTime = new Date()
+        queryText = `INSERT INTO ${boardName}_board (id, title, content, createdTime, author_id)
+        VALUES (${Article.id}, '${Article.title}', '${Article.content}', '${Article.createdTime.toJSON()}', ${Article.author_id})`
+        await connection.execute(queryText)
+    } else {
+        Article.id = articleID
+        beforeArticle = await getOneArticle(req.dbOption, boardName, Article.id)
+        if(req.session.member.id != beforeArticle.author_id) {return res.redirect(`/community/board?boardName=${boardName}`)}
+        await connection.execute(
+            `UPDATE ${boardName}_board
+            SET title = '${Article.title}', content = '${Article.content}'
+            WHERE id = ${Article.id};`
+        )
+    }
+
+    connection.end()
+
+    res.redirect(`/community/viewArticle?board=${boardName}&articleID=${Article.id}`)
+})
+
+router.post('/fix_writeArticle', async function (req, res) {
+    if(!req.session.member.isLogged) {return res.redirect('/member/login')}
+    
+    var Article = {}
+
+    const requrl = req.url;
+    const queryData = url.parse(requrl, true).query;
+    const articleID = queryData.articleID
+
+    Article.content = req.body.content
+    Article.title = req.body.title
+
+    existingBoard = false
+    for(const oneboardName in categoryData) {
+        if (boardName == oneboardName) {existingBoard = true; break;}
+    }
+    if(!existingBoard || boardName == 'fix') {return res.redirect(req.session.lastUrl)}
 
     const connection = await mysql.createConnection(req.dbOption);
 

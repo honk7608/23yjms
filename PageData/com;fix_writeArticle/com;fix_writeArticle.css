@@ -1,65 +1,29 @@
-.area {
-    width: 100%;
-
-    color: var(--prefer-background);
-    
-    box-sizing: border-box;
-   
-    font-size: var(--big-font-size);
-    font-weight: 600;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    white-space: nowrap;
-}
-
-.area .class {
-    gap: 1vw;
-    
-    display: flex;
-    flex-direction: row;
-}
-
-.area .class div{
-    width: max-content;
-}
-
-.area .class span {
-    color: var(--accent-color);
-}
-
-.area input[type="number"] {
-    padding: 0;
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
-    width: 5vw;
-
-    font-size: var(--big-font-size);
-    font-weight: 800;
-    text-align: right;
-    color: var(--prefer-text);
-
-    border: none;
-    border-radius: 1vw;
-    background-color: var(--accent-color-transparent);
-}
-
-.otherArea {
-    width: 70%;
-    padding: 0.5vw;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    font-size: var(--big-font-size);
-    font-weight: 700;
-    color: var(--prefer-text);
-    outline: none;
-    border: 1px solid var(--prefer-background);
-    border-radius: 100vw;
-}
-
 main {
     padding: 0;
+}
+
+.area {
+    display: grid;
+    grid-template-areas: 
+    'sp1 select'
+    'sp2 input';
+    grid-template-columns: auto 1fr;
+    gap: 1vw;
+
+    font-size: calc(var(--big-font-size)/2);
+
+    margin-bottom: 1vw;
+}
+
+.area textarea,
+.area select {
+    font-size: inherit;
+}
+
+.area .areaText {
+    background-color: var(--accent-color-transparent);
+    padding: 0.5vw;
+    border-radius: 0.5vw;
 }
 
 .infoDiv {
@@ -68,6 +32,23 @@ main {
 
     width: 100%;
     padding: 1vw;
+}
+
+.infoDiv input {
+    width: 100%;
+
+    padding: 0.5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+
+    font-size: var(--big-font-size);
+    font-weight: 700;
+        
+    color: var(--prefer-text);
+
+    outline: none;
+    border: 1px solid var(--prefer-background);
+    border-radius: 100vw;
 }
 
 @media (prefers-color-scheme: light) {
@@ -141,6 +122,21 @@ textarea {
     font-size: calc(var(--big-font-size) * 0.6);
 
     color: var(--prefer-text);
+}
+
+.decorationDiv {
+    margin: 1vw;
+    padding: 1vw;
+
+    border: 1px #999 solid;
+    border-radius: 1vw;
+
+    font-size: calc(var(--big-font-size) * 0.6);
+}
+
+.decorationDiv span.patternAccent {
+    font-size: var(--big-font-size);
+    font-weight: 700;
 }
 
 /* Mobile */ @media screen and (max-width: 600px){
