@@ -69,7 +69,7 @@ router.post('/sign-up', async function (req, res) {
     if(String(req.body.id).length != 5) {return res.redirect('/member/sign-up')}
     const regex = new RegExp('^(([1-2](0[1-9]|10))|(3(0[1-9]|1[0-3])))[0-2][0-9]$');
     
-    if(regex.test(req.body.id))
+    if(!regex.test(req.body.id))
     {console.log('학번 형식 미충족'); return res.redirect('/member/sign-up')}
 
     const [Users, fields] = await connection.execute(
