@@ -11,12 +11,18 @@ router.get('/timetable', async function (req, res) {
     var ScClass = Number(queryData.class)
     var needCookie = String(queryData.cookie) || 'off'
     
-    var cookieData = res.cookies.defaultTimeTable || null
-    if(ScGrade && ScClass && needCookie == 'on') { // 업데이트
-        res.cookie('defaultTimeTable', `${ScGrade}-${ScClass}`);
-    } else if(cookieData & !(ScGrade && ScClass)) {
-            ScGrade = Number(cookieData.split('-')[0])
-            ScClass = Number(cookieData.split('-')[1])
+    if(req.cookies) {
+        var cookieData = req.cookies.defaultTimeTable || null
+    } else {
+        var cookieData = null
+    }
+
+    if(ScGrade && ScClass && needCookie == 'on') { // 쿠키 업데이트
+        if(cookieData == null) {res.cookie('defaultTimeTable', `${ScGrade}-${ScClass}`, {maxAge: 1000 * 60 * 60 * 90});}
+        else{res.cookie('defaultTimeTable', `${ScGrade}-${ScClass}`);}
+    } else if(cookieData && !(ScGrade && ScClass)) { // 쿠키 적용
+        ScGrade = Number(cookieData.split('-')[0])
+        ScClass = Number(cookieData.split('-')[1])
     }
     
     if (ScGrade && ScClass) {
@@ -70,7 +76,6 @@ router.get('/meal', async function (req, res) {
     tryCount = 0
     while(true) {
         tryCount += 1
-        console.log(tryCount)
         if(tryCount > 20) {
             res.redirect('/404notfound')
         }
