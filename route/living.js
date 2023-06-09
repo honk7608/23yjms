@@ -7,10 +7,18 @@ const url = require('url');
 router.get('/timetable', async function (req, res) {
     const requrl = req.url;
     const queryData = url.parse(requrl, true).query;
-
     var ScGrade = Number(queryData.grade)
     var ScClass = Number(queryData.class)
-
+    var needCookie = String(queryData.cookie) || 'off'
+    
+    var cookieData = res.cookies.defaultTimeTable || null
+    if(ScGrade && ScClass && needCookie == 'on') { // 업데이트
+        res.cookie('defaultTimeTable', `${ScGrade}-${ScClass}`);
+    } else if(cookieData & !(ScGrade && ScClass)) {
+            ScGrade = Number(cookieData.split('-')[0])
+            ScClass = Number(cookieData.split('-')[1])
+    }
+    
     if (ScGrade && ScClass) {
         if (ScGrade != 3 && ScClass > 10) {
             return res.redirect('/living/timetable')
