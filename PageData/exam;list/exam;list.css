@@ -152,7 +152,7 @@ table td {
 }
 
 table tr.topSubject {
-    border-top: 3px var(--prefer-text) solid;
+    border-top: 3px #999 solid;
 }
 
 table td.subjectName {
