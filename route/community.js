@@ -226,7 +226,7 @@ router.get('/viewArticle', async function (req, res) {
 
     var displayDateText = `${String(article.createdTime.getFullYear()).slice(-2)}.${('0' + String(article.createdTime.getMonth() + 1)).slice(-2)}.${String('0' + String(article.createdTime.getDate())).slice(-2)}`
     
-    displayDateText = await setArticleStyle(displayDateText)
+    displayContent = await setArticleStyle(article.content)
     
     if(article.author_id == req.session.member.id) {AdditionalClass = ''}
     else {AdditionalClass = ' NotMe'}
