@@ -164,6 +164,6 @@ footer a:hover {
     text-decoration: underline #FFFFFF70 solid 3px;
 }
 
-footer.credit a {
+footer .credit a {
    display: inline;
 }
