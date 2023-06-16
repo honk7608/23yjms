@@ -392,7 +392,7 @@ router.post('/fix_writeArticle', async function (req, res) {
         await connection.execute(queryText)
     } else {
         Article.id = articleID
-        beforeArticle = await getOneArticle(req.dbOption, boardName, Article.id)
+        beforeArticle = await getOneArticle(req.dbOption, 'fix', Article.id)
         if(req.session.member.id != beforeArticle.author_id) {return res.redirect(`/community/board?boardName=${boardName}`)}
         await connection.execute(
             `UPDATE ${boardName}_board
