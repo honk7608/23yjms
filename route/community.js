@@ -67,6 +67,58 @@ async function getOneArticle(dbOption, boardName, articleID) {
     return Articles[0]
 }
 
+async function setArticleStyle(displayContent) {
+    // LineChange
+    displayContent = article.content.split('\r\n').join('<br>')
+
+    // **
+    BoldList = displayContent.split('**')
+    for(i = 0; i < BoldList.length; i++) {
+        if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `**${BoldList[i]}`; continue}
+        if(i % 2 == 0) {continue}
+        BoldList[i] = `<b>${BoldList[i]}</b>`
+    }
+    displayContent = BoldList.join('')
+
+    // $$
+    ItalicList = displayContent.split('$$')
+    for(i = 0; i < ItalicList.length; i++) {
+        if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `$$${BoldList[i]}`; continue}
+        if(i % 2 == 0) {continue}
+        ItalicList[i] = `<i>${ItalicList[i]}</i>`
+    }
+    displayContent = ItalicList.join('')
+
+    // --
+    LineThroughList = displayContent.split('--')
+    for(i = 0; i < LineThroughList.length; i++) {
+        if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `--${BoldList[i]}`; continue}
+        if(i % 2 == 0) {continue}
+        LineThroughList[i] = `<span style="text-decoration: line-through;">${LineThroughList[i]}</span>`
+    }
+    displayContent = LineThroughList.join('')
+
+    // __
+    UnderLineList = displayContent.split('__')
+    for(i = 0; i < UnderLineList.length; i++) {
+        if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `__${BoldList[i]}`; continue}
+        if(i % 2 == 0) {continue}
+        UnderLineList[i] = `<span style="text-decoration: underline;">${UnderLineList[i]}</span>`
+    }
+    displayContent = UnderLineList.join('')
+
+    // @@
+    ColorAccentList = displayContent.split('@@')
+    for(i = 0; i < ColorAccentList.length; i++) {
+        if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `@@${BoldList[i]}`; continue}
+        if(i % 2 == 0) {continue}
+        ColorAccentList[i] = `<span style="color: var(--accent-color);">${ColorAccentList[i]}</span>`
+    }
+    displayContent = ColorAccentList.join('')
+
+    return displayContent
+}
+
 const categoryData = {
     announce: {
         title: '학교/학생회 공지',
@@ -129,7 +181,7 @@ router.get('/board', async function (req, res) {
             {code: 'max_page2', content: maxPage},
             {code: 'current_page', content: targetPage}
         ]);
-    } else {
+    } else { //fix
         const searchCondition = queryData.isDone
         conditionText = ''
         if(searchCondition == undefined) {conditionText = ''}
@@ -139,7 +191,7 @@ router.get('/board', async function (req, res) {
         var Articles = await getBoardArticles(req.dbOption, boardName, targetPage * 10 - 9, 10, ', content', conditionText)
         // LineChange
         for(const key in Articles) {
-            Articles[key].content = Articles[key].content.split('\r\n').join('<br>')
+            Articles[key].content = await setArticleStyle(Articles[key].content)
         }
 
         const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
@@ -173,54 +225,8 @@ router.get('/viewArticle', async function (req, res) {
     const article = await getOneArticle(req.dbOption, boardName, articleID)
 
     var displayDateText = `${String(article.createdTime.getFullYear()).slice(-2)}.${('0' + String(article.createdTime.getMonth() + 1)).slice(-2)}.${String('0' + String(article.createdTime.getDate())).slice(-2)}`
-
-    // LineChange
-    displayContent = article.content.split('\r\n').join('<br>')
-
-    // **
-    BoldList = displayContent.split('**')
-    for(i = 0; i < BoldList.length; i++) {
-        if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `**${BoldList[i]}`; continue}
-        if(i % 2 == 0) {continue}
-        BoldList[i] = `<b>${BoldList[i]}</b>`
-    }
-    displayContent = BoldList.join('')
-
-    // $$
-    ItalicList = displayContent.split('$$')
-    for(i = 0; i < ItalicList.length; i++) {
-        if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `$$${BoldList[i]}`; continue}
-        if(i % 2 == 0) {continue}
-        ItalicList[i] = `<i>${ItalicList[i]}</i>`
-    }
-    displayContent = ItalicList.join('')
-
-    // --
-    LineThroughList = displayContent.split('--')
-    for(i = 0; i < LineThroughList.length; i++) {
-        if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `--${BoldList[i]}`; continue}
-        if(i % 2 == 0) {continue}
-        LineThroughList[i] = `<span style="text-decoration: line-through;">${LineThroughList[i]}</span>`
-    }
-    displayContent = LineThroughList.join('')
-
-    // __
-    UnderLineList = displayContent.split('__')
-    for(i = 0; i < UnderLineList.length; i++) {
-        if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `__${BoldList[i]}`; continue}
-        if(i % 2 == 0) {continue}
-        UnderLineList[i] = `<span style="text-decoration: underline;">${UnderLineList[i]}</span>`
-    }
-    displayContent = UnderLineList.join('')
-
-    // @@
-    ColorAccentList = displayContent.split('@@')
-    for(i = 0; i < ColorAccentList.length; i++) {
-        if(BoldList.length % 2 == 0 && i == BoldList.length - 1) {BoldList[i] = `@@${BoldList[i]}`; continue}
-        if(i % 2 == 0) {continue}
-        ColorAccentList[i] = `<span style="color: var(--accent-color);">${ColorAccentList[i]}</span>`
-    }
-    displayContent = ColorAccentList.join('')
+    
+    displayDateText = await setArticleStyle(displayDateText)
     
     if(article.author_id == req.session.member.id) {AdditionalClass = ''}
     else {AdditionalClass = ' NotMe'}
