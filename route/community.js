@@ -69,7 +69,7 @@ async function getOneArticle(dbOption, boardName, articleID) {
 
 async function setArticleStyle(displayContent) {
     // LineChange
-    displayContent = article.content.split('\r\n').join('<br>')
+    displayContent = displayContent.split('\r\n').join('<br>')
 
     // **
     BoldList = displayContent.split('**')
