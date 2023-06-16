@@ -140,12 +140,6 @@ footer {
     justify-content: space-around;
 }
 
-footer div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
 footer div.additional_page {
     padding: 0.5vw;
     gap: 0.5vw;
@@ -154,6 +148,10 @@ footer div.additional_page {
     
     color: #1b263b;
     font-weight: 700;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 footer a {
