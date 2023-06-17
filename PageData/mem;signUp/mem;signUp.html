@@ -1,7 +1,11 @@
 <form id="SignUpForm" action="/member/sign-up" method="post">
     <div class="signupText patternAccent">회원가입</div>
+    <!-- {errMessage} -->
     <input required type="number" name="id" id="id" placeholder="학번" max="40000" min="10000">
     <input required type="text" name="name" id="name" placeholder="이름" minlength="2" maxlength="4">
     <input required type="password" name="pw" id="pw" placeholder="비밀번호" minlength="8">
-    <button form="SignUpForm" type="submit" class="submit">회원가입하기</button>
+    <div class="ruleDiv">
+        <!-- {rules} -->
+    </div>
+    <button form="SignUpForm" type="submit" class="submit" style="padding: 1vw;">회원가입하기</button>
 </form>

@@ -34,6 +34,21 @@ div.signupText {
     font-weight: 900;
 }
 
+div.errorMessage {
+    padding: 1vw;
+    border-radius: 1vw;
+
+    color: #DC2626;
+    background-color: #FEE2E2;
+
+    font-size: calc(var(--big-font-size) * 0.75);
+}
+
+div.ruleDiv {
+    font-size: calc(var(--big-font-size) * 0.75);
+    word-break: keep-all;
+}
+
 form {
     background-color: var(--form-back);
 
@@ -43,8 +58,6 @@ form {
     font-size: var(--big-font-size);
 
     padding: 5vw;
-    
-    border-radius: 5vw;
 }
 
 input {
