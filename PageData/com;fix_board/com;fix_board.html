@@ -59,7 +59,16 @@ for(const key in Articles) {
     </td>
 </tr>
 <tr id="articlecontent:${key}" class="articleContentTr inactive">
-    <td colspan="7" class="articleMainContent">${article.content}</td>
+    <td colspan="7" class="articleMainContent">
+        <div>
+            <div class="content_key">장소</div>
+            <div class="content_text">${article.place}</div>
+            <div class="content_key">세부 위치</div>
+            <div class="content_text">${article.specific_place}</div>
+            <div class="content_key">내용</div>
+            <div class="content_text">${article.content}</div>            
+        </div>
+    </td>
 </tr>`
     }
 
@@ -93,6 +102,16 @@ function ToggleArticle(targetId) {
 }
 
 document.write(DisplayText)   
+        </script>
+        <script>
+            ArticleExists = JSON.parse('<!-- {ArticleExists} -->')
+            if(!ArticleExists) {
+                var tableEl = document.getElementsByTagName('table')[0]
+                tableEl.innerHTML = ''
+                document.write(
+                    `아직 아무 글도 없네요...`
+                    )
+            }
         </script>
     </table>
 </div>

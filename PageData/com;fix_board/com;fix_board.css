@@ -207,7 +207,23 @@ main {
 
     .pageDiv input[type="submit"] {
         font-size: 5vw;
-    }
+    }       
+}
 
-        
+.articleMainContent > div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1vw;
+}
+
+.articleMainContent div.content_key {
+    padding: 1vw;
+    border-radius: 1vw;
+    background-color: var(--accent-color-transparent);
+}
+
+.articleMainContent div.content_text {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
