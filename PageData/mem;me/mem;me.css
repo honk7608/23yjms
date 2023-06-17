@@ -1,3 +1,35 @@
-h1 {
-    color: var(--accent-color-strong);
+.settingLI {
+    padding-left: 1vw;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: var(--big-font-size);
+    
+    border-radius: 1vw;
+
+    filter: drop-shadow(0px 4px 4px #d2dae5);
+    background-color: white;
+
+    margin-bottom: 1vw;
+}
+
+.settingLI a {
+    padding: 1vw;
+}
+
+.settingLI a i {
+    width: calc(var(--big-font-size)*2);
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: black;
+    color: white;
+    border-radius: 50%;
+    font-size: var(--big-font-size);
 }
