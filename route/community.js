@@ -54,6 +54,8 @@ ORDER BY ${boardName}_board.id DESC;`
  */
 async function getOneArticle(dbOption, boardName, articleID) {
     if(boardName == 'fix') {addData = ', place, specific_place'}
+    else{addData = ''}
+    
     const connection = await mysql.createConnection(dbOption);
 
     const [Articles, fields] = await connection.execute(
@@ -67,6 +69,11 @@ async function getOneArticle(dbOption, boardName, articleID) {
     return Articles[0]
 }
 
+/**
+ * 
+ * @param {String} displayContent 꾸며지기 전 텍스트 자료
+ * @returns {String} 꾸며진 후 텍스트 자료
+ */
 async function setArticleStyle(displayContent) {
     // LineChange
     displayContent = displayContent.split('\r\n').join('<br>')
@@ -194,11 +201,18 @@ router.get('/board', async function (req, res) {
             Articles[key].content = await setArticleStyle(Articles[key].content)
         }
 
-        const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
-        maxPage = (lastArticle[0].AllIndex - (lastArticle[0].AllIndex % 10)) / 10
-        if(lastArticle[0].AllIndex % 10 != 0) {maxPage += 1}
+        if(Articles.length != 0) {
+            const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
+            maxPage = (lastArticle[0].AllIndex - (lastArticle[0].AllIndex % 10)) / 10
+            if(lastArticle[0].AllIndex % 10 != 0) {maxPage += 1}
+            articleExists = true
+        } else {
+            articleExists = false
+            maxPage = 1
+        }
 
         EndWithRespond(req, res, 'com;fix_board', [
+            {code: 'ArticleExists', content: JSON.stringify(articleExists)},
             {code: 'articles', content: JSON.stringify(Articles)},
             {code: 'memberID', content: req.session.member.id},
             {code: 'max_page1', content: maxPage},
@@ -221,6 +235,7 @@ router.get('/viewArticle', async function (req, res) {
     }
 
     if(!existingBoard) {return res.redirect(req.session.lastUrl)}
+    else if(boardName == 'fix') {return res.redirect('./community/board?boardName=fix')}
 
     const article = await getOneArticle(req.dbOption, boardName, articleID)
 
@@ -379,8 +394,6 @@ router.post('/fix_writeArticle', async function (req, res) {
     Article.place = req.body.place
     Article.specific_place = req.body.sp_place
 
-    console.log(Article)
-
     const connection = await mysql.createConnection(req.dbOption);
 
     if(!articleID) {
@@ -399,7 +412,7 @@ router.post('/fix_writeArticle', async function (req, res) {
         beforeArticle = await getOneArticle(req.dbOption, 'fix', Article.id)
         if(req.session.member.id != beforeArticle.author_id) {return res.redirect(`/community/board?boardName=${boardName}`)}
         await connection.execute(
-            `UPDATE ${boardName}_board
+            `UPDATE fix_board
             SET title = '${Article.title}', place = '${Article.place}', specific_place = '${Article.specific_place}', content = '${Article.content}'
             WHERE id = ${Article.id};`
         )
@@ -407,7 +420,7 @@ router.post('/fix_writeArticle', async function (req, res) {
 
     connection.end()
 
-    res.redirect(`/community/viewArticle?board=fix&articleID=${Article.id}`)
+    res.redirect(`/community/board?boardName=fix`)
 })
 
 router.get('/deleteArticle', async function (req, res) {
