@@ -37,7 +37,7 @@ router.get('/timetable', async function (req, res) {
                 while(true) {
                     tryCount += 1
                     if(tryCount > 20) {
-                        res.redirect('/404notfound')
+                        return res.redirect('/404notfound')
                     }
                     try {
                         await timetable.init({ cache: 1000 * 60 * 60 })
@@ -77,7 +77,7 @@ router.get('/meal', async function (req, res) {
     while(true) {
         tryCount += 1
         if(tryCount > 20) {
-            res.redirect('/404notfound')
+            return res.redirect('/404notfound')
         }
         try {
             school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
@@ -134,12 +134,12 @@ router.get('/schedule', async function (req, res) {
         while(true) {
             tryCount += 1
             if(tryCount > 20) {
-                res.redirect('/404notfound')
+                return res.redirect('/404notfound')
             }
             try {
                 school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
                 var calendar = await school.getCalendar({separator: '(separator)', month: reqMonth, year: reqYear});
-            } catch {
+            } catch (err) {
                 continue
             }
             break
@@ -152,7 +152,7 @@ router.get('/schedule', async function (req, res) {
         while(true) {
             tryCount += 1
             if(tryCount > 20) {
-                res.redirect('/404notfound')
+                return res.redirect('/404notfound')
             }
 
             var calendar = []
@@ -161,7 +161,7 @@ router.get('/schedule', async function (req, res) {
                 for(i = 1; i <= 12; i++) {
                     calendar.push(await school.getCalendar({separator: '(separator)', month: i}));
                 }
-            } catch {
+            } catch (err) {
                 continue
             }
             break
