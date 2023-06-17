@@ -1,126 +1,132 @@
-<div class="selectDiv">
-    <div class="CategoryDiv">
-        <span class="patternAccent">한달 달력으로 보기</span>
-        <form action="/living/schedule" method="get" id="oneMonthForm">
-            <input type="month" name="month" id="monthInput" class="monthInput" required>
-            <input type="number" name="mode" value="0" style="display: none;">
-            <button form="oneMonthForm" class="oneMonthForm" type="submit">적용하기</button>
-        </form>
-    </div>
-    <hr>
-    <div class="CategoryDiv">
-        <span class="patternAccent">1년 학사일정 보기</span>    
-        <form action="/living/schedule" method="get" id="oneYearForm">
-            <input type="number" name="mode" value="1" style="display: none;">
-            <button type="submit" form="oneYearForm" class="oneYearForm">적용하기</button>
-        </form>
-    </div>
+<div class="pageTitleDiv">
+    <div class="titleDiv">학교 생활 <i class="fa-solid fa-chevron-right"></i> <span class="patternAccent">학사 일정</span></div>
+    <div class="describe">학교의 공식적인 행사들을 확인해보세요!</div>
 </div>
+<div class="pageContentDiv">
+    <div class="selectDiv">
+        <div class="CategoryDiv">
+            <span class="patternAccent">한달 달력으로 보기</span>
+            <form action="/living/schedule" method="get" id="oneMonthForm">
+                <input type="month" name="month" id="monthInput" class="monthInput" required>
+                <input type="number" name="mode" value="0" style="display: none;">
+                <button form="oneMonthForm" class="oneMonthForm" type="submit">적용하기</button>
+            </form>
+        </div>
+        <hr>
+        <div class="CategoryDiv">
+            <span class="patternAccent">1년 학사일정 보기</span>    
+            <form action="/living/schedule" method="get" id="oneYearForm">
+                <input type="number" name="mode" value="1" style="display: none;">
+                <button type="submit" form="oneYearForm" class="oneYearForm">적용하기</button>
+            </form>
+        </div>
+    </div>
 
-<div class="loadingDiv" style="display: none;">Loading...</div>
+    <div class="loadingDiv" style="display: none;">Loading...</div>
 
-<script>
-    // CalendarData
-    const calendarList = JSON.parse(`<!-- {calendar} -->`)
-    const mode = Number('<!-- {mode} -->')
+    <script>
+        // CalendarData
+        const calendarList = JSON.parse(`<!-- {calendar} -->`)
+        const mode = Number('<!-- {mode} -->')
 
-    if(mode == 0) { //캘린더 모드
-        queryData = '<!-- {queryData} -->'
-        SelectedYear = queryData.split('-')[0]
-        SelectedMonth = queryData.split('-')[1]
-        
-        MonthInputEl = document.getElementById('monthInput')
-        MonthInputEl.value = queryData
-
-        if(calendarList[1] == undefined || calendarList[1] == null) {
-            document.write('<div class="content NoData normalErrorMessage"><span class="patternAccent">데이터가 없네요...</span><br>혹시 미래를 보려 하신건 아니죠?</div>')
-            calendarText = ''
-        }
-        else {
-            for (const key in calendarList) {
-                if (key != Number(key)) {continue}
-                calendarList[key] = calendarList[key].split('(separator)').filter(value => value != '토요휴업일').join('(separator)')
-            }
+        if(mode == 0) { //캘린더 모드
+            queryData = '<!-- {queryData} -->'
+            SelectedYear = queryData.split('-')[0]
+            SelectedMonth = queryData.split('-')[1]
             
-            startWeekDay = new Date(SelectedYear, SelectedMonth - 1, 1).getDay()
-            endWeekDay = new Date(SelectedYear, SelectedMonth, 0).getDay()
-            weekDayList = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-            
-            calendarText = `<ul class='content calendarMode'>\n`
-            for (i = 0; i <= 6; i++) {
-                calendarText += `<li class='weekDay'>${weekDayList[i]}</li>`
+            MonthInputEl = document.getElementById('monthInput')
+            MonthInputEl.value = queryData
+
+            if(calendarList[1] == undefined || calendarList[1] == null) {
+                document.write('<div class="content NoData normalErrorMessage"><span class="patternAccent">데이터가 없네요...</span><br>혹시 미래를 보려 하신건 아니죠?</div>')
+                calendarText = ''
             }
-            for (i = Number(startWeekDay); i > 0; i--) {
-                calendarText += `<li class='beforeMonth'></li>\n`
-            }
-            for (const key in calendarList) {
-                if(key != Number(key)) {continue}
-                if(calendarList[key] == '') {calendarText += `<li id='${key}' class='scheduleFalse'><div class='dateDiv'>${key}</div></li>\n`; continue}
-                calendarText += `<li id='${key}' class='scheduleTrue'><div class='dateDiv'>${key}</div><div class='scheduleDiv'><span>${calendarList[key].split('(separator)').join('</span><span>')}</span></div></li>\n`
-            }
-            for (i = 6 - Number(endWeekDay); i > 0; i--) {
-                calendarText += `<li class='afterMonth'></li>\n`
-            }
-
-            calendarText += '</ul>'
-            calendarText += 
-`<div class="normalErrorMessage">
-    <span class="patternAccent">앗, 달력이 너무 커서 꽉 끼네요...</span>
-    <br>
-    아쉽게도 핸드폰으로는 이걸 보기 어려울 것 같네요.<br>
-    다른 기기로 오시거나 '1년 전체보기'를 사용해주세요!
-</div>`
-        }
-    } else { //리스트 모드
-        const Today = new Date()
-        const TodayMonth = Today.getMonth() 
-        const TodayDate = Today.getDate()
-        calendarText = `<ul class='content listMode'>\n`
-        for (const monthIndex in calendarList) {
-            if(monthIndex != Number(monthIndex)) {continue}
-
-            if(Number(monthIndex) + 1 < 10) {monthText = `0${Number(monthIndex) + 1}`}
-            else {monthText = String(Number(monthIndex) + 1)}
-
-            calendarText += `<li class='monthDiv'>\n<div class='monthNumber'>${monthText}</div>\n`
-
-            MonthScheduleText = ``
-            for (const key in calendarList[monthIndex]) {
-                if(key != Number(key)) {continue}
-                calendarList[monthIndex][key] = calendarList[monthIndex][key].split('(separator)').filter(value => value != '토요휴업일').join('(separator)')
-                if(calendarList[monthIndex][key] == '') {continue}
-
-                if(key < 10) {dateText = `0${key}`}
-                else {dateText = String(key)}
-
-                scheduleList = calendarList[monthIndex][key].split('(separator)')
-                
-                if(Number(monthIndex) <= TodayMonth && Number(key) <= TodayDate) {
-                    additionalClass = ` class='pastSchedule'`
-                } else {additionalClass = ''}
-
-                for(const index in scheduleList) {
-                    MonthScheduleText += `<li${additionalClass}><span class='dateSpan'>${monthText}.${dateText}</span> ${scheduleList[index]}</li>`
+            else {
+                for (const key in calendarList) {
+                    if (key != Number(key)) {continue}
+                    calendarList[key] = calendarList[key].split('(separator)').filter(value => value != '토요휴업일').join('(separator)')
                 }
+                
+                startWeekDay = new Date(SelectedYear, SelectedMonth - 1, 1).getDay()
+                endWeekDay = new Date(SelectedYear, SelectedMonth, 0).getDay()
+                weekDayList = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+                
+                calendarText = `<ul class='content calendarMode'>\n`
+                for (i = 0; i <= 6; i++) {
+                    calendarText += `<li class='weekDay'>${weekDayList[i]}</li>`
+                }
+                for (i = Number(startWeekDay); i > 0; i--) {
+                    calendarText += `<li class='beforeMonth'></li>\n`
+                }
+                for (const key in calendarList) {
+                    if(key != Number(key)) {continue}
+                    if(calendarList[key] == '') {calendarText += `<li id='${key}' class='scheduleFalse'><div class='dateDiv'>${key}</div></li>\n`; continue}
+                    calendarText += `<li id='${key}' class='scheduleTrue'><div class='dateDiv'>${key}</div><div class='scheduleDiv'><span>${calendarList[key].split('(separator)').join('</span><span>')}</span></div></li>\n`
+                }
+                for (i = 6 - Number(endWeekDay); i > 0; i--) {
+                    calendarText += `<li class='afterMonth'></li>\n`
+                }
+
+                calendarText += '</ul>'
+                calendarText += 
+    `<div class="normalErrorMessage">
+        <span class="patternAccent">앗, 달력이 너무 커서 꽉 끼네요...</span>
+        <br>
+        아쉽게도 핸드폰으로는 이걸 보기 어려울 것 같네요.<br>
+        다른 기기로 오시거나 '1년 전체보기'를 사용해주세요!
+    </div>`
             }
+        } else { //리스트 모드
+            const Today = new Date()
+            const TodayMonth = Today.getMonth() 
+            const TodayDate = Today.getDate()
+            calendarText = `<ul class='content listMode'>\n`
+            for (const monthIndex in calendarList) {
+                if(monthIndex != Number(monthIndex)) {continue}
 
-            if(MonthScheduleText == '') {continue}
-            calendarText += `<ul class='scheduleDiv'>\n${MonthScheduleText}</ul>\n</li>\n`
+                if(Number(monthIndex) + 1 < 10) {monthText = `0${Number(monthIndex) + 1}`}
+                else {monthText = String(Number(monthIndex) + 1)}
+
+                calendarText += `<li class='monthDiv'>\n<div class='monthNumber'>${monthText}</div>\n`
+
+                MonthScheduleText = ``
+                for (const key in calendarList[monthIndex]) {
+                    if(key != Number(key)) {continue}
+                    calendarList[monthIndex][key] = calendarList[monthIndex][key].split('(separator)').filter(value => value != '토요휴업일').join('(separator)')
+                    if(calendarList[monthIndex][key] == '') {continue}
+
+                    if(key < 10) {dateText = `0${key}`}
+                    else {dateText = String(key)}
+
+                    scheduleList = calendarList[monthIndex][key].split('(separator)')
+                    
+                    if(Number(monthIndex) <= TodayMonth && Number(key) <= TodayDate) {
+                        additionalClass = ` class='pastSchedule'`
+                    } else {additionalClass = ''}
+
+                    for(const index in scheduleList) {
+                        MonthScheduleText += `<li${additionalClass}><span class='dateSpan'>${monthText}.${dateText}</span> ${scheduleList[index]}</li>`
+                    }
+                }
+
+                if(MonthScheduleText == '') {continue}
+                calendarText += `<ul class='scheduleDiv'>\n${MonthScheduleText}</ul>\n</li>\n`
+            }
+            calendarText += '</ul>'
         }
-        calendarText += '</ul>'
-    }
 
-    document.write(calendarText)
+        document.write(calendarText)
 
-    // Submit시 Loading
-    FormEls = document.getElementsByTagName('form')
-    for(const index in FormEls) {
-        FormEl = FormEls[index]
-        if(index == 'length') {break}
-        FormEl.addEventListener("submit", (event) => {
-            ContentEl = document.getElementsByClassName('content')[0]
-            ContentEl.innerHTML = ''
-            document.getElementsByClassName('loadingDiv')[0].style.display = 'block'
-        });
-    }
-</script>
+        // Submit시 Loading
+        FormEls = document.getElementsByTagName('form')
+        for(const index in FormEls) {
+            FormEl = FormEls[index]
+            if(index == 'length') {break}
+            FormEl.addEventListener("submit", (event) => {
+                ContentEl = document.getElementsByClassName('content')[0]
+                ContentEl.innerHTML = ''
+                document.getElementsByClassName('loadingDiv')[0].style.display = 'block'
+            });
+        }
+    </script>
+</div>

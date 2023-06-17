@@ -25,21 +25,7 @@ main {
     padding: 0;
 }
 
-.infoDiv {
-    width: 100%;
-    padding: 1vw;
-
-    background-color: var(--accent-color-transparent);
-    color: var(--prefer-text);
-}
-
-.infoDiv .titleDiv {    
-    font-size: var(--big-font-size);
-    font-weight: 700;
-    color: inherit;
-}
-
-.infoDiv .writeDiv {
+.pageTitleDiv .writeDiv {
     display: flex;
     align-items: center;
     justify-content: flex-start;

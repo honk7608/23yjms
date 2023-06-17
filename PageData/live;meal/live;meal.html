@@ -1,190 +1,194 @@
-<span class="patternAccent Title">이번 달 급식 정보</span>
-
-<div class="mealList" id="mealList">
-    <p>Loading...</p>
+<div class="pageTitleDiv">
+    <div class="titleDiv">학교 생활 <i class="fa-solid fa-chevron-right"></i> <span class="patternAccent">한 달 급식표</span></div>
+    <div class="describe">매 달 바뀌는 급식표를 가장 빠르게 확인해보세요!</div>
 </div>
-
-<div class="inputDiv">
-    <div class="sep">
-        <input  id="numInput" type="number" placeholder="며칠로 이동할까요?" min="1" step="1">
-        <button id="moveButton">이동하기</button>
+<div class="pageContentDiv">
+    <div class="mealList" id="mealList">
+        <p>Loading...</p>
     </div>
-    <div class="sep">
-        <button id="todayButton">오늘 보기</button>
+
+    <div class="inputDiv">
+        <div class="sep">
+            <input  id="numInput" type="number" placeholder="며칠로 이동할까요?" min="1" step="1">
+            <button id="moveButton">이동하기</button>
+        </div>
+        <div class="sep">
+            <button id="todayButton">오늘 보기</button>
+        </div>
     </div>
-</div>
 
-<div class="additionalDiv">    
-    <span class="patternAccent">알레르기 정보</span><br>
-    <ol>
-        <span><span class="numbering">1 </span>난류</span>
-        <span><span class="numbering">2 </span>우유</span>
-        <span><span class="numbering">3 </span>메밀</span>
-        <span><span class="numbering">4 </span>땅콩</span>
-        <span><span class="numbering">5 </span>대두</span>
-        <span><span class="numbering">6 </span>밀</span>
-        <span><span class="numbering">7 </span>고등어</span>
-        <span><span class="numbering">8 </span>게</span>
-        <span><span class="numbering">9 </span>새우</span>
-        <span><span class="numbering">10 </span>돼지고기</span>
-        <span><span class="numbering">11 </span>복숭아</span>
-        <span><span class="numbering">12 </span>토마토</span>
-        <span><span class="numbering">13 </span>아황산염</span>
-        <span><span class="numbering">14 </span>호두</span>
-        <span><span class="numbering">15 </span>닭고기</span>
-        <span><span class="numbering">16 </span>쇠고기</span>
-        <span><span class="numbering">17 </span>오징어</span>
-        <span><span class="numbering">18 </span>조개류</span>
-        <span><span class="numbering">19 </span>잣</span>
-    </ol>
-</div>
+    <div class="additionalDiv">    
+        <span class="patternAccent">알레르기 정보</span><br>
+        <ol>
+            <span><span class="numbering">1 </span>난류</span>
+            <span><span class="numbering">2 </span>우유</span>
+            <span><span class="numbering">3 </span>메밀</span>
+            <span><span class="numbering">4 </span>땅콩</span>
+            <span><span class="numbering">5 </span>대두</span>
+            <span><span class="numbering">6 </span>밀</span>
+            <span><span class="numbering">7 </span>고등어</span>
+            <span><span class="numbering">8 </span>게</span>
+            <span><span class="numbering">9 </span>새우</span>
+            <span><span class="numbering">10 </span>돼지고기</span>
+            <span><span class="numbering">11 </span>복숭아</span>
+            <span><span class="numbering">12 </span>토마토</span>
+            <span><span class="numbering">13 </span>아황산염</span>
+            <span><span class="numbering">14 </span>호두</span>
+            <span><span class="numbering">15 </span>닭고기</span>
+            <span><span class="numbering">16 </span>쇠고기</span>
+            <span><span class="numbering">17 </span>오징어</span>
+            <span><span class="numbering">18 </span>조개류</span>
+            <span><span class="numbering">19 </span>잣</span>
+        </ol>
+    </div>
 
-<script>
-    const mealList = JSON.parse(`<!-- {meal} -->`)
-    var endDay = 1
-    for (const key in mealList) {
-        if (key != Number(key)) {
-            break
-        }
-        endDay = Number(key)
-        mealList[key] = mealList[key].replace('[중식](nextLine)','').split('(nextLine)').join('\n')
-    }
-
-    function delay(ms = 1000) {
-        return new Promise((resolve) => setTimeout(resolve, ms));
-    }
-
-    writtenList = []
-
-    for (i = 1; ; i++) {
-        if (mealList[i] == '') {continue}
-        else if (mealList[i] == undefined) {
-            break
-        }
-        dateObject = new Date(2023, mealList.month - 1, i);
-        writtenList.push({day: i, data: mealList[i], weekday: [null,'Mon','Tue','Wed','Thu','Fri',null][dateObject.getDay()]})
-    } 
-
-    writtenText = ''
-    for(const key in writtenList) {
-        if(writtenList[key].day == mealList.day) {
-            ThisText = 
-            `<div class="mealItem">
-                <div class="day today" id="${writtenList[key].day}">`;
-        } else if(writtenList[key].day < mealList.day) {
-            ThisText = 
-            `<div class="mealItem">
-                <div class="day before" id="${writtenList[key].day}">`;
-        } else {
-            ThisText = 
-            `<div class="mealItem">
-                <div class="day next" id="${writtenList[key].day}">`;
-        }
-        ThisText += 
-        `           <p class='dayNumber'>${writtenList[key].day}</p>
-                    <p class='weekDay'>${writtenList[key].weekday}</p>
-                </div>
-                <div class="mealData">
-                    ${writtenList[key].data.split('\n').join('\n<br>')}
-                </div>
-            </div>\n`;
-        writtenText += ThisText;
-    }
-
-    MainEl = document.getElementsByTagName('main')[0]
-
-    ListEl = document.getElementById('mealList')
-    ListEl.innerHTML = writtenText
-    // mealItem 한개 width 설정
-    function setOneWidth() {
-        delay(75).then(() => {
-            ListEl = document.getElementById('mealList')
-
-            AllWidth = MainEl.clientWidth
-            var repeatCount = (AllWidth - (AllWidth % 400)) / 400
-            if (repeatCount == 0) {repeatCount = 1}
-            else if(repeatCount > 10) {repeatCount = 10}
-
-            AddText = `--one-width: ${ListEl.clientWidth / repeatCount}px; --count: min(${repeatCount}, 5);`
-            MainEl.style.cssText += AddText
-        })
-    }
-
-    setOneWidth()
-
-    timerId = setInterval(setOneWidth, 500)
-    delay(2*1000).then(() => {
-        clearInterval(timerId)
-        timerId = setInterval(setOneWidth, 60*1000)
-    })
-    window.addEventListener("resize", (event) => {setOneWidth()});
-
-    // 오늘 보기 설정
-    TodayButtonEl = document.getElementById('todayButton')
-    while (true) { 
-        if(mealList[mealList.day] == '') {mealList.day += 1; continue}
-        else if(mealList[mealList.day] == undefined) {
-            for (i = mealList.day; mealList[i] == undefined || mealList[i] == ''; i--) {
-                mealList.day = i
-            }
-            mealList.day -= 1
-        }
-        break
-    }
-
-    TodayButtonEl.addEventListener("click", (event) => {
-        window.location.href = `/living/meal#${mealList.day}`
-    })
-    delay(1000).then((event) => {
-        window.location.href = `/living/meal#${mealList.day}`
-    })
-    
-    InputEl = document.getElementById("numInput")
-    InputEl.max = endDay
-
-    // 지정날짜 이동하기 설정
-    ButtonEl = document.getElementById('moveButton')
-    ButtonEl.addEventListener("click", (event) => {
-        InputEl = document.getElementById("numInput")
-        InputEl.value = Math.round(Number(InputEl.value))
-        if(InputEl.value > endDay) {return}
-        while (true) {
-            HrefEl = document.getElementById(InputEl.value)
-            if (HrefEl == null) {
-                InputEl.value = 1 + Number(InputEl.value)
-            } else if (InputEl.value > endDay) {
-                while (true) {
-                    if (HrefEl == null) {
-                        InputEl.value = Number(InputEl.value) - 1
-                    } else {break}
-                }
+    <script>
+        const mealList = JSON.parse(`<!-- {meal} -->`)
+        var endDay = 1
+        for (const key in mealList) {
+            if (key != Number(key)) {
                 break
-            } else {break}
-        }
-        window.location.href = `/living/meal#${InputEl.value}`
-    })
-</script>
-<script>
-    // 알러지정보 column 개수 설정
-    AllergyEl = document.getElementsByClassName('additionalDiv')[0]
-
-    function setAllergyGrid() {
-        delay(75).then(() => {
-            BodyEl = document.getElementsByTagName('body')[0]
-            vw = BodyEl.clientWidth * 0.15
-            if (!(BodyEl.clientWidth >= 424)) {
-                vw = BodyEl.clientWidth * 0.4
             }
-            value = Math.round((AllergyEl.clientWidth - AllergyEl.clientWidth % (vw)) / vw)
-            AllergyEl.style = `--repeat-count: ${value};`
-        })
-    }
-    setAllergyGrid()
-    timerId2 = setInterval(setAllergyGrid, 500)
-    delay(2*1000).then(() => {
-        clearInterval(timerId)
-        timerId2 = setInterval(setAllergyGrid, 60*1000)
-    })
+            endDay = Number(key)
+            mealList[key] = mealList[key].replace('[중식](nextLine)','').split('(nextLine)').join('\n')
+        }
 
-    window.addEventListener("resize", (event) => {setAllergyGrid()});
-</script>
+        function delay(ms = 1000) {
+            return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+
+        writtenList = []
+
+        for (i = 1; ; i++) {
+            if (mealList[i] == '') {continue}
+            else if (mealList[i] == undefined) {
+                break
+            }
+            dateObject = new Date(2023, mealList.month - 1, i);
+            writtenList.push({day: i, data: mealList[i], weekday: [null,'Mon','Tue','Wed','Thu','Fri',null][dateObject.getDay()]})
+        } 
+
+        writtenText = ''
+        for(const key in writtenList) {
+            if(writtenList[key].day == mealList.day) {
+                ThisText = 
+                `<div class="mealItem">
+                    <div class="day today" id="${writtenList[key].day}">`;
+            } else if(writtenList[key].day < mealList.day) {
+                ThisText = 
+                `<div class="mealItem">
+                    <div class="day before" id="${writtenList[key].day}">`;
+            } else {
+                ThisText = 
+                `<div class="mealItem">
+                    <div class="day next" id="${writtenList[key].day}">`;
+            }
+            ThisText += 
+            `           <p class='dayNumber'>${writtenList[key].day}</p>
+                        <p class='weekDay'>${writtenList[key].weekday}</p>
+                    </div>
+                    <div class="mealData">
+                        ${writtenList[key].data.split('\n').join('\n<br>')}
+                    </div>
+                </div>\n`;
+            writtenText += ThisText;
+        }
+
+        MainEl = document.getElementsByTagName('main')[0]
+
+        ListEl = document.getElementById('mealList')
+        ListEl.innerHTML = writtenText
+        // mealItem 한개 width 설정
+        function setOneWidth() {
+            delay(75).then(() => {
+                ListEl = document.getElementById('mealList')
+
+                AllWidth = MainEl.clientWidth
+                var repeatCount = (AllWidth - (AllWidth % 400)) / 400
+                if (repeatCount == 0) {repeatCount = 1}
+                else if(repeatCount > 10) {repeatCount = 10}
+
+                AddText = `--one-width: ${ListEl.clientWidth / repeatCount}px; --count: min(${repeatCount}, 5);`
+                MainEl.style.cssText += AddText
+            })
+        }
+
+        setOneWidth()
+
+        timerId = setInterval(setOneWidth, 500)
+        delay(2*1000).then(() => {
+            clearInterval(timerId)
+            timerId = setInterval(setOneWidth, 60*1000)
+        })
+        window.addEventListener("resize", (event) => {setOneWidth()});
+
+        // 오늘 보기 설정
+        TodayButtonEl = document.getElementById('todayButton')
+        while (true) { 
+            if(mealList[mealList.day] == '') {mealList.day += 1; continue}
+            else if(mealList[mealList.day] == undefined) {
+                for (i = mealList.day; mealList[i] == undefined || mealList[i] == ''; i--) {
+                    mealList.day = i
+                }
+                mealList.day -= 1
+            }
+            break
+        }
+
+        TodayButtonEl.addEventListener("click", (event) => {
+            window.location.href = `/living/meal#${mealList.day}`
+        })
+        delay(1000).then((event) => {
+            window.location.href = `/living/meal#${mealList.day}`
+        })
+        
+        InputEl = document.getElementById("numInput")
+        InputEl.max = endDay
+
+        // 지정날짜 이동하기 설정
+        ButtonEl = document.getElementById('moveButton')
+        ButtonEl.addEventListener("click", (event) => {
+            InputEl = document.getElementById("numInput")
+            InputEl.value = Math.round(Number(InputEl.value))
+            if(InputEl.value > endDay) {return}
+            while (true) {
+                HrefEl = document.getElementById(InputEl.value)
+                if (HrefEl == null) {
+                    InputEl.value = 1 + Number(InputEl.value)
+                } else if (InputEl.value > endDay) {
+                    while (true) {
+                        if (HrefEl == null) {
+                            InputEl.value = Number(InputEl.value) - 1
+                        } else {break}
+                    }
+                    break
+                } else {break}
+            }
+            window.location.href = `/living/meal#${InputEl.value}`
+        })
+    </script>
+    <script>
+        // 알러지정보 column 개수 설정
+        AllergyEl = document.getElementsByClassName('additionalDiv')[0]
+
+        function setAllergyGrid() {
+            delay(75).then(() => {
+                BodyEl = document.getElementsByTagName('body')[0]
+                vw = BodyEl.clientWidth * 0.15
+                if (!(BodyEl.clientWidth >= 424)) {
+                    vw = BodyEl.clientWidth * 0.4
+                }
+                value = Math.round((AllergyEl.clientWidth - AllergyEl.clientWidth % (vw)) / vw)
+                AllergyEl.style = `--repeat-count: ${value};`
+            })
+        }
+        setAllergyGrid()
+        timerId2 = setInterval(setAllergyGrid, 500)
+        delay(2*1000).then(() => {
+            clearInterval(timerId)
+            timerId2 = setInterval(setAllergyGrid, 60*1000)
+        })
+
+        window.addEventListener("resize", (event) => {setAllergyGrid()});
+    </script>
+</div>

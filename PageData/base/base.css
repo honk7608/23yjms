@@ -70,7 +70,6 @@ body {
 }
 
 main {
-    padding: 1vw;
     box-sizing: border-box;
 
     background-color: var(--prefer-background);
@@ -124,6 +123,25 @@ body::-webkit-scrollbar, header::-webkit-scrollbar {
 body, header {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+
+/* Title, content Div */
+.pageTitleDiv {
+    width: 100%;
+    padding: 1vw;
+
+    background-color: var(--accent-color-transparent);
+    color: var(--prefer-text);
+}
+
+.pageTitleDiv .titleDiv {    
+    font-size: var(--big-font-size);
+    font-weight: 700;
+    color: inherit;
+}
+
+.pageContentDiv {
+    padding: 1vw;
 }
 
 footer {
