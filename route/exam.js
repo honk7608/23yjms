@@ -70,7 +70,7 @@ router.get('/mid-final-exam', async function (req, res) {
 
     if(!ScGrade) {ScGrade == ''}
 
-    EndWithRespond(req, res, 'exam;list', [
+    EndWithRespond(req, res, 'exam;midfinal', [
         {code: 'table_data', content: String(tableData)},
         {code: 'grade', content: String(ScGrade)}
     ])
