@@ -269,6 +269,9 @@ router.get('/writeArticle', async function (req, res) {
         } else if(article.author_id != req.session.member.id) {
             return res.redirect('/no-perm')
         } else if (boardName == 'fix') {
+            article.content = article.content.split('$$').join('$$$')
+            article.place = article.place.split('$$').join('$$$')
+            article.specific_place = article.specific_place.split('$$').join('$$$')
             return EndWithRespond(req, res, 'com;fix_writeArticle', [
                 {code: 'boardName1', content: boardName},
                 {code: 'articleIDText1', content: `&articleID=${article.id}`},
@@ -280,14 +283,15 @@ router.get('/writeArticle', async function (req, res) {
                 {code: 'articleTitle', content: article.title}
             ])
         }
+        article.content = article.content.split('$$').join('$$$')
         EndWithRespond(req, res, 'com;writeArticle', [
-            {code: 'boardName1', content: boardName},
-            {code: 'articleIDText1', content: `&articleID=${article.id}`},
-            {code: 'back_url', content: `viewArticle?board=${boardName}&articleID=${article.id}`},
-            {code: 'textContent', content: article.content},
-            {code: 'returnDivClass', content: 'ToArticle'},
-            {code: 'articleTitle', content: article.title}
-        ])
+        {code: 'boardName1', content: boardName},
+        {code: 'articleIDText1', content: `&articleID=${article.id}`},
+        {code: 'back_url', content: `viewArticle?board=${boardName}&articleID=${article.id}`},
+        {code: 'textContent', content: article.content},
+        {code: 'returnDivClass', content: 'ToArticle'},
+        {code: 'articleTitle', content: article.title}
+    ])
     
     } else {
         if(boardName == 'fix') {
