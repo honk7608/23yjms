@@ -173,3 +173,7 @@ table td.percent_perform,
 table td.performPoint {
     width: fit-content;
 }
+
+table tr.class {
+    border-bottom: 1px var(--prefer-text) solid;
+}
