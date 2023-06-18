@@ -10,7 +10,7 @@
     border-radius: 1vw;
 
     filter: drop-shadow(0px 4px 4px #d2dae5);
-    background-color: white;
+    background-color: var(--prefer-background);
 
     margin-bottom: 1vw;
 }
