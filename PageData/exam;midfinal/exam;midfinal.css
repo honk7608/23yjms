@@ -162,9 +162,6 @@ table td.subjectName {
 
 table td.performName {
     text-align: left;
-}
-
-table td.performName, td.performPoint {
     border-top: 1px var(--prefer-text) solid;
 }
 
