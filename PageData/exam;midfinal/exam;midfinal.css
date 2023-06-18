@@ -152,29 +152,6 @@ table td {
     
 }
 
-table tr.topSubject {
-    border-top: 3px #999 solid;
-}
-
-table td.subjectName {
-    font-weight: 600;
-    font-size: calc(var(--big-font-size)/2);
-}
-
-table td.performName {
-    text-align: left;
-}
-
-table td.performName, td.performPoint {
-    border-top: 1px var(--prefer-text) solid;
-}
-
-table td.percent_midFinal,
-table td.percent_perform,
-table td.performPoint {
-    width: fit-content;
-}
-
 table tr.in {
     border-bottom: 1px var(--prefer-text) solid;
 }
