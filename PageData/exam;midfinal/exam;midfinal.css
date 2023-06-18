@@ -177,3 +177,7 @@ table td.performPoint {
 table tr.last {
     border-bottom: 1px var(--prefer-text) solid;
 }
+
+table tr.first {
+    border-top: 3px #999 solid;
+}
