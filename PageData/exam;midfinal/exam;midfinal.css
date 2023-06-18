@@ -158,4 +158,5 @@ table tr.in {
 
 table tr.first {
     border-top: 3px #999 solid;
+    border-bottom: 1px var(--prefer-text) solid;
 }
