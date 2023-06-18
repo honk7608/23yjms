@@ -149,6 +149,7 @@ table td {
     text-align: center;
     font-size: calc(var(--big-font-size)/1.7);
     word-break: keep-all;
+    
 }
 
 table tr.topSubject {
@@ -174,7 +175,7 @@ table td.performPoint {
     width: fit-content;
 }
 
-table tr.last {
+table tr.in {
     border-bottom: 1px var(--prefer-text) solid;
 }
 
