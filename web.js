@@ -17,12 +17,6 @@ app.use('/css', express.static(`${FileBaseRoot}/PageData/`))
 app.use('/js',  express.static(`${FileBaseRoot}/SubModule/`))
 app.use('/src', express.static(`${FileBaseRoot}/static/`))
 
-//Middleware
-app.use(express.static('static/src'));
-app.use(require('body-parser').urlencoded({ extended: false }));
-const cookieParser = require('cookie-parser');
-app.use(cookieParser())
-
 //Session, MySQL
 var MysqlConnectionOptions = {
     host     : 'us-cdbr-east-06.cleardb.net',
@@ -47,13 +41,22 @@ app.use(session({
     store: new SQLSessionStore(MysqlConnectionOptions)
 }))
 
+//Middleware
+app.use(express.static('static/src'));
+app.use(require('body-parser').urlencoded({ extended: false }));
+const cookieParser = require('cookie-parser');
+app.use(cookieParser())
+var flash = require('express-flash')
+app.use(flash());
+
 app.use('*', function(req, res, next) {
     req.FileBaseRoot = FileBaseRoot
 
     if (!req.session.member) {
         req.session.member = {
             isLogged: false,
-            id: 'null'
+            id: 'null',
+            perm: -1
         }
     }
     if (!req.session.lastUrl) {
