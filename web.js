@@ -115,7 +115,7 @@ app.use(function(err, req, res, next) {
     if(!req.session.lastUrl) {req.session.lastUrl == '/'}
     console.log(`\n[ Error :: ${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} ]`)
     console.error(err.stack)    
-    EndWithRespond(req, res, 'errPage', [
+    return EndWithRespond(req, res, 'errPage', [
         {code: 'lastUrlText', content: req.session.lastUrl},
         {code: 'mainMessage', content: '에취! 에엣취!'},
         {code: 'subMessage', content: '제가 좀 아프네요... 건강해지면 다시 와주세요'},

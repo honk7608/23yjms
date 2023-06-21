@@ -130,18 +130,18 @@ const categoryData = {
     announce: {
         title: '학교/학생회 공지',
         describe: '학교나 학생회의 공지사항을 전달하기 위한 게시판',
-        minPermission: 0
+        minPermission: 2
     },
     study: {
         title: '공부 필기자료',
         describe: '학습자료를 공유하기 위한 게시판',
-        minPermission: 0
+        minPermission: 2
     },
-    talk: {
-        title: '소통 게시판',
-        describe: '학생들끼리 자유롭게 소통할 수 있는 게시판',
-        minPermission: 0
-    },
+    // talk: {
+    //     title: '소통 게시판',
+    //     describe: '학생들끼리 자유롭게 소통할 수 있는 게시판',
+    //     minPermission: 0
+    // },
     fix: {
         title: '행정실 수리 요청',
         describe: '행정실에 오감 없이 수리요청을 하기 위한 게시판',
@@ -260,6 +260,8 @@ router.get('/viewArticle', async function (req, res) {
 })
 
 router.get('/writeArticle', async function (req, res) {
+    if(!req.session.member.isLogged) {return res.redirect('/member/login')}
+
     const requrl = req.url;
     const queryData = url.parse(requrl, true).query;
     const boardName = queryData.board
@@ -270,6 +272,15 @@ router.get('/writeArticle', async function (req, res) {
         if (boardName == oneboardName) {existingBoard = true; break;}
     }
     if(!existingBoard) {return res.redirect(req.session.lastUrl)}
+
+    if(req.session.member.perm < categoryData[boardName].minPermission) {
+        return EndWithRespond(req, res, 'errPage', [
+            {code: 'lastUrlText', content: req.session.lastUrl},
+            {code: 'mainMessage', content: '이런 귀한 곳에 누추한 분이 (농담)'},
+            {code: 'subMessage', content: '여기는 권한이 더 높아야만 들어올 수 있어요.'},
+            {code: 'errCode', content: ''}
+        ], false)
+    }
 
     if(articleID) {
         const article = await getOneArticle(req.dbOption, boardName, articleID)
@@ -350,6 +361,14 @@ router.post('/writeArticle', async function (req, res) {
         if (boardName == oneboardName) {existingBoard = true; break;}
     }
     if(!existingBoard || boardName == 'fix') {return res.redirect(req.session.lastUrl)}
+    if(req.session.member.perm < categoryData[boardName].minPermission) {
+        return EndWithRespond(req, res, 'errPage', [
+            {code: 'lastUrlText', content: req.session.lastUrl},
+            {code: 'mainMessage', content: '앗... 이런 귀한 곳에 누추한 분이 (농담)'},
+            {code: 'subMessage', content: '여기는 권한이 더 높아야만 들어올 수 있어요.'},
+            {code: 'errCode', content: ''}
+        ], false)
+    }
 
     const connection = await mysql.createConnection(req.dbOption);
 
@@ -382,6 +401,15 @@ router.post('/writeArticle', async function (req, res) {
 
 router.post('/fix_writeArticle', async function (req, res) {
     if(!req.session.member.isLogged) {return res.redirect('/member/login')}
+
+    if(req.session.member.perm < categoryData['fix'].minPermission) {
+        return EndWithRespond(req, res, 'errPage', [
+            {code: 'lastUrlText', content: req.session.lastUrl},
+            {code: 'mainMessage', content: '앗... 이런 귀한 곳에 누추한 분이 (농담)'},
+            {code: 'subMessage', content: '여기는 권한이 더 높아야만 들어올 수 있어요.'},
+            {code: 'errCode', content: ''}
+        ], false)
+    }
     
     var Article = {}
 
