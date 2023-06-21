@@ -44,6 +44,10 @@ div.errorMessage {
     font-size: calc(var(--big-font-size) * 0.75);
 }
 
+div.errorMessage span {
+    font-weight: 700;
+}
+
 div.ruleDiv {
     font-size: calc(var(--big-font-size) * 0.75);
     word-break: keep-all;
