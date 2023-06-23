@@ -1,1 +1,99 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    background-image: url(/src/frontDoor.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+    * {
+        --form-back: #000000CC;
+        --input-back: #FFFFFFCC;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    * {
+        --form-back: #FFFFFFCC;
+        --input-back: #000000CC;
+    }
+}
+
+div.signupText {
+    display: block;    
+    margin: auto;
+    width: max-content;
+    
+    text-align: center;
+    color: var(--accent-color);
+    font-size: calc(var(--big-font-size) * 2);
+    font-weight: 900;
+}
+
+div.errorMessage {
+    padding: 1vw;
+    border-radius: 1vw;
+
+    color: #DC2626;
+    background-color: #FEE2E2;
+
+    font-size: calc(var(--big-font-size) * 0.75);
+}
+
+div.errorMessage span {
+    font-weight: 700;
+}
+
+div.ruleDiv {
+    font-size: calc(var(--big-font-size) * 0.75);
+    word-break: keep-all;
+}
+
+form {
+    background-color: var(--form-back);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    font-size: var(--big-font-size);
+
+    padding: 5vw;
+}
+
+input {
+    width: 100%;
+
+    padding: 1vw;
+    font-size: inherit;
+}
+
+input[type='password']{
+    color: var(--prefer-text);
+    background-color: transparent;
+    
+    border: none;
+    border-bottom: var(--prefer-text) 3px solid;
+}
+
+button.submit {
+    font-size: inherit;
+    color: var(--prefer-background);
+    background-color: var(--accent-color);
+    
+    border-radius: 1vw;
+    border: none;
+    
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Mobile */ @media screen and (max-width: 600px){
+    form {
+        background-color: var(--form-back);
+        width: 80vw;
+    }
+}
