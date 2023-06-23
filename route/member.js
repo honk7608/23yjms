@@ -143,12 +143,12 @@ router.get('/me', async function (req, res) {
     ])
 });
 
-router.get('/me/pwchange', async function (req, res) {
+router.get('/pwchange', async function (req, res) {
     EndWithRespond(req, res, 'mem;me-pw')
 });
            
 
-router.get('/me/cookie', async function (req, res) {
+router.get('/cookie', async function (req, res) {
     EndWithRespond(req, res, 'mem;me-cookie')
 });
            
