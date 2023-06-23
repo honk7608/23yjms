@@ -144,19 +144,19 @@ router.get('/me', async function (req, res) {
 });
 
 router.get('/me/pwchange', async function (req, res) {
-    EndWithRespond(req, res, 'mem;me-pw', [])
+    EndWithRespond(req, res, 'mem;me-pw')
 }
 
 router.get('/me/cookie', async function (req, res) {
-    EndWithRespond(req, res, 'mem;me-cookie', [])
+    EndWithRespond(req, res, 'mem;me-cookie')
 }
            
 router.get('/clubmem/announceList', async function (req, res) {
-    EndWithRespond(req, res, 'mem;me-announce', [])
+    EndWithRespond(req, res, 'mem;me-announce')
 }
            
 router.get('/clubmem/memberAdmin', async function (req, res) {
-    EndWithRespond(req, res, 'mem;me-admin', [])
+    EndWithRespond(req, res, 'mem;me-admin')
 }
            
 module.exports = router;
