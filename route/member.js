@@ -52,37 +52,6 @@ router.post('/logout', async function (req, res) {
     res.redirect(req.session.lastUrl)
 })
 
-router.get('/me', async function (req, res) {
-    if(!req.session.member.isLogged) {return res.redirect('/')}
-    console.log(req.session.member)
-    // perm: 0일반 1행정실 2학생회 3관리자및운영자
-    req.session.member.perm = 3
-    addText = ''
-    if(req.session.member.perm >= 3) {
-        addText += 
-    `<div class="permDiv">
-        <span>관리자 추가 설정 기능</span>
-        <div class="settingLI">
-            <span>전체 계정 권한 설정 및 차단 하기</span>
-            <a href="/member/clubmem/annListCh"><i class="fa-solid fa-chevron-right"></i></a>
-        </div>
-    </div>`
-    } 
-    if(req.session.member.perm >= 2) {
-        addText += 
-    `<div class="permDiv">
-        <span>학생회 추가 설정 기능</span>
-        <div class="settingLI">
-            <span>홈 공지사항 리스트 변경하기</span>
-            <a href="/member/clubmem/annListCh"><i class="fa-solid fa-chevron-right"></i></a>
-        </div>
-    </div>`
-    } 
-    EndWithRespond(req, res, 'mem;me', [
-        {code: "additionalLink", content: addText}
-    ])
-});
-
 router.get('/sign-up', async function (req, res) {
     if (req.session.member.isLogged) {
         if(req.session.lastUrl == '/member/sign-up') {res.redirect('/')}
@@ -143,4 +112,51 @@ router.post('/sign-up', async function (req, res) {
     connection.end()
 });
 
+router.get('/me', async function (req, res) {
+    if(!req.session.member.isLogged) {return res.redirect('/')}
+    console.log(req.session.member)
+    // perm: 0일반 1행정실 2학생회 3관리자및운영자
+    req.session.member.perm = 3
+    addText = ''
+    if(req.session.member.perm >= 3) {
+        addText += 
+    `<div class="permDiv">
+        <span>관리자 추가 설정 기능</span>
+        <div class="settingLI">
+            <span>전체 계정 권한 설정 및 차단 하기</span>
+            <a href="/member/clubmem/memadmin"><i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+    </div>`
+    } 
+    if(req.session.member.perm >= 2) {
+        addText += 
+    `<div class="permDiv">
+        <span>학생회 추가 설정 기능</span>
+        <div class="settingLI">
+            <span>홈 공지사항 리스트 변경하기</span>
+            <a href="/member/clubmem/annListCh"><i class="fa-solid fa-chevron-right"></i></a>
+        </div>
+    </div>`
+    } 
+    EndWithRespond(req, res, 'mem;me', [
+        {code: "additionalLink", content: addText}
+    ])
+});
+
+router.get('/me/pwchange', async function (req, res) {
+    EndWithRespond(req, res, 'mem;me-pw', [])
+}
+
+router.get('/me/cookie', async function (req, res) {
+    EndWithRespond(req, res, 'mem;me-cookie', [])
+}
+           
+router.get('/clubmem/announceList', async function (req, res) {
+    EndWithRespond(req, res, 'mem;me-announce', [])
+}
+           
+router.get('/clubmem/memberAdmin', async function (req, res) {
+    EndWithRespond(req, res, 'mem;me-admin', [])
+}
+           
 module.exports = router;
