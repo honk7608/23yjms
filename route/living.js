@@ -42,7 +42,8 @@ router.get('/timetable', async function (req, res) {
                     try {
                         await timetable.init({ cache: 1000 * 60 * 60 })
                         await timetable.setSchool(49930)
-                    } catch {
+                    } catch(err) {
+                        console.error(err)
                         continue
                     }
                     break
@@ -82,7 +83,8 @@ router.get('/meal', async function (req, res) {
         try {
             school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
             var meal = await school.getMeal()
-        } catch {
+        } catch(err) {
+            console.error(err)
             continue
         }
         break
