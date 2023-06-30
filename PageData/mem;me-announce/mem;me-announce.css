@@ -96,6 +96,6 @@ form button {
     width: 100%;
 }
 
-input[type="text"] {
+div.up input[type="text"] {
     width: 48vw;
 }
