@@ -5,6 +5,7 @@
         --accent-color-transparent: #228B2250;  
         --accent-color-strong: #a5f3a5;
         --accent-color-weak: #155115;
+        --prefer-background-transparent: #FFFFFFAA;
         --prefer-background: white;
         --prefer-text: black;
     }
@@ -16,6 +17,7 @@
         --accent-color-transparent: #90EE9050;  
         --accent-color-strong: #6CEE6C;
         --accent-color-weak: #527952;
+        --prefer-background-transparent: #000000AA;
         --prefer-background: black;
         --prefer-text: white;
     }
