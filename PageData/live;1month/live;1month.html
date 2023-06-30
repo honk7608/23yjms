@@ -81,11 +81,11 @@
             const TodayMonth = Today.getMonth() 
             const TodayDate = Today.getDate()
             calendarText = `<ul class='content listMode'>\n`
-            for (const monthIndex in calendarList) {
+            for (const key in [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2]) {
+                monthIndex = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2][key]
                 if(monthIndex != Number(monthIndex)) {continue}
 
-                if(Number(monthIndex) + 1 < 10) {monthText = `0${Number(monthIndex) + 1}`}
-                else {monthText = String(Number(monthIndex) + 1)}
+                monthText = ('0' + String(monthIndex)).slice(-2)
 
                 calendarText += `<li class='monthDiv'>\n<div class='monthNumber'>${monthText}</div>\n`
 

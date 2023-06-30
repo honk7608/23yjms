@@ -4,6 +4,15 @@ var router = asyncify(express.Router());
 const EndWithRespond = require('../SubModule/ResFunc.js')
 const url = require('url');
 
+/**
+     * 
+     * @param {Date} InputDate 
+     * @returns {String}
+     */
+function setDateString(InputDate) {
+    return `${InputDate.getFullYear()}${('0' + String(InputDate.getMonth() + 1)).slice(-2)}${('0' + String(InputDate.getDate())).slice(-2)}` 
+}
+
 router.get('/timetable', async function (req, res) {
     const requrl = req.url;
     const queryData = url.parse(requrl, true).query;
@@ -42,7 +51,8 @@ router.get('/timetable', async function (req, res) {
                     try {
                         await timetable.init({ cache: 1000 * 60 * 60 })
                         await timetable.setSchool(49930)
-                    } catch {
+                    } catch(err) {
+                        console.error(err)
                         continue
                     }
                     break
@@ -70,24 +80,37 @@ router.get('/timetable', async function (req, res) {
 })
 
 router.get('/meal', async function (req, res) {
-    const School = require('school-kr')
-    const school = new School()
+    startDay = new Date(2023, 6 - 1,1)
+    endDay = new Date(2023, 6, 0)
     
-    tryCount = 0
-    while(true) {
-        tryCount += 1
-        if(tryCount > 20) {
-            return res.redirect('/404notfound')
-        }
-        try {
-            school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
-            var meal = await school.getMeal()
-        } catch {
-            continue
-        }
-        break
+    startDayStr = setDateString(startDay)
+    endDayStr = setDateString(endDay)
+
+    const Neis = require("@my-school.info/neis-api").default;    
+    const neis = new Neis({ KEY: "4d22163ef80343b8a28c3436f5759d7b", Type: "json" });
+
+    console.log(endDay)
+
+    mealInfo = await neis.getMealInfo({
+        ATPT_OFCDC_SC_CODE: 'I10',
+        SD_SCHUL_CODE: '9300175',
+        MLSV_FROM_YMD: startDayStr,
+        MLSV_TO_YMD: endDayStr
+    })
+
+    meal = []
+    for(const key in mealInfo) {
+        meal.push(
+            {
+                year: Number(mealInfo[key].MLSV_YMD.slice(0,4)),
+                month: Number(mealInfo[key].MLSV_YMD.slice(4,6)),
+                day: Number(mealInfo[key].MLSV_YMD.slice(6,8)),
+                mealData: mealInfo[key].DDISH_NM,
+                calorie: mealInfo[key].CAL_INFO
+            }
+        )
     }
-    
+
     var mealString = JSON.stringify(meal)
     mealString = mealString.split('\\n').join('(nextLine)')
 

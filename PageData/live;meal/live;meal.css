@@ -156,10 +156,17 @@ span.patternAccent.Title {
     font-size: calc(var(--big-font-size) / 1.5);
 
     padding: 1vw;
+    padding-left: 2vw;
 
     border-radius: 1vw;
 
     transition: 0.1s;
+
+    word-break: break-all;
+}
+
+.mealData ::marker{
+    color: var(--accent-color)
 }
 
 /* Mobile */ @media screen and (max-width: 600px){

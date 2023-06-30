@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@my-school.info/neis-api": "^1.0.0",
     "body-parser": "^1.20.2",
     "comcigan-parser": "^1.0.0",
     "cookie-parser": "^1.4.6",

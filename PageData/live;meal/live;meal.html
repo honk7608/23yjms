@@ -44,13 +44,9 @@
 
     <script>
         const mealList = JSON.parse(`<!-- {meal} -->`)
-        var endDay = 1
+        var endDate = 1
         for (const key in mealList) {
-            if (key != Number(key)) {
-                break
-            }
-            endDay = Number(key)
-            mealList[key] = mealList[key].replace('[중식](nextLine)','').split('(nextLine)').join('\n')
+            mealList[key].mealData = mealList[key].mealData.replace('[중식](nextLine)','').split('(nextLine)').join('\n')
         }
 
         function delay(ms = 1000) {
@@ -59,22 +55,31 @@
 
         writtenList = []
 
-        for (i = 1; ; i++) {
-            if (mealList[i] == '') {continue}
-            else if (mealList[i] == undefined) {
-                break
-            }
-            dateObject = new Date(2023, mealList.month - 1, i);
-            writtenList.push({day: i, data: mealList[i], weekday: [null,'Mon','Tue','Wed','Thu','Fri',null][dateObject.getDay()]})
+        for (const i in mealList) {
+            dateObject = new Date(mealList[i].year, mealList[i].month - 1, mealList[i].day);
+            writtenList.push(
+                {
+                    day: mealList[i].day,
+                    data: mealList[i].mealData,
+                    calorie: mealList[i].calorie,
+                    weekday: [null,'Mon','Tue','Wed','Thu','Fri',null][dateObject.getDay()]
+                }
+            )
         } 
 
+        console.log(writtenList)
+
         writtenText = ''
+
+        const today = new Date()
+        var todayDate = today.getDate()
+
         for(const key in writtenList) {
-            if(writtenList[key].day == mealList.day) {
+            if(writtenList[key].day == todayDate) {
                 ThisText = 
                 `<div class="mealItem">
                     <div class="day today" id="${writtenList[key].day}">`;
-            } else if(writtenList[key].day < mealList.day) {
+            } else if(writtenList[key].day < todayDate) {
                 ThisText = 
                 `<div class="mealItem">
                     <div class="day before" id="${writtenList[key].day}">`;
@@ -83,13 +88,20 @@
                 `<div class="mealItem">
                     <div class="day next" id="${writtenList[key].day}">`;
             }
+            onedayMealText = ''
+            onedayMealList = writtenList[key].data.replace('\n', '<br/>').split('<br/>')
+            
+            console.log(onedayMealList)
+            for(const key2 in onedayMealList) {
+                onedayMealText += `<li>${onedayMealList[key2]}</li>\n`
+            }
             ThisText += 
             `           <p class='dayNumber'>${writtenList[key].day}</p>
                         <p class='weekDay'>${writtenList[key].weekday}</p>
                     </div>
-                    <div class="mealData">
-                        ${writtenList[key].data.split('\n').join('\n<br>')}
-                    </div>
+                    <ul class="mealData">
+                        ${onedayMealText}
+                    </ul>
                 </div>\n`;
             writtenText += ThisText;
         }
@@ -98,6 +110,9 @@
 
         ListEl = document.getElementById('mealList')
         ListEl.innerHTML = writtenText
+
+        var endDate = mealList.pop().day
+
         // mealItem 한개 width 설정
         function setOneWidth() {
             delay(75).then(() => {
@@ -113,7 +128,7 @@
             })
         }
 
-        setOneWidth()
+        // setOneWidth()
 
         timerId = setInterval(setOneWidth, 500)
         delay(2*1000).then(() => {
@@ -124,38 +139,35 @@
 
         // 오늘 보기 설정
         TodayButtonEl = document.getElementById('todayButton')
-        while (true) { 
-            if(mealList[mealList.day] == '') {mealList.day += 1; continue}
-            else if(mealList[mealList.day] == undefined) {
-                for (i = mealList.day; mealList[i] == undefined || mealList[i] == ''; i--) {
-                    mealList.day = i
-                }
-                mealList.day -= 1
-            }
-            break
+        todaySet = false
+        for(const key in mealList) {
+            if(mealList[key].day < todayDate) {continue}
+            else if(mealList[key].day = todayDate) {todaySet = true; break}
+            else if(mealList[key].day > todayDate) {todaySet = true; todayDate = mealList[key - 1].day; break}
         }
+        if(!todaySet) {todayDate = 1}
 
         TodayButtonEl.addEventListener("click", (event) => {
-            window.location.href = `/living/meal#${mealList.day}`
+            window.location.href = `/living/meal#${todayDate}`
         })
         delay(1000).then((event) => {
-            window.location.href = `/living/meal#${mealList.day}`
+            window.location.href = `/living/meal#${todayDate}`
         })
         
         InputEl = document.getElementById("numInput")
-        InputEl.max = endDay
+        InputEl.max = endDate
 
         // 지정날짜 이동하기 설정
         ButtonEl = document.getElementById('moveButton')
         ButtonEl.addEventListener("click", (event) => {
             InputEl = document.getElementById("numInput")
             InputEl.value = Math.round(Number(InputEl.value))
-            if(InputEl.value > endDay) {return}
+            if(InputEl.value > endDate) {return}
             while (true) {
                 HrefEl = document.getElementById(InputEl.value)
                 if (HrefEl == null) {
                     InputEl.value = 1 + Number(InputEl.value)
-                } else if (InputEl.value > endDay) {
+                } else if (InputEl.value > endDate) {
                     while (true) {
                         if (HrefEl == null) {
                             InputEl.value = Number(InputEl.value) - 1
