@@ -1,1 +1,97 @@
+.announceTag {
+    font-weight: 900;
+    color: #ef233c;
+}
 
+.inviteTag {
+    font-weight: 900;
+    color: #02c39a;
+}
+
+.eventTag {
+    font-weight: 900;
+    color: #b5179e;
+}
+
+.updateTag {
+    font-weight: 900;
+    color: #00b4d8;
+}
+
+.roundDiv {
+    padding-left: 1vw;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: calc(var(--big-font-size) * 0.3);
+
+    font-size: var(--big-font-size);
+    
+    border-radius: 1vw;
+    background-color: var(--prefer-background);
+
+    margin-bottom: 1vw;
+    padding: 1vw;
+}
+
+@media (prefers-color-scheme: light) {
+    .roundDiv {
+        box-shadow:  8px 8px 27px #d4d4d4,
+        -8px -8px 27px #ffffff;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .roundDiv {
+        box-shadow:  8px 8px 27px #282828,
+        -8px -8px 27px #383838;
+    }
+}
+
+.one-item {
+    width: 100%;
+    box-shadow: none;
+    border: 1px #dddddd solid;
+}
+
+.settingDiv input, 
+.settingDiv select,
+button {
+    font-size: var(--big-font-size);
+}
+
+form div:first-child{
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pageContentDiv form:last-child div:last-child{
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+form button {
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-radius: 1vw;
+    
+    border: none;
+    outline: none;
+    background-color: var(--accent-color-transparent);
+}
+
+.pageContentDiv form:nth-child(2) div:last-child {
+    width: 100%;
+}
+
+.pageContentDiv form:nth-child(2) div:last-child input {
+    width: 100%;
+}

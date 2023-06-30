@@ -152,8 +152,75 @@ router.get('/cookie', async function (req, res) {
     EndWithRespond(req, res, 'mem;me-cookie')
 });
            
-router.get('/clubmem/announceList', async function (req, res) {
-    EndWithRespond(req, res, 'mem;me-announce')
+router.get('/admin/announceList', async function (req, res) {
+    if(!req.session.member.isLogged) {return res.redirect('/member/login')}
+    if(req.session.member.perm < 2) {return res.redirect('/member/login')}
+    
+    const connection = await mysql.createConnection(req.dbOption);
+    const [AnnArray, fields] = await connection.execute(
+        `SELECT category, content, ahref FROM home_annlist;`
+    )
+
+    // 1중요공지 2모집/신청 3행사안내 4기타
+    const cateList = {
+        1: {tag: 'announceTag',name: '중요 공지'},
+        2: {tag: 'inviteTag'  ,name: '모집/신청'},
+        3: {tag: 'eventTag'   ,name: '행사 안내'},
+        4: {tag: 'updateTag'  ,name: '기타'}
+    }
+
+    annText = ''
+    for(const key in AnnArray) {
+        annText += `<div class="one-item roundDiv">
+    <span style='font-weight: 700;'>${Number(key) + 1}</span>
+    <div>
+        <span class='${cateList[AnnArray[key].category].tag}'>${cateList[AnnArray[key].category].name}</span>
+        <a href=${AnnArray[key].ahref} style='text-decoration: underline;'>(클릭 시 연결 링크)</a>    
+    </div>
+    ${AnnArray[key].content}
+</div>`
+    }
+
+    EndWithRespond(req, res, 'mem;me-announce', [
+        {code: 'annList', content: annText},
+        {code: 'maxNum', content: AnnArray.length}
+    ])
+});
+
+router.post('/admin/announceList/delete', async function (req, res) {
+    if(!req.session.member.isLogged) {return res.redirect('/member/login')}
+    if(req.session.member.perm < 2) {return res.redirect('/member/login')}
+
+    const connection = await mysql.createConnection(req.dbOption);
+    const [AnnArray, fields] = await connection.execute(
+        `SELECT * FROM home_annlist 
+        ORDER BY id ASC
+        LIMIT ${req.body.number - 1}, 1;`
+    )
+    
+    const [result, fields2] = await connection.execute(
+        `DELETE FROM home_annlist WHERE (id = ${AnnArray[0].id});`
+    )    
+    return res.redirect('/member/admin/announceList')
+});
+
+router.post('/admin/announceList/add', async function (req, res) {
+    if(!req.session.member.isLogged) {return res.redirect('/member/login')}
+    if(req.session.member.perm < 2) {return res.redirect('/member/login')}
+
+    const connection = await mysql.createConnection(req.dbOption);
+    const [AnnArray, fields] = await connection.execute(
+        `SELECT * FROM home_annlist 
+        ORDER BY id DESC
+        LIMIT 1;`
+    ) 
+
+    const [result, fields2] = await connection.execute(   
+        `INSERT INTO home_annlist (id, category, content, ahref) 
+        VALUES ('${AnnArray[0].id + 1}', '${req.body.category}', '${req.body.content}', '${req.body.ahref}');`
+    )
+
+    return res.redirect('/member/admin/announceList')
 });
            
 router.get('/clubmem/memberAdmin', async function (req, res) {

@@ -1,1 +1,35 @@
+<div class="pageTitleDiv">
+    <div class="titleDiv">학생회 추가 기능 <i class="fa-solid fa-chevron-right"></i> <span class="patternAccent">공지사항 변경하기</span></div>
+    <div class="describe">메인 화면의 공지사항 내용을 변경합니다.</div>
+</div>
 
+<div id="annListForm" class="pageContentDiv" method="post">
+    <div class="roundDiv listDisplay">
+        <!-- {annList} -->
+    </div>
+    <form method="post" id="deleteForm" class="roundDiv settingDiv" action="/member/admin/announceList/delete">
+        <div>
+            <span style='font-weight: 700;'>한 칸 삭제하기</span>
+            <button type="submit" form="deleteForm">적용하기</button>
+        </div>
+        <div>
+            <input name="number" type="number" placeholder="삭제할 칸의 번호 입력" required min="1" max="<!-- {maxNum} -->" step="1">
+        </div>
+    </form>
+    <form method="post" id="addForm" class="roundDiv settingDiv" action="/member/admin/announceList/add">
+        <div>
+            <span style='font-weight: 700;'>한 칸 추가하기</span>
+            <button type="submit" form="addForm">적용하기</button>
+        </div>
+        <div>
+            <select name="category">
+                <option value="1">중요 공지</option>
+                <option value="2">모집/신청</option>
+                <option value="3">행사 안내</option>
+                <option value="4">기타</option>
+            </select>
+            <input name="content" type="text" placeholder="공지 내용 입력" required maxlength="35">
+            <input name="ahref" type="text" placeholder="연결 링크 입력" required>
+        </div>
+    </form>
+</form>
