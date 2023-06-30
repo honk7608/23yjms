@@ -144,9 +144,24 @@ router.get('/me', async function (req, res) {
 });
 
 router.get('/pwchange', async function (req, res) {
+    if(!req.session.member.isLogged) {return res.redirect('/member/login')}
+    
     EndWithRespond(req, res, 'mem;me-pw')
 });
            
+router.post('/pwchange', async function (req, res) {
+    if(!req.session.member.isLogged) {return res.redirect('/member/login')}
+
+    if(req.body.newpw != req.body.newpwcheck) {
+        return res.redirect('/member/pwchange')
+    }
+    
+    const connection = await mysql.createConnection(req.dbOption);
+    const [Users, fields] = await connection.execute(
+        `SELECT * FROM user
+        WHERE user.id = ${req.session.member.id}
+        LIMIT 1;`
+    )
 
     if(Users.length == 0) { //해당 유저 미존재
         console.log('Non-exsisting-user')
