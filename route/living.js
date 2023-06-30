@@ -149,49 +149,80 @@ router.get('/schedule', async function (req, res) {
     const reqMode = queryData.mode // 0: Calendar, 1: List
     if(!reqYear) {var reqYear = Today.getFullYear()}
 
+    const Neis = require("@my-school.info/neis-api").default;    
+    const neis = new Neis({ KEY: "4d22163ef80343b8a28c3436f5759d7b", Type: "json" });
+
     if(reqMode == 0) {        
-        const School = require('school-kr')
-        const school = new School()
-        
-        tryCount = 0
-        while(true) {
-            tryCount += 1
-            if(tryCount > 20) {
-                return res.redirect('/404notfound')
-            }
-            try {
-                school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
-                var calendar = await school.getCalendar({separator: '(separator)', month: reqMonth, year: reqYear});
-            } catch (err) {
-                continue
-            }
-            break
+        startDay = new Date(reqYear, reqMonth - 1, 1)
+        endDay = new Date(reqYear, reqMonth, 0)    
+    } else {
+        startDay = new Date(reqYear, 3, 1)
+        endDay = new Date(reqYear + 1, 3, 0)
+    }
+    startDayStr = setDateString(startDay)
+    endDayStr = setDateString(endDay)
+
+    scdInfo = await neis.getSchedule({
+        ATPT_OFCDC_SC_CODE: 'I10',
+        SD_SCHUL_CODE: '9300175',
+        AA_FROM_YMD: startDayStr,
+        AA_TO_YMD: endDayStr
+    },
+    {
+        pSize: 365
+    })
+
+    scdData = []
+    for(const key in scdInfo) {
+        if(scdInfo[key].EVENT_NM == '토요휴업일') {continue}
+        newObject = {
+            name: scdInfo[key].EVENT_NM,
+            year: Number(scdInfo[key].AA_YMD.slice(0,4)),
+            month: Number(scdInfo[key].AA_YMD.slice(4,6)),
+            day: Number(scdInfo[key].AA_YMD.slice(6,8)),
+        }
+        scdData.push(newObject)
+    }
+
+    if(reqMode == 0) {
+        scdDataOther = {}
+        for(i = 1; i <= endDay.getDate(); i++) {
+            scdDataOther[i] = []
+        }
+        for(const key in scdData) {
+            scdDataOther[scdData[key].day].push(scdData[key].name)
+        }
+        scdData = {}
+        for(const key in scdDataOther) {
+            scdData[key] = scdDataOther[key].join('(separator)')
         }
     } else {
-        const School = require('school-kr')
-        const school = new School()
-        
-        tryCount = 0
-        while(true) {
-            tryCount += 1
-            if(tryCount > 20) {
-                return res.redirect('/404notfound')
+        scdDataOther = {}
+        for(i = 1; i <= 12; i++) {
+            scdDataOther[i] = []
+        }
+        for(const key in scdData) {
+            scdDataOther[scdData[key].month].push(scdData[key])
+        }
+        scdData = {}
+        for(monthNumber = 1; monthNumber <= 12; monthNumber++) {
+            monthObject = {}
+            startDay = new Date(reqYear, monthNumber - 1, 1)
+            endDay = new Date(reqYear, monthNumber, 0)  
+            for(i = 1; i <= endDay.getDate(); i++) {
+                monthObject[i] = []
             }
-
-            var calendar = []
-            try {
-                school.init(School.Type.MIDDLE, School.Region.SEJONG, 'I100000146')
-                for(i = 1; i <= 12; i++) {
-                    calendar.push(await school.getCalendar({separator: '(separator)', month: i}));
-                }
-            } catch (err) {
-                continue
+            for(const key in scdDataOther[monthNumber]) {
+                monthObject[scdDataOther[monthNumber][key].day].push(scdDataOther[monthNumber][key].name)
             }
-            break
+            for(const key in monthObject) {
+                monthObject[key] = monthObject[key].join('(separator)') 
+            }
+            scdData[monthNumber] = monthObject
         }
     }
 
-    var calenderString = JSON.stringify(calendar)
+    var calenderString = JSON.stringify(scdData)
 
     EndWithRespond(req, res, 'live;1month', [
         {code: 'calendar', content: calenderString},
