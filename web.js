@@ -1,6 +1,7 @@
 const express = require('express');
 const asyncify = require('express-asyncify');
 const app = asyncify(express());
+var mysql = require('mysql2/promise');
 
 var port = process.env.PORT;
 if(!process.env.FILEBASEROOT) {
@@ -63,6 +64,10 @@ app.use('*', function(req, res, next) {
         req.session.lastUrl = '/'
     }
     
+    if(!req.cookies.allowCookie) {
+        req.cookies.allowCookie = true
+    }
+
     next()
 })
 
@@ -72,9 +77,29 @@ app.use('/living', require('./route/living.js'));
 app.use('/community', require('./route/community.js'));
 app.use('/member', require('./route/member.js'));
 
-//main
+//home
 app.get('/', async function (req, res) {
-    EndWithRespond(req, res, 'home', [])
+    const connection = await mysql.createConnection(req.dbOption);
+    const [AnnArray, fields] = await connection.execute(
+        `SELECT ahref, category, content FROM home_annlist;`
+    )
+    // 1중요공지 2모집/신청 3행사안내 4기타
+    const cateList = {
+        1:{tag: 'announceTag',name: '중요 공지'},
+        2:{tag: 'inviteTag'  ,name: '모집/신청'},
+        3:{tag: 'eventTag'   ,name: '행사 안내'},
+        4:{tag: 'updateTag'  ,name: '기타' }
+    }
+
+    for(const key in AnnArray) {
+        AnnArray[key] = `<a href='${AnnArray[key].ahref}'><span class='${cateList[AnnArray[key].category].tag}'>${cateList[AnnArray[key].category].name}</span> ${AnnArray[key].content}</a>`
+    }
+
+    var annText = JSON.stringify(AnnArray)
+
+    EndWithRespond(req, res, 'home', [
+        {code: 'annList', content: annText}
+    ])
 })
 
 //version
