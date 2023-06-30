@@ -95,3 +95,7 @@ form button {
 .pageContentDiv form:nth-child(2) div:last-child input {
     width: 100%;
 }
+
+input[type="text"] {
+    width: 48vw;
+}
