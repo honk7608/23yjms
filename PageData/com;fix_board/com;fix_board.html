@@ -20,7 +20,6 @@
         <tr class="tableHeader">
             <td></td>
             <td>번호</td>
-            <td>상태</td>
             <td>제목</td>
             <td>작성자</td>
             <td>작성일시</td>
@@ -44,7 +43,6 @@ for(const key in Articles) {
 `<tr class="articleTr${additionalTag} inactive" id="articlehead:${key}" onclick="ToggleArticle(${key})">
     <td class="articleViewContent"><i class="fa-solid fa-plus"></i></td>
     <td class="articleNum">${article.id}</td>
-    <td class="articleStatus">해결됨</td>
     <td class="articleTitle"><a>${article.title}</a></td>
     <td class="articleAuthor">${article.author_name}</td>
     <td class="articleDate">${displayDateText}</td>
