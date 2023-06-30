@@ -148,8 +148,42 @@ router.get('/pwchange', async function (req, res) {
 });
            
 
-router.get('/cookie', async function (req, res) {
-    EndWithRespond(req, res, 'mem;me-cookie')
+    if(Users.length == 0) { //해당 유저 미존재
+        console.log('Non-exsisting-user')
+        return res.redirect('/member/login')
+    } else if (Users[0].pw != req.body.currentpw) { //잘못된 PW
+        console.log('Wrong pw')
+        return res.redirect('/member/login')
+    } else {
+        await connection.execute(
+            `UPDATE user SET user.pw = '${req.body.newpw}' WHERE user.id = ${req.session.member.id};`
+        )
+    }
+
+    req.session.member = {
+        isLogged: false,
+        id: null
+    }
+
+    req.session.lastUrl = '/'
+    return res.redirect('/member/login')
+});
+
+router.get('/cookieChange', async function (req, res) {
+    if(!req.session.member.isLogged) {return res.redirect('/member/login')}
+
+    if(req.cookies.allowCookie) {currentText = 'checked'}
+    else {currentText = ''}
+
+    EndWithRespond(req, res, 'mem;me-cookie', [{code: 'current', content: `${currentText}`}])
+});
+
+router.post('/cookieChange', async function (req, res) {
+    if(!req.cookies.allowCookie) {return res.redirect('/member/cookieChange')}
+    if(req.body.allowCookie == 'on') {req.cookies.allowCookie = true}
+    else {req.cookies.allowCookie = false}
+    console.log(req.body.allowCookie, req.cookies.allowCookie)
+    return res.redirect('/member/cookieChange')
 });
            
 router.get('/admin/announceList', async function (req, res) {

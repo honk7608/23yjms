@@ -1,1 +1,18 @@
+<div class="pageTitleDiv">
+    <div class="titleDiv">계정 관리 <i class="fa-solid fa-chevron-right"></i> <span class="patternAccent">쿠키 설정</span></div>
+    <div class="describe">쿠키를 허용할지, 차단할지 선택할 수 있습니다.</div>
+</div>
 
+<form id="cookieForm" class="pageContentDiv" method="post" action="/member/cookieChange">
+    <div class="one-setting">
+        <div>
+            쿠키 허용하기
+        </div>
+        <label class="toggle" for="myToggle">
+            <input class="toggle__input" name="allowCookie" type="checkbox" id="myToggle" value="on" <!-- {current} -->>
+            <div class="toggle__fill"></div>
+        </label>
+        <input class="hidden" name="defaultInput" type="checkbox" style="display: none;" checked>
+    </div>
+    <button form="cookieForm" type="submit" class="submit" style="padding: 1vw;">변경사항 저장하기</button>
+</form>
