@@ -98,3 +98,21 @@ div.new{
     display: flex;
     flex-direction: column;
 }
+
+input[type="text"] {
+    
+    width: 100%;
+    
+    padding: 0.5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+
+    font-size: var(--big-font-size);
+    font-weight: 700;
+        
+    color: var(--prefer-text);
+
+    outline: none;
+    border: 1px solid var(--prefer-background);
+    border-radius: 100vw;
+}
