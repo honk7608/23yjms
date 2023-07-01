@@ -135,8 +135,8 @@ main {
     justify-content: space-between;
     align-items: center;
 
-    background-color: white;
-    color: black !important;
+    background-color: var(--prefer-background);
+    color: black;
 
     border-radius: 100vw;
 }
