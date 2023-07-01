@@ -97,6 +97,6 @@ form button {
 }
 
 div.new{
-    display: grid;
+    display: flex;
     flex-direction: column;
 }
