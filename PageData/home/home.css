@@ -136,7 +136,7 @@ main {
     align-items: center;
 
     background-color: white;
-    color: black;
+    color: black !important;
 
     border-radius: 100vw;
 }
