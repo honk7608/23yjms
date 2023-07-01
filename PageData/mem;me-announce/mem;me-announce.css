@@ -73,8 +73,6 @@ form div:first-child{
 
 .pageContentDiv form:last-child div:last-child{
     width: 100%;
-
-    display: grid;
     grid-template-columns: auto auto auto;
 }
 
