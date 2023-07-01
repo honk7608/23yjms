@@ -279,9 +279,7 @@ main {
     .today .one_line_announce .controlButtonDiv i {
         width: min(90px, 12vw);
         border-radius: 100vw;
-
-        background-color: var(--prefer-text);
-        color: var(--prefer-background);
+        color: var(--prefer-text);
     }
 }
 
