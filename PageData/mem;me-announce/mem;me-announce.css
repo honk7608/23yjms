@@ -96,6 +96,7 @@ form button {
     width: 100%;
 }
 
-div.up input[type="text"] {
-    width: 48vw;
+div.new{
+    display: grid;
+    flex-direction: column;
 }
