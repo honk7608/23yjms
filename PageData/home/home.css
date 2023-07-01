@@ -190,6 +190,7 @@ main {
 
 .today .one_line_announce #announce_content {
     transition: 0.5s;
+    color: var(--prefer-text);
 }
 
 .information ul {
