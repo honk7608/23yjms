@@ -143,6 +143,7 @@ main {
 
 .today .one_line_announce .controlButtonDiv {
     padding: 0.5vw;
+    color: var(--prefer-text);
 }
 
 .today .one_line_announce i {
