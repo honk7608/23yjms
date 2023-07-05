@@ -110,7 +110,7 @@ input[type="text"] {
     font-size: var(--big-font-size);
     font-weight: 700;
         
-    color: var(--prefer-text);
+    color: black;
 
     outline: none;
     border: 1px solid var(--prefer-background);
