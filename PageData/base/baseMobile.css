@@ -169,6 +169,8 @@
         background-color: var(--prefer-background);
         color: var(--prefer-text);
         box-shadow: -3px 6px #99999950;
+
+        z-index: 6;
     }
 
     header .member .NoLog a {
