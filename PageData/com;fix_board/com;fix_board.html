@@ -23,6 +23,7 @@
             <td>제목</td>
             <td>작성자</td>
             <td>작성일시</td>
+            <td>해결여부</td>
             <td></td>
         </tr>
         <script>
@@ -38,7 +39,8 @@ for(const key in Articles) {
     ArticleCreatedTime = new Date(article.createdTime)
 
     var displayDateText = `${String(ArticleCreatedTime.getFullYear()).slice(-2)}.${('0' + String(ArticleCreatedTime.getMonth() + 1)).slice(-2)}.${String('0' + String(ArticleCreatedTime.getDate())).slice(-2)}`
-
+    if(article.is_done == 0) {is_doneText = 'N'}
+    else {is_doneText = 'Y'}
     DisplayText += 
 `<tr class="articleTr${additionalTag} inactive" id="articlehead:${key}" onclick="ToggleArticle(${key})">
     <td class="articleViewContent"><i class="fa-solid fa-plus"></i></td>
@@ -46,6 +48,7 @@ for(const key in Articles) {
     <td class="articleTitle"><a>${article.title}</a></td>
     <td class="articleAuthor">${article.author_name}</td>
     <td class="articleDate">${displayDateText}</td>
+    <td class="articleis_done">${is_doneText}</td>
     <td>
         <i class="fa-solid fa-ellipsis-vertical articleMenu">
             <div>

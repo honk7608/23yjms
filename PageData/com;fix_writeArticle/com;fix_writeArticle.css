@@ -6,7 +6,8 @@ main {
     display: grid;
     grid-template-areas: 
     'sp1 select'
-    'sp2 input';
+    'sp2 input'
+    'sp3 div';
     grid-template-columns: auto 1fr;
     gap: 1vw;
 

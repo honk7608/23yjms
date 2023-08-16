@@ -14,12 +14,12 @@ const url = require('url');
  * @returns {{author_id: Number, author_name: String, createdTime: Date, id: Number, title: String}[]} 게시물 리스트
  */
 async function getBoardArticles(dbOption, boardName, startIndex=null, count=10, addNeedData='', addWhereQuery='') {
-    if(boardName == 'fix') {addNeedData = `, place, specific_place${addNeedData}`}
+    if(boardName == 'fix') {addNeedData = `, place, specific_place, is_done${addNeedData}`}
     queryText = 
-`SELECT ${boardName}_board.id, title, createdTime, user.name AS author_name, author_id${addNeedData}
+`SELECT ${boardName}_board.id, title, createdTime, user.name AS author_name, author_id, is_enabled${addNeedData}
 FROM ${boardName}_board 
 LEFT JOIN user ON ${boardName}_board.author_id = user.id 
-WHERE is_enabled = 1${addWhereQuery}
+${addWhereQuery}
 ORDER BY ${boardName}_board.id DESC;`
 
     const connection = await mysql.createConnection(dbOption);
@@ -53,7 +53,7 @@ ORDER BY ${boardName}_board.id DESC;`
  * @returns {{author_id: Number, author_name: String, createdTime: Date, id: Number, title: String}} 게시물 하나의 데이터
  */
 async function getOneArticle(dbOption, boardName, articleID) {
-    if(boardName == 'fix') {addData = ', place, specific_place'}
+    if(boardName == 'fix') {addData = ', place, specific_place, is_done'}
     else{addData = ''}
     
     const connection = await mysql.createConnection(dbOption);
@@ -163,10 +163,10 @@ router.get('/board', async function (req, res) {
     if(!existingBoard) {return res.redirect(req.session.lastUrl)}
 
     if(boardName != 'fix') {
-        var Articles = await getBoardArticles(req.dbOption, boardName, targetPage * 10 - 9)
+        var Articles = await getBoardArticles(req.dbOption, boardName, targetPage * 10 - 9, 10, '', 'WHERE is_enabled = "1"')
 
         if(Articles.length != 0) {
-            const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
+            const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1, '', 'WHERE is_enabled = "1"')
             maxPage = (lastArticle[0].AllIndex - (lastArticle[0].AllIndex % 10)) / 10
             if(lastArticle[0].AllIndex % 10 != 0) {maxPage += 1}
             articleExists = true
@@ -195,14 +195,14 @@ router.get('/board', async function (req, res) {
         else if (searchCondition) {conditionText = 'AND is_done = 1'}
         else if (!searchCondition) {conditionText = 'AND is_done = 0'}
         
-        var Articles = await getBoardArticles(req.dbOption, boardName, targetPage * 10 - 9, 10, ', content', conditionText)
+        var Articles = await getBoardArticles(req.dbOption, boardName, targetPage * 10 - 9, 10, ', content', `WHERE is_enabled = "1" ${conditionText}`)
         // LineChange
         for(const key in Articles) {
             Articles[key].content = await setArticleStyle(Articles[key].content)
         }
 
         if(Articles.length != 0) {
-            const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1)
+            const lastArticle = await getBoardArticles(req.dbOption, boardName, 1, 1, '', 'WHERE is_enabled = "1"')
             maxPage = (lastArticle[0].AllIndex - (lastArticle[0].AllIndex % 10)) / 10
             if(lastArticle[0].AllIndex % 10 != 0) {maxPage += 1}
             articleExists = true
@@ -292,12 +292,14 @@ router.get('/writeArticle', async function (req, res) {
                 {code: 'subMessage', content: '길을 잃으신 것 같네요...'},
                 {code: 'errCode', content: '404'}
             ], false)
-        } else if(article.author_id != req.session.member.id) {
+        } else if(article.author_id != req.session.member.id && req.session.member.perm < 2) {
             return res.redirect('/no-perm')
         } else if (boardName == 'fix') {
             article.content = article.content.split('$$').join('$$$')
             article.place = article.place.split('$$').join('$$$')
             article.specific_place = article.specific_place.split('$$').join('$$$')
+            if(article.is_done == 1) {is_checkedText = 'checked'}
+            else {is_checkedText = ''}
             return EndWithRespond(req, res, 'com;fix_writeArticle', [
                 {code: 'boardName1', content: boardName},
                 {code: 'articleIDText1', content: `&articleID=${article.id}`},
@@ -306,7 +308,8 @@ router.get('/writeArticle', async function (req, res) {
                 {code: 'placeContent', content: article.place},
                 {code: 'sp_placeContent', content: article.specific_place},
                 {code: 'returnDivClass', content: 'ToArticle'},
-                {code: 'articleTitle', content: article.title}
+                {code: 'articleTitle', content: article.title},
+                {code: 'is_checked', content: is_checkedText}
             ])
         }
         article.content = article.content.split('$$').join('$$$')
@@ -329,7 +332,8 @@ router.get('/writeArticle', async function (req, res) {
                 {code: 'placeContent', content: 'none'},
                 {code: 'sp_placeContent', content: ''},
                 {code: 'returnDivClass', content: 'ToBoard'},
-                {code: 'articleTitle', content: ''}
+                {code: 'articleTitle', content: ''},
+                {code: 'is_checked', content: ''}
             ])
         }
         EndWithRespond(req, res, 'com;writeArticle', [
@@ -386,7 +390,7 @@ router.post('/writeArticle', async function (req, res) {
     } else {
         Article.id = articleID
         beforeArticle = await getOneArticle(req.dbOption, boardName, Article.id)
-        if(req.session.member.id != beforeArticle.author_id) {return res.redirect(`/community/board?boardName=${boardName}`)}
+        if(req.session.member.id != beforeArticle.author_id && req.session.member.perm < 2) {return res.redirect(`/community/board?boardName=${boardName}`)}
         await connection.execute(
             `UPDATE ${boardName}_board
             SET title = '${Article.title}', content = '${Article.content}'
@@ -421,6 +425,8 @@ router.post('/fix_writeArticle', async function (req, res) {
     Article.title = req.body.title
     Article.place = req.body.place
     Article.specific_place = req.body.sp_place
+    if(req.body.is_done) {Article.is_done = 1}
+    else {Article.is_done = 0}
 
     const connection = await mysql.createConnection(req.dbOption);
 
@@ -432,8 +438,8 @@ router.post('/fix_writeArticle', async function (req, res) {
         else {Article.id = lastArticle[0].id + 1}
 
         Article.createdTime = new Date()
-        queryText = `INSERT INTO fix_board (id, title, place, specific_place, content, createdTime, author_id)
-        VALUES (${Article.id}, '${Article.title}', '${Article.place}', '${Article.specific_place}', '${Article.content}', '${Article.createdTime.toJSON()}', ${Article.author_id})`
+        queryText = `INSERT INTO fix_board (id, title, place, specific_place, content, createdTime, author_id, is_done)
+        VALUES (${Article.id}, '${Article.title}', '${Article.place}', '${Article.specific_place}', '${Article.content}', '${Article.createdTime.toJSON()}', ${Article.author_id}, ${Article.is_done})`
         await connection.execute(queryText)
     } else {
         Article.id = articleID
@@ -441,7 +447,7 @@ router.post('/fix_writeArticle', async function (req, res) {
         if(req.session.member.id != beforeArticle.author_id) {return res.redirect(`/community/board?boardName=${boardName}`)}
         await connection.execute(
             `UPDATE fix_board
-            SET title = '${Article.title}', place = '${Article.place}', specific_place = '${Article.specific_place}', content = '${Article.content}'
+            SET title = '${Article.title}', place = '${Article.place}', specific_place = '${Article.specific_place}', content = '${Article.content}', is_done = '${Article.is_done}'
             WHERE id = ${Article.id};`
         )
     }
