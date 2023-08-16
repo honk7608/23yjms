@@ -209,7 +209,15 @@ main {
 }
 
 .articleMainContent div.content_text {
+    background-color: white;
+    padding: 1vw;
+    border-radius: 1vw;
+
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+.articleContentTr {
+    background-color: var(--accent-color-transparent);
 }
