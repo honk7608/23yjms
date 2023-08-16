@@ -235,7 +235,7 @@ router.get('/viewArticle', async function (req, res) {
     }
 
     if(!existingBoard) {return res.redirect(req.session.lastUrl)}
-    else if(boardName == 'fix') {return res.redirect('./community/board?boardName=fix')}
+    else if(boardName == 'fix') {return res.redirect('/community/board?boardName=fix')}
 
     const article = await getOneArticle(req.dbOption, boardName, articleID)
 
