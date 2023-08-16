@@ -79,17 +79,15 @@ router.get('/timetable', async function (req, res) {
         )
 })
 
-router.get('/meal', async function (req, res) {
-    startDay = new Date(2023, 6 - 1,1)
-    endDay = new Date(2023, 6, 0)
+router.get('/meal', async function (req, res) {    
+    startDay = new Date(2023, 8 - 1,1)
+    endDay = new Date(2023, 8, 0)
     
     startDayStr = setDateString(startDay)
     endDayStr = setDateString(endDay)
 
     const Neis = require("@my-school.info/neis-api").default;    
     const neis = new Neis({ KEY: "4d22163ef80343b8a28c3436f5759d7b", Type: "json" });
-
-    console.log(endDay)
 
     mealInfo = await neis.getMealInfo({
         ATPT_OFCDC_SC_CODE: 'I10',
