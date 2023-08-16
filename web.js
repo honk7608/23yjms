@@ -112,6 +112,11 @@ app.get('/rules', async function (req, res) {
     EndWithRespond(req, res, 'etc;rules', [])
 })
 
+//time
+app.get('/time', async function (req, res) {
+    EndWithRespond(req, res, 'etc;time', [])
+})
+
 //error pages
 //no-permission
 app.get('/no-perm', async function (req, res) {

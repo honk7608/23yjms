@@ -1,0 +1,57 @@
+.pageContentDiv {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--prefer-background);
+}
+
+.pageContentDiv span {
+    color: var(--prefer-text);
+}
+
+div.dday {
+    width: 80%;
+    margin-top: 1vw;
+    padding: 2vw;
+    border-radius: 1.5vw;
+
+    background-color: #00000030;
+    font-size: var(--big-font-size);
+}
+
+div.dday > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.dday > div span {
+    display: flex;
+    align-items: center;
+    
+    font-weight: 900;
+}
+
+div.dday select {
+    padding: 1vw;
+    border: none;
+    border-radius: 2vw;
+    outline: none;
+    
+    background-color: #FFFFFF90;
+    font-size: var(--big-font-size);
+}
+
+@media (prefers-color-scheme: dark) {
+    div.dday {
+        background-color: #FFFFFF30;
+    }
+
+    div.dday select {
+        background-color: #00000090;
+        color: white;
+    }
+}
