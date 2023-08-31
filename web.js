@@ -9,6 +9,7 @@ if(!process.env.FILEBASEROOT) {
 } else {
     var FileBaseRoot = process.env.FILEBASEROOT
 }
+console.log(FileBaseRoot)
 
 
 const EndWithRespond = require(`${FileBaseRoot}/SubModule/ResFunc.js`);
